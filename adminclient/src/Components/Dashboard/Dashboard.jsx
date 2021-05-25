@@ -18,14 +18,15 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.dark,
     fontSize: "large",
     marginInline: "5%",
-    borderRadius: "10",
+    borderRadius: "8px",
+    borderLeft: '3px solid red'
   },
   button: {
     marginLeft: "85%",
     margin: "2%",
   },
   divider: {
-    margin: "2%",
+    marginTop: "2%",
   },
   //   paper1: {
   //     padding: theme.spacing(4),
@@ -52,11 +53,12 @@ const Dashboard = () => {
         >
           Log Out
         </Button> */}
-        <Divider className={classes.divider} />
+        {/* <Divider/> */}
       </Container>
       <Grid className={classes.root} container spacing={2}>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper}>80</Paper>
+          <Paper className={classes.paper}>80  
+          </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Paper className={classes.paper}>30</Paper>
