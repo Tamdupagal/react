@@ -1,41 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { Button } from '@material-ui/core';
-import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
-import Dashboard from './../Dashboard/Dashboard'
+import React, { useState, useEffect } from "react";
+import clsx from "clsx";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+import { Button } from "@material-ui/core";
+import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
+import Dashboard from "./../Dashboard/Dashboard";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 
-
-
 const drawerWidth = 250;
-let shift
-let display
-let contentMargin
+let shift;
+let display;
+let contentMargin;
 
-if(window.innerWidth<=600){
-shift=0
-contentMargin=-drawerWidth
-}
-else{
-contentMargin=0
-shift=drawerWidth
-display="none"
+if (window.innerWidth <= 600) {
+  shift = 0;
+  contentMargin = -drawerWidth;
+} else {
+  contentMargin = 0;
+  shift = drawerWidth;
+  display = "none";
 }
 
 const useStyles = makeStyles((theme)=>({
@@ -113,16 +110,14 @@ const useStyles = makeStyles((theme)=>({
 }))
 
 const SideBar = () => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [open, setOpen] = useState(true)
+  const classes = useStyles();
+  const theme = useTheme();
+  const [open, setOpen] = useState(true);
 
-    useEffect(() => {
-        if(window.innerWidth<=600)
-        setOpen(false)
-        else
-        setOpen(true)
-    }, [])
+  useEffect(() => {
+    if (window.innerWidth <= 600) setOpen(false);
+    else setOpen(true);
+  }, []);
 
     const handleDrawerOpen = () => {
         if(window.innerWidth<=600)
