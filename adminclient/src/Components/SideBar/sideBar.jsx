@@ -19,6 +19,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import { Button } from '@material-ui/core';
 import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import Dashboard from './../Dashboard/Dashboard'
+import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
+
 
 
 const drawerWidth = 250;
@@ -54,11 +56,12 @@ const useStyles = makeStyles((theme)=>({
         //   easing: theme.transitions.easing.easeOut,
         //   duration: theme.transitions.duration.enteringScreen,
         // }),
-        position: 'fixed'
+        // position: 'fixed'
       },
       Toolbar:{
           backgroundColor: 'white',
         //   position: "fixed"
+        // border: 'none'
       },
       leftIcon: {
         display: `${display}`
@@ -105,6 +108,8 @@ const useStyles = makeStyles((theme)=>({
         }),
         marginLeft:`${contentMargin}` ,
       },
+      button: {
+      },
 }))
 
 const SideBar = () => {
@@ -131,7 +136,7 @@ const SideBar = () => {
         <>
             <div className={classes.root}>
                 {/* <CssBaseline/> */}
-                <AppBar Variant="Secondary" className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
+                <AppBar className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
                     <Toolbar className={clsx(classes.Toolbar)}>
                         <IconButton
                         color="secondary"
@@ -141,10 +146,21 @@ const SideBar = () => {
                         className={clsx(classes.menuButton, open && classes.hide)}>
                         <MenuIcon className={clsx(open)}/>
                         </IconButton>
-                        <button>Logout</button>
+                        <div>
+
+                        <Button
+                        variant="outlined"
+                        size="medium"
+                        color="secondary"
+                        startIcon={<PowerSettingsNewRoundedIcon />}
+                        
+                        >
+                        Log Out
+                        </Button>
+                        </div>
                     </Toolbar>
                 </AppBar>
-            <Drawer
+                <Drawer
                 className={classes.drawer}
                 variant="persistent"
                 anchor="left"
@@ -177,7 +193,6 @@ const SideBar = () => {
             </Drawer>
             <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
                 <div className={classes.drawerHeader} />
-                <Dashboard/>
             </main>
         </div>
         </>
