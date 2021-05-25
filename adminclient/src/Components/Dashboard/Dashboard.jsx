@@ -18,8 +18,19 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.dark,
     fontSize: "large",
     marginInline: "5%",
+    border: "1px solid #e0ebeb",
     borderRadius: "8px",
-    borderLeft: '3px solid red'
+    // borderLeft: "3px solid red",
+  },
+  paper1: {
+    padding: theme.spacing(4),
+    textAlign: "center",
+    color: theme.palette.text.dark,
+    fontSize: "large",
+    marginInline: "5%",
+    border: "1px solid #e0ebeb",
+    borderRadius: "8px",
+    borderLeft: "3px solid red",
   },
   button: {
     marginLeft: "85%",
@@ -57,8 +68,7 @@ const Dashboard = () => {
       </Container>
       <Grid className={classes.root} container spacing={2}>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper}>80  
-          </Paper>
+          <Paper className={classes.paper1}>80</Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Paper className={classes.paper}>30</Paper>
