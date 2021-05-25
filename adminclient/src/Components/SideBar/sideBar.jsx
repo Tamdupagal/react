@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme)=>({
       drawerHeader: {
         display: 'flex',
         alignItems: 'center',
-        padding: theme.spacing(12,16,0,2),
+        padding: theme.spacing(5,16,0,2),
         // necessary for content to be below app bar
         // ...theme.mixins.toolbar,
         // justifyContent: 'flex-end',
@@ -129,7 +129,7 @@ const SideBar = () => {
         setOpen(true);
       };
       const handleDrawerClose = () => {
-        if(window.innerWidth<=600)
+        // if(window.innerWidth<=600)
         setOpen(false);
       };
     return (
@@ -146,14 +146,14 @@ const SideBar = () => {
                         className={clsx(classes.menuButton, open && classes.hide)}>
                         <MenuIcon className={clsx(open)}/>
                         </IconButton>
-                        <div>
+                        <div className={classes.button}>
 
                         <Button
                         variant="outlined"
                         size="medium"
                         color="secondary"
                         startIcon={<PowerSettingsNewRoundedIcon />}
-                        
+                        style={{margin: 'auto'}}
                         >
                         Log Out
                         </Button>
@@ -174,7 +174,7 @@ const SideBar = () => {
                     <ChevronLeftIcon className={clsx(classes.leftIcon && classes.listText)} onClick={handleDrawerClose}/>
                 </div>
                 <List className={clsx(classes.listText)}>
-                {['Dashboard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                {['Dashboard', 'Courses', 'Enrollment', 'Meet Links'].map((text, index) => (
                     <ListItem button key={text}>
                     <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <ViewQuiltIcon /> : <MailIcon />}</ListItemIcon>
                     <ListItemText primary={text} />
@@ -183,13 +183,22 @@ const SideBar = () => {
                 </List>
                 {/* <Divider /> */}
                 <List className={clsx(classes.listText)}>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Classrooms', 'Attendances', 'Students'].map((text, index) => (
                     <ListItem button key={text}>
                     <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                     <ListItemText primary={text} />
                     </ListItem>
                 ))}
                 </List>
+                <List className={clsx(classes.listText)}>
+                {['Student Courses', 'H5P content', 'Teachers', 'Operations'].map((text, index) => (
+                    <ListItem button key={text}>
+                    <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <ViewQuiltIcon /> : <MailIcon />}</ListItemIcon>
+                    <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+                </List>
+                
             </Drawer>
             <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
                 <div className={classes.drawerHeader} />
