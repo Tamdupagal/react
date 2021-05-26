@@ -1,20 +1,18 @@
 import SideBar from "./Components/SideBar/sideBar";
-import Dashboard from './Components/Dashboard/Dashboard'
-import { Container} from "react-bootstrap"
-import Enroll from './Components/Enrollment/Enroll'
-import MeetTable from "./Components/MeetLinks/MeetTable";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import TextEditor from "./Components/TextEditor/TextEditor";
+import Table from "./Components/Table/Table";
+
 function App() {
   return (
-      <div>
-        <SideBar/>
-        <div style={{marginLeft: 250}}>
-        {/* <Enroll/> */}
-        {/* <MeetTable/> */}
-        <Dashboard/>
-        </div>
-
+    <div>
+      <SideBar />
+      <div style={{ marginLeft: 250 }}>
+        {/* <Dashboard /> */}
+        {/* <TextEditor /> */}
+        <Table />
       </div>
-    
+    </div>
   );
 }
 
