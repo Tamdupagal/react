@@ -1,13 +1,45 @@
-.App {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 5em;
+.editor__wrapper {
+  padding: 1rem;
 }
-
+.wrapper {
+  padding: 1rem;
+  padding-bottom: 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
 .editor {
-  margin-right: 10em;
+  background-color: rgba(243, 243, 243, 0.35);
+  padding: 2rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 10px;
+  min-height: 18rem;
+  max-width: 50rem;
+  margin-top: 0.5%;
+  margin-left: 0%;
 }
 
-.ck-editor__editable_inline {
-  min-height: 500px;
+.editor__title {
+  font-size: 1rem;
+  color: black;
+  margin-left: 5%;
+  /* margin-bottom: 5%; */
+  background-color: #dfe7eb;
+  display: inline;
+  border-radius: 2px;
+}
+.btn__box {
+  border: 0.1rem solid rgb(128, 128, 128, 0.4);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+.button1 {
+  border: none;
+  color: white;
+  background-color: #f51871;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 0.2rem;
 }
