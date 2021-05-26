@@ -19,6 +19,8 @@ import MailIcon from "@material-ui/icons/Mail";
 import { Button } from "@material-ui/core";
 import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
+import { Link, useHistory } from 'react-router-dom'
+
 
 const drawerWidth = 250;
 let shift;
@@ -67,7 +69,11 @@ const useStyles = makeStyles((theme)=>({
         color: 'black'
       },
       listText: {
-        color:'#868e96'
+        textDecoration: "none",
+        color:'#868e96',
+        "&:hover": {
+          color: 'white'
+        }
       },
       hide: {
         display: 'none',
@@ -104,14 +110,23 @@ const useStyles = makeStyles((theme)=>({
         }),
         marginLeft:`${contentMargin}` ,
       },
+      hover: {
+        color: "black",
+        "&:hover": {
+          color: 'white'
+        }
+      },
       button: {
+        marginLeft: "1100px"
       },
 }))
 
-const SideBar = () => {
+const SideBar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(true);
+  const history = useHistory();
+  const [loading, setLoading]=useState(false)
 
   useEffect(() => {
     if (window.innerWidth <= 600) setOpen(false);
@@ -126,6 +141,12 @@ const SideBar = () => {
         // if(window.innerWidth<=600)
         setOpen(false);
       };
+      // const handleChange = (page) =>{
+      
+      //     setLoading(true)
+      //     history.push(`/${page}`)
+      //     setLoading(false)
+      // }
     return (
         <>
             <div className={classes.root}>
@@ -163,6 +184,7 @@ const SideBar = () => {
                   paper: classes.drawerPaper,
                 }}
                 >
+
                 <div className={classes.drawerHeader} >
                     <h3 style={{textAlign: "left",color:'#868e96'}}>ADMIN</h3>
                     <ChevronLeftIcon className={clsx(classes.leftIcon && classes.listText)} onClick={handleDrawerClose}/>
@@ -191,16 +213,63 @@ const SideBar = () => {
                     <ListItemText primary={text} />
                     </ListItem>
                 ))} */}
-                <ListItem button>
+                <Link to="/Dashboard" className={clsx(classes.listText)}>
+                <ListItem button onClick={props.handleChange("Dashboard")}>
                     <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
                     <ListItemText primary="Dashboard" />
                 </ListItem>
+                </Link>
+                <Link to="/Courses" className={clsx(classes.listText)}>
+                <ListItem button className={{hover: classes.hover}} >
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Courses" />
+                </ListItem>
+                </Link>
+                <Link to="/Enroll" className={clsx(classes.listText)} >
+                <ListItem button >
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Enrollment" />
+                </ListItem>
+                </Link>
+                <Link to="/MeetLink" className={clsx(classes.listText)}>
+                <ListItem button>
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Meet Link" />
+                </ListItem>
+                </Link>
+                <Link to="/Classroom" className={clsx(classes.listText)}>
+                <ListItem button >
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Classroom" />
+                </ListItem>
+                </Link>
+                <Link to="/Attendances" className={clsx(classes.listText)}>
+                <ListItem button >
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Attendances" />
+                </ListItem>
+                </Link>
+                <Link to="/Students" className={clsx(classes.listText)}>
+                <ListItem button>
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Students" />
+                </ListItem>
+                </Link>
+                <Link to="/Teachers" className={clsx(classes.listText)}>
+                <ListItem button>
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Teachers" />
+                </ListItem>
+                </Link>
                 </List>
                 
             </Drawer>
             <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
                 <div className={classes.drawerHeader} />
             </main>
+            {/* <div>
+              <Link to="/Dashboard">hy</Link>
+            </div> */}
         </div>
         </>
     )

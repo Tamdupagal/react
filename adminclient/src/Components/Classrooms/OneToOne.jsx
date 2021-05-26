@@ -2,7 +2,7 @@ import React from "react";
 import MaterialTable from "material-table";
 import { Container } from "@material-ui/core";
 
-const Table = () => {
+const OneToOne = () => {
   const data = [
     {
       DclassName: "phy",
@@ -85,4 +85,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default OneToOne;
