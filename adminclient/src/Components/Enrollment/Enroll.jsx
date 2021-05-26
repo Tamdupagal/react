@@ -29,9 +29,7 @@ const useStyles = makeStyles({
       marginRight: '0px'
 
     },box: {
-      // height: 100,
       display: "flex",
-      // border: "1px solid black",
       padding: 8
     },
     spreadBox: {

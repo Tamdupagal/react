@@ -7,7 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box, Card,CardHeader } from '@material-ui/core';
+import { Box, Button, Card,CardHeader } from '@material-ui/core';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -43,7 +45,14 @@ const StyledTableCell = withStyles((theme) => ({
     table: {
       minWidth: 700,
       backgroundColor: 'transparent'
-    },
+    },box: {
+        display: "flex",
+        padding: 8
+      },
+      spreadBox: {
+        justifyContent: "space-around",
+        alignItems: "center"
+      }
   });
   
 
@@ -58,7 +67,10 @@ const MeetTable = () => {
             alignItems="center"
             justifyContent="center">
                 <Card>
-                <CardHeader title="Meet Link" style={{border:'1px solid #ccc8c8',borderTopLeftRadius:'3px',borderTopRightRadius:'3px'}}/>
+                <CardHeader title="Meet Link" 
+                style={{border:'1px solid #ccc8c8',borderTopLeftRadius:'3px',borderTopRightRadius:'3px'}}
+                >
+                </CardHeader>
                 <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">
                 <TableHead style={{color: 'transparent'}}>
@@ -75,9 +87,22 @@ const MeetTable = () => {
                     <StyledTableCell component="th" scope="row">
                         {row.name}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.calories}</StyledTableCell>
-                    <StyledTableCell align="center">{row.fat}</StyledTableCell>
-                    <StyledTableCell align="center">{row.carbs}</StyledTableCell>
+                    <TableCell align="center">{row.calories}</TableCell>
+                    <TableCell align="center">{row.fat}</TableCell>
+                    <TableCell component="span" p={0} className={`${classes.spreadBox} ${classes.box}`}>
+                        <Button
+                        variant="contained"
+                        color="primary"
+                        >
+                        {<CreateIcon style={{ padding: '0%'}} />}
+                        </Button>
+                        <Button
+                        variant="contained"
+                        color="secondary"
+                        >
+                        {<DeleteIcon style={{ padding: '0%'}} />}
+                        </Button>
+                        </TableCell>
                     </StyledTableRow>
                 ))}
                 </TableBody>

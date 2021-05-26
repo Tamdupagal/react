@@ -18,7 +18,6 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { Button } from "@material-ui/core";
 import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
-import Dashboard from "./../Dashboard/Dashboard";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 
 const drawerWidth = 250;
@@ -169,14 +168,14 @@ const SideBar = () => {
                     <ChevronLeftIcon className={clsx(classes.leftIcon && classes.listText)} onClick={handleDrawerClose}/>
                 </div>
                 <List className={clsx(classes.listText)}>
-                {['Dashboard', 'Courses', 'Enrollment', 'Meet Links'].map((text, index) => (
+                {/* {['Dashboard', 'Courses', 'Enrollment', 'Meet Links'].map((text, index) => (
                     <ListItem button key={text}>
                     <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <ViewQuiltIcon /> : <MailIcon />}</ListItemIcon>
                     <ListItemText primary={text} />
                     </ListItem>
                 ))}
                 </List>
-                {/* <Divider /> */}
+                <Divider />
                 <List className={clsx(classes.listText)}>
                 {['Classrooms', 'Attendances', 'Students'].map((text, index) => (
                     <ListItem button key={text}>
@@ -191,7 +190,11 @@ const SideBar = () => {
                     <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <ViewQuiltIcon /> : <MailIcon />}</ListItemIcon>
                     <ListItemText primary={text} />
                     </ListItem>
-                ))}
+                ))} */}
+                <ListItem button>
+                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
+                    <ListItemText primary="Dashboard" />
+                </ListItem>
                 </List>
                 
             </Drawer>
