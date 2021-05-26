@@ -31,7 +31,7 @@ const OneToOne = () => {
     {
       DclassName: "phy",
       teacher: "manisha",
-      student: "0",
+      student: "5",
       LecturesComplete: "1",
     },
     {
@@ -48,9 +48,9 @@ const OneToOne = () => {
     },
     {
       DclassName: "phy",
-      teacher: "manisha",
+      teacher: "priya",
       student: "0",
-      LecturesComplete: "1",
+      LecturesComplete: "2",
     },
     {
       DclassName: "phy",
