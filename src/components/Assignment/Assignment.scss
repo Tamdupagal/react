@@ -1,0 +1,17 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+section {
+  @extend %table_container_styles;
+  .header__main {
+    .assignment_button {
+      border: none;
+      color: $white;
+      background-color: #28a745;
+      font-size: $font_size + 0.3rem;
+      font-weight: 500;
+      padding: 1rem 1.5rem;
+      border-radius: $border_rad;
+    }
+  }
+}

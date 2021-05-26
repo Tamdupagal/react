@@ -1,0 +1,4 @@
+@import "../../sass//utilities";
+.notes__section {
+  @include flex_layout(null, null);
+}

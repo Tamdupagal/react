@@ -1,0 +1,7 @@
+@import "../../sass/variable";
+
+.section {
+  border: 0.1rem solid $border_col;
+  height: max-content;
+  border-radius: $border_rad;
+}

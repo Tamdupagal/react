@@ -1,0 +1,70 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.sidenav {
+  position: relative;
+  width: $sidenav_width;
+  min-height: 100vh;
+  background-color: $primary_bg_color;
+  overflow: hidden;
+  padding: 2rem 0;
+  transition : {
+    property: width;
+    duration: 0.6s;
+  }
+  &.toggle {
+    width: 0;
+  }
+  &__logo__box {
+    position: relative;
+    width: 100%;
+    @include flex_layout();
+    margin-bottom: 2rem;
+    & > img {
+      width: 70%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  & > nav {
+    & > ul {
+      & > li {
+        list-style: none;
+        padding: 1rem 0 1rem 2rem;
+        cursor: pointer;
+        transition: {
+          property: background-color;
+          duration: 0.3s;
+        }
+        &:hover {
+          background-color: white;
+          .list_text {
+            color: $primary_color;
+          }
+        }
+        .link {
+          @include flex_layout(center, null);
+          text-decoration: none;
+        }
+        img {
+          width: 5rem;
+          height: 5rem;
+          object-fit: cover;
+          margin-right: 1.5rem;
+        }
+        .list_text {
+          color: $white;
+          font-size: 1.6rem;
+          font-weight: bold;
+          transition: {
+            property: color;
+            duration: 0.3s;
+          }
+        }
+      }
+      & > li:first-child .list_text {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
