@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./TextEditor.css";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
 
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -60,9 +61,28 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     marginTop: "3%",
   },
+  addContent: {
+    display: "inline",
+    color: "#302e2e",
+    backgroundColor: "#f0f5f5",
+    letterSpacing: "0.1rem",
+    // marginLeft: "0%",
+    // marginBottom: "5%",
+    // marginTop: "50%",
+    // paddingTop: "1%",
+    zIndex: "1",
+  },
+  dividerInset: {
+    margin: `3px 0 0 ${theme.spacing(15)}px`,
+    marginBottom: "-10px",
+  },
+  endDivider: {
+    padding: "0.05%",
+    marginTop: "6%",
+  },
 }));
 
-function TextEditor() {
+function AddSpiritualLearning() {
   const classes = useStyles();
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -74,12 +94,14 @@ function TextEditor() {
 
   return (
     <div>
-      <Container className={classes.Header}>Add New Learning Skill </Container>
+      <Container className={classes.Header}>Add Course Activity</Container>
 
       <Container className={classes.borderbox1}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={8}>
             <Paper className={classes.paper}>
+              <Divider className={classes.dividerInset} />
+              <h3 className={classes.addContent}>ADD CONTENT</h3>
               <MainEditor
                 editorState={editorState}
                 className={classes.editor1}
@@ -92,6 +114,8 @@ function TextEditor() {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Paper className={classes.paper}>
+              <Divider className={classes.dividerInset} />
+              <h3 className={classes.addContent}>UPLOAD IMAGE</h3>
               <Container className={classes.uploadimg}>
                 <h4>Image:</h4>
                 <Grid item>
@@ -122,39 +146,9 @@ function TextEditor() {
             </button>
           </Paper>
         </Grid>
+        <Divider className={classes.endDivider} />
       </Container>
     </div>
   );
 }
-export default TextEditor;
-
-{
-  /* <Container className={classes.borderbox}>
-  <Container className={classes.Header}>Add New Learning Skill </Container>
-  <Grid className={classes.borderbox1}>
-    <div className="editor__wrapper">
-      <h1 className="editor__title">Add Content</h1>
-      <Grid item className={classes.editor1}>
-        <MainEditor
-          editorState={editorState}
-          onEditorStateChange={setEditorState}
-          toolbarClassName="toolbar"
-          wrapperClassName="wrapper"
-          editorClassName="editor"
-        />
-      </Grid>
-      <Grid item sm={6} md={3}>
-        {" "}
-        <Container>
-          <h1>hello</h1>
-        </Container>
-      </Grid>
-      <div className="btn__box">
-        <button className="button1" type="button">
-          Save Changes
-        </button>
-      </div>
-    </div>
-  </Grid>
-</Container>; */
-}
+export default AddSpiritualLearning;
