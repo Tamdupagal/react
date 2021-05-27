@@ -130,9 +130,9 @@ const SideBar = () => {
   const history = useHistory();
   const [loading, setLoading]=useState(false)
 
-  const handlePage = (page) =>{
-    history.push("/MeetLink")
-  }
+  // const handlePage = (page) =>{
+  //   history.push("/MeetLink")
+  // }
 
   useEffect(() => {
     if (window.innerWidth <= 600) setOpen(false);
@@ -236,7 +236,7 @@ const SideBar = () => {
                 </ListItem>
                 </Link>
                 <Link to="/MeetLink" className={clsx(classes.listText)}>
-                <ListItem button onClick={handlePage("MeetLink")}>
+                <ListItem button >
                     <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
                     <ListItemText primary="Meet Link" />
                 </ListItem>
