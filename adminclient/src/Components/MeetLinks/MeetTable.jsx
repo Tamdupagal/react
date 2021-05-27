@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import { Box, Button, Card,CardHeader } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Link, useHistory } from 'react-router-dom'
+
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -42,6 +44,7 @@ const StyledTableCell = withStyles((theme) => ({
   ];
   
   const useStyles = makeStyles({
+    
     table: {
       minWidth: 700,
       backgroundColor: 'transparent'
@@ -57,9 +60,16 @@ const StyledTableCell = withStyles((theme) => ({
   
 
 const MeetTable = () => {
+    
     const classes = useStyles();
+    const history = useHistory();
+    const handleAddMeet = (page) =>{
+        history.push("/add-meet")
+    }
 
     return (
+        <>
+        
         <Box display="flex" 
         alignItems="center"
         justifyContent="center">
@@ -67,9 +77,15 @@ const MeetTable = () => {
             alignItems="center"
             justifyContent="center">
                 <Card>
-                <CardHeader title="Meet Link" 
-                style={{border:'1px solid #ccc8c8',borderTopLeftRadius:'3px',borderTopRightRadius:'3px'}}
-                >
+                <CardHeader title="Meet Link" action={
+                    <Button
+                    variant="contained"
+                    color="Secondary"
+                    onClick={handleAddMeet}
+                    >
+                    Add new meet Link
+                    </Button>}
+                    style={{border:'1px solid #ccc8c8',borderTopLeftRadius:'3px',borderTopRightRadius:'3px'}}>
                 </CardHeader>
                 <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">
@@ -111,6 +127,7 @@ const MeetTable = () => {
                 </Card>
             </Box>
         </Box>
+        </>
     )
 }
 export default MeetTable;

@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme)=>({
         display: 'flex',
       },
       appBar: {
+        // justifyContent: "space-between",
         transition: theme.transitions.create(['margin', 'width'], {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen,
@@ -50,6 +51,8 @@ const useStyles = makeStyles((theme)=>({
       appBarShift: {
         width: `calc(100% - ${shift}px)`,
         marginLeft: 0,
+        // justifyContent: "space-between"
+
         // transition: theme.transitions.create(['margin', 'width'], {
         //   easing: theme.transitions.easing.easeOut,
         //   duration: theme.transitions.duration.enteringScreen,
@@ -58,8 +61,7 @@ const useStyles = makeStyles((theme)=>({
       },
       Toolbar:{
           backgroundColor: 'white',
-        //   position: "fixed"
-        // border: 'none'
+          justifyContent: "space-between"
       },
       leftIcon: {
         display: `${display}`
@@ -89,14 +91,14 @@ const useStyles = makeStyles((theme)=>({
       drawerHeader: {
         display: 'flex',
         alignItems: 'center',
-        padding: theme.spacing(5,16,0,2),
+        // padding: theme.spacing(5,0,0,0),
         // necessary for content to be below app bar
         // ...theme.mixins.toolbar,
         // justifyContent: 'flex-end',
       },
       content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        // padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen,
@@ -117,16 +119,20 @@ const useStyles = makeStyles((theme)=>({
         }
       },
       button: {
-        marginLeft: "1100px"
+        // flexGrow: 1
       },
 }))
 
-const SideBar = (props) => {
+const SideBar = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(true);
   const history = useHistory();
   const [loading, setLoading]=useState(false)
+
+  const handlePage = (page) =>{
+    history.push("/MeetLink")
+  }
 
   useEffect(() => {
     if (window.innerWidth <= 600) setOpen(false);
@@ -136,43 +142,42 @@ const SideBar = (props) => {
     const handleDrawerOpen = () => {
         if(window.innerWidth<=600)
         setOpen(true);
+        else
+        setOpen(true);
       };
       const handleDrawerClose = () => {
-        // if(window.innerWidth<=600)
+        if(window.innerWidth<=700)
         setOpen(false);
+        else
+        setOpen(true);
+
       };
-      // const handleChange = (page) =>{
-      
-      //     setLoading(true)
-      //     history.push(`/${page}`)
-      //     setLoading(false)
-      // }
     return (
         <>
             <div className={classes.root}>
-                {/* <CssBaseline/> */}
+                <CssBaseline/>
                 <AppBar className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
                     <Toolbar className={clsx(classes.Toolbar)}>
                         <IconButton
+                        className={clsx(classes.menuButton, open && classes.hide)}
                         color="secondary"
-                        aria-label="open drawer"
+                        // aria-label="open drawer"
                         onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}>
+                        edge="start">
                         <MenuIcon className={clsx(open)}/>
                         </IconButton>
-                        <div className={classes.button}>
-
-                        <Button
+                        <Button 
+                        noWrap
+                        className={classes.button}
+                        edge="end"
                         variant="outlined"
                         size="medium"
                         color="secondary"
                         startIcon={<PowerSettingsNewRoundedIcon />}
-                        style={{margin: 'auto'}}
+                        // style={{margin: 'auto'}}
                         >
                         Log Out
                         </Button>
-                        </div>
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -184,7 +189,6 @@ const SideBar = (props) => {
                   paper: classes.drawerPaper,
                 }}
                 >
-
                 <div className={classes.drawerHeader} >
                     <h3 style={{textAlign: "left",color:'#868e96'}}>ADMIN</h3>
                     <ChevronLeftIcon className={clsx(classes.leftIcon && classes.listText)} onClick={handleDrawerClose}/>
@@ -214,7 +218,7 @@ const SideBar = (props) => {
                     </ListItem>
                 ))} */}
                 <Link to="/Dashboard" className={clsx(classes.listText)}>
-                <ListItem button onClick={props.handleChange("Dashboard")}>
+                <ListItem button >
                     <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
                     <ListItemText primary="Dashboard" />
                 </ListItem>
@@ -232,7 +236,7 @@ const SideBar = (props) => {
                 </ListItem>
                 </Link>
                 <Link to="/MeetLink" className={clsx(classes.listText)}>
-                <ListItem button>
+                <ListItem button onClick={handlePage("MeetLink")}>
                     <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
                     <ListItemText primary="Meet Link" />
                 </ListItem>
@@ -250,7 +254,7 @@ const SideBar = (props) => {
                 </ListItem>
                 </Link>
                 <Link to="/Students" className={clsx(classes.listText)}>
-                <ListItem button>
+                <ListItem button >
                     <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
                     <ListItemText primary="Students" />
                 </ListItem>

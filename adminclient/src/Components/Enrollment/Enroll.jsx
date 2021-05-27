@@ -12,6 +12,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
+import { useHistory } from "react-router-dom"
 
 
 
@@ -40,6 +41,10 @@ const useStyles = makeStyles({
 
 const Enroll = () => {
     const classes = useStyles();
+    const history = useHistory()
+    const handlePage = () =>{
+      history.push("/add-student")
+    }
     return (
         <Box display="flex" 
         alignItems="center"
@@ -47,12 +52,12 @@ const Enroll = () => {
             <Card className={classes.root}>
               <CardHeader title="Hello" style={{border:'1px solid rgba(0, 0, 0, 0.87)',borderRadius: '5px'}}>   
               </CardHeader>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-          HERE, SHOULD BE SOME GRAPHS OR ANALYTICS DATA ABOUT ENROLLMENT.
-          </Typography>  
-          </CardContent>
-          <Divider/>
+              <CardContent>
+                <Typography variant="h5" component="h5">
+                HERE, SHOULD BE SOME GRAPHS OR ANALYTICS DATA ABOUT ENROLLMENT.
+                </Typography>  
+              </CardContent>
+              <Divider/>
           {/* <Box display="flex" 
         alignItems="center"
         // justifyContent="center"
@@ -82,6 +87,7 @@ const Enroll = () => {
             variant="contained" 
             color="secondary" 
             style={{ height: 40 }}
+            onClick={handlePage}
           >
           ADD STUDENT(can be made from based)
           </Button>
