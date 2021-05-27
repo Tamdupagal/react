@@ -1,5 +1,5 @@
 .editor__wrapper {
-  padding: 0;
+  padding-top: 0%;
 }
 .wrapper {
   padding: 1rem;
@@ -13,7 +13,7 @@
   border: 0.1rem solid #ccc;
   border-radius: 10px;
   min-height: 18rem;
-  max-width: 50rem;
+  max-width: 40rem;
   margin-top: 0.5%;
   margin-left: 0%;
 }
