@@ -13,9 +13,9 @@ import AddStudent from "./Components/Students/AddStudent";
 
 function App() {
   const [currentPage, setCurrentPage] = useState();
-  const handleChange = (page) => {
-    setCurrentPage(page);
-  };
+  // const handleChange = (page) => {
+  //   setCurrentPage(page);
+  // };
   return (
     <div>
       {/* <Enroll/> */}
@@ -24,8 +24,8 @@ function App() {
       {/* <TextEditor/> */}
       {/* <Table/> */}
       <Router>
-        <SideBar handleChange={handleChange} />
-        <div style={{ marginLeft: 250 }}>
+        <SideBar/>
+        <div style={{ marginLeft: 250 ,marginTop: 200}}>
           <Switch>
             <Route exact path="/Dashboard" component={Dashboard} />
             <Route exact path="/Enroll" component={Enroll} />
@@ -34,7 +34,9 @@ function App() {
             <Route exact path="/Classroom" component={OneToOne} />
             <Route exact path="/Students" component={OneToOne} />
             <Route exact path="/Attendances" component={OneToOne} />
-            <Route exact path="/Teachers" component={Courses} />
+            <Route exact path="/Teachers" component={Courses}/>
+            <Route exact path="/add-meet" component={AddMeet}/>
+            <Route exact path="/add-student" component={AddStudent}/>
           </Switch>
         </div>
       </Router>
