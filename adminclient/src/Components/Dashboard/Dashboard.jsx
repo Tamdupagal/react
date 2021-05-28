@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const classes = useStyles();
   return (
-    <div>
+    <Box>
       <Container maxWidth="lg">
         {/* <Button
           variant="outlined"
@@ -80,7 +80,7 @@ const Dashboard = () => {
           <Paper className={classes.paper}>39</Paper>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

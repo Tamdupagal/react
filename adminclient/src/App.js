@@ -9,13 +9,25 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useState } from "react";
 import Courses from "./Components/Courses/Courses";
 import AddMeet from "./Components/MeetLinks/AddMeet";
-import AddStudent from "./Components/Students/AddStudent";
+import AddStudent from "./Components/Students.jsx/AddStudent";
+import { makeStyles } from "@material-ui/core";
+
+// const useStyles = makeStyles( () => ({
+//   mobile: {
+//     marginLeft: 0
+//   },
+//   desktop:{
+//     marginLeft: 250
+//   }
+// }))
+
 
 function App() {
-  const [currentPage, setCurrentPage] = useState();
-  // const handleChange = (page) => {
-  //   setCurrentPage(page);
-  // };
+  let marginLeft;
+  if(window.innerWidth<=700)
+  marginLeft="0px"
+  else
+  marginLeft="250px"
   return (
     <div>
       {/* <Enroll/> */}
@@ -25,7 +37,7 @@ function App() {
       {/* <Table/> */}
       <Router>
         <SideBar/>
-        <div style={{ marginLeft: 250 ,marginTop: 200}}>
+        <div style={{ marginLeft: 250 ,marginTop: 100}}>
           <Switch>
             <Route exact path="/Dashboard" component={Dashboard} />
             <Route exact path="/Enroll" component={Enroll} />

@@ -11,6 +11,7 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -20,7 +21,7 @@ import { Button } from "@material-ui/core";
 import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import { Link, useHistory } from 'react-router-dom'
-
+import Dropdown from 'react-dropdown';
 
 const drawerWidth = 250;
 let shift;
@@ -39,6 +40,8 @@ if (window.innerWidth <= 600) {
 const useStyles = makeStyles((theme)=>({
     root: {
         display: 'flex',
+        // alignItems: 'center',
+
       },
       appBar: {
         // justifyContent: "space-between",
@@ -66,10 +69,10 @@ const useStyles = makeStyles((theme)=>({
       leftIcon: {
         display: `${display}`
       },
-      menuButton: {
-        marginRight: theme.spacing(2),
-        color: 'black'
-      },
+      // menuButton: {
+      //   marginRight: theme.spacing(2),
+      //   color: 'black'
+      // },
       listText: {
         textDecoration: "none",
         color:'#868e96',
@@ -94,12 +97,12 @@ const useStyles = makeStyles((theme)=>({
         // padding: theme.spacing(5,0,0,0),
         // necessary for content to be below app bar
         // ...theme.mixins.toolbar,
-        // justifyContent: 'flex-end',
+        // justifyContent: 'flex-start',
       },
       content: {
         flexGrow: 1,
-        // padding: theme.spacing(3),
-        transition: theme.transitions.create('margin', {
+        // padding: theme.spacing(3),`
+          transition: theme.transitions.create('margin', {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen,
         }),
@@ -118,9 +121,10 @@ const useStyles = makeStyles((theme)=>({
           color: 'white'
         }
       },
-      button: {
-        // flexGrow: 1
-      },
+      view:{
+        marginLeft: 250
+      }
+      
 }))
 
 const SideBar = () => {
@@ -129,27 +133,41 @@ const SideBar = () => {
   const [open, setOpen] = useState(true);
   const history = useHistory();
   const [loading, setLoading]=useState(false)
+  const [mobile, setMobile] = useState(false)
+  const [dropdown, setDropdown] = useState(true)
+  const showCourse = () =>{
+    return (
+    <div>
+      Hiiii
+    </div>
+    )
+  }
 
+  const displayDropdown = () =>{
+    setDropdown(false)
+  }
   // const handlePage = (page) =>{
   //   history.push("/MeetLink")
   // }
 
   useEffect(() => {
-    if (window.innerWidth <= 600) setOpen(false);
-    else setOpen(true);
+    setOpen(true);
+    if(window.innerWidth<=700)
+    setMobile(true)
+    setDropdown(true)
   }, []);
 
     const handleDrawerOpen = () => {
         if(window.innerWidth<=600)
         setOpen(true);
         else
-        setOpen(true);
+        setOpen(false);
       };
       const handleDrawerClose = () => {
         if(window.innerWidth<=700)
         setOpen(false);
         else
-        setOpen(true);
+        setOpen(false);
 
       };
     return (
@@ -158,17 +176,18 @@ const SideBar = () => {
                 <CssBaseline/>
                 <AppBar className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
                     <Toolbar className={clsx(classes.Toolbar)}>
+                        <div className={clsx(!open && classes.hide)}>
+                        </div>
                         <IconButton
                         className={clsx(classes.menuButton, open && classes.hide)}
                         color="secondary"
                         // aria-label="open drawer"
-                        onClick={handleDrawerOpen}
+                        // onClick={handleDrawerOpen}
                         edge="start">
-                        <MenuIcon className={clsx(open)}/>
+                        <MenuIcon  onClick={handleDrawerOpen} className={clsx(open)}/>
+                        {/* <MenuIcon/> */}
                         </IconButton>
                         <Button 
-                        noWrap
-                        className={classes.button}
                         edge="end"
                         variant="outlined"
                         size="medium"
@@ -191,85 +210,76 @@ const SideBar = () => {
                 >
                 <div className={classes.drawerHeader} >
                     <h3 style={{textAlign: "left",color:'#868e96'}}>ADMIN</h3>
-                    <ChevronLeftIcon className={clsx(classes.leftIcon && classes.listText)} onClick={handleDrawerClose}/>
+                    <ChevronLeftIcon className={clsx(classes.leftIcon, classes.listText && open) } onClick={handleDrawerClose}/>
                 </div>
-                <List className={clsx(classes.listText)}>
-                {/* {['Dashboard', 'Courses', 'Enrollment', 'Meet Links'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <ViewQuiltIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-                </List>
-                <Divider />
-                <List className={clsx(classes.listText)}>
-                {['Classrooms', 'Attendances', 'Students'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-                </List>
-                <List className={clsx(classes.listText)}>
-                {['Student Courses', 'H5P content', 'Teachers', 'Operations'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon className={clsx(classes.listText)}>{index % 2 === 0 ? <ViewQuiltIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                    </ListItem>
-                ))} */}
+                <List >
                 <Link to="/Dashboard" className={clsx(classes.listText)}>
                 <ListItem button >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Dashboard" />
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Dashboard" style={{marginLeft: "30px"  }}/>
                 </ListItem>
                 </Link>
-                <Link to="/Courses" className={clsx(classes.listText)}>
-                <ListItem button className={{hover: classes.hover}} >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Courses" />
+                <div>
+                <ListItem button className={clsx(classes.listText)} onClick={showCourse}>
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Courses" style={{marginLeft: "30px"  }}/>
+                    <ChevronRightIcon/>
+                    {showCourse}  
                 </ListItem>
-                </Link>
+                </div>
                 <Link to="/Enroll" className={clsx(classes.listText)} >
                 <ListItem button >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Enrollment" />
+                    <ViewQuiltIcon/>
+                    <ListItemText primary="Enrollment" style={{marginLeft: "30px"  }} />
                 </ListItem>
                 </Link>
                 <Link to="/MeetLink" className={clsx(classes.listText)}>
                 <ListItem button >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Meet Link" />
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Meet Links" style={{marginLeft: "30px"  }}/>
                 </ListItem>
                 </Link>
-                <Link to="/Classroom" className={clsx(classes.listText)}>
-                <ListItem button >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Classroom" />
+                <Link to="/Classroom">
+                <ListItem button className={clsx(classes.listText)}>
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Classrooms" style={{marginLeft: "30px"  }}/>
+                    <ChevronRightIcon/>
                 </ListItem>
                 </Link>
                 <Link to="/Attendances" className={clsx(classes.listText)}>
                 <ListItem button >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Attendances" />
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Attendances" style={{marginLeft: "30px"  }}/>
                 </ListItem>
                 </Link>
                 <Link to="/Students" className={clsx(classes.listText)}>
                 <ListItem button >
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Students" />
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Students" style={{marginLeft: "30px"  }}/>
                 </ListItem>
                 </Link>
+                <ListItem button className={clsx(classes.listText)} >
+                    <ViewQuiltIcon />
+                    <ListItemText primary="H5P Content" style={{marginLeft: "30px"  }}/>
+                    <ChevronRightIcon/>
+                </ListItem>
                 <Link to="/Teachers" className={clsx(classes.listText)}>
                 <ListItem button>
-                    <ListItemIcon className={clsx(classes.listText)}><ViewQuiltIcon/></ListItemIcon>
-                    <ListItemText primary="Teachers" />
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Teachers" style={{marginLeft: "30px"  }}/>
+                </ListItem>
+                </Link>
+                <Link to="/Operations" className={clsx(classes.listText)}>
+                <ListItem button>
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Operations" style={{marginLeft: "30px"  }}/>
                 </ListItem>
                 </Link>
                 </List>
                 
             </Drawer>
             <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
-                <div className={classes.drawerHeader} />
+                <div className={clsx({[classes.desktop]: mobile}, {[classes.mobile]: mobile})} /> 
             </main>
             {/* <div>
               <Link to="/Dashboard">hy</Link>
