@@ -23,9 +23,12 @@ function App() {
       {/* <Dashboard/> */}
       {/* <TextEditor/> */}
       {/* <Table/> */}
-      <Router>
-        <SideBar/>
-        <div style={{ marginLeft: 250 ,marginTop: 200}}>
+      {/* <AddMeet /> */}
+      <AddStudent />
+
+      {/* <Router>
+        <SideBar />
+        <div style={{ marginLeft: 250, marginTop: 200 }}>
           <Switch>
             <Route exact path="/Dashboard" component={Dashboard} />
             <Route exact path="/Enroll" component={Enroll} />
@@ -34,12 +37,12 @@ function App() {
             <Route exact path="/Classroom" component={OneToOne} />
             <Route exact path="/Students" component={OneToOne} />
             <Route exact path="/Attendances" component={OneToOne} />
-            <Route exact path="/Teachers" component={Courses}/>
-            <Route exact path="/add-meet" component={AddMeet}/>
-            <Route exact path="/add-student" component={AddStudent}/>
+            <Route exact path="/Teachers" component={Courses} />
+            <Route exact path="/add-meet" component={AddMeet} />
+            <Route exact path="/add-student" component={AddStudent} />
           </Switch>
         </div>
-      </Router>
+      </Router> */}
     </div>
   );
 }
