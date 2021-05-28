@@ -46,12 +46,12 @@ function App() {
             <Route exact path="/Classroom" component={OneToOne} />
             <Route exact path="/Students" component={OneToOne} />
             <Route exact path="/Attendances" component={OneToOne} />
-            <Route exact path="/Teachers" component={Courses}/>
-            <Route exact path="/add-meet" component={AddMeet}/>
-            <Route exact path="/add-student" component={AddStudent}/>
+            <Route exact path="/Teachers" component={Courses} />
+            <Route exact path="/add-meet" component={AddMeet} />
+            <Route exact path="/add-student" component={AddStudent} />
           </Switch>
         </div>
-      </Router>
+      </Router> 
     </div>
   );
 }
