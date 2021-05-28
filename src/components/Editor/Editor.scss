@@ -1,19 +1,13 @@
 @import "../../sass/variable";
 
 .editor__wrapper {
-  padding: 2rem;
-  .wrapper {
+  padding: 1.5rem;
+  .toolBar {
     padding: 1rem;
     border: 1px solid #ccc;
-  }
-  .editor {
-    background-color: rgba(243, 243, 243, 0.35);
-    padding: 1rem;
-    border: 0.1rem solid #ccc;
-    min-height: 18rem;
-  }
-  .toolbar {
-    border: 1px solid #ccc;
+    .ql-editor {
+      min-height: 20rem;
+    }
   }
   .editor__title {
     font-size: $font_size;

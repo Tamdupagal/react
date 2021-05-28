@@ -8,10 +8,41 @@
 html {
   font-size: 62.5%;
 }
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 47%;
+  }
+}
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 42%;
+  }
+}
+@media screen and (max-width: 350px) {
+  html {
+    font-size: 38%;
+  }
+}
+@media screen and (max-width: 300px) {
+  html {
+    font-size: 35%;
+  }
+}
 body {
   font-family: "Poppins", sans-serif;
 }
 
 .App {
   display: flex;
+  overflow-x: hidden;
 }

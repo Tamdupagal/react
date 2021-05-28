@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Main.scss'
 import Header from './Header/Header'
 import DashBoard from './Dashboard/Dashboard'
@@ -7,13 +7,12 @@ import Assigment from './Assignment/Assignment'
 import Activities from './Activities/Activities'
 import Note from './Notes/Note'
 import Scheduler from './Scheduler/Scheduler'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import CreateAs from './Assignment/CreateAs'
+import Bag from './Bag/Bag'
 
 
 function Main() {
-    useEffect(()=>{
-        <Redirect from="/" to="/dashboard"></Redirect>
-    }, [])
     return (
         <div className="main__container">
             <Header/>
@@ -22,10 +21,10 @@ function Main() {
                     <DashBoard />
                 </Route>
                 <Route path="/attendance" exact >
-                   <Attendance />
+                    <Attendance/>
                 </Route>
                 <Route path="/assignment" exact >
-                    <Assigment />
+                    <Assigment/>
                 </Route>
                 <Route path="/activities" exact >
                    <Activities />
@@ -36,7 +35,14 @@ function Main() {
                 <Route path="/scheduler" exact >
                     <Scheduler />
                 </Route>
+                <Route path="/assignment/create">
+                    <CreateAs/>
+                </Route>
+                <Route path="/bag">
+                    <Bag/>
+                </Route>
             </Switch>
+            
         </div>
     )
 }

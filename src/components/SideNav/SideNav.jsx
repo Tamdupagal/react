@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import './SideNav.scss';
 import { sideNavData } from './sideNavData'
 import { Link } from 'react-router-dom'
-import {userContext} from '../../App'
+import {context} from '../../store/Context'
 
 function SideNav() {
-    const {toggle} = useContext(userContext)
+    const { toggle } = useContext(context)
     return (
-        <div className={`sidenav ${toggle && 'toggle'}`}>
+        <div className={`wrapper${toggle ? ' active' : ''}`}>
+        <div className={`sidenav`}>
             <div className="sidenav__logo__box">
                 <img src={"https://lms.digitalaidedschool.com/student-assets/img/Das_White.png"} alt="logo" />
             </div>
@@ -27,6 +28,7 @@ function SideNav() {
                     )}
                 </ul>
             </nav>
+            </div>
         </div>
     )
 }

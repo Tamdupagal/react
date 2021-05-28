@@ -1,4 +1,7 @@
 @import "../../sass//utilities";
 .notes__section {
   @include flex_layout(null, null);
+  @media screen and (max-width: 800px) {
+    @include flex_layout(null, null, column);
+  }
 }

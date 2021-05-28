@@ -1,16 +1,20 @@
 export const COLUMNS = [
     {
-        Header : 'Lecture Date'
+        Header: 'Lecture Date',
+        accessor: 'first_name'
     },
     
     {
-        Header : 'Classroom'
+        Header: 'Classroom',
+        accessor: 'last_name'
     },
     {
-        Header : 'No. of students'
+        Header: 'No. of students',
+        accessor: 'email'
     },
     {
-        Header : 'Status'
+        Header: 'Status',
+        accessor: 'gender'
     },
     {
         Header : 'Action'

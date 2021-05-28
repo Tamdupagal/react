@@ -6,16 +6,17 @@ import live from '../../images/live.svg'
 import course from '../../images/course.svg'
 import rating from '../../images/rating.svg'
 import explore from '../../images/explore.svg'
-import {userContext} from '../../App'
+import {context} from '../../store/Context'
+
 
 
 function Header() {
-    const {setToggle} = useContext(userContext)
+    const {setToggle} = useContext(context)
 
     return (
         <header className="header">
             <div className="header__toggle">
-                <img onClick={()=>setToggle(prev => !prev)} src={menu} alt="menu" />
+                <img className="menu__img" tabIndex={0} onClick={()=>setToggle(prev => !prev)} src={menu} alt="menu" />
                 <img src={logout} alt="logout" />
             </div>
             <div className="header__navigation">

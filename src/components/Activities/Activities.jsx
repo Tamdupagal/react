@@ -8,7 +8,7 @@ function Activities() {
     return (
         <section className="activity__section">
             <TableHeader headerText="Add Course Activity" headerImg={brain} />
-            <Editor />
+            <Editor/>
         </section>
     )
 }

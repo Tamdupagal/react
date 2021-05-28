@@ -4,6 +4,7 @@
   display: inline-block;
   @include flex_layout();
   width: max-content;
+  min-width: max-content;
   align-self: center;
   border: none;
   color: $white;
@@ -14,7 +15,9 @@
   background-color: #28a745;
   cursor: pointer;
   & > span {
-    margin-right: 0.8rem;
+    &.addMargin {
+      margin-right: 0.8rem;
+    }
   }
   & > img {
     width: rem;

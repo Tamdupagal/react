@@ -1,20 +1,25 @@
 @import "../../sass/variable";
 @import "../../sass/utilities";
 
-.sidenav {
+.wrapper {
   position: relative;
-  width: $sidenav_width;
-  min-height: 100vh;
-  background-color: $primary_bg_color;
-  overflow: hidden;
-  padding: 2rem 0;
+  width: max-content;
+  margin-left: -$sidenav_width;
   transition : {
-    property: width;
-    duration: 0.6s;
+    property: margin-left;
+    duration: $nav_toggle_duration;
   }
-  &.toggle {
-    width: 0;
+  &.active {
+    margin-left: 0;
   }
+}
+.sidenav {
+  @include flex_layout(center, null, column);
+  width: $sidenav_width;
+  background-color: $primary_bg_color;
+  padding: 2rem 0;
+  height: max-content;
+  min-height: 100%;
   &__logo__box {
     position: relative;
     width: 100%;
@@ -27,15 +32,20 @@
     }
   }
   & > nav {
+    position: relative;
+    width: 100%;
     & > ul {
       & > li {
+        width: 100%;
         list-style: none;
-        padding: 1rem 0 1rem 2rem;
         cursor: pointer;
+        padding-left: 1rem;
         transition: {
           property: background-color;
           duration: 0.3s;
+          timing-function: $time_function;
         }
+
         &:hover {
           background-color: white;
           .list_text {
@@ -45,6 +55,7 @@
         .link {
           @include flex_layout(center, null);
           text-decoration: none;
+          padding: 1rem;
         }
         img {
           width: 5rem;

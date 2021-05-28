@@ -1,0 +1,23 @@
+.grid__layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
+  .course__section {
+    padding: 0.5rem;
+    cursor: pointer;
+    & > img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .course__title {
+      padding: 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+}

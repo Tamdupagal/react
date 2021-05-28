@@ -1,9 +1,9 @@
 import React from 'react'
 import './Box.scss'
 
-function Box({children, style}) {
+function Box({children, style, cls}) {
     return (
-        <section className="section" style={style}>
+        <section className={`section ${cls}`} style={style}>
             {children}
         </section>
     )

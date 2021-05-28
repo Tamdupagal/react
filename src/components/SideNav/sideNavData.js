@@ -45,6 +45,6 @@ export const sideNavData = [
     {
         ListItem: 'Library',
         ListImage: bookshelf,
-        route : '/dashboard'
+        route : '/bag'
     },
 ]

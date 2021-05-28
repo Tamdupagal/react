@@ -8,6 +8,14 @@
   text-transform: capitalize;
   font-weight: bold;
   margin-right: 5rem;
+  align-self: flex-start;
+  padding: 0.5rem 0;
+  @media screen and (max-width: 1000px) {
+    padding: 1rem 1.5rem;
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
   & > input {
     display: inline-block;
     border: 1px solid red;

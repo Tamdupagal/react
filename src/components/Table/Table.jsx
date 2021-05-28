@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
+import mock_data from '../../MOCK_DATA.json'
 import './Table.scss'
 
 
 function Table({columns, data}) {
     const col = useMemo(() => columns, []);
-    // const data = useMemo(() => mock_data, []);
+    const dataMock = useMemo(() => mock_data, []);
     const {
         headerGroups,
         rows,
@@ -13,7 +14,7 @@ function Table({columns, data}) {
         getTableProps,
         prepareRow } = useTable({
             columns: col,
-            data: []
+            data: dataMock
   })
     return (
         <div className="table__wrapper">

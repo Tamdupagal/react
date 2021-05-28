@@ -1,29 +1,31 @@
 @import "../../sass/utilities";
 @import "../../sass/variable";
 
-.slot__container {
+.slot {
   @include flex_layout(center, space-between);
-  padding: 2rem;
-  border: 1px solid $border_col;
-  .slot {
-    @include flex_layout();
-    & > img {
-      width: 2rem;
-      height: auto;
-      object-fit: cover;
-    }
-    .btn__box {
-      @include flex_layout(center, null);
-      margin: 0 4rem;
-    }
+  position: relative;
+  width: 100%;
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  .btn__box {
+    @include flex_layout(center, null);
+  }
+  .input__container {
+    @include flex_layout(center, null);
+    margin-right: 2rem;
     .input__box {
-      margin: 0 3rem;
+      @include flex_layout(center, space-between);
+      width: 100%;
       .label {
-        font-size: $font_size - 0.1rem;
+        font-size: $font_size;
         padding: 0 1rem;
       }
       & > input {
-        padding: 0 1rem;
+        width: 100%;
+        padding: 1rem 1rem;
+        border-radius: $border_rad;
+        border: 0.2rem solid #ccc;
       }
     }
   }

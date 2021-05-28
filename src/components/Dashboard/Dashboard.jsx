@@ -14,7 +14,7 @@ function Dashboard() {
     return (
         <Box style={style}>
                 <TableHeader headerText="Upcomming classes" headerImg={hourGlass} />
-                <h2>No Lectures right now</h2>
+                <h2 className="dashboard__title">No Lectures right now</h2>
             </Box>
     )
 }

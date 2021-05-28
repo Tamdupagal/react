@@ -8,17 +8,29 @@ table {
   position: relative;
   border-collapse: collapse;
   width: 100%;
-  th {
-    border: 0.1rem solid rgba($primary_color, 0.3);
+  empty-cells: hide !important;
+  th,
+  td {
+    border: 0.1rem solid rgba($black, 0.2);
     text-align: center;
     color: black;
-    font-size: $font_size + 0.1rem;
     padding: 1rem 0;
     cursor: pointer;
     font-weight: bolder;
+    font-size: 1.45rem;
+    @media screen and (max-width: 400px) {
+      font-size: 1.2rem;
+    }
   }
-
+  th {
+    background-color: rgba($primary_bg_color, 0.9);
+    color: $white;
+    padding: 1.5rem 0;
+  }
+  td {
+    font-weight: 500;
+  }
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: $light_black;
   }
 }
