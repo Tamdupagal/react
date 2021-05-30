@@ -9,7 +9,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useState } from "react";
 import Courses from "./Components/Courses/Courses";
 import AddMeet from "./Components/MeetLinks/AddMeet";
-import AddStudent from "./Components/Students.jsx/AddStudent";
+import AddStudent from "./Components/Students/AddStudent";
+import AddTeacher from "./Components/Teacher/AddTeacher";
 import { makeStyles } from "@material-ui/core";
 
 // const useStyles = makeStyles( () => ({
@@ -21,13 +22,10 @@ import { makeStyles } from "@material-ui/core";
 //   }
 // }))
 
-
 function App() {
   let marginLeft;
-  if(window.innerWidth<=700)
-  marginLeft="0px"
-  else
-  marginLeft="250px"
+  if (window.innerWidth <= 700) marginLeft = "0px";
+  else marginLeft = "250px";
   return (
     <div>
       {/* <Enroll/> */}
@@ -35,9 +33,10 @@ function App() {
       {/* <Dashboard/> */}
       {/* <TextEditor/> */}
       {/* <Table/> */}
+      {/* <AddTeacher /> */}
       <Router>
-        <SideBar/>
-        <div style={{ marginLeft: 250 ,marginTop: 100}}>
+        <SideBar />
+        <div style={{ marginLeft: 250, marginTop: 100 }}>
           <Switch>
             <Route exact path="/Dashboard" component={Dashboard} />
             <Route exact path="/Enroll" component={Enroll} />
@@ -51,7 +50,7 @@ function App() {
             <Route exact path="/add-student" component={AddStudent} />
           </Switch>
         </div>
-      </Router> 
+      </Router>
     </div>
   );
 }
