@@ -33,8 +33,8 @@ function App() {
       {/* <Dashboard/> */}
       {/* <TextEditor/> */}
       {/* <Table/> */}
-      {/* <AddTeacher /> */}
-      <Router>
+      <AddTeacher />
+      {/* <Router>
         <SideBar />
         <div style={{ marginLeft: 250, marginTop: 100 }}>
           <Switch>
@@ -50,7 +50,7 @@ function App() {
             <Route exact path="/add-student" component={AddStudent} />
           </Switch>
         </div>
-      </Router>
+      </Router> */}
     </div>
   );
 }

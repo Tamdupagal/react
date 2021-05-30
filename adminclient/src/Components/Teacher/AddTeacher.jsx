@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "3%",
   },
   dividerInset1: {
-    margin: `10px 0 0 ${theme.spacing(32)}px`,
+    margin: `10px 0 0 ${theme.spacing(29)}px`,
     zIndex: "1",
-    marginBottom: "-32px",
+    marginBottom: "-29px",
   },
   dividerInset2: {
-    margin: `10px 0 0 ${theme.spacing(27)}px`,
-    marginBottom: "-32px",
+    margin: `10px 0 0 ${theme.spacing(24)}px`,
+    marginBottom: "-29px",
   },
   textField: {
     width: "90%",
