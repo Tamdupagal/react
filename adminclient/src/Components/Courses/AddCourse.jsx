@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "KoHo, sans-serif",
     marginLeft: "4%",
     fontSize: "0.9rem",
-    color: "#1f2e2e",
+    color: "#0a0a0f",
   },
   subheading3: {
     letterSpacing: "0.2rem",
     fontFamily: "KoHo, sans-serif",
     fontSize: "0.9rem",
     marginTop: "-3px",
-    color: "#1f2e2e",
+    color: "#0a0a0f",
   },
   textField: {
     width: "90%",
@@ -78,16 +78,16 @@ const useStyles = makeStyles((theme) => ({
     margin: `10px 0 0 ${theme.spacing(29)}px`,
     marginBottom: "-31px",
   },
-  dividerInset2: {
-    margin: `10px 0 0 ${theme.spacing(22)}px`,
-    marginTop: "-24px",
-    marginBottom: "23px",
-  },
-  dividerInset3: {
-    margin: `10px 0 0 ${theme.spacing(21)}px`,
-    marginTop: "-24px",
-    marginBottom: "23px",
-  },
+  // dividerInset2: {
+  //   margin: `10px 0 0 ${theme.spacing(22)}px`,
+  //   marginTop: "-24px",
+  //   marginBottom: "23px",
+  // },
+  // dividerInset3: {
+  //   margin: `10px 0 0 ${theme.spacing(21)}px`,
+  //   marginTop: "-24px",
+  //   marginBottom: "23px",
+  // },
   dividerInset4: {
     margin: `10px 0 0 ${theme.spacing(13)}px`,
     marginTop: "-30px",
@@ -152,7 +152,7 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
 
             <Paper className={classes.mainContainer}>
               <h3 className={classes.subheading2}>COURSE TITLE</h3>
-              <Divider className={classes.dividerInset2} />
+              {/* <Divider className={classes.dividerInset2} /> */}
 
               <TextField
                 id="outlined-basic"
@@ -162,7 +162,7 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
                 className={classes.textField}
               />
               <h3 className={classes.subheading2}>DESCRIPTION</h3>
-              <Divider className={classes.dividerInset3} />
+              {/* <Divider className={classes.dividerInset3} /> */}
 
               <div className="editor__wrapper" style={styles}>
                 {/* {!withoutTitle && (
