@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
+// import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({

@@ -4,7 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import ClearIcon from '@material-ui/icons/Clear';
 const useStyles = makeStyles({
     root: {
-        maxWidth: 400,
+        minWidth: 700,
         marginTop: 200
       },
        TextField:{
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
        } 
 })
 
-const AddMeet = (props) => {
+const AddCourseSection = (props) => {
     const classes = useStyles();
     return (
         <>
@@ -39,7 +39,7 @@ const AddMeet = (props) => {
                         <Divider/>
                         <CardContent>
                             <Typography>
-                                Meet URL
+                                Course Section
                             </Typography>
                             <TextField className={classes.TextField}
                             placeholder="Enter Meet Url"
@@ -47,9 +47,12 @@ const AddMeet = (props) => {
                             variant="outlined"
                             />
                         </CardContent>
-                        <Box m={2} display="flex" alignItems="center" justifyContent="center"> 
+                        <Box m={2} display="flex" alignItems="right" justifyContent="flex-end"> 
                             <Button size="large" variant="contained" className={classes.btn} >
-                                Submit
+                                Close
+                            </Button>
+                            <Button size="large" variant="contained" className={classes.btn} >
+                                Save Changes
                             </Button>
                         </Box>
                     </Card>
@@ -58,5 +61,5 @@ const AddMeet = (props) => {
         </>
     )
 }
-export default AddMeet;
+export default AddCourseSection;
 

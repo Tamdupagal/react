@@ -137,6 +137,7 @@ const SideBar = () => {
   const [dropdown, setDropdown] = useState(true)
   const showCourse = () =>{
     return (
+
     <div>
       Hiiii
     </div>
@@ -158,7 +159,7 @@ const SideBar = () => {
   }, []);
 
     const handleDrawerOpen = () => {
-        if(window.innerWidth<=600)
+        if(window.innerWidth<=700)
         setOpen(true);
         else
         setOpen(false);
@@ -178,13 +179,13 @@ const SideBar = () => {
                     <Toolbar className={clsx(classes.Toolbar)}>
                         <div className={clsx(!open && classes.hide)}>
                         </div>
-                        <IconButton
+                        <IconButton onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.hide)}
                         color="secondary"
                         // aria-label="open drawer"
                         // onClick={handleDrawerOpen}
                         edge="start">
-                        <MenuIcon  onClick={handleDrawerOpen} className={clsx(open)}/>
+                        <MenuIcon className={clsx(open)}/>
                         {/* <MenuIcon/> */}
                         </IconButton>
                         <Button 
@@ -219,14 +220,21 @@ const SideBar = () => {
                     <ListItemText primary="Dashboard" style={{marginLeft: "30px"  }}/>
                 </ListItem>
                 </Link>
-                <div>
+                {/* <div>
                 <ListItem button className={clsx(classes.listText)} onClick={showCourse}>
                     <ViewQuiltIcon />
                     <ListItemText primary="Courses" style={{marginLeft: "30px"  }}/>
                     <ChevronRightIcon/>
                     {showCourse}  
                 </ListItem>
-                </div>
+                </div> */}
+                <Link to="/Courses">
+                <ListItem button className={clsx(classes.listText)}>
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Courses" style={{marginLeft: "30px"  }}/>
+                    <ChevronRightIcon/>
+                </ListItem>
+                </Link>
                 <Link to="/Enroll" className={clsx(classes.listText)} >
                 <ListItem button >
                     <ViewQuiltIcon/>

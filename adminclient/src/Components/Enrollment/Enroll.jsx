@@ -42,8 +42,11 @@ const useStyles = makeStyles({
 const Enroll = () => {
     const classes = useStyles();
     const history = useHistory()
-    const handlePage = () =>{
+    const handleAddStudent = () =>{
       history.push("/add-student")
+    }
+    const handleAddTeacher = () =>{
+      history.push("/add-teacher")
     }
     return (
         <Box display="flex" 
@@ -57,7 +60,7 @@ const Enroll = () => {
                 HERE, SHOULD BE SOME GRAPHS OR ANALYTICS DATA ABOUT ENROLLMENT.
                 </Typography>  
               </CardContent>
-              <Divider/>
+              <Divider />
           {/* <Box display="flex" 
         alignItems="center"
         // justifyContent="center"
@@ -87,7 +90,7 @@ const Enroll = () => {
             variant="contained" 
             color="secondary" 
             style={{ height: 40 }}
-            onClick={handlePage}
+            onClick={handleAddStudent}
           >
           ADD STUDENT(can be made from based)
           </Button>
@@ -95,6 +98,7 @@ const Enroll = () => {
             variant="contained" 
             color="primary" 
             style={{ height: 40 }}
+            onClick={handleAddTeacher}
           >
             Add Teachers
           </Button>
