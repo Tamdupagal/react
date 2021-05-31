@@ -11,6 +11,7 @@ import Courses from "./Components/Courses/Courses";
 import AddMeet from "./Components/MeetLinks/AddMeet";
 import AddStudent from "./Components/Students/AddStudent";
 import AddTeacher from "./Components/Teacher/AddTeacher";
+import AddCourse from "./Components/Courses/AddCourse";
 import { makeStyles } from "@material-ui/core";
 
 // const useStyles = makeStyles( () => ({
@@ -33,7 +34,7 @@ function App() {
       {/* <Dashboard/> */}
       {/* <TextEditor/> */}
       {/* <Table/> */}
-      <AddTeacher />
+      <AddCourse />
       {/* <Router>
         <SideBar />
         <div style={{ marginLeft: 250, marginTop: 100 }}>

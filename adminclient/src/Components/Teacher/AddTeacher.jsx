@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   dividerInset1: {
     margin: `10px 0 0 ${theme.spacing(29)}px`,
-    zIndex: "1",
+    // zIndex: "1",
     marginBottom: "-29px",
   },
   dividerInset2: {
@@ -150,7 +150,7 @@ const AddTeacher = () => {
                   <TextField
                     id="outlined-basic"
                     variant="outlined"
-                    size="small"
+                    // size="small"
                     className={classes.textField}
                   />
                 </form>
