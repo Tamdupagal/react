@@ -16,7 +16,7 @@ function Header() {
     return (
         <header className="header">
             <div className="header__toggle">
-                <img className="menu__img" tabIndex={0} onClick={()=>setToggle(prev => !prev)} src={menu} alt="menu" />
+                <img className="menu__img" onClick={()=>setToggle(prev => !prev)} src={menu} alt="menu" />
                 <img src={logout} alt="logout" />
             </div>
             <div className="header__navigation">

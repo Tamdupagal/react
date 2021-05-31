@@ -25,7 +25,6 @@ const formats = [
 ]
 
 const modules = {
-    toolbar : ".toolBar",
     toolbar: [
         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
         ['blockquote', 'code-block'],

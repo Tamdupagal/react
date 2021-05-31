@@ -1,0 +1,24 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.main__container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 2rem;
+  margin-left: 0;
+  transition: {
+    property: margin-left;
+    duration: $nav_toggle_duration;
+    timing-function: $time_function;
+  }
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  @media screen and (max-width: 768px) {
+    min-width: 100vw;
+  }
+  &.active {
+    margin-left: $sidenav_width;
+  }
+}

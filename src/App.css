@@ -44,5 +44,5 @@ body {
 
 .App {
   display: flex;
-  overflow-x: hidden;
+  overflow: hidden;
 }

@@ -1,5 +1,5 @@
 import SideNav from './components/SideNav/SideNav'
-import Main from './components/Main'
+import Main from './components/Main/Main'
 import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 import {useEffect} from 'react'
 import './App.css';
