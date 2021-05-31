@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
   divider: {
     marginTop: "2%",
   },
+  content: {
+    fontSize: "1.5rem",
+    // fontWeight: "bold",
+    fontFamily: "'Exo', sans-serif",
+    color: "#1f1f2e",
+  },
   //   paper1: {
   //     padding: theme.spacing(4),
   //     textAlign: "center",
@@ -68,16 +75,35 @@ const Dashboard = () => {
       </Container>
       <Grid className={classes.root} container spacing={2}>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper1}>80</Paper>
+          <Paper className={classes.paper1}>
+            <div className={classes.content}>
+              83
+              <Typography>Classes</Typography>
+            </div>
+          </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper}>30</Paper>
+          <Paper className={classes.paper}>
+            <div className={classes.content}>
+              86
+              <Typography>Students</Typography>
+            </div>
+          </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper}>9</Paper>
+          <Paper className={classes.paper}>
+            <div className={classes.content}>
+              9<Typography>Teachers</Typography>
+            </div>
+          </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper}>39</Paper>
+          <Paper className={classes.paper}>
+            <div className={classes.content}>
+              42
+              <Typography>Total Lectures</Typography>
+            </div>
+          </Paper>
         </Grid>
       </Grid>
     </Box>
