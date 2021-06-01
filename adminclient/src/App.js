@@ -14,6 +14,7 @@ import AddTeacher from "./Components/Teacher/AddTeacher";
 import AddCourse from "./Components/Courses/AddCourse";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
+import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
 
 // const useStyles = makeStyles( () => ({
 //   mobile: {
@@ -54,6 +55,7 @@ function App() {
             <Route exact path="/add-student" component={AddStudent} />
             <Route exact path="/add-teacher" component={AddTeacher} />
             <Route exact path="/add-course" component={AddCourse} />
+            <Route exact path="/classroom/create" component={AddNewClassroom} />
           </Switch>
         </div>
         <div style={{marginLeft: 250, marginTop: 100}}>
