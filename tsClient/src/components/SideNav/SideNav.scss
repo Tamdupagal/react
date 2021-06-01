@@ -7,11 +7,10 @@
   overflow-y: scroll;
   width: $sidenav_width;
   margin-left: -$sidenav_width;
-  background-clip: border-box;
+  will-change: transform;
   transition : {
     property: margin-left;
     duration: $nav_toggle_duration;
-    timing-function: $time_function;
   }
   &.active {
     margin-left: 0;
@@ -48,8 +47,7 @@
           padding-left: 1rem;
           transition: {
             property: background-color;
-            duration: 0.3s;
-            timing-function: $time_function;
+            duration: 0.2s;
           }
 
           &:hover {

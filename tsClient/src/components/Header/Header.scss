@@ -20,7 +20,7 @@
         width: 5rem;
         height: 5rem;
         padding: 0.8rem;
-        border: 0.2rem solid $primary_color;
+        border: 0.25rem solid $primary_color;
         border-radius: $border_rad;
         cursor: pointer;
         transition: {
@@ -54,6 +54,7 @@
         border: 0.2rem solid transparent;
         border-radius: 0.3rem;
         cursor: pointer;
+        border-radius: $border_rad;
         transition: {
           property: box-shadow;
           duration: 0.3s;
@@ -62,7 +63,8 @@
           padding: 3.5rem 2rem;
         }
         &:hover {
-          box-shadow: 0 0 1.2rem rgba(black, 0.18);
+          box-shadow: inset 5px 5px 0.02rem 0.05rem #a1a1a1,
+            inset -0.5rem -0.5rem 0.02rem 0.05rem $primary_color;
         }
         img {
           width: 4rem;
