@@ -13,6 +13,7 @@ import AddStudent from "./Components/Students/AddStudent";
 import AddTeacher from "./Components/Teacher/AddTeacher";
 import AddCourse from "./Components/Courses/AddCourse";
 import { makeStyles } from "@material-ui/core";
+import Copyright from "./Copyright";
 
 // const useStyles = makeStyles( () => ({
 //   mobile: {
@@ -35,11 +36,13 @@ function App() {
       {/* <TextEditor/> */}
       {/* <Table/> */}
       {/* <AddCourse /> */}
+      {/* <Copyright/> */}
       <Router>
         <SideBar />
         <div style={{ marginLeft: 250, marginTop: 100 }}>
           <Switch>
-            <Route exact path="/Dashboard" component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/Enroll" component={Enroll} />
             <Route exact path="/MeetLink" component={MeetTable} />
             <Route exact path="/Courses" component={Courses} />
@@ -50,9 +53,14 @@ function App() {
             <Route exact path="/add-meet" component={AddMeet} />
             <Route exact path="/add-student" component={AddStudent} />
             <Route exact path="/add-teacher" component={AddTeacher} />
+            <Route exact path="/add-course" component={AddCourse} />
           </Switch>
         </div>
+        <div style={{marginLeft: 250, marginTop: 100}}>
+        <Copyright />
+        </div>
       </Router>
+
     </div>
   );
 }

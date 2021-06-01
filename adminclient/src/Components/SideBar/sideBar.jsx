@@ -22,6 +22,8 @@ import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import { Link, useHistory } from 'react-router-dom'
 import Dropdown from 'react-dropdown';
+import MainLogo from "./../../Images/mainLogo.png"
+import { Image } from "react-bootstrap";
 
 const drawerWidth = 250;
 let shift;
@@ -75,7 +77,7 @@ const useStyles = makeStyles((theme)=>({
       // },
       listText: {
         textDecoration: "none",
-        color:'#868e96',
+        color:'white',
         "&:hover": {
           color: 'white'
         }
@@ -94,6 +96,8 @@ const useStyles = makeStyles((theme)=>({
       drawerHeader: {
         display: 'flex',
         alignItems: 'center',
+        // marginTop: "10px",
+        marginLeft: "10px"
         // padding: theme.spacing(5,0,0,0),
         // necessary for content to be below app bar
         // ...theme.mixins.toolbar,
@@ -210,77 +214,78 @@ const SideBar = () => {
                 }}
                 >
                 <div className={classes.drawerHeader} >
-                    <h3 style={{textAlign: "left",color:'#868e96'}}>ADMIN</h3>
+                    <Image style={{borderRadius: "100%",width: "80px",height: "70px"}} src={MainLogo}/>
+                    <h3 style={{textAlign: "left",color:'white',fontSize: "250%",marginLeft: "10px"}}>ADMIN</h3>
                     <ChevronLeftIcon className={clsx(classes.leftIcon, classes.listText && open) } onClick={handleDrawerClose}/>
                 </div>
                 <List >
-                <Link to="/Dashboard" className={clsx(classes.listText)}>
+                <Link to="/dashboard" className={clsx(classes.listText)}>
                 <ListItem button >
                     <ViewQuiltIcon />
-                    <ListItemText primary="Dashboard" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Dashboard" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
                 {/* <div>
                 <ListItem button className={clsx(classes.listText)} onClick={showCourse}>
                     <ViewQuiltIcon />
-                    <ListItemText primary="Courses" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Courses" style={{marginLeft: "30px", color:"white"  }}/>
                     <ChevronRightIcon/>
                     {showCourse}  
                 </ListItem>
                 </div> */}
-                <Link to="/Courses">
+                <Link to="/courses">
                 <ListItem button className={clsx(classes.listText)}>
                     <ViewQuiltIcon />
-                    <ListItemText primary="Courses" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Courses" style={{marginLeft: "30px", color:"white"  }}/>
                     <ChevronRightIcon/>
                 </ListItem>
                 </Link>
-                <Link to="/Enroll" className={clsx(classes.listText)} >
+                <Link to="/enroll" className={clsx(classes.listText)} >
                 <ListItem button >
                     <ViewQuiltIcon/>
-                    <ListItemText primary="Enrollment" style={{marginLeft: "30px"  }} />
+                    <ListItemText primary="Enrollment" style={{marginLeft: "30px", color:"white"  }} />
                 </ListItem>
                 </Link>
-                <Link to="/MeetLink" className={clsx(classes.listText)}>
+                <Link to="/meetLink" className={clsx(classes.listText)}>
                 <ListItem button >
                     <ViewQuiltIcon />
-                    <ListItemText primary="Meet Links" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Meet Links" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
-                <Link to="/Classroom">
+                <Link to="/classroom">
                 <ListItem button className={clsx(classes.listText)}>
                     <ViewQuiltIcon />
-                    <ListItemText primary="Classrooms" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Classrooms" style={{marginLeft: "30px", color:"white"  }}/>
                     <ChevronRightIcon/>
                 </ListItem>
                 </Link>
-                <Link to="/Attendances" className={clsx(classes.listText)}>
+                <Link to="/attendances" className={clsx(classes.listText)}>
                 <ListItem button >
                     <ViewQuiltIcon />
-                    <ListItemText primary="Attendances" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Attendances" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
-                <Link to="/Students" className={clsx(classes.listText)}>
+                <Link to="/students" className={clsx(classes.listText)}>
                 <ListItem button >
                     <ViewQuiltIcon />
-                    <ListItemText primary="Students" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Students" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
                 <ListItem button className={clsx(classes.listText)} >
                     <ViewQuiltIcon />
-                    <ListItemText primary="H5P Content" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="H5P Content" style={{marginLeft: "30px", color:"white"  }}/>
                     <ChevronRightIcon/>
                 </ListItem>
-                <Link to="/Teachers" className={clsx(classes.listText)}>
+                <Link to="/teachers" className={clsx(classes.listText)}>
                 <ListItem button>
                     <ViewQuiltIcon />
-                    <ListItemText primary="Teachers" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Teachers" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
-                <Link to="/Operations" className={clsx(classes.listText)}>
+                <Link to="/operations" className={clsx(classes.listText)}>
                 <ListItem button>
                     <ViewQuiltIcon />
-                    <ListItemText primary="Operations" style={{marginLeft: "30px"  }}/>
+                    <ListItemText primary="Operations" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
                 </List>

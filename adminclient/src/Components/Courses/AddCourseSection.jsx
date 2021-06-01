@@ -4,21 +4,22 @@ import Divider from "@material-ui/core/Divider";
 import ClearIcon from '@material-ui/icons/Clear';
 const useStyles = makeStyles({
     root: {
-        minWidth: 700,
-        marginTop: 200
+        minWidth: 500,
+        marginTop: 50
       },
        TextField:{
-           minWidth: 320,
+           minWidth: 460,
+            marginTop: "10px"
        },
-       btn:{
-           backgroundColor: "#008080",
-           color: "white",
-           padding: "10px 25px",
-           borderRadius: ".5rem",
-           "&:hover": {
-            backgroundColor: '#008080'
-          }
-       } 
+    //    btn:{
+    //        backgroundColor: "#008080",
+    //        color: "white",
+    //        padding: "10px 25px",
+    //        borderRadius: ".5rem",
+    //        "&:hover": {
+    //         backgroundColor: '#008080'
+    //       }
+    //    } 
 })
 
 const AddCourseSection = (props) => {
@@ -31,7 +32,7 @@ const AddCourseSection = (props) => {
             >
                 <div >
                     <Card className={classes.root}>
-                        <CardHeader title="Add Meet URL" style={{borderRadius:'5px',color: "#008080"}} action={
+                        <CardHeader title="COURSE SECTION" style={{borderRadius:'5px'}} action={
                             <Button onClick={props.handleClose}>
                                 <ClearIcon/>
                             </Button>
@@ -39,19 +40,19 @@ const AddCourseSection = (props) => {
                         <Divider/>
                         <CardContent>
                             <Typography>
-                                Course Section
+                                <strong>COURSE SECTION NAME:</strong>
                             </Typography>
                             <TextField className={classes.TextField}
-                            placeholder="Enter Meet Url"
+                            placeholder="Enter Name of Course Section.. "
                             size="small"
                             variant="outlined"
                             />
                         </CardContent>
                         <Box m={2} display="flex" alignItems="right" justifyContent="flex-end"> 
-                            <Button size="large" variant="contained" className={classes.btn} >
+                            <Button size="medium" variant="contained" style={{marginRight: "10px"}} onClick={props.handleClose}>
                                 Close
                             </Button>
-                            <Button size="large" variant="contained" className={classes.btn} >
+                            <Button size="medium" variant="contained" color= "primary" >
                                 Save Changes
                             </Button>
                         </Box>

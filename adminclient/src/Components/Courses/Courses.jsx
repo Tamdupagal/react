@@ -5,6 +5,9 @@ import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import Modal from '@material-ui/core/Modal';
 import AddCourseSection from './AddCourseSection';
+import AddCourse from "./../Courses/AddCourse"
+import {useHistory} from "react-router-dom"
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const Courses = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const history = useHistory();
     const handleOpen = () => {
         setOpen(true);
       };
@@ -39,9 +43,13 @@ const Courses = () => {
       const handleClose = () => {
         setOpen(false);
       };
+      
+      const handleAddCourse = () =>{
+          history.push("/add-course")
+      }
     
     const body =(
-        <AddCourseSection/>
+        <AddCourseSection handleClose={handleClose}/>
     );
     const courses=[
         {
@@ -83,7 +91,7 @@ const Courses = () => {
                 <div className={classes.box}>
                     <h1 style={{marginLeft: "4.5rem",fontSize: "300%"}}>Courses</h1>
                     <Box m={1} className={classes.buttons}>
-                        <Button variant="outlined" size="medium" style={{marginRight: "20px",color:"green",border: "1px solid green"}}><strong>Add Course</strong></Button>
+                        <Button variant="outlined" size="medium" style={{marginRight: "20px",color:"green",border: "1px solid green"}} onClick={handleAddCourse}><strong>Add Course</strong></Button>
                         <Button variant="outlined" color="primary" size="medium" onClick={handleOpen} style={{color:"#5567ff",border: "1px solid #5567ff"}}><strong>Add Course Section</strong></Button>
                     </Box>
                 </div>
