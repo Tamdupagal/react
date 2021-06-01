@@ -1,0 +1,6 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+section {
+  @extend %table_container_styles;
+}

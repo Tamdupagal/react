@@ -1,0 +1,31 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.textArea__wrapper {
+  padding: 2rem;
+  @include flex_layout(null, null, column);
+  .notes__title {
+    font-size: $font_size;
+    font-weight: 500;
+    margin: 1rem 0;
+  }
+  .notes__textArea {
+    resize: vertical;
+    font-size: 1.3rem;
+    width: 100%;
+    height: 8rem;
+    border: 0.1rem solid $border_col;
+    padding: 1rem 0 0 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  hr {
+    margin: 2rem 0;
+    border: none;
+    width: 100%;
+    height: 0.02rem;
+    background-color: $border_col;
+    width: 100%;
+  }
+}
