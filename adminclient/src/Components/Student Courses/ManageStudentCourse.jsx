@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react'
+
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import { Button, Card } from "@material-ui/core";
@@ -40,16 +41,14 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem",
   },
 }));
-
 const ManageStudentCourse = () => {
-  const [value, setValue] = React.useState("interview");
+    const [value, setValue] = React.useState("interview");
+    const handleChange = (event) => {
+            setValue(event.target.value);
+        };
+    const classes = useStyles();
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-  const classes = useStyles();
-
-  return (
+    return (
     <div>
       <div>
         <h1 className={classes.mainHeading}>Manage Course for Name</h1>
@@ -93,7 +92,6 @@ const ManageStudentCourse = () => {
         </Grid>
       </Container>
     </div>
-  );
-};
-
+    )
+}
 export default ManageStudentCourse;
