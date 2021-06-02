@@ -9,8 +9,8 @@
   margin-bottom: 2rem;
   &__toggle {
     padding: 0 1rem;
-    box-shadow: inset 0.1rem 0.1rem 0.02rem 0.05rem #a1a1a1,
-      inset -0.1rem -0.1rem 0.02rem 0.05rem $primary_color;
+    box-shadow: inset 0.3rem 0.3rem 0.02rem 0.05rem #a1a1a1,
+      inset -0.3rem -0.3rem 0.02rem 0.05rem $primary_color;
     border-radius: $border-rad;
     @include flex_layout(center, space-between);
     & > img {
@@ -19,11 +19,9 @@
       padding: 1rem 1.5rem;
       user-select: none;
       &.menu__img {
-        width: 5rem;
-        height: 5rem;
-        padding: 0.8rem;
         border: 0.25rem solid $primary_color;
         border-radius: $border_rad;
+        transform: scale(0.7);
         cursor: pointer;
         transition: {
           property: box-shadow;

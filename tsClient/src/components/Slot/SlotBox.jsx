@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Slot from './Slot'
 import Button from '../Button/Button'
 import './SlotBox.scss'

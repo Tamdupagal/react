@@ -21,6 +21,14 @@ const customStyles = {
         padding: 10,
         fontSize: '1.5rem',
     }),
+    singleValue: (provided, state) => ({
+        ...provided,
+        fontSize: '1.5rem',
+    }),    
+    placeholder: (provided, state) => ({
+        ...provided,
+        fontSize: '1.5rem'
+    })
 }
 
 function Form() {
