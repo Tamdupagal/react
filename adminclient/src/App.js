@@ -18,6 +18,7 @@ import TeacherDetails from "./Components/Teacher/TeacherDetails";
 import AddCourse from "./Components/Courses/AddCourse";
 import AddNewRoom from "./Components/Classrooms/AddNewRoom";
 import AddCRM from "./Components/Operations/AddCRM";
+import AddAdmin from "./Components/Operations/AddAdmin";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
 import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
@@ -67,6 +68,7 @@ function App() {
             <Route exact path="/AddNewRoom" component={AddNewRoom} />
             <Route exact path="/TeacherDetails" component={TeacherDetails} />
             <Route exact path="/add-crm" component={AddCRM} />
+            <Route exact path="/add-admin" component={AddAdmin} />
 
             <Route
               exact
