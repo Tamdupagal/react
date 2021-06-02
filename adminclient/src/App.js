@@ -12,8 +12,12 @@ import React, { useState } from "react";
 import Courses from "./Components/Courses/Courses";
 import AddMeet from "./Components/MeetLinks/AddMeet";
 import AddStudent from "./Components/Students/AddStudent";
+import ManageStudentCourse from "./Components/Students/ManageStudentCourse";
 import AddTeacher from "./Components/Teacher/AddTeacher";
+import TeacherDetails from "./Components/Teacher/TeacherDetails";
 import AddCourse from "./Components/Courses/AddCourse";
+import AddNewRoom from "./Components/Classrooms/AddNewRoom";
+import AddCRM from "./Components/Operations/AddCRM";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
 import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
@@ -59,6 +63,10 @@ function App() {
             <Route exact path="/add-teacher" component={AddTeacher} />
             <Route exact path="/add-course" component={AddCourse} />
             <Route exact path="/classroom/create" component={AddNewClassroom} />
+            <Route exact path="/AddNewRoom" component={AddNewRoom} />
+            <Route exact path="/TeacherDetails" component={TeacherDetails} />
+            <Route exact path="/add-crm" component={AddCRM} />
+
             <Route
               exact
               path="/AddNewLearningSkills"
@@ -73,6 +81,11 @@ function App() {
               exact
               path="/AddSpiritualLearning"
               component={AddSpiritualLearning}
+            />
+            <Route
+              exact
+              path="/ManageStudentCourse"
+              component={ManageStudentCourse}
             />
           </Switch>
         </div>
