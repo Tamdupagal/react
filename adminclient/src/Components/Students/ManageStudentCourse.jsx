@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "2%",
   },
   container: {
-    marginLeft: "11%",
+    marginLeft: "12%",
     // marginRight: "5%",
   },
   card0: {
@@ -55,8 +55,8 @@ const ManageStudentCourse = () => {
       <div>
         <h1 className={classes.mainHeading}>Manage Course for Name</h1>
       </div>
-      <Container className={classes.container}>
-        <Grid xs={12} md={9}>
+      <Container>
+        <Grid xs={12} md={9} className={classes.container}>
           <Card className={classes.card0}>
             <h5 className={classes.infoHeading}>Classroom Name:</h5>
             <form>

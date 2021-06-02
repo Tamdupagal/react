@@ -45,6 +45,7 @@ function App() {
       {/* <AddCourse /> */}
       {/* <Copyright/> */}
       {/* <AddNewLearningSkills /> */}
+      {/* <AddCRM/> */}
       <Router>
         <SideBar />
         <div style={{ marginLeft: 250, marginTop: 100 }}>
