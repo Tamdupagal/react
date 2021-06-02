@@ -17,12 +17,13 @@ import TeacherDetails from "./Components/Teacher/TeacherDetails";
 import AddCourse from "./Components/Courses/AddCourse";
 import AddNewRoom from "./Components/Classrooms/AddNewRoom";
 import AddCRM from "./Components/Operations/AddCRM";
+import AddAdmin from "./Components/Operations/AddAdmin";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
 import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
 import Attendance from "./Components/Attendances/Attendance";
 import StudentCourses from "./Components/Student Courses/StudentCourses";
-import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse"
+import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse";
 
 // const useStyles = makeStyles( () => ({
 //   mobile: {
