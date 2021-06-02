@@ -9,7 +9,9 @@
   margin-bottom: 2rem;
   &__toggle {
     padding: 0 1rem;
-    box-shadow: 0 0 0.8rem rgb(0, 0, 0, 0.2);
+    box-shadow: inset 0.1rem 0.1rem 0.02rem 0.05rem #a1a1a1,
+      inset -0.1rem -0.1rem 0.02rem 0.05rem $primary_color;
+    border-radius: $border-rad;
     @include flex_layout(center, space-between);
     & > img {
       width: 8rem;
