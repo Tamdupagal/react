@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext} from 'react'
 import Box from '../Box/Box'
 import Button from '../Button/Button'
 import Select from 'react-select'
@@ -21,12 +21,20 @@ const customStyles = {
         padding: 10,
         fontSize: '1.5rem',
     }),
+    singleValue: (provided, state) => ({
+        ...provided,
+        fontSize: '1.5rem',
+    }),    
+    placeholder: (provided, state) => ({
+        ...provided,
+        fontSize: '1.5rem'
+    })
 }
 
 function Form() {
     const { setToggleForm, toggleForm} = useContext(context)
     const handleForm = (e) => {
-        if (e.target.className === "form__wrapper") {
+        if (e.target.classList.contains("form__wrapper")) {
             setToggleForm(prev=>!prev)
         }
         return
@@ -34,7 +42,7 @@ function Form() {
     return (
         <div onClick={handleForm} className={`form__wrapper${toggleForm ? " active" : ""}`}>
             <Box cls="feedback__form">
-                <h1 className="form__title">Class Feedback <FaTimes onClick={()=>setToggleForm(prev=>!prev)} className="close__btn" /></h1>
+                <h1 className="form__title">{"Class Feedback"} <FaTimes onClick={()=>setToggleForm(prev=>!prev)} className="close__btn" /></h1>
                 <hr />
                 <div className="form__input">
                     <span >Lecture's Information</span>

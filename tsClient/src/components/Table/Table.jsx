@@ -5,7 +5,7 @@ import './Table.scss'
 
 
 function Table({columns, data}) {
-    const col = useMemo(() => columns, []);
+    const col = useMemo(() => columns, [columns]);
     const dataMock = useMemo(() => mock_data, []);
     const {
         headerGroups,

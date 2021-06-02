@@ -27,11 +27,11 @@ function Material() {
                 </Box>
                 <Box cls="item__box__2 item">
                     <p>Teacher (Separate room with proper lights ,presentable clothes (formals,suit,Indian),no surrounding noise in the background,stable background ) </p>
-                    <div class="mcq">
+                    <div className="mcq">
                         <input type="radio" name="option"/>
                         <span>Yes</span>
                     </div>
-                    <div class="mcq">
+                    <div className="mcq">
                         <input type="radio" name="option"/>
                         <span>No</span>
                     </div>

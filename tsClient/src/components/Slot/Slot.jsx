@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React from 'react'
 import Button from '../Button/Button'
 import del from '../../images/delete.svg'
 import plus from '../../images/plus.svg'
@@ -7,7 +7,7 @@ import './Slot.scss';
 function Slot({ index, setSlots,id}) {
     
     const delSlot = () => {
-        setSlots(prev => prev.filter(item => item.id != id))
+        setSlots(prev => prev.filter(item => item.id !== id))
     }
     const AddSlot = () => {
         setSlots(prev => [...prev, { id: Math.random()}])
@@ -27,7 +27,7 @@ function Slot({ index, setSlots,id}) {
             <div className="btn__box">
                 {index > 0 && <Button img={del} onClick={delSlot} style={{backgroundColor: '#dc3545'}}/>}
             </div>
-        {index == 0 && <Button img={plus} onClick={AddSlot} style={{ marginLeft: '3rem' }}>Add Slot</Button>}
+        {index === 0 && <Button img={plus} onClick={AddSlot} style={{ marginLeft: '3rem' }}>Add Slot</Button>}
             </div>
     )
 }
