@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     marginLeft: "12%",
-    // marginRight: "5%",
   },
   card0: {
     borderRadius: "1.5%",
@@ -87,7 +86,7 @@ const ManageStudentCourse = () => {
             </form>
             <div className={classes.submitBtn}>
               <Button variant="contained" color="secondary">
-                SUBMIT CLASSROOM
+                SUBMIT
               </Button>
             </div>
           </Card>
