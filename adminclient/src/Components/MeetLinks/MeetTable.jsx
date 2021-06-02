@@ -70,12 +70,21 @@ const MeetTable = () => {
     const classes = useStyles();
     const history = useHistory();
     const [open, setOpen] = React.useState(false);
+    const [editOpen, setEditOpen] = React.useState(false);
     const handleOpen = () => {
       setOpen(true);
     };
   
     const handleClose = () => {
       setOpen(false);
+    };
+
+    const handleEditOpen = () => {
+      setEditOpen(true);
+    };
+  
+    const handleEditClose = () => {
+      setEditOpen(false);
     };
 
     const body = (
@@ -123,6 +132,7 @@ const MeetTable = () => {
                         <Button
                         variant="contained"
                         color="primary"
+                        onClick={handleEditOpen}
                         >
                         {<CreateIcon style={{ padding: '0%'}} />}
                         </Button>
@@ -144,6 +154,16 @@ const MeetTable = () => {
             <Modal
               open={open}
               onClose={handleClose}
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+            >
+            {body}
+            </Modal>
+            </div>
+            <div>
+            <Modal
+              open={editOpen}
+              onClose={handleEditClose}
               aria-labelledby="simple-modal-title"
               aria-describedby="simple-modal-description"
             >

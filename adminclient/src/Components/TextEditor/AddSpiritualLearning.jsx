@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Editor as MainEditor } from "react-draft-wysiwyg";
-import { Container } from "@material-ui/core";
+import ReactQuill, { Quill } from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { Container, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./TextEditor.css";
 import Grid from "@material-ui/core/Grid";
@@ -12,11 +13,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const useStyles = makeStyles((theme) => ({
   editor1: {
-    // height: "70%",
     width: "70%",
     marginLeft: "0%",
-    // marginBottom: "0.5rem",
-    // border: "1px solid black",
   },
   Header: {
     fontSize: "2rem",
@@ -28,9 +26,7 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #318ebd",
     padding: "2%",
   },
-  // borderbox: {
-  //   border: "2px solid #318ebd",
-  // },
+
   borderbox1: {
     border: "1px solid rgb(128, 128, 128, 0.4)",
     width: "90%",
@@ -38,12 +34,10 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: "10px",
     marginLeft: "5%",
     padding: "3%",
-    // marginTop: "2%",
     marginBottom: "2%",
   },
   paper: {
     padding: theme.spacing(2),
-    // textAlign: "center",
     color: theme.palette.text.secondary,
   },
   uploadimg: {
@@ -66,10 +60,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#302e2e",
     backgroundColor: "#f0f5f5",
     letterSpacing: "0.1rem",
-    // marginLeft: "0%",
-    // marginBottom: "5%",
-    // marginTop: "50%",
-    // paddingTop: "1%",
     zIndex: "1",
   },
   dividerInset: {
@@ -80,17 +70,60 @@ const useStyles = makeStyles((theme) => ({
     padding: "0.05%",
     marginTop: "6%",
   },
+  submitBtn: {
+    textAlign: "center",
+    margin: "4%",
+    marginTop: "4%",
+    marginBottom: "4%",
+  },
 }));
+
+const formats = [
+  "background",
+  "bold",
+  "color",
+  "font",
+  "code",
+  "italic",
+  "link",
+  "size",
+  "strike",
+  "script",
+  "underline",
+  "blockquote",
+  "header",
+  "align",
+  "direction",
+  "image",
+  "video",
+  "code-block",
+];
+
+const modules = {
+  toolbar: ".toolBar",
+  toolbar: [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    ["link", "image", "video"],
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ],
+};
 
 function AddSpiritualLearning() {
   const classes = useStyles();
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-
-  // upload(e) {
-  //   console.warn(e.target.file)
-  // }
 
   return (
     <div>
@@ -102,48 +135,27 @@ function AddSpiritualLearning() {
             <Paper className={classes.paper}>
               <Divider className={classes.dividerInset} />
               <h3 className={classes.addContent}>ADD CONTENT</h3>
-              <MainEditor
-                editorState={editorState}
-                className={classes.editor1}
-                onEditorStateChange={setEditorState}
-                toolbarClassName="toolbar"
-                wrapperClassName="wrapper"
-                editorClassName="editor"
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Paper className={classes.paper}>
-              <Divider className={classes.dividerInset} />
-              <h3 className={classes.addContent}>UPLOAD IMAGE</h3>
-              <Container className={classes.uploadimg}>
-                <h4>Image:</h4>
-                <Grid item>
-                  <Paper className={classes.chooseFile}>
-                    <input
-                      type="file"
-                      onChange={(e) => this.upload(e)}
-                      name="img"
-                    />
-                  </Paper>
-                </Grid>
-              </Container>
+
+              <div className="editor__wrapper">
+                <ReactQuill
+                  className="toolBar"
+                  theme="snow"
+                  placeholder="Add Content here..."
+                  formats={formats}
+                  modules={modules}
+                />
+              </div>
             </Paper>
           </Grid>
         </Grid>
-        {/* <Container className={classes.saveBtn}>
-          {" "}
-          <div className="btn__box">
-            <button className="button1" type="button">
-              Save Changes
-            </button>
-          </div>
-        </Container> */}
+
         <Grid item>
-          <Paper className={classes.saveBtn}>
-            <button className="button1" type="button">
-              Save Changes
-            </button>
+          <Paper className={classes.paper}>
+            <div className={classes.submitBtn}>
+              <Button variant="contained" color="secondary">
+                SUBMIT STUDENT
+              </Button>
+            </div>
           </Paper>
         </Grid>
         <Divider className={classes.endDivider} />

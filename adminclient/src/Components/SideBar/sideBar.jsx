@@ -214,7 +214,7 @@ const SideBar = () => {
                 }}
                 >
                 <div className={classes.drawerHeader} >
-                    <Image style={{borderRadius: "100%",width: "80px",height: "70px"}} src={MainLogo}/>
+                    <Image style={{borderRadius: "100%",width: "90px",height: "90px"}} src={MainLogo}/>
                     <h3 style={{textAlign: "left",color:'white',fontSize: "250%",marginLeft: "10px"}}>ADMIN</h3>
                     <ChevronLeftIcon className={clsx(classes.leftIcon, classes.listText && open) } onClick={handleDrawerClose}/>
                 </div>
@@ -269,6 +269,12 @@ const SideBar = () => {
                 <ListItem button >
                     <ViewQuiltIcon />
                     <ListItemText primary="Students" style={{marginLeft: "30px", color:"white"  }}/>
+                </ListItem>
+                </Link>
+                <Link to="/student-courses" className={clsx(classes.listText)}>
+                <ListItem button >
+                    <ViewQuiltIcon />
+                    <ListItemText primary="Student Courses" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
                 <ListItem button className={clsx(classes.listText)} >
