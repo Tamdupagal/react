@@ -3,6 +3,7 @@ import './Activities.scss';
 import Editor from '../Editor/Editor'
 import TableHeader from '../TableHeader/TableHeader' 
 import brain from '../../images/brain.svg'
+import {useState} from 'react'
 
 function Activities() {
     return (
