@@ -12,7 +12,6 @@ import React, { useState } from "react";
 import Courses from "./Components/Courses/Courses";
 import AddMeet from "./Components/MeetLinks/AddMeet";
 import AddStudent from "./Components/Students/AddStudent";
-import ManageStudentCourse from "./Components/Students/ManageStudentCourse";
 import AddTeacher from "./Components/Teacher/AddTeacher";
 import TeacherDetails from "./Components/Teacher/TeacherDetails";
 import AddCourse from "./Components/Courses/AddCourse";
@@ -21,6 +20,9 @@ import AddCRM from "./Components/Operations/AddCRM";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
 import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
+import Attendance from "./Components/Attendances/Attendance";
+import StudentCourses from "./Components/Student Courses/StudentCourses";
+import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse"
 
 // const useStyles = makeStyles( () => ({
 //   mobile: {
@@ -46,6 +48,7 @@ function App() {
       {/* <Copyright/> */}
       {/* <AddNewLearningSkills /> */}
       {/* <AddCRM/> */}
+      {/* <ManageStudentCourse/> */}
       <Router>
         <SideBar />
         <div style={{ marginLeft: 250, marginTop: 100 }}>
@@ -57,17 +60,22 @@ function App() {
             <Route exact path="/Courses" component={Courses} />
             <Route exact path="/Classroom" component={OneToOne} />
             <Route exact path="/Students" component={OneToOne} />
-            <Route exact path="/Attendances" component={OneToOne} />
+            <Route exact path="/Student-courses" component={StudentCourses} />
+            <Route exact path="/Attendances" component={Attendance} />
             <Route exact path="/Teachers" component={Courses} />
             <Route exact path="/add-meet" component={AddMeet} />
             <Route exact path="/add-student" component={AddStudent} />
             <Route exact path="/add-teacher" component={AddTeacher} />
             <Route exact path="/add-course" component={AddCourse} />
             <Route exact path="/classroom/create" component={AddNewClassroom} />
-            <Route exact path="/AddNewRoom" component={AddNewRoom} />
-            <Route exact path="/TeacherDetails" component={TeacherDetails} />
+            <Route exact path="/new-room" component={AddNewRoom} />
+            <Route exact path="/teacher-details" component={TeacherDetails} />
             <Route exact path="/add-crm" component={AddCRM} />
-
+            <Route
+              exact
+              path="/student-courses/manage"
+              component={ManageStudentCourse}
+            />
             <Route
               exact
               path="/AddNewLearningSkills"
@@ -83,16 +91,11 @@ function App() {
               path="/AddSpiritualLearning"
               component={AddSpiritualLearning}
             />
-            <Route
-              exact
-              path="/ManageStudentCourse"
-              component={ManageStudentCourse}
-            />
           </Switch>
         </div>
-        <div style={{ marginLeft: 250, marginTop: 100 }}>
+        {/* <div style={{ marginLeft: 250, marginTop: 100 }}>
           <Copyright />
-        </div>
+        </div> */}
       </Router>
     </div>
   );

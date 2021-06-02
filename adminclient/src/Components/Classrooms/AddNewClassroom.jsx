@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "3%",
   },
   container: {
-    marginLeft: "12%",
+    alignItems: "center"
+    // marginLeft: "12%",
   },
 }));
 
