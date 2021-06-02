@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import ReactQuill, { Quill } from "react-quill";
+import "react-quill/dist/quill.snow.css";
+// import "./AddCourse.css";
 import { Editor as MainEditor } from "react-draft-wysiwyg";
-import { Container } from "@material-ui/core";
+import { Container, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./TextEditor.css";
 import Grid from "@material-ui/core/Grid";
@@ -80,7 +83,60 @@ const useStyles = makeStyles((theme) => ({
     padding: "0.05%",
     marginTop: "6%",
   },
+  submitBtn: {
+    // display: "flex",
+    // alignItems: "center",
+    // justifyContent: "center",
+    textAlign: "center",
+    margin: "4%",
+    marginTop: "4%",
+    marginBottom: "4%",
+  },
 }));
+
+const formats = [
+  "background",
+  "bold",
+  "color",
+  "font",
+  "code",
+  "italic",
+  "link",
+  "size",
+  "strike",
+  "script",
+  "underline",
+  "blockquote",
+  "header",
+  "align",
+  "direction",
+  "image",
+  "video",
+  "code-block",
+];
+
+const modules = {
+  toolbar: ".toolBar",
+  toolbar: [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    ["link", "image", "video"],
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ],
+};
 
 function AddSpiritualLearning() {
   const classes = useStyles();
@@ -102,32 +158,23 @@ function AddSpiritualLearning() {
             <Paper className={classes.paper}>
               <Divider className={classes.dividerInset} />
               <h3 className={classes.addContent}>ADD CONTENT</h3>
-              <MainEditor
+              {/* <MainEditor
                 editorState={editorState}
                 className={classes.editor1}
                 onEditorStateChange={setEditorState}
                 toolbarClassName="toolbar"
                 wrapperClassName="wrapper"
                 editorClassName="editor"
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Paper className={classes.paper}>
-              <Divider className={classes.dividerInset} />
-              <h3 className={classes.addContent}>UPLOAD IMAGE</h3>
-              <Container className={classes.uploadimg}>
-                <h4>Image:</h4>
-                <Grid item>
-                  <Paper className={classes.chooseFile}>
-                    <input
-                      type="file"
-                      onChange={(e) => this.upload(e)}
-                      name="img"
-                    />
-                  </Paper>
-                </Grid>
-              </Container>
+              /> */}
+              <div className="editor__wrapper">
+                <ReactQuill
+                  className="toolBar"
+                  theme="snow"
+                  placeholder="Add Content here..."
+                  formats={formats}
+                  modules={modules}
+                />
+              </div>
             </Paper>
           </Grid>
         </Grid>
@@ -140,10 +187,12 @@ function AddSpiritualLearning() {
           </div>
         </Container> */}
         <Grid item>
-          <Paper className={classes.saveBtn}>
-            <button className="button1" type="button">
-              Save Changes
-            </button>
+          <Paper className={classes.paper}>
+            <div className={classes.submitBtn}>
+              <Button variant="contained" color="secondary">
+                SUBMIT STUDENT
+              </Button>
+            </div>
           </Paper>
         </Grid>
         <Divider className={classes.endDivider} />

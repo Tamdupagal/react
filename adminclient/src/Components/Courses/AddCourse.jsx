@@ -195,13 +195,27 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
               <h3 className={classes.subheading3}>SECTION</h3>
               <form>
                 {" "}
-                <TextField
+                {/* <TextField
                   id="outlined-basic"
                   variant="outlined"
                   size="small"
                   // className={classes.textField}
                   helperText="Select a section"
-                />
+                /> */}
+                <TextField
+                  id="outlined-basic"
+                  variant="outlined"
+                  size="small"
+                  helperText="Select a section"
+                  select
+                  // value={value}
+                  // onchange={handleChange}
+                  className={classes.textField}
+                >
+                  <MenuItem value={"hii"}>hii</MenuItem>
+                  <MenuItem value={"hello"}>hello</MenuItem>
+                  <MenuItem value={"hola"}>hola</MenuItem>
+                </TextField>
               </form>
               <Card className={classes.rightContainer1}>
                 <form>

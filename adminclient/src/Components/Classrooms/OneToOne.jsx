@@ -79,6 +79,15 @@ const OneToOne = () => {
           data={data}
           columns={Columns}
           options={{ exportButton: true }}
+          editable={{
+            onRowDelete: (selectedRow) =>
+              new Promise((resolve, reject) => {
+                console.log(selectedRow);
+              }),
+          }}
+          options={{
+            actionsColumnIndex: -1,
+          }}
         />
       </Container>
     </div>

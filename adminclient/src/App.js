@@ -4,6 +4,8 @@ import { Container } from "react-bootstrap";
 import Enroll from "./Components/Enrollment/Enroll";
 import MeetTable from "./Components/MeetLinks/MeetTable";
 import AddNewLearningSkills from "./Components/TextEditor/AddNewLearningSkills";
+import AddCourseActivity from "./Components/TextEditor/AddCourseActivity";
+import AddSpiritualLearning from "./Components/TextEditor/AddSpiritualLearning";
 import OneToOne from "./Components/Classrooms/OneToOne";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useState } from "react";
@@ -38,6 +40,7 @@ function App() {
       {/* <Table/> */}
       {/* <AddCourse /> */}
       {/* <Copyright/> */}
+      {/* <AddNewLearningSkills /> */}
       <Router>
         <SideBar />
         <div style={{ marginLeft: 250, marginTop: 100 }}>
@@ -56,13 +59,27 @@ function App() {
             <Route exact path="/add-teacher" component={AddTeacher} />
             <Route exact path="/add-course" component={AddCourse} />
             <Route exact path="/classroom/create" component={AddNewClassroom} />
+            <Route
+              exact
+              path="/AddNewLearningSkills"
+              component={AddNewLearningSkills}
+            />
+            <Route
+              exact
+              path="/AddCourseActivity"
+              component={AddCourseActivity}
+            />
+            <Route
+              exact
+              path="/AddSpiritualLearning"
+              component={AddSpiritualLearning}
+            />
           </Switch>
         </div>
-        <div style={{marginLeft: 250, marginTop: 100}}>
-        <Copyright />
+        <div style={{ marginLeft: 250, marginTop: 100 }}>
+          <Copyright />
         </div>
       </Router>
-
     </div>
   );
 }
