@@ -42,7 +42,7 @@ function App() {
     <div>
       {/* <Enroll/> */}
       {/* <MeetTable/> */}
-      {/* <Dashboard/> */}
+      {/* <Dashboard /> */}
       {/* <TextEditor/> */}
       {/* <Table/> */}
       {/* <AddCourse /> */}
@@ -72,6 +72,7 @@ function App() {
             <Route exact path="/new-room" component={AddNewRoom} />
             <Route exact path="/teacher-details" component={TeacherDetails} />
             <Route exact path="/add-crm" component={AddCRM} />
+            <Route exact path="/add-admin" component={AddAdmin} />
             <Route
               exact
               path="/student-courses/manage"

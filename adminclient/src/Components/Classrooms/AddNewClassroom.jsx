@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "3%",
   },
   container: {
-    alignItems: "center"
-    // marginLeft: "12%",
+    alignItems: "center",
+    marginLeft: "18%",
   },
 }));
 
@@ -53,9 +53,9 @@ const AddNewClassroom = () => {
       <div>
         <h1 className={classes.mainHeading}>Add a Classroom</h1>
       </div>
-      <Container className={classes.container}>
+      <Container>
         <div>
-          <Grid>
+          <Grid className={classes.container}>
             <Grid item xs={12} lg={9}>
               <Card>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>

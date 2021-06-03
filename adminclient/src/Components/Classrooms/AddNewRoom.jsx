@@ -36,13 +36,13 @@ const useStyles = makeStyles((theme) => ({
     padding: "2%",
   },
   addMore: {
-    fontWeight: "bold",
+    fontWeight: "700",
     textAlign: "center",
     // marginTop: "6%",
-    padding: "12.5%",
+    padding: "1rem",
   },
   container: {
-    marginLeft: "12%",
+    marginLeft: "18%",
     // marginRight: "5%",
   },
   container1: {
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   card3: {
     borderRadius: "0%",
     border: "0.5px solid #ccc",
-    padding: "1rem",
+    padding: "1.1rem",
   },
   card0: {
     borderRadius: "1.5%",
@@ -84,9 +84,9 @@ const AddNewRoom = () => {
       <div>
         <h1 className={classes.mainHeading}>Add a Classroom</h1>
       </div>
-      <Container className={classes.container}>
+      <Container>
         <div>
-          <Grid>
+          <Grid className={classes.container}>
             <Grid item xs={12} lg={9}>
               <Card className={classes.card0}>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
