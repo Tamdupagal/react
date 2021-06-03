@@ -25,15 +25,6 @@ import Attendance from "./Components/Attendances/Attendance";
 import StudentCourses from "./Components/Student Courses/StudentCourses";
 import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse";
 
-// const useStyles = makeStyles( () => ({
-//   mobile: {
-//     marginLeft: 0
-//   },
-//   desktop:{
-//     marginLeft: 250
-//   }
-// }))
-
 function App() {
   let marginLeft;
   if (window.innerWidth <= 700) marginLeft = "0px";

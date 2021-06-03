@@ -38,6 +38,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TeacherDetails = () => {
+  let data = [1,2,4]
+
+  const renderTable = (data, index) =>{
+    <TableRow>
+      <TableCell>{data}</TableCell>
+      <TableCell>{data}</TableCell>
+    </TableRow>
+  }
+
   const classes = useStyles();
   return (
     <div>
@@ -50,10 +59,73 @@ const TeacherDetails = () => {
             <Grid item xs={12} sm={6}>
               <Divider className={classes.dividerInset1} />
               <h3 className={classes.subheading1}>TEACHER'S INFORMATION</h3>
+              <Card>
+              <h3 style={{textAlign: "center"}}>Demo Teacher</h3>
+              <Card style={{margin: "3%"}}>
+                <Divider/>
+                <TableContainer component={Paper}>
+                <Table Striped>
+                <TableBody>
+                  {/* {/* {data.map((info)=>( */}
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  {/* ))} */}
+                  {/* {
+                  data.map(renderTable)
+                  } */}
+                </TableBody>
+                </Table>
+                </TableContainer>
+              </Card>
+              </Card>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Divider className={classes.dividerInset2} />
               <h3 className={classes.subheading1}>OTHER INFORMATION</h3>
+              <Card>
+              <h3 style={{textAlign: "center"}}>Demo Teacher</h3>
+              <Card style={{margin: "3%"}}>
+                <Divider/>
+                <TableContainer component={Paper}>
+                <Table aria-label="customized table">
+                <TableBody>
+                  {/* {/* {data.map((info)=>( */}
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Khushboo</TableCell>
+                  </TableRow>
+                  
+                  {/* ))} */}
+                  {/* {
+                  data.map(renderTable)
+                  } */}
+                </TableBody>
+                </Table>
+                </TableContainer>
+              </Card>
+              </Card>
             </Grid>
           </Grid>
         </div>
