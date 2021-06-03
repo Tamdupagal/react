@@ -14,6 +14,7 @@ import AddMeet from "./Components/MeetLinks/AddMeet";
 import AddStudent from "./Components/Students/AddStudent";
 import AddTeacher from "./Components/Teacher/AddTeacher";
 import TeacherDetails from "./Components/Teacher/TeacherDetails";
+import TeacherTimeline from "./Components/Teacher/TeacherTimeline";
 import AddCourse from "./Components/Courses/AddCourse";
 import AddNewRoom from "./Components/Classrooms/AddNewRoom";
 import AddCRM from "./Components/Operations/AddCRM";
@@ -64,6 +65,7 @@ function App() {
             <Route exact path="/teacher-details" component={TeacherDetails} />
             <Route exact path="/add-crm" component={AddCRM} />
             <Route exact path="/add-admin" component={AddAdmin} />
+            <Route exact path="/teacher-timeline" component={TeacherTimeline} />
             <Route
               exact
               path="/student-courses/manage"
