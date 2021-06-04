@@ -1,0 +1,56 @@
+@import "../sass/variable";
+
+.table__wrapper {
+  padding: 2rem;
+}
+table {
+  display: table;
+  position: relative;
+  border-collapse: separate;
+  width: 100%;
+  empty-cells: hide !important;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  th,
+  td {
+    border: 0.1rem solid rgba($black, 0.2);
+    text-align: center;
+    color: black;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-size: 1.45rem;
+    @media screen and (max-width: 400px) {
+      font-size: 1.2rem;
+    }
+  }
+  th {
+    background-color: $primary_bg_color;
+    color: white;
+    padding: 1.5rem 0;
+    letter-spacing: 0.1rem;
+  }
+  td {
+    font-weight: 500;
+  }
+  tr:nth-child(even) {
+    background-color: $light_black;
+  }
+  &.dark {
+    background-color: transparent;
+    & th {
+      color: white;
+      background-color: #ffffff26;
+      background-color: #065051;
+    }
+    & td {
+      color: #e4e4e4;
+    }
+    & th,
+    td {
+      border: 0.1rem solid #ffffff28;
+    }
+    tr:nth-child(even) {
+      background-color: #30522f25;
+    }
+  }
+}

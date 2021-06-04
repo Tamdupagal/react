@@ -8,9 +8,21 @@ function Context({children}) {
     const [toggle, setToggle] = useState(false)
     const [slotState, setSlotState] = useState([" "]);
     const [toggleForm, setToggleForm] = useState(false);
+    const [theme, setTheme] = useState(false);
 
     return (
-        <context.Provider value={{toggle, setToggle, slotState, setSlotState, setToggleForm, toggleForm}}>
+        <context.Provider value={
+            {
+                toggle,
+                setToggle,
+                slotState,
+                setSlotState,
+                setToggleForm,
+                toggleForm,
+                setTheme,
+                theme,
+            }
+        }>
             {children}
         </context.Provider>
     )

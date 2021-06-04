@@ -1,0 +1,12 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.assignment_button {
+  color: $white;
+  text-decoration: none;
+  background-color: #28a745;
+  font-size: $font_size;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: $border_rad;
+}
