@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import MaterialTable from "material-table";
 import { Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
@@ -8,11 +8,16 @@ import { attendanceData } from "../Helpers/attendanceData";
 
 const Attendance = () => {
   const history = useHistory();
+  const [data, setData]= useState();
 
   const handleAttendanceReport = () => {
     history.push("/attendance/report");
   };
-  const data = { attendanceData };
+  // const data = attendanceData;
+  useEffect(() => {
+   setData(attendanceData);  
+  }, [])
+  
   const Columns = [
     { title: "Name", field: "DclassName" },
     { title: "Teacher", field: "teacher" },
@@ -24,7 +29,7 @@ const Attendance = () => {
     {
       title: "Lectures Completed",
       field: "LecturesComplete",
-      render: (row) => <div>Hello</div>,
+      // render: (row) => <div>Hello</div>,
     },
     {
       title: "Actions",
@@ -53,24 +58,19 @@ const Attendance = () => {
         {" "}
         <MaterialTable
           title="Attendances"
-          attendanceData={data}
+          // attendanceData={data}
+          data={data}
           columns={Columns}
           options={{
             exportButton: true,
             border: true,
             headerStyle: {
-              // backgroundColor: "pink"
               border: "0.5px solid #ccc",
             },
             cellStyle: {
               border: "0.5px solid #ccc",
             },
           }}
-          //   actions ={[
-          //       {
-
-          //       }
-          //   ]}
           style={{ border: "0.5px solid #ccc" }}
         />
       </Container>

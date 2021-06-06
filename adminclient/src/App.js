@@ -26,6 +26,7 @@ import AddNewClassroom from "./Pages/AddNewClassroom";
 import Attendance from "./Pages/Attendance";
 import StudentCourses from "./Components/Student Courses/StudentCourses";
 import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse";
+import AddLecture from "./Pages/AddLecture";
 
 function App() {
   let marginLeft;
@@ -73,6 +74,7 @@ function App() {
             <Route exact path="/add-admin" component={AddAdmin} />
             <Route exact path="/teacher-timeline" component={TeacherTimeline} />
             <Route exact path="/students-table" component={Students} />
+            <Route exact path="/add-lecture" component={AddLecture} />
             <Route
               exact
               path="/student-courses/manage"
@@ -95,9 +97,9 @@ function App() {
             />
           </Switch>
         </div>
-        <div style={{ marginLeft: 250, marginTop: 100 }}>
+        {/* <div style={{ marginLeft: 250,marginBottom: "0px"}}>
           <Copyright />
-        </div>
+        </div> */}
       </Router>
     </div>
   );

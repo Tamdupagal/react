@@ -2,16 +2,13 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import { Button, Card, CardHeader } from "@material-ui/core";
-import FastRewindIcon from "@material-ui/icons/FastRewind";
 import Divider from "@material-ui/core/Divider";
-import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   dividerInset1: {
     margin: `10px 0 0 ${theme.spacing(29)}px`,
-    // zIndex: "1",
     marginBottom: "-29px",
   },
   dividerInset2: {
@@ -40,11 +36,13 @@ const useStyles = makeStyles((theme) => ({
 const TeacherDetails = () => {
   let data = [1,2,4]
 
-  const renderTable = (data, index) =>{
+  const renderTable = (data) =>{
+    return(
     <TableRow>
-      <TableCell>{data}</TableCell>
-      <TableCell>{data}</TableCell>
+      <TableCell>Khushboo</TableCell>
+      <TableCell>Khushboo</TableCell>
     </TableRow>
+    )
   }
 
   const classes = useStyles();
@@ -66,27 +64,9 @@ const TeacherDetails = () => {
                 <TableContainer component={Paper}>
                 <Table Striped>
                 <TableBody>
-                  {/* {/* {data.map((info)=>( */}
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  {/* ))} */}
-                  {/* {
+                  {
                   data.map(renderTable)
-                  } */}
+                  }
                 </TableBody>
                 </Table>
                 </TableContainer>
@@ -103,24 +83,9 @@ const TeacherDetails = () => {
                 <TableContainer component={Paper}>
                 <Table aria-label="customized table">
                 <TableBody>
-                  {/* {/* {data.map((info)=>( */}
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Khushboo</TableCell>
-                  </TableRow>
-                  
-                  {/* ))} */}
-                  {/* {
+                  {
                   data.map(renderTable)
-                  } */}
+                  }
                 </TableBody>
                 </Table>
                 </TableContainer>

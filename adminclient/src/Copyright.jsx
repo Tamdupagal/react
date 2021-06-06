@@ -9,6 +9,7 @@ const Copyright = () => {
       style={{
         position: "fixed",
         marginTop: "38vh",
+        // marginBottom: "0px",
         borderTop: "0.4vh solid #ccc",
       }}
     >
