@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#33334d",
   },
   container: {
-    // border: "0px",
     paddingBottom: "5vh",
     borderBottom: "3px solid #ccc",
   },

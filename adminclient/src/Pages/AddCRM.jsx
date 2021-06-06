@@ -1,45 +1,10 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
-
-const useStyles = makeStyles((theme) => ({
-  main: {
-    position: "relative",
-    marginLeft: "25%",
-  },
-  mainHeading: {
-    justifyContent: "center",
-    textAlign: "center",
-    fontFamily: "'Exo', sans-serif",
-    marginTop: "3%",
-    marginBottom: "3%",
-  },
-  textField: {
-    width: "90%",
-    marginLeft: "5%",
-  },
-  infoHeading: {
-    marginLeft: "5%",
-    marginBottom: "1px",
-    fontSize: "0.9rem",
-    color: "#29293d",
-    fontFamily: "'Roboto', sans-serif",
-    letterSpacing: "0.01rem",
-  },
-  card: {
-    width: "100%",
-  },
-  submitBtn: {
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: "2%",
-    padding: "2%",
-  },
-}));
+import {useStyles} from "./../Styles/AddCrmStyle"
 
 const AddCRM = () => {
   const [value, setValue] = React.useState("interview");
@@ -57,7 +22,6 @@ const AddCRM = () => {
         </div>
         <div className={classes.main}>
           <Grid>
-            {/* <Grid item xs={12} lg={3}></Grid> */}
             <Grid item xs={12} lg={8}>
               <Card className={classes.card}>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
@@ -104,7 +68,6 @@ const AddCRM = () => {
                 </div>
               </Card>
             </Grid>
-            {/* <Grid item xs={12} lg={3}></Grid> */}
           </Grid>
         </div>
       </Container>

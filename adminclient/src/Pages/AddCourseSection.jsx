@@ -11,15 +11,6 @@ const useStyles = makeStyles({
            minWidth: 460,
             marginTop: "10px"
        },
-    //    btn:{
-    //        backgroundColor: "#008080",
-    //        color: "white",
-    //        padding: "10px 25px",
-    //        borderRadius: ".5rem",
-    //        "&:hover": {
-    //         backgroundColor: '#008080'
-    //       }
-    //    } 
 })
 
 const AddCourseSection = (props) => {
