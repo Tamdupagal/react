@@ -38,12 +38,10 @@ const useStyles = makeStyles((theme) => ({
   addMore: {
     fontWeight: "700",
     textAlign: "center",
-    // marginTop: "6%",
     padding: "1rem",
   },
   container: {
     marginLeft: "18%",
-    // marginRight: "5%",
   },
   container1: {
     marginLeft: "4%",
