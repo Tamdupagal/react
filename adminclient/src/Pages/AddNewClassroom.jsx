@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.01rem",
   },
   submitBtn: {
-    fontWeight: "bold",
+    fontWeight: "700",
     textAlign: "center",
     margin: "3%",
   },

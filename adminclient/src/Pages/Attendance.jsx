@@ -4,75 +4,15 @@ import { Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 // import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
+import { attendanceData } from "../Helpers/attendanceData";
 
-const Students = () => {
+const Attendance = () => {
   const history = useHistory();
-  const data = [
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "5",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "priya",
-      student: "0",
-      LecturesComplete: "2",
-    },
-    {
-      DclassName: "phy",
-      teacher: "isha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "sci",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "2",
-    },
-  ];
 
   const handleAttendanceReport = () => {
     history.push("/attendance/report");
   };
+  const data = { attendanceData };
   const Columns = [
     { title: "Name", field: "DclassName" },
     { title: "Teacher", field: "teacher" },
@@ -113,7 +53,7 @@ const Students = () => {
         {" "}
         <MaterialTable
           title="Attendances"
-          data={data}
+          attendanceData={data}
           columns={Columns}
           options={{
             exportButton: true,
@@ -138,4 +78,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default Attendance;

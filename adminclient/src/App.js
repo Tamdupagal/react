@@ -1,28 +1,29 @@
 import SideBar from "./Components/SideBar/sideBar";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Dashboard from "./Pages/Dashboard";
 import { Container } from "react-bootstrap";
-import Enroll from "./Components/Enrollment/Enroll";
-import MeetTable from "./Components/MeetLinks/MeetTable";
+import Enroll from "./Pages/Enroll";
+import MeetTable from "./Pages/MeetTable";
 import AddNewLearningSkills from "./Components/TextEditor/AddNewLearningSkills";
 import AddCourseActivity from "./Components/TextEditor/AddCourseActivity";
 import AddSpiritualLearning from "./Components/TextEditor/AddSpiritualLearning";
-import OneToOne from "./Components/Classrooms/OneToOne";
+import OneToOne from "./Pages/OneToOne";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useState } from "react";
-import Courses from "./Components/Courses/Courses";
-import AddMeet from "./Components/MeetLinks/AddMeet";
+import Courses from "./Pages/Courses";
+import AddMeet from "./Pages/AddMeet";
 import AddStudent from "./Components/Students/AddStudent";
+import Students from "./Components/Students/Students";
 import AddTeacher from "./Components/Teacher/AddTeacher";
 import TeacherDetails from "./Components/Teacher/TeacherDetails";
 import TeacherTimeline from "./Components/Teacher/TeacherTimeline";
 import AddCourse from "./Components/Courses/AddCourse";
-import AddNewRoom from "./Components/Classrooms/AddNewRoom";
-import AddCRM from "./Components/Operations/AddCRM";
-import AddAdmin from "./Components/Operations/AddAdmin";
+import AddNewRoom from "./Pages/AddNewRoom";
+import AddCRM from "./Pages/AddCRM";
+import AddAdmin from "./Pages/AddAdmin";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
-import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
-import Attendance from "./Components/Attendances/Attendance";
+import AddNewClassroom from "./Pages/AddNewClassroom";
+import Attendance from "./Pages/Attendance";
 import StudentCourses from "./Components/Student Courses/StudentCourses";
 import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse";
 
@@ -44,7 +45,12 @@ function App() {
       {/* <ManageStudentCourse/> */}
       <Router>
         <SideBar />
-        <div style={{ marginLeft: 250, marginTop: 100 }}>
+        <div
+          style={{
+            marginLeft: 250,
+            marginTop: 100,
+          }}
+        >
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
@@ -66,6 +72,7 @@ function App() {
             <Route exact path="/add-crm" component={AddCRM} />
             <Route exact path="/add-admin" component={AddAdmin} />
             <Route exact path="/teacher-timeline" component={TeacherTimeline} />
+            <Route exact path="/students-table" component={Students} />
             <Route
               exact
               path="/student-courses/manage"
@@ -88,9 +95,9 @@ function App() {
             />
           </Switch>
         </div>
-        {/* <div style={{ marginLeft: 250, marginTop: 100 }}>
+        <div style={{ marginLeft: 250, marginTop: 100 }}>
           <Copyright />
-        </div> */}
+        </div>
       </Router>
     </div>
   );
