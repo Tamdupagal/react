@@ -27,30 +27,24 @@ import Attendance from "./Pages/Attendance";
 import StudentCourses from "./Pages/StudentCourses";
 import ManageStudentCourse from "./Pages/ManageStudentCourse";
 import AddLecture from "./Pages/AddLecture";
+let marginLeft;
+if (window.innerWidth <= 700) marginLeft = "0px";
+else marginLeft = "250px";
+
+const useStyles = makeStyles({
+  root: {
+    marginLeft: `${marginLeft}`,
+    marginTop: 100,
+  },
+});
+
 function App() {
-  let marginLeft;
-  if (window.innerWidth <= 700) marginLeft = "0px";
-  else marginLeft = "250px";
+  const classes = useStyles();
   return (
     <div>
-      {/* <Enroll/> */}
-      {/* <MeetTable/> */}
-      {/* <Dashboard /> */}
-      {/* <TextEditor/> */}
-      {/* <Table/> */}
-      {/* <AddCourse /> */}
-      {/* <Copyright/> */}
-      {/* <AddNewLearningSkills /> */}
-      {/* <AddCRM/> */}
-      {/* <ManageStudentCourse/> */}
       <Router>
         <SideBar />
-        <div
-          style={{
-            marginLeft: 250,
-            marginTop: 100,
-          }}
-        >
+        <div className={classes.root}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />

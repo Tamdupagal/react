@@ -1,74 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Button, Container } from "@material-ui/core";
-import CreateIcon from "@material-ui/icons/Create";
 import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
+import { attendanceData } from "../Helpers/attendanceData";
 
 const OneToOne = () => {
   const history = useHistory();
-  const data = [
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "5",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "priya",
-      student: "0",
-      LecturesComplete: "2",
-    },
-    {
-      DclassName: "phy",
-      teacher: "isha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "sci",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "2",
-    },
-  ];
+  const [data, setData] = useState()
+  useEffect(() => {
+    setData(attendanceData);  
+   }, [])
 
   const handleAddNewClassroom = () => {
     history.push("/classroom/create");
@@ -108,12 +50,6 @@ const OneToOne = () => {
           data={data}
           columns={Columns}
           options={{ exportButton: true }}
-          // actions ={
-          //   <Button>Hi</Button>
-          // }
-          // components={{
-          //   Row: props => <CustomRow {...props} />
-          // }}
         />
       </Container>
     </div>

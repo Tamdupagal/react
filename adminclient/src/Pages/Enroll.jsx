@@ -14,8 +14,6 @@ import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
 import { useHistory } from "react-router-dom"
 
-
-
 const useStyles = makeStyles({
     root: {
       maxWidth: 800,

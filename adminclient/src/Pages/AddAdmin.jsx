@@ -1,40 +1,10 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
-
-const useStyles = makeStyles((theme) => ({
-  mainHeading: {
-    textAlign: "center",
-    fontFamily: "'Exo', sans-serif",
-    marginTop: "5%",
-    marginBottom: "5%",
-  },
-  textField: {
-    width: "90%",
-    marginLeft: "5%",
-  },
-  infoHeading: {
-    marginLeft: "5%",
-    marginBottom: "1px",
-    fontSize: "0.9rem",
-    color: "#29293d",
-    fontFamily: "'Roboto', sans-serif",
-    letterSpacing: "0.01rem",
-  },
-  submitBtn: {
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: "2%",
-    padding: "2%",
-  },
-  main: {
-    marginLeft: "18%",
-  },
-}));
+import {useStyles} from "./../Styles/AddAdminStyle"
 
 const AddAdmin = () => {
   const [value, setValue] = React.useState("All");
@@ -100,5 +70,4 @@ const AddAdmin = () => {
     </div>
   );
 };
-
 export default AddAdmin;
