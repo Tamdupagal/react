@@ -15,7 +15,7 @@ import AddStudent from "./Pages/AddStudent";
 import Students from "./Pages/Students";
 import AddTeacher from "./Pages/AddTeacher";
 import TeacherDetails from "./Pages/TeacherDetails";
-import TeacherTimeline from "./Pages/TeacherTimeline";
+import TeacherHistory from "./Pages/TeacherHistory";
 import AddCourse from "./Components/Courses/AddCourse";
 import AddNewRoom from "./Pages/AddNewRoom";
 import AddCRM from "./Pages/AddCRM";
@@ -28,6 +28,7 @@ import StudentCourses from "./Pages/StudentCourses";
 import ManageStudentCourse from "./Pages/ManageStudentCourse";
 import AddLecture from "./Pages/AddLecture";
 import AddNewLecture from "./Pages/AddNewLecture";
+import ViewClassroomHistory from "./Pages/ViewClassroomHistory";
 
 let marginLeft;
 if (window.innerWidth <= 700) marginLeft = "0px";
@@ -67,11 +68,12 @@ function App() {
             <Route exact path="/teacher-details" component={TeacherDetails} />
             <Route exact path="/add-crm" component={AddCRM} />
             <Route exact path="/add-admin" component={AddAdmin} />
-            <Route exact path="/teacher-timeline" component={TeacherTimeline} />
+            <Route exact path="/teacher-timeline" component={TeacherHistory} />
             <Route exact path="/students-table" component={Students} />
             <Route exact path="/add-lecture" component={AddLecture} />
             <Route exact path="/lectures/create" component={AddNewLecture} />
-
+            <Route exact path="/attendance/report" component={AddNewLecture}/>
+            <Route exact path="/classrooms/timeline" component={ViewClassroomHistory}/>
             <Route
               exact
               path="/student-courses/manage"

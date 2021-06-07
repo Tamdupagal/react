@@ -71,7 +71,7 @@ const Dashboard = () => {
               </div>
             </Card>
           </Grid>
-          <Divider className={classes.dividerInset1} />
+          <Divider/>
         </Grid>
       </Container>
     </div>

@@ -17,8 +17,8 @@ const useStyles = makeStyles({
            borderRadius: ".5rem",
            "&:hover": {
             backgroundColor: '#008080'
-          }
-       } 
+        }
+    }
 })
 
 const AddMeet = (props) => {
