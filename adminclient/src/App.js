@@ -58,7 +58,7 @@ function App() {
             <Route exact path="/students" component={OneToOne} />
             <Route exact path="/student-courses" component={StudentCourses} />
             <Route exact path="/attendances" component={Attendance} />
-            <Route exact path="/teachers" component={Courses} />
+            <Route exact path="/teachers" component={TeacherHistory} />
             <Route exact path="/add-meet" component={AddMeet} />
             <Route exact path="/add-student" component={AddStudent} />
             <Route exact path="/add-teacher" component={AddTeacher} />
