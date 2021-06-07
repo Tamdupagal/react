@@ -27,6 +27,8 @@ import Attendance from "./Pages/Attendance";
 import StudentCourses from "./Pages/StudentCourses";
 import ManageStudentCourse from "./Pages/ManageStudentCourse";
 import AddLecture from "./Pages/AddLecture";
+import AddNewLecture from "./Pages/AddNewLecture";
+
 let marginLeft;
 if (window.innerWidth <= 700) marginLeft = "0px";
 else marginLeft = "250px";
@@ -68,6 +70,8 @@ function App() {
             <Route exact path="/teacher-timeline" component={TeacherTimeline} />
             <Route exact path="/students-table" component={Students} />
             <Route exact path="/add-lecture" component={AddLecture} />
+            <Route exact path="/lectures/create" component={AddNewLecture} />
+
             <Route
               exact
               path="/student-courses/manage"

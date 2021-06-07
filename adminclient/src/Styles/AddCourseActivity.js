@@ -21,19 +21,15 @@ export const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: "10px",
     marginLeft: "5%",
     padding: "3%",
-    // marginTop: "2%",
     marginBottom: "2%",
   },
   paper1: {
-    // marginTop: "2%",
     padding: theme.spacing(2),
-    // textAlign: "center",
     color: theme.palette.text.secondary,
   },
   paper: {
     marginTop: "2%",
     padding: theme.spacing(0.2),
-    // textAlign: "center",
     color: theme.palette.text.secondary,
   },
   uploadimg: {
@@ -56,10 +52,6 @@ export const useStyles = makeStyles((theme) => ({
     color: "#302e2e",
     backgroundColor: "#f0f5f5",
     letterSpacing: "0.1rem",
-    // marginLeft: "0%",
-    // marginBottom: "5%",
-    // marginTop: "50%",
-    // paddingTop: "1%",
     zIndex: "1",
   },
   dividerInset: {
@@ -71,9 +63,6 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "6%",
   },
   submitBtn: {
-    // display: "flex",
-    // alignItems: "center",
-    // justifyContent: "center",
     textAlign: "center",
     margin: "4%",
     marginTop: "4%",
