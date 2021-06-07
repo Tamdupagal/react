@@ -4,8 +4,16 @@ import { Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 // import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
+import { MTableToolbar, MTableBodyRow } from "material-table";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
+});
 
 const Students = () => {
+  const classes = useStyles();
+
   const history = useHistory();
   const data = [
     {
@@ -112,26 +120,38 @@ const Students = () => {
       <Container>
         {" "}
         <MaterialTable
-          title="Attendances"
+          title="Students"
           data={data}
           columns={Columns}
           options={{
             exportButton: true,
             border: true,
+
             headerStyle: {
-              // backgroundColor: "pink"
               border: "0.5px solid #ccc",
+              backgroundColor: "#9cb3c9",
+              fontSize: "1.2rem",
+              fontWeight: "800",
+              fontFamily: "KoHo, sans-serif",
+              letterSpacing: "0.07rem",
             },
+
+            rowStyle: (rowData) => ({
+              backgroundColor:
+                rowData.tableData.id % 2 === 0 ? "#FFF" : "#eff2f6",
+              fontWeight: "600",
+              fontSize: "1rem",
+              rowStyle: "#486684",
+            }),
             cellStyle: {
               border: "0.5px solid #ccc",
             },
           }}
-          //   actions ={[
-          //       {
-
-          //       }
-          //   ]}
-          style={{ border: "0.5px solid #ccc" }}
+          components={{
+            Row: (props) => (
+              <MTableBodyRow className={classes.tableRow} {...props} />
+            ),
+          }}
         />
       </Container>
     </div>

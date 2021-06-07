@@ -50,14 +50,14 @@ function App() {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/Enroll" component={Enroll} />
-            <Route exact path="/MeetLink" component={MeetTable} />
-            <Route exact path="/Courses" component={Courses} />
-            <Route exact path="/Classroom" component={OneToOne} />
-            <Route exact path="/Students" component={OneToOne} />
-            <Route exact path="/Student-courses" component={StudentCourses} />
-            <Route exact path="/Attendances" component={Attendance} />
-            <Route exact path="/Teachers" component={Courses} />
+            <Route exact path="/enroll" component={Enroll} />
+            <Route exact path="/meetLink" component={MeetTable} />
+            <Route exact path="/courses" component={Courses} />
+            <Route exact path="/classroom" component={OneToOne} />
+            <Route exact path="/students" component={OneToOne} />
+            <Route exact path="/student-courses" component={StudentCourses} />
+            <Route exact path="/attendances" component={Attendance} />
+            <Route exact path="/teachers" component={Courses} />
             <Route exact path="/add-meet" component={AddMeet} />
             <Route exact path="/add-student" component={AddStudent} />
             <Route exact path="/add-teacher" component={AddTeacher} />
