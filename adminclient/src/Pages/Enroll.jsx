@@ -7,36 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, FormHelperText } from "@material-ui/core";
 import CardHeader from '@material-ui/core/CardHeader';
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
 import { useHistory } from "react-router-dom"
-
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 800,
-    },
-    media: {
-      height: 100,
-    },
-    btn:{
-      marginLeft: '10px',
-      paddingLeft: '125px',
-      paddingRight: '125px',
-      marginRight: '0px'
-
-    },box: {
-      display: "flex",
-      padding: 8
-    },
-    spreadBox: {
-      justifyContent: "space-around",
-      alignItems: "center"
-    }
-  });
-
+import {useStyles} from "./../Styles/Enroll"
 const Enroll = () => {
     const classes = useStyles();
     const history = useHistory()

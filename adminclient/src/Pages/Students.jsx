@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
-// import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
-import { MTableToolbar, MTableBodyRow } from "material-table";
+import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
+import {attendanceData} from "./../Helpers/attendanceData"
+
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
@@ -13,74 +14,18 @@ const useStyles = makeStyles({
 
 const Students = () => {
   const classes = useStyles();
-
   const history = useHistory();
-  const data = [
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "5",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "priya",
-      student: "0",
-      LecturesComplete: "2",
-    },
-    {
-      DclassName: "phy",
-      teacher: "isha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "sci",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "2",
-    },
-  ];
+  
+  const [data, setData]=useState();
+  
+  useEffect(() => {
+    setData(attendanceData)  
+  }, [])
 
   const handleAttendanceReport = () => {
     history.push("/attendance/report");
   };
+
   const Columns = [
     { title: "Name", field: "DclassName" },
     { title: "Teacher", field: "teacher" },
