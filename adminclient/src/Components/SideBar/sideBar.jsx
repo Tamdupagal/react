@@ -31,10 +31,10 @@ let display;
 let contentMargin;
 
 if (window.innerWidth <= 600) {
-  shift = 0;
+  shift = drawerWidth;
   contentMargin = -drawerWidth;
 } else {
-  contentMargin = 0;
+  contentMargin = -drawerWidth;
   shift = drawerWidth;
   display = "none";
 }
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme)=>({
         position: 'fixed',
       },
       appBarShift: {
-        width: `calc(100% - ${shift}px)`,
+        width: `calc(100% - 250px)`,
         marginLeft: 0,
         // justifyContent: "space-between"
 
@@ -187,7 +187,7 @@ const SideBar = () => {
                         className={clsx(classes.menuButton, open && classes.hide)}
                         color="secondary"
                         // aria-label="open drawer"
-                        // onClick={handleDrawerOpen}
+                        onClick={handleDrawerOpen}
                         edge="start">
                         <MenuIcon className={clsx(open)}/>
                         {/* <MenuIcon/> */}
