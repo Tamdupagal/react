@@ -42,7 +42,7 @@ const Attendance = () => {
       title: "Actions",
       field: "name",
       render: (row) => (
-        <div>
+        <div style={{ fontWeight: "700" }}>
           <Button
             variant="contained"
             style={{

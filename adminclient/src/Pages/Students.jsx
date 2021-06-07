@@ -6,7 +6,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import { useHistory } from "react-router";
 import { MTableToolbar, MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
-
+import StudentActions from "./StudentActions";
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
 });
@@ -99,7 +99,7 @@ const Students = () => {
       field: "name",
       render: (row) => (
         <div>
-          <Button
+          {/* <Button
             variant="contained"
             style={{
               backgroundColor: "#17a2b8",
@@ -110,7 +110,9 @@ const Students = () => {
             onClick={handleAttendanceReport}
           >
             <CreateIcon /> View Attendance Report
-          </Button>
+          
+          </Button> */}
+          <StudentActions />
         </div>
       ),
     },

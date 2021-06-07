@@ -5,6 +5,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 const useStyles = makeStyles({
   root: {
@@ -20,23 +21,24 @@ const ClassroomActions = () => {
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#17a2b8",
             color: "white",
             borderColor: "#17a2b8",
             borderRadius: "4px",
-            fontSize: "small",
+            fontSize: "large",
+            fontWeight: "700",
           }}
         >
-          <CreateIcon />
+          <div Style={{ fontWeight: "700" }}>DETAIL</div>
         </button>
       </Tooltip>
       <Tooltip title="Add Lecture" placement="top">
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#77c13a",
             color: "white",
@@ -45,14 +47,14 @@ const ClassroomActions = () => {
             fontSize: "small",
           }}
         >
-          <AddIcon />
+          <VisibilityIcon />
         </button>
       </Tooltip>
       <Tooltip title="View Classroom History" placement="top">
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#5567ff",
             color: "white",
@@ -68,7 +70,7 @@ const ClassroomActions = () => {
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#d9534f",
             color: "white",

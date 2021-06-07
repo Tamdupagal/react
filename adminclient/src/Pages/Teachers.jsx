@@ -2,16 +2,18 @@ import React from "react";
 import MaterialTable from "material-table";
 import { Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
-import { makeStyles } from "@material-ui/core/styles";
+// import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
 import { MTableToolbar, MTableBodyRow } from "material-table";
-
+import { makeStyles } from "@material-ui/core/styles";
+import TeacherActions from "./TeacherActions";
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
 });
 
-const StudentCourses = () => {
+const Teachers = () => {
   const classes = useStyles();
+
   const history = useHistory();
   const data = [
     {
@@ -76,8 +78,8 @@ const StudentCourses = () => {
     },
   ];
 
-  const handleManageCourse = () => {
-    history.push("/student-courses/manage");
+  const handleAttendanceReport = () => {
+    history.push("/attendance/report");
   };
   const Columns = [
     { title: "Name", field: "DclassName" },
@@ -85,7 +87,7 @@ const StudentCourses = () => {
     {
       title: "Student",
       field: "student",
-      Style: { border: "0.5px solid #ccc" },
+      Style: { border: "1px solid black" },
     },
     {
       title: "Lectures Completed",
@@ -96,8 +98,8 @@ const StudentCourses = () => {
       title: "Actions",
       field: "name",
       render: (row) => (
-        <div style={{ fontWeight: "700" }}>
-          <Button
+        <div>
+          {/* <Button
             variant="contained"
             style={{
               backgroundColor: "#17a2b8",
@@ -105,26 +107,27 @@ const StudentCourses = () => {
               color: "white",
               fontSize: "small",
             }}
-            onClick={handleManageCourse}
+            onClick={handleAttendanceReport}
           >
-            <CreateIcon /> Manage Student Course
-          </Button>
+            <CreateIcon /> View Attendance Report
+          </Button> */}
+          <TeacherActions />
         </div>
       ),
     },
   ];
-
   return (
     <div>
       <Container>
         {" "}
         <MaterialTable
-          title="Student-courses"
+          title="Students"
           data={data}
           columns={Columns}
           options={{
             exportButton: true,
             border: true,
+
             headerStyle: {
               border: "0.5px solid #ccc",
               backgroundColor: "#9cb3c9",
@@ -133,9 +136,7 @@ const StudentCourses = () => {
               fontFamily: "KoHo, sans-serif",
               letterSpacing: "0.07rem",
             },
-            cellStyle: {
-              border: "0.5px solid #ccc",
-            },
+
             rowStyle: (rowData) => ({
               backgroundColor:
                 rowData.tableData.id % 2 === 0 ? "#FFF" : "#eff2f6",
@@ -143,6 +144,9 @@ const StudentCourses = () => {
               fontSize: "1rem",
               rowStyle: "#486684",
             }),
+            cellStyle: {
+              border: "0.5px solid #ccc",
+            },
           }}
           components={{
             Row: (props) => (
@@ -155,4 +159,4 @@ const StudentCourses = () => {
   );
 };
 
-export default StudentCourses;
+export default Teachers;

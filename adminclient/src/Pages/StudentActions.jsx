@@ -5,6 +5,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 const useStyles = makeStyles({
   root: {
@@ -12,15 +13,15 @@ const useStyles = makeStyles({
   },
 });
 
-const ClassroomActions = () => {
+const StudentActions = () => {
   const classes = useStyles();
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Edit Classroom" placement="top">
+      <Tooltip title="Manage Student" placement="top">
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#17a2b8",
             color: "white",
@@ -29,10 +30,10 @@ const ClassroomActions = () => {
             fontSize: "small",
           }}
         >
-          <CreateIcon />
+          <VisibilityIcon />
         </button>
       </Tooltip>
-      <Tooltip title="Add Lecture" placement="top">
+      {/* <Tooltip title="Add Lecture" placement="top">
         <button
           size="small"
           style={{
@@ -47,12 +48,12 @@ const ClassroomActions = () => {
         >
           <AddIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="View Classroom History" placement="top">
+      </Tooltip> */}
+      <Tooltip title="Student's History" placement="top">
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#5567ff",
             color: "white",
@@ -68,7 +69,7 @@ const ClassroomActions = () => {
         <button
           size="small"
           style={{
-            padding: "0%",
+            padding: "1%",
             marginRight: "3%",
             backgroundColor: "#d9534f",
             color: "white",
@@ -83,4 +84,4 @@ const ClassroomActions = () => {
     </div>
   );
 };
-export default ClassroomActions;
+export default StudentActions;
