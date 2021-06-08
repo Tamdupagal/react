@@ -8,7 +8,7 @@ import AddCourseActivity from "./Components/TextEditor/AddCourseActivity";
 import AddSpiritualLearning from "./Components/TextEditor/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, {useState,useEffect,useContext} from "react";
 import Courses from "./Pages/Courses";
 import AddMeet from "./Pages/AddMeet";
 import AddStudent from "./Pages/AddStudent";
@@ -29,6 +29,20 @@ import ManageStudentCourse from "./Pages/ManageStudentCourse";
 import AddLecture from "./Pages/AddLecture";
 import AddNewLecture from "./Pages/AddNewLecture";
 import ViewClassroomHistory from "./Pages/ViewClassroomHistory";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {mobileView} from './action/actions';
+import {AppContext} from './AppContext';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#218a21'
+    },
+    secondary: {
+      main: '#1388e8'
+    }
+  }
+});
 
 let marginLeft;
 if (window.innerWidth <= 700) marginLeft = "0px";
@@ -42,8 +56,23 @@ const useStyles = makeStyles({
 });
 
 function App() {
+  const {state,dispatch}= useContext(AppContext);
+  const [screenWidth,setScreenWidth]= useState(window.innerWidth);
+
+  useEffect(async()=>{
+    console.log(screenWidth);
+    if(window.innerWidth>560)
+      dispatch(mobileView(false));
+    else
+      dispatch(mobileView(true));
+    console.log(screenWidth);
+  },[screenWidth]);
+
+  window.addEventListener("resize", ()=>setScreenWidth(window.innerWidth));
+
   const classes = useStyles();
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <Router>
         <SideBar />
@@ -105,6 +134,7 @@ function App() {
         </div> */}
       </Router>
     </div>
+    </ThemeProvider>
   );
 }
 
