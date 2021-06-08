@@ -10,28 +10,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
-
-const useStyles = makeStyles((theme) => ({
-  mainHeading: {
-    justifyContent: "center",
-    textAlign: "center",
-    fontFamily: "'Exo', sans-serif",
-    marginTop: "3%",
-    marginBottom: "3%",
-  },
-  dividerInset1: {
-    margin: `10px 0 0 ${theme.spacing(29)}px`,
-    marginBottom: "-29px",
-  },
-  dividerInset2: {
-    margin: `10px 0 0 ${theme.spacing(24)}px`,
-    marginBottom: "-29px",
-  },
-  subheading1: {
-    letterSpacing: "0.1rem",
-    fontFamily: "KoHo, sans-serif",
-  },
-}));
+import {useStyles} from "./../Styles/TeacherDetails"
 
 const TeacherDetails = () => {
   let data = [1,2,4]

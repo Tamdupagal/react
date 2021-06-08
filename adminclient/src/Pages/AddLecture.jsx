@@ -1,13 +1,13 @@
 import { Box, Button, Card, CardContent, CardHeader, Container, Divider, Grid, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
 import React from 'react'
-
+import {useHistory} from "react-router-dom"
 const AddLecture = () => {
+    const history = useHistory();
+    const handleAddNewLecture = () =>{
+        history.push("/lectures/create")
+    }
     return (
-        <div>
-            <Box display="flex"alignItems="center" justifyContent= "center">
-            {/* <Box display="flex"alignItems="center" justifyContent= "center"> */}
             <Container >
-                <div>
                     <Grid container 
                     alignItems='center'
                     justify='center'
@@ -16,7 +16,7 @@ const AddLecture = () => {
                             <Card>
                                 <CardHeader title="Lectures"
                                 action={
-                                    <Button variant="contained" color="secondary" >
+                                    <Button variant="contained" color="secondary" onClick={handleAddNewLecture}>
                                         Add New Lecture
                                     </Button>
                                 }
@@ -39,11 +39,7 @@ const AddLecture = () => {
                             </Card>
                         </Grid>
                     </Grid>
-                </div>
             </Container>
-            </Box>
-            {/* </Box> */}
-        </div>
     )
 }
 export default AddLecture

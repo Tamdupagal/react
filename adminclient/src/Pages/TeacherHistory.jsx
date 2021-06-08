@@ -1,13 +1,15 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Table, TableContainer } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Button, Card, CardHeader } from "@material-ui/core";
+import TeacherTimeline from "../Components/Teacher/TeacherTimeline";
+import TeacherLoginActivity from "../Components/Teacher/TeacherLoginActivity";
 
 const useStyles = makeStyles((theme) => ({}));
 
-const TeacherTimeline = () => {
+const TeacherHistory = () => {
   const classes = useStyles();
   return (
     <div>
@@ -15,10 +17,10 @@ const TeacherTimeline = () => {
         <Container>
           <Grid container spacing={4}>
             <Grid item xs={12} md={8}>
-              <Card>hello</Card>
+              <TeacherTimeline/>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Card>hii bye bye</Card>
+              <TeacherLoginActivity/>
             </Grid>
           </Grid>
         </Container>
@@ -27,4 +29,4 @@ const TeacherTimeline = () => {
   );
 };
 
-export default TeacherTimeline;
+export default TeacherHistory;
