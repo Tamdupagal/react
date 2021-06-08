@@ -128,7 +128,6 @@ function AddSpiritualLearning() {
   return (
     <div>
       <Container className={classes.Header}>Add Course Activity</Container>
-
       <Container className={classes.borderbox1}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={8}>
