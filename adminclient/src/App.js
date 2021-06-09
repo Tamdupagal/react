@@ -1,104 +1,156 @@
 import SideBar from "./Components/SideBar/sideBar";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Dashboard from "./Pages/Dashboard";
 import { Container } from "react-bootstrap";
-import Enroll from "./Components/Enrollment/Enroll";
-import MeetTable from "./Components/MeetLinks/MeetTable";
+import Enroll from "./Pages/Enroll";
+import MeetTable from "./Pages/MeetTable";
 import AddNewLearningSkills from "./Components/TextEditor/AddNewLearningSkills";
 import AddCourseActivity from "./Components/TextEditor/AddCourseActivity";
 import AddSpiritualLearning from "./Components/TextEditor/AddSpiritualLearning";
-import OneToOne from "./Components/Classrooms/OneToOne";
+import OneToOne from "./Pages/OneToOne";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { useState } from "react";
-import Courses from "./Components/Courses/Courses";
-import AddMeet from "./Components/MeetLinks/AddMeet";
-import AddStudent from "./Components/Students/AddStudent";
-import AddTeacher from "./Components/Teacher/AddTeacher";
-import TeacherDetails from "./Components/Teacher/TeacherDetails";
+import React, { useState, useEffect, useContext } from "react";
+import Courses from "./Pages/Courses";
+import AddMeet from "./Pages/AddMeet";
+import AddStudent from "./Pages/AddStudent";
+import Students from "./Pages/Students";
+import AddTeacher from "./Pages/AddTeacher";
+import TeacherDetails from "./Pages/TeacherDetails";
+import TeacherHistory from "./Pages/TeacherHistory";
 import AddCourse from "./Components/Courses/AddCourse";
-import AddNewRoom from "./Components/Classrooms/AddNewRoom";
-import AddCRM from "./Components/Operations/AddCRM";
-import AddAdmin from "./Components/Operations/AddAdmin";
+import AddNewRoom from "./Pages/AddNewRoom";
+import AddCRM from "./Pages/AddCRM";
+import AddAdmin from "./Pages/AddAdmin";
 import { makeStyles } from "@material-ui/core";
 import Copyright from "./Copyright";
-import AddNewClassroom from "./Components/Classrooms/AddNewClassroom";
-import Attendance from "./Components/Attendances/Attendance";
-import StudentCourses from "./Components/Student Courses/StudentCourses";
-import ManageStudentCourse from "./Components/Student Courses/ManageStudentCourse";
+import AddNewClassroom from "./Pages/AddNewClassroom";
+import Attendance from "./Pages/Attendance";
+import StudentCourses from "./Pages/StudentCourses";
+import ManageStudentCourse from "./Pages/ManageStudentCourse";
+import AddLecture from "./Pages/AddLecture";
+import AddNewLecture from "./Pages/AddNewLecture";
+import ViewClassroomHistory from "./Pages/ViewClassroomHistory";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { mobileView } from "./action/actions";
+import { AppContext } from "./AppContext";
+import Teachers from "./Pages/Teachers";
+import Operations from "./Pages/Operations";
 
-// const useStyles = makeStyles( () => ({
-//   mobile: {
-//     marginLeft: 0
-//   },
-//   desktop:{
-//     marginLeft: 250
-//   }
-// }))
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#218a21",
+    },
+    secondary: {
+      main: "#1388e8",
+    },
+  },
+});
+
+let marginLeft;
+if (window.innerWidth <= 700) marginLeft = "0px";
+else marginLeft = "250px";
+
+const useStyles = makeStyles({
+  root: {
+    marginLeft: `${marginLeft}`,
+    marginTop: 100,
+  },
+});
 
 function App() {
-  let marginLeft;
-  if (window.innerWidth <= 700) marginLeft = "0px";
-  else marginLeft = "250px";
+  const { state, dispatch } = useContext(AppContext);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // useEffect(async()=>{
+  //   console.log(screenWidth);
+  //   if(window.innerWidth>560)
+  //     dispatch(mobileView(false));
+  //   else
+  //     dispatch(mobileView(true));
+  //   console.log(screenWidth);
+  // },[screenWidth]);
+
+  window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
+
+  const classes = useStyles();
   return (
-    <div>
-      {/* <Enroll/> */}
-      {/* <MeetTable/> */}
-      {/* <Dashboard/> */}
-      {/* <TextEditor/> */}
-      {/* <Table/> */}
-      {/* <AddCourse /> */}
-      {/* <Copyright/> */}
-      {/* <AddNewLearningSkills /> */}
-      {/* <AddCRM/> */}
-      {/* <ManageStudentCourse/> */}
-      <Router>
-        <SideBar />
-        <div style={{ marginLeft: 250, marginTop: 100 }}>
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/Enroll" component={Enroll} />
-            <Route exact path="/MeetLink" component={MeetTable} />
-            <Route exact path="/Courses" component={Courses} />
-            <Route exact path="/Classroom" component={OneToOne} />
-            <Route exact path="/Students" component={OneToOne} />
-            <Route exact path="/Student-courses" component={StudentCourses} />
-            <Route exact path="/Attendances" component={Attendance} />
-            <Route exact path="/Teachers" component={Courses} />
-            <Route exact path="/add-meet" component={AddMeet} />
-            <Route exact path="/add-student" component={AddStudent} />
-            <Route exact path="/add-teacher" component={AddTeacher} />
-            <Route exact path="/add-course" component={AddCourse} />
-            <Route exact path="/classroom/create" component={AddNewClassroom} />
-            <Route exact path="/new-room" component={AddNewRoom} />
-            <Route exact path="/teacher-details" component={TeacherDetails} />
-            <Route exact path="/add-crm" component={AddCRM} />
-            <Route
-              exact
-              path="/student-courses/manage"
-              component={ManageStudentCourse}
-            />
-            <Route
-              exact
-              path="/AddNewLearningSkills"
-              component={AddNewLearningSkills}
-            />
-            <Route
-              exact
-              path="/AddCourseActivity"
-              component={AddCourseActivity}
-            />
-            <Route
-              exact
-              path="/AddSpiritualLearning"
-              component={AddSpiritualLearning}
-            />
-          </Switch>
-        </div>
-        {/* <div style={{ marginLeft: 250, marginTop: 100 }}>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Router>
+          <SideBar />
+          <div className={classes.root}>
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/enroll" component={Enroll} />
+              <Route exact path="/meetLink" component={MeetTable} />
+              <Route exact path="/courses" component={Courses} />
+              <Route exact path="/classroom" component={OneToOne} />
+              <Route exact path="/students" component={Students} />
+              <Route exact path="/student-courses" component={StudentCourses} />
+              <Route exact path="/attendances" component={Attendance} />
+              <Route exact path="/teachers" component={Teachers} />
+              <Route exact path="/add-meet" component={AddMeet} />
+              <Route exact path="/add-student" component={AddStudent} />
+              <Route exact path="/add-teacher" component={AddTeacher} />
+              <Route exact path="/add-course" component={AddCourse} />
+              <Route exact path="/operations" component={Operations} />
+
+              <Route
+                exact
+                path="/classroom/create"
+                component={AddNewClassroom}
+              />
+              <Route exact path="/new-room" component={AddNewRoom} />
+              <Route exact path="/teacher-details" component={TeacherDetails} />
+              <Route exact path="/add-crm" component={AddCRM} />
+              <Route exact path="/add-admin" component={AddAdmin} />
+              <Route
+                exact
+                path="/teacher-timeline"
+                component={TeacherHistory}
+              />
+              <Route exact path="/students-table" component={Students} />
+              <Route exact path="/add-lecture" component={AddLecture} />
+              <Route exact path="/lectures/create" component={AddNewLecture} />
+              <Route
+                exact
+                path="/attendance/report"
+                component={AddNewLecture}
+              />
+              <Route
+                exact
+                path="/classrooms/timeline"
+                component={ViewClassroomHistory}
+              />
+              <Route
+                exact
+                path="/student-courses/manage"
+                component={ManageStudentCourse}
+              />
+              <Route
+                exact
+                path="/learning-skills"
+                component={AddNewLearningSkills}
+              />
+              <Route
+                exact
+                path="/course-activities"
+                component={AddCourseActivity}
+              />
+              <Route
+                exact
+                path="/spiritual-learning"
+                component={AddSpiritualLearning}
+              />
+            </Switch>
+          </div>
+          {/* <div style={{ marginLeft: 250,marginBottom: "0px"}}>
           <Copyright />
         </div> */}
-      </Router>
-    </div>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 

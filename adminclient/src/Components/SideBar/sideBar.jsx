@@ -24,6 +24,11 @@ import { Link, useHistory } from 'react-router-dom'
 import Dropdown from 'react-dropdown';
 import MainLogo from "./../../Images/mainLogo.png"
 import { Image } from "react-bootstrap";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 const drawerWidth = 250;
 let shift;
@@ -31,10 +36,10 @@ let display;
 let contentMargin;
 
 if (window.innerWidth <= 600) {
-  shift = 0;
+  shift = drawerWidth;
   contentMargin = -drawerWidth;
 } else {
-  contentMargin = 0;
+  contentMargin = -drawerWidth;
   shift = drawerWidth;
   display = "none";
 }
@@ -54,7 +59,7 @@ const useStyles = makeStyles((theme)=>({
         position: 'fixed',
       },
       appBarShift: {
-        width: `calc(100% - ${shift}px)`,
+        width: `calc(100% - 250px)`,
         marginLeft: 0,
         // justifyContent: "space-between"
 
@@ -127,6 +132,19 @@ const useStyles = makeStyles((theme)=>({
       },
       view:{
         marginLeft: 250
+      },
+      heading: {
+        fontSize: theme.typography.pxToRem(15),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+      },
+      secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+      },
+      Accordion: {
+        textDecoration: "none",
+        marginLeft: "5%"
       }
       
 }))
@@ -139,27 +157,14 @@ const SideBar = () => {
   const [loading, setLoading]=useState(false)
   const [mobile, setMobile] = useState(false)
   const [dropdown, setDropdown] = useState(true)
-  const showCourse = () =>{
-    return (
+  const [expanded, setExpanded] = useState(false);
 
-    <div>
-      Hiiii
-    </div>
-    )
-  }
-
-  const displayDropdown = () =>{
-    setDropdown(false)
-  }
-  // const handlePage = (page) =>{
-  //   history.push("/MeetLink")
-  // }
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   useEffect(() => {
     setOpen(true);
-    if(window.innerWidth<=700)
-    setMobile(true)
-    setDropdown(true)
   }, []);
 
     const handleDrawerOpen = () => {
@@ -187,7 +192,7 @@ const SideBar = () => {
                         className={clsx(classes.menuButton, open && classes.hide)}
                         color="secondary"
                         // aria-label="open drawer"
-                        // onClick={handleDrawerOpen}
+                        onClick={handleDrawerOpen}
                         edge="start">
                         <MenuIcon className={clsx(open)}/>
                         {/* <MenuIcon/> */}
@@ -198,7 +203,6 @@ const SideBar = () => {
                         size="medium"
                         color="secondary"
                         startIcon={<PowerSettingsNewRoundedIcon />}
-                        // style={{margin: 'auto'}}
                         >
                         Log Out
                         </Button>
@@ -225,21 +229,30 @@ const SideBar = () => {
                     <ListItemText primary="Dashboard" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
-                {/* <div>
-                <ListItem button className={clsx(classes.listText)} onClick={showCourse}>
-                    <ViewQuiltIcon />
-                    <ListItemText primary="Courses" style={{marginLeft: "30px", color:"white"  }}/>
-                    <ChevronRightIcon/>
-                    {showCourse}  
-                </ListItem>
-                </div> */}
-                <Link to="/courses">
-                <ListItem button className={clsx(classes.listText)}>
-                    <ViewQuiltIcon />
-                    <ListItemText primary="Courses" style={{marginLeft: "30px", color:"white"  }}/>
-                    <ChevronRightIcon/>
-                </ListItem>
-                </Link>
+                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} 
+                style={{backgroundColor: "transparent",border: "none",margin: "0%",padding: "0%"}}
+                >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                    >
+                      <ViewQuiltIcon className={clsx(classes.listText)}/>
+                      <Typography style={{marginLeft: "30px", color:"white"}}>Courses</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{margin: "0%",padding: "0%",display: "flex",flexDirection: "column"}}>
+                    <Link to="/courses" className={classes.Accordion}>
+                          <ListItemText primary="Courses" style={{marginLeft: "50px", color:"white"}}/>
+                    </Link>
+                    <Link to="/learning-skills" className={classes.Accordion}>
+                          <ListItemText primary="Add Course Activity" style={{marginLeft: "50px", color:"white"}}/>
+                    </Link>
+                    <Link to="/course-activities" className={classes.Accordion}>
+                          <ListItemText primary="Add Learning Skills" style={{marginLeft: "50px", color:"white"}}/>
+                    </Link>
+                    <Link to="/spiritual-learning" className={classes.Accordion}>
+                          <ListItemText primary="Add Spirutal Learning" style={{marginLeft: "50px", color:"white"}}/>
+                    </Link>
+                    </AccordionDetails>
+                </Accordion>
                 <Link to="/enroll" className={clsx(classes.listText)} >
                 <ListItem button >
                     <ViewQuiltIcon/>
@@ -252,13 +265,24 @@ const SideBar = () => {
                     <ListItemText primary="Meet Links" style={{marginLeft: "30px", color:"white"  }}/>
                 </ListItem>
                 </Link>
-                <Link to="/classroom">
-                <ListItem button className={clsx(classes.listText)}>
-                    <ViewQuiltIcon />
-                    <ListItemText primary="Classrooms" style={{marginLeft: "30px", color:"white"  }}/>
-                    <ChevronRightIcon/>
-                </ListItem>
-                </Link>
+                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} 
+                style={{backgroundColor: "transparent",border: "none",margin: "0%",padding: "0%"}}
+                >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                    >
+                      <ViewQuiltIcon className={clsx(classes.listText)}/>
+                      <Typography style={{marginLeft: "30px", color:"white"}}>Classroom</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{margin: "0%",padding: "0%",display: "flex",flexDirection: "column"}}>
+                    <Link to="/classroom" className={classes.Accordion}>
+                          <ListItemText primary="Students & Teachers" style={{marginLeft: "50px", color:"white"}}/>
+                    </Link>
+                    <Link to="/courses" className={classes.Accordion}>
+                          <ListItemText primary="Teacher Training" style={{marginLeft: "50px", color:"white"}}/>
+                    </Link>
+                    </AccordionDetails>
+                </Accordion>
                 <Link to="/attendances" className={clsx(classes.listText)}>
                 <ListItem button >
                     <ViewQuiltIcon />

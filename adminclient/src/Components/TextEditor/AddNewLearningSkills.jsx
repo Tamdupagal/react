@@ -15,11 +15,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const useStyles = makeStyles((theme) => ({
   editor1: {
-    // height: "70%",
     width: "100%",
     marginLeft: "0%",
-    // marginBottom: "0.5rem",
-    // border: "1px solid black",
   },
   Header: {
     fontSize: "2rem",

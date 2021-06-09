@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "../Courses/AddCourse.css";
+import { Editor as MainEditor } from "react-draft-wysiwyg";
 import { Container, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./TextEditor.css";
@@ -13,7 +15,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const useStyles = makeStyles((theme) => ({
   editor1: {
-    width: "70%",
+    width: "100%",
     marginLeft: "0%",
   },
   Header: {
@@ -26,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #318ebd",
     padding: "2%",
   },
-
+  // borderbox: {
+  //   border: "2px solid #318ebd",
+  // },
   borderbox1: {
     border: "1px solid rgb(128, 128, 128, 0.4)",
     width: "90%",
@@ -34,10 +38,19 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: "10px",
     marginLeft: "5%",
     padding: "3%",
+    // marginTop: "2%",
     marginBottom: "2%",
   },
-  paper: {
+  paper1: {
+    // marginTop: "2%",
     padding: theme.spacing(2),
+    // textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  paper: {
+    marginTop: "2%",
+    padding: theme.spacing(0.2),
+    // textAlign: "center",
     color: theme.palette.text.secondary,
   },
   uploadimg: {
@@ -60,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#302e2e",
     backgroundColor: "#f0f5f5",
     letterSpacing: "0.1rem",
+    // marginLeft: "0%",
+    // marginBottom: "5%",
+    // marginTop: "50%",
+    // paddingTop: "1%",
     zIndex: "1",
   },
   dividerInset: {
@@ -71,6 +88,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "6%",
   },
   submitBtn: {
+    // display: "flex",
+    // alignItems: "center",
+    // justifyContent: "center",
     textAlign: "center",
     margin: "4%",
     marginTop: "4%",
@@ -122,20 +142,34 @@ const modules = {
   ],
 };
 
-function AddSpiritualLearning() {
+function AddSpritualLearning() {
   const classes = useStyles();
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+
+  // upload(e) {
+  //   console.warn(e.target.file)
+  // }
 
   return (
     <div>
-      <Container className={classes.Header}>Add Course Activity</Container>
+      <Container className={classes.Header}>Add New Learning Skill </Container>
 
       <Container className={classes.borderbox1}>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={8}>
-            <Paper className={classes.paper}>
+          <Grid item xs={12} lg={12}>
+            <Paper className={classes.paper1}>
               <Divider className={classes.dividerInset} />
               <h3 className={classes.addContent}>ADD CONTENT</h3>
-
+              {/* <MainEditor
+                editorState={editorState}
+                className={classes.editor1}
+                onEditorStateChange={setEditorState}
+                toolbarClassName="toolbar"
+                wrapperClassName="wrapper"
+                editorClassName="editor"
+              /> */}
               <div className="editor__wrapper">
                 <ReactQuill
                   className="toolBar"
@@ -148,7 +182,6 @@ function AddSpiritualLearning() {
             </Paper>
           </Grid>
         </Grid>
-
         <Grid item>
           <Paper className={classes.paper}>
             <div className={classes.submitBtn}>
@@ -163,4 +196,35 @@ function AddSpiritualLearning() {
     </div>
   );
 }
-export default AddSpiritualLearning;
+export default AddSpritualLearning;
+
+{
+  /* <Container className={classes.borderbox}>
+  <Container className={classes.Header}>Add New Learning Skill </Container>
+  <Grid className={classes.borderbox1}>
+    <div className="editor__wrapper">
+      <h1 className="editor__title">Add Content</h1>
+      <Grid item className={classes.editor1}>
+        <MainEditor
+          editorState={editorState}
+          onEditorStateChange={setEditorState}
+          toolbarClassName="toolbar"
+          wrapperClassName="wrapper"
+          editorClassName="editor"
+        />
+      </Grid>
+      <Grid item sm={6} md={3}>
+        {" "}
+        <Container>
+          <h1>hello</h1>
+        </Container>
+      </Grid>
+      <div className="btn__box">
+        <button className="button1" type="button">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </Grid>
+</Container>; */
+}
