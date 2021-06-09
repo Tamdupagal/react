@@ -5,22 +5,18 @@ import live from '../assets/live.svg'
 import course from '../assets/course.svg'
 import rating from '../assets/rating.svg'
 import explore from '../assets/explore.svg'
-import {RiMenuFoldLine, RiMenuUnfoldLine, } from 'react-icons/ri'
+import {CgMenuGridO} from 'react-icons/cg'
 import { AppContext } from '../AppContext'
 
 
 
 function Header() {
-    const { setToggle,setToggleForm, setTheme, theme , toggle} = useContext(AppContext);
+    const { setToggle,setToggleForm, setTheme, theme} = useContext(AppContext);
 
     return (
         <header className={`header${theme ? ' dark' : ''}`}>
             <div className="header__toggle">
-                { toggle ? 
-                    <RiMenuFoldLine className="menu" onClick={() => setToggle(prev => !prev)} />
-                    :
-                    <RiMenuUnfoldLine className="menu" onClick={() => setToggle(prev => !prev)} />
-                }
+                <CgMenuGridO className="menu" onClick={() => setToggle(prev => !prev)} />
                 <div className="menu__box">
                     <button type="button" onClick={() =>setTheme(prev=>!prev)}/>
                     <img src={logout} alt="logout" />

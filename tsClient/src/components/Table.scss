@@ -1,12 +1,14 @@
 @import "../sass/variable";
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 .table__wrapper {
-  padding: 2rem;
+  padding: 1rem;
 }
 table {
   display: table;
   position: relative;
   border-collapse: separate;
+
   width: 100%;
   border-radius: 0.3rem;
   overflow: hidden;
@@ -25,10 +27,11 @@ table {
     border-radius: 0.2rem;
   }
   th {
-    border: 0.2rem solid $primary_color;
+    border: 0.1rem solid $primary_color;
     color: black;
     padding: 1.5rem 0;
     letter-spacing: 0.1rem;
+    background-color: rgba(lightBlue, 0.4);
   }
   td {
     font-weight: 500;
@@ -45,7 +48,9 @@ table {
       background: hsla(0, 0%, 100%, 0.18);
     }
     & td {
-      color: #e4e4e4;
+      color: white;
+      font-family: "Nunito";
+      letter-spacing: 0.05rem;
     }
     & th,
     td {

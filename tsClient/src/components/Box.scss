@@ -10,9 +10,10 @@
   height: max-content;
   width: 100%;
   &.dark {
-    background-color: transparent;
+    position: relative;
     border: 0.1rem solid white;
     color: white;
+    background: rgba(black, 0.35);
     &.course__section {
       border: none;
       background-color: #ffffff26;

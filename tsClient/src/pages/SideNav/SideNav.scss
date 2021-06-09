@@ -22,6 +22,7 @@
     @include flex_layout(center, null, column);
     width: 100%;
     background-color: $primary_bg_color;
+    background-color: #3d779e;
     padding: 2rem 0;
     height: max-content;
     min-height: 100%;
@@ -49,6 +50,7 @@
             cursor: pointer;
             .list_text {
               color: $primary_color;
+              font-weight: bold;
             }
           }
           .link {
@@ -71,9 +73,6 @@
             }
           }
         }
-        // & > li:first-child .list_text {
-        //   // font-size: 1.6rem;
-        // }
       }
     }
     &.dark {

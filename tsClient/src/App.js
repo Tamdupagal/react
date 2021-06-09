@@ -1,7 +1,7 @@
 // import SideNav from './components/SideNav/SideNav'
 import { BrowserRouter as Router} from 'react-router-dom'
 import Form from './components/Form'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import DashBoard from './pages/Dashboard/Dashboard'
 import Attendance from './pages/Attendance/Attendance'
 import Assigment from './pages/Assignment/Assignment'
@@ -18,22 +18,34 @@ import Content from './components/Content'
 import Quiz from './pages/Quiz/Quiz'
 import { AppContext } from './AppContext'
 import axios from './axios'
+import {mobileView} from './action/actions'
 
 
 function App() {
 
-  const {toggle} = useContext(AppContext)
-    const { theme } = useContext(AppContext)
+  const {toggle, theme, dispatch,} = useContext(AppContext)
+  const [screenWidth,setScreenWidth]= useState(window.innerWidth);
+
     
     useEffect(async() => {
-        //  try {
-        //     const res = await axios.get('asasas/');
-        //     console.log("response------>", res);
-        // } catch (err) {
-        //     console.log(err);
-        // }
+         try {
+            const res = await axios.get('api/course/all');
+            console.log("response------>", res);
+        } catch (err) {
+            console.log(err);
+        }
     }, [])
+    useEffect(async()=>{
+        console.log(screenWidth);
+        if(window.innerWidth>560)
+        dispatch(mobileView(false));
+        else
+        dispatch(mobileView(true));
+        console.log(screenWidth);
+  },[screenWidth]);
+  window.addEventListener("resize", ()=>setScreenWidth(window.innerWidth));
   
+    
   return (
     <Router>
         <div className="App">

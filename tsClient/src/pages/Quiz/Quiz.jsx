@@ -31,10 +31,10 @@ function Quiz() {
                         <img src={idea} alt="logo" />
                         <span>Quiz</span>
                     </div>
-                    {/* <div className="quiz__edit">
+                    <div className="quiz__edit">
                         <Button cls="del__btn">Delete question</Button>
                         <Button cls="add__btn">Add question</Button>
-                    </div> */}
+                    </div>
                 </div>
                 <Slider {...settings} ref={sliderRef} className="slider">
                     {questions.map((ques, quesIndex) => {

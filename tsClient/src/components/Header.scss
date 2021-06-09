@@ -1,6 +1,22 @@
 @import "../sass/variable";
 @import "../sass/utilities";
 
+$border__width: 0.5rem;
+
+%pseudo {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-color: #b963db;
+  border-style: solid;
+  opacity: 0;
+  transition: {
+    property: opacity, transform;
+    duration: 0.3s;
+  }
+}
+
 .header {
   position: relative;
   width: 100%;
@@ -49,8 +65,7 @@
       font-size: 5rem;
       color: $primary_color;
       border: 0.3rem solid $primary_color;
-      padding: 0.2rem;
-      border-radius: 0.2rem;
+      border-radius: 0.5rem;
       cursor: pointer;
     }
   }
@@ -72,8 +87,11 @@
         @include flex_layout(flex-start, null, column);
       }
       & > li {
+        position: relative;
         padding: 2rem;
         list-style: none;
+        width: max-content;
+        height: max-content;
         @include flex_layout(center, null);
         margin: 0 1rem;
         border: 0.2rem solid transparent;
@@ -84,12 +102,29 @@
           property: box-shadow;
           duration: 0.3s;
         }
-        @media screen and (max-width: 660px) {
-          padding: 3.5rem 2rem;
+        &::after {
+          @extend %pseudo;
+          top: 0;
+          right: 0;
+          border-width: $border__width $border__width 0 0;
+          transform: translate(1rem, -1rem);
+        }
+        &::before {
+          @extend %pseudo;
+          bottom: 0;
+          left: 0;
+          border-width: 0 0 $border__width $border__width;
+          transform: translate(-1rem, 1rem);
         }
         &:hover {
-          box-shadow: inset 5px 5px 0.02rem 0.05rem #a1a1a1,
-            inset -0.5rem -0.5rem 0.02rem 0.05rem $primary_color;
+          &::after,
+          &::before {
+            transform: translate(0);
+            opacity: 1;
+          }
+        }
+        @media screen and (max-width: 660px) {
+          padding: 3.5rem 2rem;
         }
         img {
           width: 4rem;
@@ -100,6 +135,8 @@
         }
         span {
           color: inherit;
+          font-weight: bold;
+          letter-spacing: 0.03rem;
           font-size: $font_size;
         }
       }
