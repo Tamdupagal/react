@@ -59,14 +59,14 @@ function App() {
   const {state,dispatch}= useContext(AppContext);
   const [screenWidth,setScreenWidth]= useState(window.innerWidth);
 
-  useEffect(async()=>{
-    console.log(screenWidth);
-    if(window.innerWidth>560)
-      dispatch(mobileView(false));
-    else
-      dispatch(mobileView(true));
-    console.log(screenWidth);
-  },[screenWidth]);
+  // useEffect(async()=>{
+  //   console.log(screenWidth);
+  //   if(window.innerWidth>560)
+  //     dispatch(mobileView(false));
+  //   else
+  //     dispatch(mobileView(true));
+  //   console.log(screenWidth);
+  // },[screenWidth]);
 
   window.addEventListener("resize", ()=>setScreenWidth(window.innerWidth));
 

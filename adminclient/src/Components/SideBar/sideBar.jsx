@@ -24,6 +24,11 @@ import { Link, useHistory } from 'react-router-dom'
 import Dropdown from 'react-dropdown';
 import MainLogo from "./../../Images/mainLogo.png"
 import { Image } from "react-bootstrap";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 const drawerWidth = 250;
 let shift;
@@ -127,7 +132,16 @@ const useStyles = makeStyles((theme)=>({
       },
       view:{
         marginLeft: 250
-      }
+      },
+      heading: {
+        fontSize: theme.typography.pxToRem(15),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+      },
+      secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+      },
       
 }))
 
@@ -139,6 +153,12 @@ const SideBar = () => {
   const [loading, setLoading]=useState(false)
   const [mobile, setMobile] = useState(false)
   const [dropdown, setDropdown] = useState(true)
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const showCourse = () =>{
     return (
 
@@ -198,7 +218,6 @@ const SideBar = () => {
                         size="medium"
                         color="secondary"
                         startIcon={<PowerSettingsNewRoundedIcon />}
-                        // style={{margin: 'auto'}}
                         >
                         Log Out
                         </Button>
@@ -233,13 +252,32 @@ const SideBar = () => {
                     {showCourse}  
                 </ListItem>
                 </div> */}
-                <Link to="/courses">
+                {/* <Link to="/courses">
                 <ListItem button className={clsx(classes.listText)}>
                     <ViewQuiltIcon />
                     <ListItemText primary="Courses" style={{marginLeft: "30px", color:"white"  }}/>
                     <ChevronRightIcon/>
                 </ListItem>
-                </Link>
+                </Link> */}
+                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      // aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                    >
+                      <ViewQuiltIcon />
+                      <Typography className={classes.secondaryHeading}>Courses</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Link to="/courses">
+                      <ListItem button className={clsx(classes.listText)}>
+                          <ViewQuiltIcon />
+                          <ListItemText primary="Courses" style={{marginLeft: "30px", color:"white"  }}/>
+                          <ChevronRightIcon/>
+                      </ListItem>
+                      </Link>
+                    </AccordionDetails>
+                </Accordion>
                 <Link to="/enroll" className={clsx(classes.listText)} >
                 <ListItem button >
                     <ViewQuiltIcon/>
