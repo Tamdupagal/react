@@ -54,7 +54,7 @@ const modules = {
   ],
 };
 
-function AddCourseActivity() {
+function TextEditor() {
   const classes = useStyles();
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -96,4 +96,4 @@ function AddCourseActivity() {
     </div>
   );
 }
-export default AddCourseActivity;
+export default TextEditor;

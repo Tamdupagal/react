@@ -1,82 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import MaterialTable from "material-table";
-import { Button, Container } from "@material-ui/core";
+import { Box,Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 // import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
 import { MTableToolbar, MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import TeacherActions from "./TeacherActions";
+import { attendanceData } from "./../Helpers/attendanceData";
+
+
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
 });
 
 const Teachers = () => {
   const classes = useStyles();
-
   const history = useHistory();
-  const data = [
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "5",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "priya",
-      student: "0",
-      LecturesComplete: "2",
-    },
-    {
-      DclassName: "phy",
-      teacher: "isha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "sci",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "2",
-    },
-  ];
+
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    setData(attendanceData);
+  }, []);
+    
 
   const handleAttendanceReport = () => {
     history.push("/attendance/report");
@@ -118,10 +66,33 @@ const Teachers = () => {
   ];
   return (
     <div>
+      
+      <Container >
+        <Container
+          style={{
+            border: "1px solid #e6e6ff",
+            borderBottom: "white",
+            backgroundColor: "white",
+            padding: "1%",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+          
+        >
+          <Box display="flex" justifyContent="flex-end">
+          <Button
+            variant="contained"
+            color="secondary"            
+          >
+            Add new Teacher
+          </Button>
+          </Box>
+        </Container>
+      </Container>
       <Container>
         {" "}
         <MaterialTable
-          title="Students"
+          title="Teachers"
           data={data}
           columns={Columns}
           options={{

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import { Button, Container } from "@material-ui/core";
+import { Box,Button, Container } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import { useHistory } from "react-router";
 import { MTableBodyRow } from "material-table";
@@ -9,7 +9,9 @@ import StudentActions from "./StudentActions";
 import { attendanceData } from "./../Helpers/attendanceData";
 
 const useStyles = makeStyles({
-  tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
+  tableRow: {
+    "&:hover": { backgroundColor: "rgba(224,224,224,1) !important" },
+  },
 });
 
 const Students = () => {
@@ -64,6 +66,29 @@ const Students = () => {
   ];
   return (
     <div>
+      <Container >
+        <Container
+          style={{
+            border: "1px solid #e6e6ff",
+            borderBottom: "white",
+            backgroundColor: "white",
+            padding: "1%",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+          
+        >
+          <Box display="flex" justifyContent="flex-end">
+          <Button
+            variant="contained"
+            color="secondary"            
+          >
+            Add new Student
+          </Button>
+          </Box>
+        </Container>
+      </Container>
+  
       <Container>
         {" "}
         <MaterialTable
