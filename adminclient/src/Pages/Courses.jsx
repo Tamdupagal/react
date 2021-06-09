@@ -99,7 +99,7 @@ const Courses = () => {
       ],
     },
     {
-      title: "Tech Courses",
+      title: "TECH COURSES",
       catogories: [
         {
           id: "10",
@@ -118,7 +118,7 @@ const Courses = () => {
     // <Container display="flex" alignitems="center" justifycontent="center">
     //   <Container>
     //     <div className={classes.box}>
-          // <h1 style={{ marginLeft: "4.5rem", fontSize: "300%" }}>Courses</h1>
+    // <h1 style={{ marginLeft: "4.5rem", fontSize: "300%" }}>Courses</h1>
     //       <Box m={1} className={classes.buttons}>
     //         <Button
     //           variant="outlined"
@@ -154,7 +154,7 @@ const Courses = () => {
     //                 key={course.title}
     //                 style={{ display: "flex", marginLeft: "35px" }}
     //               >
-                    // <h1 className={classes.Heading}>{course.title}</h1>
+    // <h1 className={classes.Heading}>{course.title}</h1>
     //                 <Button
     //                   variant="contained"
     //                   color="secondary"
@@ -171,21 +171,21 @@ const Courses = () => {
     //                 {course.catogories.map((c) => (
     //                       <Grid item xs={2} lg={3}>
 
-                          // <Card
-                          //   key={c.id}
-                          //   style={{ width: "80%", marginLeft: "2vw" }}
-                          // >
-                          //   <Image width="100%" src={c.image} />
-                          //   <CardActions disableSpacing>
-                          //     {c.subject}
-                          //     <IconButton
-                          //       aria-label="show more"
-                          //       style={{ marginLeft: "auto" }}
-                          //     >
-                          //       <CreateIcon />
-                          //     </IconButton>
-                          //   </CardActions>
-                          // </Card>
+    // <Card
+    //   key={c.id}
+    //   style={{ width: "80%", marginLeft: "2vw" }}
+    // >
+    //   <Image width="100%" src={c.image} />
+    //   <CardActions disableSpacing>
+    //     {c.subject}
+    //     <IconButton
+    //       aria-label="show more"
+    //       style={{ marginLeft: "auto" }}
+    //     >
+    //       <CreateIcon />
+    //     </IconButton>
+    //   </CardActions>
+    // </Card>
     //                   </Grid>
     //                 ))}
     //                 </Container>
@@ -208,72 +208,75 @@ const Courses = () => {
     //   </Container>
     // </Container>
     <Container>
-      <Container fixed>
-        <Grid container lg={12}>
-          
-        <Grid container >
-        <Grid item xs={12} lg={6}>          <h1 style={{fontSize: "300%" }}>Courses</h1>
-</Grid>
-        <Grid item xs={12} lg={6}>
-        <Box m={1}>
-            <Button
-              variant="outlined"
-              size="medium"
-              style={{
-                marginRight: "20px",
-                color: "green",
-                border: "1px solid green",
-              }}
-              onClick={handleAddCourse}
-            >
-              <strong>Add Course</strong>
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="medium"
-              onClick={handleOpen}
-              style={{ color: "#5567ff", border: "1px solid #5567ff" }}
-            >
-              <strong>Add Course Section</strong>
-            </Button>
-          </Box>
-        </Grid>
-        </Grid>
-        {courses.map((course)=>(
-        <Container>
-        <Grid>
-        <Grid item lg={10}>
-        <Grid container>
-        <Grid item xs={12}><h1 className={classes.Heading}>{course.title}</h1>
-</Grid>
-        </Grid>
-        <Grid container spacing={2}>
-        {course.catogories.map((c)=>(
-          <Grid item xs={12} md={6} lg={3}> <Card
-          key={c.id}
-          style={{ width: "80%", marginLeft: "2vw" }}
-        >
-          <Image width="100%" src={c.image} />
-          <CardActions disableSpacing>
-            {c.subject}
-            <IconButton
-              aria-label="show more"
-              style={{ marginLeft: "auto" }}
-            >
-              <CreateIcon />
-            </IconButton>
-          </CardActions>
-        </Card></Grid>
+      <Container>
+        <Grid lg={12}>
+          <Grid>
+            <Grid item xs={12} lg={6}>
+              {" "}
+              <h1 style={{ fontSize: "300%" }}>Courses</h1>
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <Box m={1}>
+                <Button
+                  variant="outlined"
+                  size="medium"
+                  style={{
+                    marginRight: "20px",
+                    color: "green",
+                    border: "1px solid green",
+                  }}
+                  onClick={handleAddCourse}
+                >
+                  <strong>Add Course</strong>
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="medium"
+                  onClick={handleOpen}
+                  style={{ color: "#5567ff", border: "1px solid #5567ff" }}
+                >
+                  <strong>Add Course Section</strong>
+                </Button>
+              </Box>
+            </Grid>
+          </Grid>
+          {courses.map((course) => (
+            <Container>
+              <Grid>
+                <Grid item lg={10}>
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <h1 className={classes.Heading}>{course.title}</h1>
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2}>
+                    {course.catogories.map((c) => (
+                      <Grid item xs={12} md={6} lg={3}>
+                        {" "}
+                        <Card
+                          key={c.id}
+                          style={{ width: "80%", marginLeft: "2vw" }}
+                        >
+                          <Image width="100%" src={c.image} />
+                          <CardActions disableSpacing>
+                            {c.subject}
+                            <IconButton
+                              aria-label="show more"
+                              style={{ marginLeft: "auto" }}
+                            >
+                              <CreateIcon />
+                            </IconButton>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Container>
           ))}
         </Grid>
-        </Grid>
-        </Grid>
-
-        </Container>
-        ))}
-        </Grid>
-
       </Container>
     </Container>
   );
