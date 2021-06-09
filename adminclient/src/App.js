@@ -32,6 +32,8 @@ import ViewClassroomHistory from "./Pages/ViewClassroomHistory";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { mobileView } from "./action/actions";
 import { AppContext } from "./AppContext";
+import Teachers from "./Pages/Teachers";
+import Operations from "./Pages/Operations";
 
 const theme = createMuiTheme({
   palette: {
@@ -87,11 +89,13 @@ function App() {
               <Route exact path="/students" component={Students} />
               <Route exact path="/student-courses" component={StudentCourses} />
               <Route exact path="/attendances" component={Attendance} />
-              <Route exact path="/teachers" component={TeacherHistory} />
+              <Route exact path="/teachers" component={Teachers} />
               <Route exact path="/add-meet" component={AddMeet} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
               <Route exact path="/add-course" component={AddCourse} />
+              <Route exact path="/operations" component={Operations} />
+
               <Route
                 exact
                 path="/classroom/create"
@@ -126,17 +130,17 @@ function App() {
               />
               <Route
                 exact
-                path="/AddNewLearningSkills"
+                path="/learning-skills"
                 component={AddNewLearningSkills}
               />
               <Route
                 exact
-                path="/AddCourseActivity"
+                path="/course-activities"
                 component={AddCourseActivity}
               />
               <Route
                 exact
-                path="/AddSpiritualLearning"
+                path="/spiritual-learning"
                 component={AddSpiritualLearning}
               />
             </Switch>

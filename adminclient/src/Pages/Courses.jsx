@@ -115,14 +115,14 @@ const Courses = () => {
     },
   ];
   return (
-      <Container>
-        <Grid alignItems="center">
-          <Grid container alignItems='center' justify='center'>
-            <Grid item>
+      <Container display="flex" justifyContent="center">
+        <Grid >
+          <Grid container alignItems='center'>
+            <Box display="flex" justifyContent="flex-start">
               <h1 style={{ fontSize: "300%" }}>Courses</h1>
-            </Grid>
+            </Box>
             <Grid item xs={12} lg={6}>
-              <Box m={1}>
+              <Box m={1} display="flex" justifyContent="flex-end" >
                 <Button
                   variant="outlined"
                   size="medium"

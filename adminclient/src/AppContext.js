@@ -7,24 +7,7 @@ const initialState= {
     mobileView: false,
     products: null,
     users: null,
-    cartValue: 0,
-    cart:[],
-    auth: {
-        isSignedIn: false,
-        user:null
-    },
-    categories:null,
-    carousels:null,
-    orders: null,
-    cat:[],
-    filter:{
-        name: null
-    },
-    filteredCategories: {},
-    filteredSubCategories:[],
-    filteredProducts: [],
-    isFilteredCategoryPresent: false,
-    productsLimited: null
+
 }
 
 const reducer = (state, action)=>{
