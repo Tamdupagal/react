@@ -1,0 +1,75 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.form__wrapper {
+  @include flex_layout(center, center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  min-height: 100vh;
+  min-width: 100vw;
+  transform: scale(0);
+  transition: transform 0.3s ease-out;
+  z-index: 999;
+  &.active {
+    transform: scale(1);
+    background-color: rgba(black, 0.2);
+    transition: transform 0.3s, background-color 0.2s ease-out 0.3s;
+  }
+  .feedback__form {
+    position: relative;
+    width: max-content;
+    min-width: 45rem;
+    padding: 1rem 2rem;
+    .close__btn {
+      cursor: pointer;
+      transform: scale(1.2);
+      &:active {
+        color: $primary_color;
+      }
+    }
+    & > hr {
+      border: none;
+      background-color: rgba(black, 0.1);
+      width: 100%;
+      height: 0.15rem;
+      margin: 1.5rem 0 2rem 0;
+    }
+    .form__title {
+      @include flex_layout(center, space-between);
+      font-size: $font_size + 0.3rem;
+    }
+    .form__input {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+      & > input {
+        padding: 1rem;
+        border-radius: $border_rad;
+        border: 0.1rem solid rgba(black, 0.3);
+      }
+      & > span {
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: $font_size;
+        color: $blue;
+      }
+      & > textarea {
+        resize: vertical;
+        width: 100%;
+        padding: 0.5rem;
+        min-height: 8rem;
+        border: 0.1rem solid rgba(black, 0.3);
+        border-radius: $border_rad;
+      }
+      .teacher__name {
+        width: 100%;
+        padding: 1rem;
+        background-color: #e9ecef;
+        border-radius: $border_rad;
+        font-size: $font_size;
+      }
+    }
+  }
+}

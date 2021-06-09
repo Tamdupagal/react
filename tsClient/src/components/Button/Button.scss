@@ -1,0 +1,28 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+.button {
+  display: inline-block;
+  @include flex_layout();
+  width: max-content;
+  min-width: max-content;
+  align-self: center;
+  border: none;
+  color: $white;
+  font-size: $font_size;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: $border_rad;
+  background-color: #28a745;
+  cursor: pointer;
+  & > span {
+    &.addMargin {
+      margin-right: 0.8rem;
+    }
+  }
+  & > img {
+    width: rem;
+    height: 2rem;
+    object-fit: cover;
+    filter: invert(100%);
+  }
+}
