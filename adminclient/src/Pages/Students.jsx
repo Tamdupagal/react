@@ -9,7 +9,9 @@ import StudentActions from "./StudentActions";
 import { attendanceData } from "./../Helpers/attendanceData";
 
 const useStyles = makeStyles({
-  tableRow: { "&:hover": { backgroundColor: "	#e6e6ff !important" } },
+  tableRow: {
+    "&:hover": { backgroundColor: "rgba(224,224,224,1) !important" },
+  },
 });
 
 const Students = () => {

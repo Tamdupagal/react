@@ -45,14 +45,27 @@ const OneToOne = () => {
   return (
     <div>
       <Container>
-        {" "}
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleAddNewClassroom}
+        <Container
+          style={{
+            border: "1px solid #e6e6ff",
+            borderBottom: "white",
+            backgroundColor: "white",
+            padding: "1%",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
         >
-          Add new Classroom
-        </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleAddNewClassroom}
+          >
+            Add new Classroom
+          </Button>
+        </Container>
+      </Container>
+      <Container>
+        {" "}
         <MaterialTable
           title="Classrooms"
           data={data}
