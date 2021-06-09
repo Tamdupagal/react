@@ -4,7 +4,7 @@ import { Button, Container } from "@material-ui/core";
 import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
 import { attendanceData } from "../Helpers/attendanceData";
-import { MTableToolbar, MTableBodyRow } from "material-table";
+import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({

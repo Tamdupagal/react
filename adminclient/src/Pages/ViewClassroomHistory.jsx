@@ -16,7 +16,7 @@ export const ViewClassroomHistory = () => {
         )
     }
     return (
-        <Container>
+        <Container style={{border:"2px solid black"}}>
             <div>
             <h1 className={classes.mainHeading}>Classroom Timeline:Demo Class For Yash Govekar</h1>
             </div>
