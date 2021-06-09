@@ -1,10 +1,8 @@
 import React, {useRef} from 'react'
 import Slider from "react-slick";
 import Box from './Box'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './Material.scss'
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa'
+import './Material.scss'
 
 function Material() {
     const sliderRef = useRef(null)

@@ -4,10 +4,10 @@ import Button from './Button'
 import Box from './Box'
 import TableHeader from './TableHeader'
 import './CreateAs.scss';
-import { context } from '../store/Context'
+import { AppContext } from '../AppContext'
 
 function CreateAs() {
-    const {theme} = useContext(context)
+    const {theme} = useContext(AppContext)
     return (
         <Box>
             <TableHeader className='header__main' headerText={'Create Assignments'}/>

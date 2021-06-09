@@ -11,14 +11,14 @@ function Course() {
                 <h1 className="course__title">
                     Demo Course
                 </h1>
-                <Link to="/course" className="course__btnLink">View More {">>"}</Link>
+                <Link to="/quiz" className="course__btnLink">View More {">>"}</Link>
             </Box>
             <Box cls='course__section'>
                 <img src={'https://digitalaidedschool.s3.ap-south-1.amazonaws.com/course_images/gzAWXg0FcsWZjS228kXNRUp8wAwWilwEUNUtoxwC.jpg'} alt="bg" />
                 <h1 className="course__title">
                     Demo Course
                 </h1>
-                <Link to="/course" className="course__btnLink">View More {">>"}</Link>
+                <Link to="/quiz" className="course__btnLink">View More {">>"}</Link>
 
             </Box>
             <Box cls='course__section'>
@@ -26,7 +26,7 @@ function Course() {
                 <h1 className="course__title">
                     Demo Course
                 </h1>
-                <Link to="/course" className="course__btnLink">View More {">>"}</Link>
+                <Link to="/quiz" className="course__btnLink">View More {">>"}</Link>
 
             </Box>
             <Box cls='course__section'>
@@ -34,7 +34,7 @@ function Course() {
                 <h1 className="course__title">
                     Demo Course
                 </h1>
-                <Link to="/course" className="course__btnLink">View More {">>"}</Link>
+                <Link to="/quiz" className="course__btnLink">View More {">>"}</Link>
 
             </Box>
             <Box cls='course__section'>
@@ -42,7 +42,7 @@ function Course() {
                 <h1 className="course__title">
                     Demo Course
                 </h1>
-                <Link to="/course" className="course__btnLink">View More {">>"}</Link>
+                <Link to="/quiz" className="course__btnLink">View More {">>"}</Link>
 
             </Box>
             <Box cls='course__section'>
@@ -50,7 +50,7 @@ function Course() {
                 <h1 className="course__title">
                     Demo Course
                 </h1>
-                <Link to="/course" className="course__btnLink">View More {">>"}</Link>
+                <Link to="/quiz" className="course__btnLink">View More {">>"}</Link>
             </Box>
         </div>
     )

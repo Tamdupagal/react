@@ -1,9 +1,9 @@
 import React, { useContext} from 'react'
 import Select from 'react-select'
 import { ImEyeBlocked } from 'react-icons/im'
-import {context} from '../store/Context'
 
 import './Form.scss'
+import { AppContext } from '../AppContext'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -30,7 +30,7 @@ const customStyles = {
 }
 
 function Form() {
-    const { setToggleForm, toggleForm, theme} = useContext(context)
+    const { setToggleForm, toggleForm, theme} = useContext(AppContext)
     const handleForm = (e) => {
         if (e.target.classList.contains("form__wrapper")) {
             setToggleForm(prev=>!prev)

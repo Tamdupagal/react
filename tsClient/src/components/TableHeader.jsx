@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { context } from '../store/Context';
+import { AppContext } from '../AppContext';
 import './TableHeader.scss';
 
 function TableHeader({ headerText, headerImg, invertImg, cls, children }) {
-    const {theme} = useContext(context)
+    const {theme} = useContext(AppContext)
     return (
         <div className={`container ${cls}${theme ? ' dark' : ''}`}>
             <div className='header__box'>

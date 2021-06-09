@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Slot from './Slot'
 import Button from './Button'
 import './SlotBox.scss'
+import { AppContext } from '../AppContext'
 
 function SlotBox() {
+    const {theme} = useContext(AppContext)
     const [slots, setSlots] = useState([
         {
             id: Math.random()
@@ -11,7 +13,7 @@ function SlotBox() {
     ])
     
     return (
-        <div className="slot__container">
+        <div className={`slot__container${theme ? ' dark' : ''}`}>
             <div className="date__box">
                 <label htmlFor="date">Date :</label>
                 <input type="date" name="date"/>

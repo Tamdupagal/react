@@ -1,12 +1,12 @@
 import React, { useContext, useMemo } from 'react'
 import { useTable } from 'react-table'
+import { AppContext } from '../AppContext'
 import mock_data from '../MOCK_DATA.json'
-import { context } from '../store/Context'
 import './Table.scss'
 
 
 function Table({ columns, data }) {
-    const {theme} = useContext(context)
+    const {theme} = useContext(AppContext)
     const col = useMemo(() => columns, [columns]);
     const dataMock = useMemo(() => mock_data, []);
     const {

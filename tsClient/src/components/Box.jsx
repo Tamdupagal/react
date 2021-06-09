@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { context } from '../store/Context'
+import { AppContext } from '../AppContext'
 import './Box.scss'
 
 
 function Box({ children, cls }) {
-    const { theme } = useContext(context)
+    const { theme } = useContext(AppContext)
     return (
         <section className={`section ${cls}${theme ? " dark" : ""}`}>
             {children}

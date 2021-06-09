@@ -1,7 +1,7 @@
 // import SideNav from './components/SideNav/SideNav'
 import { BrowserRouter as Router} from 'react-router-dom'
 import Form from './components/Form'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import DashBoard from './pages/Dashboard/Dashboard'
 import Attendance from './pages/Attendance/Attendance'
 import Assigment from './pages/Assignment/Assignment'
@@ -13,15 +13,26 @@ import './App.scss';
 import CreateAs from './components/CreateAs'
 import Bag from './pages/Bag/Bag'
 import SideNav from './pages/SideNav/SideNav'
-import { context } from './store/Context'
 import Header from './components/Header'
 import Content from './components/Content'
+import Quiz from './pages/Quiz/Quiz'
+import { AppContext } from './AppContext'
+import axios from './axios'
 
 
 function App() {
 
-  const {toggle} = useContext(context)
-  const {theme} = useContext(context)
+  const {toggle} = useContext(AppContext)
+    const { theme } = useContext(AppContext)
+    
+    useEffect(async() => {
+        //  try {
+        //     const res = await axios.get('asasas/');
+        //     console.log("response------>", res);
+        // } catch (err) {
+        //     console.log(err);
+        // }
+    }, [])
   
   return (
     <Router>
@@ -57,8 +68,11 @@ function App() {
                 <Route path="/course" exact>
                     <Content/>
                 </Route>
-            </Switch>
-        </div>
+                </Switch>
+                </div>
+                <Route path="/quiz" exact >
+                      <Quiz/>
+              </Route>
           <Form/>
       </div>
     </Router>

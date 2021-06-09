@@ -8,9 +8,9 @@ table {
   position: relative;
   border-collapse: separate;
   width: 100%;
-  empty-cells: hide !important;
   border-radius: 0.3rem;
   overflow: hidden;
+  border-spacing: 0.4rem;
   th,
   td {
     border: 0.1rem solid rgba($black, 0.2);
@@ -18,39 +18,41 @@ table {
     color: black;
     padding: 1.5rem 0;
     cursor: pointer;
-    font-size: 1.45rem;
+    font-size: 1.3rem;
     @media screen and (max-width: 400px) {
       font-size: 1.2rem;
     }
+    border-radius: 0.2rem;
   }
   th {
-    background-color: $primary_bg_color;
-    color: white;
+    border: 0.2rem solid $primary_color;
+    color: black;
     padding: 1.5rem 0;
     letter-spacing: 0.1rem;
   }
   td {
     font-weight: 500;
+    font-size: 1.4rem;
   }
   tr:nth-child(even) {
     background-color: $light_black;
   }
   &.dark {
-    background-color: transparent;
+    background-color: rgba(#42285a, 0.4);
+
     & th {
       color: white;
-      background-color: #ffffff26;
-      background-color: #065051;
+      background: hsla(0, 0%, 100%, 0.18);
     }
     & td {
       color: #e4e4e4;
     }
     & th,
     td {
-      border: 0.1rem solid #ffffff28;
+      border: 0.1rem solid #ffffff3a;
     }
     tr:nth-child(even) {
-      background-color: #30522f25;
+      background-color: #18105c5d;
     }
   }
 }

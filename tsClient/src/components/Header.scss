@@ -55,8 +55,8 @@
     }
   }
   &.dark > &__toggle {
-    background-color: #2a2f32;
-    box-shadow: 0 0 0.5rem rgb(99, 99, 99);
+    box-shadow: 0 0 0.5rem rgb(160, 160, 160);
+    background-color: hsla(0, 0%, 100%, 0.13);
   }
   &__navigation {
     margin-top: 2rem;
@@ -111,7 +111,8 @@
         border: 0.25rem solid white;
         &::before {
           left: calc(100% - 0.2rem - 2.3rem);
-          background-color: #16cf1f;
+          background-color: yellow;
+          box-shadow: 0 0 0.5rem 0.1rem yellow;
         }
       }
     }

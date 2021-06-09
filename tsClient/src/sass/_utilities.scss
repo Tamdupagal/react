@@ -6,3 +6,11 @@
   justify-content: $justify;
   flex-direction: $direction;
 }
+
+@function theme($class: false) {
+  $color: black;
+  @if $class == dark {
+    $color: white;
+  }
+  @return $color;
+}

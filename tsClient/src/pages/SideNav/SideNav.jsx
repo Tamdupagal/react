@@ -2,12 +2,12 @@ import React, { useContext } from 'react'
 import './SideNav.scss';
 import { sideNavData } from '../../helpers/sideNavData'
 import { Link } from 'react-router-dom'
-import { context } from '../../store/Context'
 import student from '../../assets/student.svg'
+import { AppContext } from '../../AppContext';
 
 
 function SideNav() {
-    const { toggle, theme} = useContext(context)
+    const { toggle, theme} = useContext(AppContext)
     return (
         <div className={`wrapper${toggle ? ' active' : ''}`}>
         <div className={`sidenav${theme ? ' dark' : ''}`}>
@@ -16,7 +16,7 @@ function SideNav() {
             </div>
             <nav>
                 <ul>
-                        {sideNavData.map((item, index) => index == 0 ? 
+                        {sideNavData.map((item, index) => index === 0 ? 
                                     <li key={index}>
                                         <span className="link">
                                             <img src={student} alt="item" />

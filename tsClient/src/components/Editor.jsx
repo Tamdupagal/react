@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { context } from '../store/Context';
+import { AppContext } from '../AppContext';
 import './Editor.scss'
 
 const formats = [
@@ -48,7 +48,7 @@ const modules = {
 }
 
 function Editor({withoutButton, withoutTitle, styles}) {
-    const {theme} = useContext(context)
+    const {theme} = useContext(AppContext)
     return (
         <div className={`editor__wrapper${theme ? ' dark' : ''}`} style={styles}>
             {!withoutTitle && <h1 className="editor__title">Add Content</h1>}

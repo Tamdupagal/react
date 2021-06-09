@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import TableHeader from './TableHeader'
 import Box from './Box'
 import teacher from '../assets/teacher.svg'
 import blackboard from '../assets/blackboard.svg'
 import hourGlass from '../assets/sand-clock.svg'
 import './Teacher.scss'
+import {AppContext} from '../AppContext'
 
 function Teacher() {
+
+    const { theme } = useContext(AppContext);
     return (
-        <Box cls="student__section">
+        <Box cls={`student__section${theme ? ' dark' : ''}`}>
             <TableHeader headerText='Demo Teacher' headerImg={teacher} />
             <div className='class__info'>
                 <div className='info__box'>
