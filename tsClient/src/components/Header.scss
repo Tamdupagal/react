@@ -1,0 +1,161 @@
+@import "../sass/variable";
+@import "../sass/utilities";
+
+$border__width: 0.5rem;
+
+%pseudo {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-color: #b963db;
+  border-style: solid;
+  opacity: 0;
+  transition: {
+    property: opacity, transform;
+    duration: 0.3s;
+  }
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: max-content;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  &__toggle {
+    padding: 0 1rem;
+    border-radius: $border-rad;
+    background-color: white;
+    box-shadow: 0 0 0.8rem #ccc;
+    @include flex_layout(center, space-between);
+    .menu__box {
+      @include flex_layout();
+      & > button {
+        @include flex_layout(center, null);
+        position: relative;
+        margin-right: 2rem;
+        border: 0.25rem solid $primary_color;
+        background-color: transparent;
+        height: 3.2rem;
+        width: 6rem;
+        border-radius: 2.7rem;
+        cursor: pointer;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 2.3rem;
+          left: 0.2rem;
+          height: 2.3rem;
+          border-radius: 50%;
+          background-color: $primary_color;
+          transition: {
+            property: left;
+            duration: 0.3s;
+          }
+        }
+      }
+    }
+    & img {
+      width: 8rem;
+      height: 8rem;
+      padding: 1rem 1.5rem;
+    }
+    .menu {
+      font-size: 5rem;
+      color: $primary_color;
+      border: 0.3rem solid $primary_color;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  &.dark > &__toggle {
+    box-shadow: 0 0 0.5rem rgb(160, 160, 160);
+    background-color: hsla(0, 0%, 100%, 0.13);
+  }
+  &__navigation {
+    margin-top: 2rem;
+    @include flex_layout(center, center);
+    padding: 3.5rem;
+    @media screen and (max-width: 660px) {
+      padding: 0;
+    }
+    ul {
+      @include flex_layout(center, center);
+      width: 100%;
+      @media screen and (max-width: 660px) {
+        @include flex_layout(flex-start, null, column);
+      }
+      & > li {
+        position: relative;
+        padding: 2rem;
+        list-style: none;
+        width: max-content;
+        height: max-content;
+        @include flex_layout(center, null);
+        margin: 0 1rem;
+        border: 0.2rem solid transparent;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        border-radius: $border_rad;
+        transition: {
+          property: box-shadow;
+          duration: 0.3s;
+        }
+        &::after {
+          @extend %pseudo;
+          top: 0;
+          right: 0;
+          border-width: $border__width $border__width 0 0;
+          transform: translate(1rem, -1rem);
+        }
+        &::before {
+          @extend %pseudo;
+          bottom: 0;
+          left: 0;
+          border-width: 0 0 $border__width $border__width;
+          transform: translate(-1rem, 1rem);
+        }
+        &:hover {
+          &::after,
+          &::before {
+            transform: translate(0);
+            opacity: 1;
+          }
+        }
+        @media screen and (max-width: 660px) {
+          padding: 3.5rem 2rem;
+        }
+        img {
+          width: 4rem;
+          height: 4rem;
+          object-fit: cover;
+          margin-right: 1rem;
+          user-select: none;
+        }
+        span {
+          color: inherit;
+          font-weight: bold;
+          letter-spacing: 0.03rem;
+          font-size: $font_size;
+        }
+      }
+    }
+  }
+  &.dark {
+    .menu__box {
+      & > button {
+        border: 0.25rem solid white;
+        &::before {
+          left: calc(100% - 0.2rem - 2.3rem);
+          background-color: yellow;
+          box-shadow: 0 0 0.5rem 0.1rem yellow;
+        }
+      }
+    }
+    .menu {
+      border: 0.25rem solid white;
+      color: white;
+    }
+  }
+}

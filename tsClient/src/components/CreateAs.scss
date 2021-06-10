@@ -1,0 +1,38 @@
+@import "../sass/variable";
+@import "../sass/utilities";
+
+section {
+  .assignment__input__container {
+    padding: 2rem;
+    .assignment__input__box {
+      &:not(:last-child) {
+        margin-bottom: 2.5rem;
+      }
+      .assignment__title {
+        font-size: $font_size;
+        color: black;
+        margin: 0;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+      .assignment__input {
+        @include flex_layout(center, null);
+        width: 100%;
+        height: 4rem;
+        padding: 1.5rem;
+        border-radius: 0.15rem;
+        border: 0.14rem solid $border_col;
+      }
+    }
+    &.dark {
+      .assignment__title {
+        color: white;
+      }
+      .assignment__input {
+        background-color: transparent;
+        border: 0.14rem solid #8f8f8f;
+        color: white;
+      }
+    }
+  }
+}

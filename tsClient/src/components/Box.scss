@@ -1,0 +1,26 @@
+@import "../sass/variable";
+@import "../sass/utilities";
+
+.section {
+  border: 0.1rem solid $border_col;
+  height: max-content;
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: white;
+  height: max-content;
+  width: 100%;
+  &.dark {
+    position: relative;
+    border: 0.1rem solid white;
+    color: white;
+    background: rgba(black, 0.35);
+    &.course__section {
+      border: none;
+      background-color: #ffffff26;
+      .course__btnLink {
+        background-color: #fafafa;
+        color: black;
+      }
+    }
+  }
+}

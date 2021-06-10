@@ -1,0 +1,25 @@
+@import "../sass/utilities";
+@import "../sass/variable";
+
+.checkbox__cont {
+  @include flex_layout();
+  font-size: $font_size;
+  color: rgb(136, 136, 136);
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-right: 5rem;
+  align-self: flex-start;
+  padding: 0.5rem 0;
+  @media screen and (max-width: 1000px) {
+    padding: 1rem 1.5rem;
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+  & > input {
+    display: inline-block;
+    border: 1px solid red;
+    margin-right: 1rem;
+    transform: scale(1.5);
+  }
+}

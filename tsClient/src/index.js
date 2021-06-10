@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Context from './store/Context'
+import {AppContextProvider} from './AppContext'
 
 ReactDOM.render(
-  <Context>
+  <AppContextProvider>
     <App />
-  </Context>
+  </AppContextProvider>
  ,
   document.getElementById('root')
 );

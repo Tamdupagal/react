@@ -1,0 +1,144 @@
+@use 'sass:math';
+@import "../sass/variable";
+@import "../sass/utilities";
+
+$height__header: 7rem;
+$height__footer: 7rem;
+$dark__green: rgba(#42285a, 0.91);
+$close__btn__width: 7rem;
+
+.form__wrapper {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(black, 0.4);
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+.feedback__form {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  width: max-content;
+  min-width: 38rem;
+  height: 100%;
+  color: black;
+  transition: transform 0.35s ease-out;
+  background-color: rgba(white, 0.8);
+  background-color: white;
+  .form__title {
+    font-size: $font_size + 0.3rem;
+    color: white;
+    background-color: $primary_color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 2rem;
+    height: $height__header;
+    border-radius: 0 0 25% 25%;
+    text-align: center;
+    padding: 2rem 0;
+    font-weight: 500;
+  }
+  .form__area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: $height__header;
+    bottom: $height__footer;
+    padding: 1rem 2rem;
+    width: 100%;
+    z-index: 1;
+    .close__btn {
+      @include flex_layout();
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1.5rem;
+      width: $close__btn__width;
+      height: 7em;
+      transform: rotateZ(45deg);
+      z-index: -1;
+      cursor: pointer;
+      background-color: white;
+      border-radius: 0 0 0 2rem;
+    }
+    .icon__close {
+      font-size: 2.5rem;
+      transform: rotateZ(-45deg) translateX(-1.7rem);
+      color: $primary_color;
+    }
+  }
+
+  .form__input {
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+    & > input {
+      padding: 1rem;
+      border: 0.1rem solid rgba(black, 0.3);
+      border-radius: $border_rad;
+    }
+    & > span {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: $font_size;
+      color: black;
+    }
+    & > textarea {
+      resize: none;
+      width: 100%;
+      padding: 0.5rem;
+      min-height: 8rem;
+      border: 0.1rem solid rgba(black, 0.3);
+      border-radius: $border_rad;
+    }
+    .teacher__name {
+      width: 100%;
+      padding: 1rem;
+      background-color: #e9ecef;
+      border-radius: $border_rad;
+      font-size: $font_size;
+      color: inherit;
+    }
+  }
+  .form__submit__btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: $height__footer;
+    color: white;
+    background-color: $primary_color;
+    font-size: 2rem;
+    border: none;
+    border-radius: 25% 25% 0 0;
+  }
+  &.active {
+    transform: translateX(0%);
+    .form__area {
+      .close__btn {
+        left: math.div(-$close__btn__width, 2);
+      }
+    }
+  }
+  &.dark {
+    .form__title {
+      background-color: $dark__green;
+    }
+    .form__submit__btn {
+      background-color: $dark__green;
+    }
+    .icon__close {
+      color: $dark__green;
+    }
+  }
+}
