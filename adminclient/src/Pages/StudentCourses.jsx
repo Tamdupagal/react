@@ -4,8 +4,8 @@ import { Button, Container, Box, Typography } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
-import { MTableToolbar, MTableBodyRow } from "material-table";
-import { attendanceData } from "./../Helpers/attendanceData";
+import { MTableBodyRow } from "material-table";
+import { studentCoursesData } from "../Helpers/studentCoursesData";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -22,27 +22,25 @@ const StudentCourses = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    setData(attendanceData);
+    setData(studentCoursesData);
   }, []);
 
   const handleManageCourse = () => {
     history.push("/student-courses/manage");
   };
   const Columns = [
-    { title: "Name", field: "DclassName" },
-    { title: "Teacher", field: "teacher" },
+    { title: "NAME", field: "name" },
+    { title: "EMAIL", field: "email" },
     {
-      title: "Student",
-      field: "student",
-      Style: { border: "0.5px solid #ccc" },
+      title: "COURSE ASSIGNED",
+      field: "courseAssigned",
     },
     {
-      title: "Lectures Completed",
-      field: "LecturesComplete",
-      render: (row) => <div>Hello</div>,
+      title: "CLASSROOM/S",
+      field: "classroom",
     },
     {
-      title: "Actions",
+      title: "ACTIONS",
       field: "name",
       render: (row) => (
         <div style={{ fontWeight: "700" }}>
@@ -76,11 +74,7 @@ const StudentCourses = () => {
             borderTopRightRadius: "10px",
           }}
         >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            // style={{ paddingBottom: "5%" }}
-          >
+          <Box display="flex" justifyContent="space-between">
             <Typography className={classes.title}>STUDENT COURSES</Typography>
           </Box>
         </Container>{" "}

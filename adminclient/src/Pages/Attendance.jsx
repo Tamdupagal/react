@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import MaterialTable from "material-table";
 import { Button, Container, Box, Typography } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
-// import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
 import { attendanceData } from "../Helpers/attendanceData";
 import { makeStyles } from "@material-ui/core/styles";
-import { MTableToolbar, MTableBodyRow } from "material-table";
+import { MTableBodyRow } from "material-table";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -31,17 +30,16 @@ const Attendance = () => {
   }, []);
 
   const Columns = [
-    { title: "Name", field: "DclassName" },
-    { title: "Teacher", field: "teacher" },
+    { title: "CLASSROOM", field: "classroom" },
+    { title: "LECTURE ON", field: "lectureOn" },
     {
-      title: "Student",
-      field: "student",
+      title: "TOTAL",
+      field: "total",
       Style: { border: "1px solid black" },
     },
     {
-      title: "Lectures Completed",
-      field: "LecturesComplete",
-      // render: (row) => <div>Hello</div>,
+      title: "ABSENT",
+      field: "absent",
     },
     {
       title: "Actions",
@@ -77,11 +75,7 @@ const Attendance = () => {
             borderTopRightRadius: "10px",
           }}
         >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            // style={{ paddingBottom: "5%" }}
-          >
+          <Box display="flex" justifyContent="space-between">
             <Typography className={classes.title}>ATTENDANCES</Typography>
           </Box>
         </Container>{" "}

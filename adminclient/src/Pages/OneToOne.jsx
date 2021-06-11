@@ -3,7 +3,7 @@ import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
-import { attendanceData } from "../Helpers/attendanceData";
+import { classroomData } from "../Helpers/classroomData";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -22,7 +22,7 @@ const OneToOne = () => {
   const history = useHistory();
   const [data, setData] = useState();
   useEffect(() => {
-    setData(attendanceData);
+    setData(classroomData);
   }, []);
 
   const handleAddNewClassroom = () => {

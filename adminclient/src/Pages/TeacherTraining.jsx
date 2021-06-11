@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import ClassroomActions from "./ClassroomActions";
+import TeacherTrainingActions from "./TeacherTrainingActions";
 import { useHistory } from "react-router";
-import { attendanceData } from "../Helpers/attendanceData";
+// import { attendanceData } from "../Helpers/classroomData";
 import { TeacherTrainingData } from "../Helpers/TeacherTrainingData.js";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
@@ -37,7 +37,7 @@ const TeacherTraining = () => {
       field: "name",
       render: (row) => (
         <div>
-          <ClassroomActions />
+          <TeacherTrainingActions />
         </div>
       ),
     },
