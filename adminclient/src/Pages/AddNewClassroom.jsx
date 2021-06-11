@@ -1,5 +1,5 @@
 import React, {useState, useRef} from "react";
-import { Container } from "@material-ui/core";
+import { Container, Select } from "@material-ui/core";
 import { Button, Card } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -10,6 +10,7 @@ import Classroom from "./../CRUD/Classroom"
 const AddNewClassroom = () => {
   const nameRef = useRef();
   const courseRef = useRef();
+  const studentRef = useRef()
   const newClassroomState = {
     id: "null",
     Name: "",
@@ -23,7 +24,34 @@ const AddNewClassroom = () => {
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    console.log(event.target.value)
   };
+
+  const saveClassroom = () => {
+    var data = {
+      name: nameRef.current.value,
+      courses: ["1","2","3"],
+      students: ["1","2","3"]
+    }
+    
+    console.log(nameRef.current.value)
+    // console.log(courseRef.current.value)
+    Classroom.create(data)
+    .then(res => {
+      setClassroom({
+        id: res.data.id,
+        name: res.data.Name,
+        courses: [1,2,3],
+        students: [1,2,3]
+      });
+      console.log(res)
+    })
+    .catch(e => {
+      console.log(e)
+    })
+  }
+
+
   const classes = useStyles();
   
   return (
@@ -39,7 +67,6 @@ const AddNewClassroom = () => {
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
                 <form>
                   <TextField
-                    id="outlined-basic"
                     variant="outlined"
                     size="small"
                     className={classes.textField}
@@ -47,32 +74,29 @@ const AddNewClassroom = () => {
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
-                <form>
+                {/* <form> */}
                   {" "}
-                  <TextField
-                    id="outlined-basic"
+                  <Select
                     variant="outlined"
                     size="small"
-                    select
-                    // ref={courseRef}
-                    onchange={handleChange}
+                    // inputRef={courseRef}
+                    // onChange={handleChange}
                     className={classes.textField}
                   >
                     <MenuItem value={1}>interview</MenuItem>
                     <MenuItem value={2}>hello</MenuItem>
                     <MenuItem value={3}>hola</MenuItem>
-                  </TextField>
-                </form>
+                  </Select>
+                {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <form>
-                  {" "}
+                  {/* {" "} */}
                   <TextField
-                    id="outlined-basic"
                     variant="outlined"
                     size="small"
                     select
-                    value={value}
-                    onchange={handleChange}
+                    inputRef={courseRef}
+                    // onChange={handleChange}
                     className={classes.textField}
                   >
                     <MenuItem value={"interview"}>interview</MenuItem>
@@ -88,11 +112,12 @@ const AddNewClassroom = () => {
                     id="outlined-basic"
                     variant="outlined"
                     size="small"
+                    inputRef={studentRef}
                     className={classes.textField}
                   />
                 </form>
                 <div className={classes.submitBtn}>
-                  <Button variant="contained" color="secondary">
+                  <Button variant="contained" color="secondary" onClick={saveClassroom}>
                     SUBMIT CLASSROOM
                   </Button>
                 </div>

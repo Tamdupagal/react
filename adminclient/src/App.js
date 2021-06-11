@@ -71,16 +71,16 @@ function App() {
   //     dispatch(mobileView(true));
   //   console.log(screenWidth);
   // },[screenWidth]);
-  // useEffect(async() => {
-  //   try{
-  //     const res = await axios.get('/api/classroom/all');
-  //     console.log("response:",res)
-  //   }
-  //   catch (err) {
-  //     console.log(err)
-  //   }
+  useEffect(async() => {
+    try{
+      const res = await axios.post('/classroom/new');
+      console.log("response:",res)
+    }
+    catch (err) {
+      console.log(err)
+    }
     
-  // }, [])
+  }, [])
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
   
   const classes = useStyles();
