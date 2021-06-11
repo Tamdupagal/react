@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import { Box, Button, Container } from "@material-ui/core";
+import { Box, Button, Container, Typography } from "@material-ui/core";
 import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
 import { attendanceData } from "../Helpers/attendanceData";
@@ -9,7 +9,12 @@ import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  tableRow: { "&:hover": { backgroundColor: "#fafaeb !important" } },
+  tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
+  title: {
+    fontSize: "2rem",
+    fontWeight: "700",
+    fontFamily: "KoHo, sans-serif",
+  },
 });
 
 const TeacherTraining = () => {
@@ -51,7 +56,11 @@ const TeacherTraining = () => {
               borderTopRightRadius: "10px",
             }}
           >
-            <Box display="flex" justifyContent="flex-end">
+            <Box display="flex" justifyContent="space-between">
+              <Typography className={classes.title}>
+                TEACHER TRAINING ROOMS
+              </Typography>
+
               <Button
                 variant="contained"
                 color="secondary"
@@ -65,7 +74,7 @@ const TeacherTraining = () => {
         <Container>
           {" "}
           <MaterialTable
-            title="Classrooms"
+            title=""
             data={data}
             columns={Columns}
             style={{ borderTopLeftRadius: "0px", borderTopRightRadius: "0px" }}
@@ -73,7 +82,7 @@ const TeacherTraining = () => {
               exportButton: true,
               headerStyle: {
                 border: "0.5px solid 	 #e6e6ff",
-                backgroundColor: "#ba6f6a",
+                backgroundColor: "#007399",
                 color: "white",
                 fontSize: "1.2rem",
                 fontWeight: "800",
@@ -85,7 +94,7 @@ const TeacherTraining = () => {
               },
               rowStyle: (rowData) => ({
                 backgroundColor:
-                  rowData.tableData.id % 2 === 0 ? "#FFF" : "#fae2e1",
+                  rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
                 fontWeight: "600",
                 fontSize: "1rem",
                 maxWidth: "2vw",
