@@ -1,0 +1,21 @@
+const formats = [
+    "background",
+    "bold",
+    "color",
+    "font",
+    "code",
+    "italic",
+    "link",
+    "size",
+    "strike",
+    "script",
+    "underline",
+    "blockquote",
+    "header",
+    "align",
+    "direction",
+    "image",
+    "video",
+    "code-block",
+  ];
+  export default formats;
