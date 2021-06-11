@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { useStyles } from "./../../Styles/AddCourseActivity";
-import TextEditor from "./TextEditor";
+import { useStyles } from "./../Styles/AddCourseActivity";
+import TextEditor from "./../Components/TextEditor/TextEditor";
 
 function AddCourseActivity() {
   const classes = useStyles();

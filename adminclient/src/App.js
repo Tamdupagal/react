@@ -3,9 +3,9 @@ import Dashboard from "./Pages/Dashboard";
 import { Container } from "react-bootstrap";
 import Enroll from "./Pages/Enroll";
 import MeetTable from "./Pages/MeetTable";
-import AddNewLearningSkills from "./Components/TextEditor/AddNewLearningSkills";
-import AddCourseActivity from "./Components/TextEditor/AddCourseActivity";
-import AddSpiritualLearning from "./Components/TextEditor/AddSpiritualLearning";
+import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
+import AddCourseActivity from "./Pages/AddCourseActivity";
+import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
@@ -71,18 +71,16 @@ function App() {
   //     dispatch(mobileView(true));
   //   console.log(screenWidth);
   // },[screenWidth]);
-  useEffect(async() => {
-    try{
-      const res = await axios.post('/classroom/new');
-      console.log("response:",res)
+  useEffect(async () => {
+    try {
+      const res = await axios.post("/classroom/new");
+      console.log("response:", res);
+    } catch (err) {
+      console.log(err);
     }
-    catch (err) {
-      console.log(err)
-    }
-    
-  }, [])
+  }, []);
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
-  
+
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
