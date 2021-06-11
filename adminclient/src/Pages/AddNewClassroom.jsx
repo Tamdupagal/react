@@ -120,7 +120,7 @@ const AddNewClassroom = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
-                    ref={nameRef}
+                    inputRef={nameRef}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
@@ -163,7 +163,7 @@ const AddNewClassroom = () => {
                     variant="outlined"
                     size="small"
                     inputRef={studentRef}
-                    className={classes.textField}
+                    className={classes.textField} 
                   />
                 </form> */}
                 <Multiselect options={options} displayValue="Country" />
