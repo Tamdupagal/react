@@ -35,6 +35,7 @@ import { AppContext } from "./AppContext";
 import Teachers from "./Pages/Teachers";
 import Operations from "./Pages/Operations";
 import TeacherTraining from "./Pages/TeacherTraining";
+import axios from "./axios";
 
 const theme = createMuiTheme({
   palette: {
@@ -70,9 +71,18 @@ function App() {
   //     dispatch(mobileView(true));
   //   console.log(screenWidth);
   // },[screenWidth]);
-
+  // useEffect(async() => {
+  //   try{
+  //     const res = await axios.get('/api/classroom/all');
+  //     console.log("response:",res)
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //   }
+    
+  // }, [])
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
-
+  
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>

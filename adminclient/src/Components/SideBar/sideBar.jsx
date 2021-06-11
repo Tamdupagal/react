@@ -142,9 +142,16 @@ const useStyles = makeStyles((theme)=>({
         fontSize: theme.typography.pxToRem(15),
         color: theme.palette.text.secondary,
       },
-      Accordion: {
+      AccordionContent: {
         textDecoration: "none",
-        marginLeft: "5%"
+        marginLeft: "5%",
+        border: "none"
+      },
+      Accordion:{
+        backgroundColor: "transparent",
+        border: "transparent",
+        margin: "0%",
+        padding: "0%"
       }
       
 }))
@@ -156,7 +163,6 @@ const SideBar = () => {
   const history = useHistory();
   const [loading, setLoading]=useState(false)
   const [mobile, setMobile] = useState(false)
-  const [dropdown, setDropdown] = useState(true)
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -218,8 +224,8 @@ const SideBar = () => {
                 }}
                 >
                 <div className={classes.drawerHeader} >
-                    <Image style={{borderRadius: "100%",width: "90px",height: "90px"}} src={MainLogo}/>
-                    <h3 style={{textAlign: "left",color:'white',fontSize: "250%",marginLeft: "10px"}}>ADMIN</h3>
+                    <Image style={{borderRadius: "100%",width: "60px",height: "60px"}} src={MainLogo}/>
+                    <h3 style={{textAlign: "left",color:'white',fontSize: "200%",marginLeft: "10px"}}>ADMIN</h3>
                     <ChevronLeftIcon className={clsx(classes.leftIcon, classes.listText && open) } onClick={handleDrawerClose}/>
                 </div>
                 <List >
@@ -230,25 +236,26 @@ const SideBar = () => {
                 </ListItem>
                 </Link>
                 <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} 
-                style={{backgroundColor: "transparent",border: "none",margin: "0%",padding: "0%"}}
+                className={classes.Accordion}
                 >
                     <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
+                      expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
                     >
                       <ViewQuiltIcon className={clsx(classes.listText)}/>
                       <Typography style={{marginLeft: "30px", color:"white"}}>Courses</Typography>
                     </AccordionSummary>
                     <AccordionDetails style={{margin: "0%",padding: "0%",display: "flex",flexDirection: "column"}}>
-                    <Link to="/courses" className={classes.Accordion}>
+                    <Divider orientation="vertical" flexItem style={{color: "white"}}/>
+                    <Link to="/courses" className={classes.AccordionContent}>
                           <ListItemText primary="Courses" style={{marginLeft: "50px", color:"white"}}/>
                     </Link>
-                    <Link to="/learning-skills" className={classes.Accordion}>
+                    <Link to="/course-activities" className={classes.AccordionContent}>
                           <ListItemText primary="Add Course Activity" style={{marginLeft: "50px", color:"white"}}/>
                     </Link>
-                    <Link to="/course-activities" className={classes.Accordion}>
+                    <Link to="/learning-skills" className={classes.AccordionContent}>
                           <ListItemText primary="Add Learning Skills" style={{marginLeft: "50px", color:"white"}}/>
                     </Link>
-                    <Link to="/spiritual-learning" className={classes.Accordion}>
+                    <Link to="/spiritual-learning" className={classes.AccordionContent}>
                           <ListItemText primary="Add Spirutal Learning" style={{marginLeft: "50px", color:"white"}}/>
                     </Link>
                     </AccordionDetails>
