@@ -34,6 +34,7 @@ import { mobileView } from "./action/actions";
 import { AppContext } from "./AppContext";
 import Teachers from "./Pages/Teachers";
 import Operations from "./Pages/Operations";
+import TeacherTraining from "./Pages/TeacherTraining";
 
 const theme = createMuiTheme({
   palette: {
@@ -142,6 +143,11 @@ function App() {
                 exact
                 path="/spiritual-learning"
                 component={AddSpiritualLearning}
+              />
+              <Route
+                exact
+                path="/trainer-classrooms"
+                component={TeacherTraining}
               />
             </Switch>
           </div>
