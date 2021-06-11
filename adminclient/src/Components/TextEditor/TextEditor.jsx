@@ -9,57 +9,15 @@ import Divider from "@material-ui/core/Divider";
 import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useStyles } from "./../../Styles/AddCourseActivity";
+import modules from "./../../Helpers/modules";
+import formats from "./../../Helpers/formats";
 
-const formats = [
-  "background",
-  "bold",
-  "color",
-  "font",
-  "code",
-  "italic",
-  "link",
-  "size",
-  "strike",
-  "script",
-  "underline",
-  "blockquote",
-  "header",
-  "align",
-  "direction",
-  "image",
-  "video",
-  "code-block",
-];
-
-const modules = {
-  toolbar: ".toolBar",
-  toolbar: [
-    ["bold", "italic", "underline", "strike"], // toggled buttons
-    ["blockquote", "code-block"],
-    ["link", "image", "video"],
-    [{ header: 1 }, { header: 2 }], // custom button values
-    [{ list: "ordered" }, { list: "bullet" }],
-    [{ script: "sub" }, { script: "super" }], // superscript/subscript
-    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-    [{ direction: "rtl" }], // text direction
-
-    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-
-    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-    [{ font: [] }],
-    [{ align: [] }],
-
-    ["clean"], // remove formatting button
-  ],
-};
-
-function TextEditor() {
+const TextEditor = () => {
   const classes = useStyles();
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  
+
   return (
     <div>
       {/* <Container className={classes.Header}>Add Course Activity</Container> */}
@@ -95,5 +53,5 @@ function TextEditor() {
       </Container>
     </div>
   );
-}
+};
 export default TextEditor;
