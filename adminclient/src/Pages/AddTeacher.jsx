@@ -130,6 +130,7 @@ const AddTeacher = () => {
                     closeIcon="cancel"
                     placeholder=""
                     showArrow={true}
+                    avoidHighlightFirstOption={true}
                   />
                 </Container>
               </Paper>

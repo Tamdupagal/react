@@ -23,6 +23,8 @@ export const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.01rem",
   },
   submitBtn: {
+    paddingTop: "5%",
+    paddingBottom: "5%",
     fontWeight: "700",
     textAlign: "center",
     margin: "3%",

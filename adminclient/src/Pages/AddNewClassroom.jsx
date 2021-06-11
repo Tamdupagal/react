@@ -138,23 +138,6 @@ const AddNewClassroom = () => {
                   <MenuItem value={3}>hola</MenuItem>
                 </Select>
                 {/* </form> */}
-                <h5 className={classes.infoHeading}>Assign Teacher:</h5>
-                <form>
-                  {/* {" "} */}
-                  <TextField
-                    variant="outlined"
-                    size="small"
-                    select
-                    inputRef={courseRef}
-                    // onChange={handleChange}
-                    className={classes.textField}
-                  >
-                    <MenuItem value={"interview"}>interview</MenuItem>
-                    <MenuItem value={"hii"}>hii</MenuItem>
-                    <MenuItem value={"hello"}>hello</MenuItem>
-                    <MenuItem value={"hola"}>hola</MenuItem>
-                  </TextField>
-                </form>
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
                 {/* <form>
                   {" "}
@@ -173,8 +156,27 @@ const AddNewClassroom = () => {
                     closeIcon="cancel"
                     placeholder=""
                     showArrow={true}
+                    avoidHighlightFirstOption={true}
+                    // loading={true}
                   />
                 </Container>
+                <h5 className={classes.infoHeading}>Assign Teacher:</h5>
+                <form>
+                  {/* {" "} */}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    select
+                    inputRef={courseRef}
+                    // onChange={handleChange}
+                    className={classes.textField}
+                  >
+                    <MenuItem value={"interview"}>interview</MenuItem>
+                    <MenuItem value={"hii"}>hii</MenuItem>
+                    <MenuItem value={"hello"}>hello</MenuItem>
+                    <MenuItem value={"hola"}>hola</MenuItem>
+                  </TextField>
+                </form>
                 <div className={classes.submitBtn}>
                   <Button
                     variant="contained"
