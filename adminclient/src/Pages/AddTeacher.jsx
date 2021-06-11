@@ -1,4 +1,6 @@
 import React from "react";
+import { useState, useRef } from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import { Button, Card, CardHeader } from "@material-ui/core";
@@ -7,9 +9,20 @@ import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import {useStyles} from "./../Styles/AddTeacher"
+import { useStyles } from "./../Styles/AddTeacher";
+import { Multiselect } from "multiselect-react-dropdown";
+
 const AddTeacher = () => {
   const classes = useStyles();
+
+  const multiselectdata = [
+    { Country: "india", id: "1" },
+    { Country: "england", id: "2" },
+    { Country: "america", id: "3" },
+    { Country: "china", id: "4" },
+    { Country: "pakistan", id: "5" },
+  ];
+  const [options] = useState(multiselectdata);
 
   return (
     <div>
@@ -110,15 +123,15 @@ const AddTeacher = () => {
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Courses :</h5>
-                <form>
-                  {" "}
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    size="small"
-                    className={classes.textField}
+                <Container>
+                  <Multiselect
+                    options={options}
+                    displayValue="Country"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
                   />
-                </form>
+                </Container>
               </Paper>
             </Grid>
             <Grid item xs={12}>

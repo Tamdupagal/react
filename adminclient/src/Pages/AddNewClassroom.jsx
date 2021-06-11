@@ -162,11 +162,16 @@ const AddNewClassroom = () => {
                     id="outlined-basic"
                     variant="outlined"
                     size="small"
-                    inputRef={studentRef}
+                    inputRef={studentRef} 
                     className={classes.textField}
                   />
                 </form> */}
-                <Multiselect options={options} displayValue="Country" />
+                <Multiselect
+                  options={options}
+                  displayValue="Country"
+                  closeIcon="cancel"
+                  placeholder=""
+                />
                 <div className={classes.submitBtn}>
                   <Button
                     variant="contained"
