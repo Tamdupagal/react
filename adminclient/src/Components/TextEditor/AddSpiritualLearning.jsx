@@ -154,7 +154,7 @@ function AddSpritualLearning() {
 
   return (
     <div>
-      <Container className={classes.Header}>Add New Learning Skill </Container>
+      <Container className={classes.Header}>Add Spiritual Learning Skill </Container>
 
       <Container className={classes.borderbox1}>
         <Grid container spacing={3}>

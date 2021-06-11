@@ -5,6 +5,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from 'react-router';
+
 
 const useStyles = makeStyles({
   root: {
@@ -12,7 +14,15 @@ const useStyles = makeStyles({
   },
 });
 
+
 const ClassroomActions = () => {
+  const history = useHistory();
+    const handleAddLecture = () =>{
+        history.push("/add-lecture")
+    }
+    const handleViewHistory = ()=>{
+        history.push("classrooms/timeline")
+    }
   const classes = useStyles();
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
@@ -44,6 +54,7 @@ const ClassroomActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleAddLecture}
         >
           <AddIcon />
         </button>
@@ -60,6 +71,7 @@ const ClassroomActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleViewHistory}
         >
           <HistoryIcon />
         </button>

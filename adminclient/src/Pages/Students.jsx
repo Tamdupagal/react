@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import { Box,Button, Container } from "@material-ui/core";
+import { Box, Button, Container, Typography } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import { useHistory } from "react-router";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import StudentActions from "./StudentActions";
-import { attendanceData } from "./../Helpers/attendanceData";
+import { StudentData } from "./../Helpers/StudentData";
 
 const useStyles = makeStyles({
   tableRow: {
-    "&:hover": { backgroundColor: "rgba(224,224,224,1) !important" },
+    "&:hover": { backgroundColor: "#fafaf2 !important" },
+  },
+  title: {
+    fontSize: "2rem",
+    fontWeight: "700",
+    fontFamily: "KoHo, sans-serif",
   },
 });
 
@@ -21,7 +26,7 @@ const Students = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    setData(attendanceData);
+    setData(StudentData);
   }, []);
 
   const handleAttendanceReport = () => {
@@ -29,18 +34,17 @@ const Students = () => {
   };
 
   const Columns = [
-    { title: "Name", field: "DclassName" },
-    { title: "Teacher", field: "teacher" },
     {
-      title: "Student",
-      field: "student",
-      Style: { border: "1px solid black" },
+      title: "Name",
+      field: "name",
     },
+    { title: "Email", field: "email" },
+    { title: "Parent Name", field: "parentName" },
     {
-      title: "Lectures Completed",
-      field: "LecturesComplete",
-      render: (row) => <div>Hello</div>,
+      title: "Parent's PhoneNo.",
+      field: "parentPhoneNo",
     },
+    { title: "Status", field: "status" },
     {
       title: "Actions",
       field: "name",
@@ -66,7 +70,7 @@ const Students = () => {
   ];
   return (
     <div>
-      <Container >
+      <Container>
         <Container
           style={{
             border: "1px solid #e6e6ff",
@@ -76,23 +80,21 @@ const Students = () => {
             borderTopLeftRadius: "10px",
             borderTopRightRadius: "10px",
           }}
-          
         >
-          <Box display="flex" justifyContent="flex-end">
-          <Button
-            variant="contained"
-            color="secondary"            
-          >
-            Add new Student
-          </Button>
+          <Box display="flex" justifyContent="space-between">
+            <Typography className={classes.title}>STUDENTS</Typography>
+
+            <Button variant="contained" color="secondary">
+              Add new Student
+            </Button>
           </Box>
         </Container>
       </Container>
-  
+
       <Container>
         {" "}
         <MaterialTable
-          title="Students"
+          title=""
           data={data}
           columns={Columns}
           options={{
@@ -101,16 +103,18 @@ const Students = () => {
 
             headerStyle: {
               border: "0.5px solid #ccc",
-              backgroundColor: "#9cb3c9",
+              backgroundColor: "#007399",
+              color: "white",
               fontSize: "1.2rem",
               fontWeight: "800",
               fontFamily: "KoHo, sans-serif",
               letterSpacing: "0.07rem",
+              "&:hover": { color: "white !important" },
             },
 
             rowStyle: (rowData) => ({
               backgroundColor:
-                rowData.tableData.id % 2 === 0 ? "#FFF" : "#eff2f6",
+                rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
               fontWeight: "600",
               fontSize: "1rem",
               rowStyle: "#486684",
