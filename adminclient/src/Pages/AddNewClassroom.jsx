@@ -166,7 +166,15 @@ const AddNewClassroom = () => {
                     className={classes.textField} 
                   />
                 </form> */}
-                <Multiselect options={options} displayValue="Country"  />
+                <Container>
+                  <Multiselect
+                    options={options}
+                    displayValue="Country"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
+                  />
+                </Container>
                 <div className={classes.submitBtn}>
                   <Button
                     variant="contained"
