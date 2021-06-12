@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import CreateIcon from "@material-ui/icons/Create";
-// import ClassroomActions from "./ClassroomActions";
 import { useHistory } from "react-router";
-import { MTableToolbar, MTableBodyRow } from "material-table";
+import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import TeacherActions from "./TeacherActions";
-import { attendanceData } from "./../Helpers/attendanceData";
+import { teacherData } from "../Helpers/teacherData";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -26,24 +23,18 @@ const Teachers = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    setData(attendanceData);
+    setData(teacherData);
   }, []);
 
   const handleAttendanceReport = () => {
     history.push("/attendance/report");
   };
   const Columns = [
-    { title: "Name", field: "DclassName" },
-    { title: "Teacher", field: "teacher" },
+    { title: "NAME", field: "Name" },
+    { title: "EMAIL", field: "email" },
     {
-      title: "Student",
-      field: "student",
-      Style: { border: "1px solid black" },
-    },
-    {
-      title: "Lectures Completed",
-      field: "LecturesComplete",
-      render: (row) => <div>Hello</div>,
+      title: "PHONE NO.",
+      field: "phone",
     },
     {
       title: "Actions",

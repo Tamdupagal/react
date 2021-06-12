@@ -3,8 +3,7 @@ import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import TeacherTrainingActions from "./TeacherTrainingActions";
 import { useHistory } from "react-router";
-// import { attendanceData } from "../Helpers/classroomData";
-import { TeacherTrainingData } from "../Helpers/TeacherTrainingData.js";
+import { CRMData } from "../Helpers/CRMData.js";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -17,21 +16,19 @@ const useStyles = makeStyles({
   },
 });
 
-const TeacherTraining = () => {
+const CRMtable = () => {
   const classes = useStyles();
 
   const history = useHistory();
   const [data, setData] = useState();
   useEffect(() => {
-    setData(TeacherTrainingData);
+    setData(CRMData);
   }, []);
 
   const Columns = [
-    { title: "Classroom Name", field: "classroomName" },
-    { title: "Trainer Name", field: "TrainerName" },
-    { title: "Trainees Name", field: "TraineesName" },
-    { title: "Course", field: "Course" },
-    { title: "Total meetings", field: "TotalMeet" },
+    { title: "Name", field: "name" },
+    { title: "Email", field: "email" },
+    { title: "User Roles", field: "userRoles" },
     {
       title: "Actions",
       field: "name",
@@ -57,16 +54,14 @@ const TeacherTraining = () => {
             }}
           >
             <Box display="flex" justifyContent="space-between">
-              <Typography className={classes.title}>
-                TEACHER TRAINING ROOMS
-              </Typography>
+              <Typography className={classes.title}>CRM users</Typography>
 
               <Button
                 variant="contained"
                 color="secondary"
                 // onClick={handleAddNewClassroom}
               >
-                Add new Classroom
+                ADD NEW CRM USER
               </Button>
             </Box>
           </Container>
@@ -114,4 +109,4 @@ const TeacherTraining = () => {
   );
 };
 
-export default TeacherTraining;
+export default CRMtable;
