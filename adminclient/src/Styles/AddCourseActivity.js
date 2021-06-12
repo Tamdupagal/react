@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme) => ({
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
     backgroundColor: "#318ebd",
-    width: "90%",
+    width: "92%",
     color: "white",
     border: "2px solid #318ebd",
     padding: "2%",
@@ -69,12 +69,5 @@ export const useStyles = makeStyles((theme) => ({
     margin: "4%",
     marginTop: "4%",
     marginBottom: "4%",
-  },
-  container: {
-    border: "1px solid #ccc",
-    padding: "1%",
-    paddingLeft: "0%",
-    paddingRight: "0%",
-    borderRadius: "1vh",
   },
 }));
