@@ -31,6 +31,8 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "2%",
     padding: theme.spacing(0.2),
     color: theme.palette.text.secondary,
+    border: "1px solid #ccc",
+    borderRadius: "5px",
   },
   uploadimg: {
     border: "1px solid #ccc",
@@ -60,12 +62,19 @@ export const useStyles = makeStyles((theme) => ({
   },
   endDivider: {
     padding: "0.05%",
-    marginTop: "6%",
+    marginTop: "5%",
   },
   submitBtn: {
     textAlign: "center",
     margin: "4%",
     marginTop: "4%",
     marginBottom: "4%",
+  },
+  container: {
+    border: "1px solid #ccc",
+    padding: "1%",
+    paddingLeft: "0%",
+    paddingRight: "0%",
+    borderRadius: "1vh",
   },
 }));

@@ -40,16 +40,6 @@ const TextEditor = () => {
             </Paper>
           </Grid>
         </Grid>
-        <Grid item>
-          <Paper className={classes.paper}>
-            <div className={classes.submitBtn}>
-              <Button variant="contained" color="secondary">
-                SUBMIT STUDENT
-              </Button>
-            </div>
-          </Paper>
-        </Grid>
-        <Divider className={classes.endDivider} />
       </Container>
     </div>
   );
