@@ -1,7 +1,7 @@
 // import SideNav from './components/SideNav/SideNav'
 import { BrowserRouter as Router} from 'react-router-dom'
 import Form from './components/Form'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import DashBoard from './pages/Dashboard/Dashboard'
 import Attendance from './pages/Attendance/Attendance'
 import Assigment from './pages/Assignment/Assignment'
@@ -16,7 +16,8 @@ import SideNav from './pages/SideNav/SideNav'
 import Header from './components/Header'
 import Content from './components/Content'
 import Quiz from './pages/Quiz/Quiz'
-import { AppContext } from './AppContext'
+import { AppContext } from './AppContext' 
+import axios from './axios'
 
 
 function App() {
@@ -24,14 +25,14 @@ function App() {
   const {toggle, theme, dispatch} = useContext(AppContext)
 
     
-    // useEffect(async() => {
-    //      try {
-    //         const res = await axios.get('api/course/all');
-    //         console.log("response------>", res);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }, [])
+    useEffect(async() => {
+         try {
+             const res = await axios.get('/api/classroom/all');
+            console.log("response------>", res);
+        } catch (err) {
+            console.log(err);
+        }
+    }, [])
   
     
   return (
