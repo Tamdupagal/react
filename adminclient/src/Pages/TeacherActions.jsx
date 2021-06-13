@@ -4,8 +4,18 @@ import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+    fontWeight: "500",
+  },
+}))(Tooltip);
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +27,7 @@ const ClassroomActions = () => {
   const classes = useStyles();
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Edit Classroom" placement="top">
+      <LightTooltip title="Teacher Details" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -33,8 +43,8 @@ const ClassroomActions = () => {
         >
           <div Style={{ fontWeight: "700" }}>DETAIL</div>
         </button>
-      </Tooltip>
-      <Tooltip title="Add Lecture" placement="top">
+      </LightTooltip>
+      <LightTooltip title="View and Edit Teacher" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -49,8 +59,8 @@ const ClassroomActions = () => {
         >
           <VisibilityIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="View Classroom History" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Teacher's History" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -65,8 +75,8 @@ const ClassroomActions = () => {
         >
           <HistoryIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="Delete" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -81,7 +91,7 @@ const ClassroomActions = () => {
         >
           <DeleteIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
     </div>
   );
 };

@@ -4,8 +4,18 @@ import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+    fontWeight: "500",
+  },
+}))(Tooltip);
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +27,7 @@ const TeacherTrainingActions = () => {
   const classes = useStyles();
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Manage Student" placement="top">
+      <LightTooltip title="Edit" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -32,7 +42,7 @@ const TeacherTrainingActions = () => {
         >
           <CreateIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
       {/* <Tooltip title="Add Lecture" placement="top">
         <button
           size="small"
@@ -65,7 +75,7 @@ const TeacherTrainingActions = () => {
           <HistoryIcon />
         </button>
       </Tooltip> */}
-      <Tooltip title="Delete" placement="top">
+      <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -80,7 +90,7 @@ const TeacherTrainingActions = () => {
         >
           <DeleteIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
     </div>
   );
 };
