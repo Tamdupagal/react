@@ -136,7 +136,7 @@ const Courses = () => {
                 <Box m={1} display="flex" justifyContent="flex-end">
                   <Button
                     variant="outlined"
-                    size="medium"
+                    size="small"
                     style={{
                       marginRight: "20px",
                       color: "green",
@@ -149,7 +149,7 @@ const Courses = () => {
                   <Button
                     variant="outlined"
                     color="primary"
-                    size="medium"
+                    size="small"
                     onClick={handleOpen}
                     style={{ color: "#5567ff", border: "1px solid #5567ff" }}
                   >
@@ -184,6 +184,7 @@ const Courses = () => {
                             startIcon={<BackspaceIcon />}
                             variant="contained"
                             color="secondary"
+                            size="small"
                             className={classes.btn}
                           >
                             {" "}

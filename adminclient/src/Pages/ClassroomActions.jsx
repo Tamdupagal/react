@@ -62,11 +62,11 @@ const ClassroomActions = (props) => {
         console.log(e)
       });
     }
-    handleRefresh()
+    // history.push()
   }
-  const handleRefresh = () =>{
-    window.location.refresh()
-  }
+  // const handleRefresh = () =>{
+  //   window.location.refresh()
+  // }
     
   const classes = useStyles();
   return (
