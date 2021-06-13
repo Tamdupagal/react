@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import { Button, Container, Box, Typography } from "@material-ui/core";
+import { Button, Container, Box, Typography, Grid } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
@@ -64,53 +64,59 @@ const StudentCourses = () => {
   return (
     <div>
       <Container>
-        <Container
-          style={{
-            border: "1px solid #e6e6ff",
-            borderBottom: "white",
-            backgroundColor: "white",
-            padding: "1%",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
-          }}
-        >
-          <Box display="flex" justifyContent="space-between">
-            <Typography className={classes.title}>STUDENT COURSES</Typography>
-          </Box>
-        </Container>{" "}
-        <MaterialTable
-          title=""
-          data={data}
-          columns={Columns}
-          options={{
-            exportButton: true,
-            border: true,
-            headerStyle: {
-              border: "0.5px solid #ccc",
-              backgroundColor: "#007399",
-              color: "white",
-              fontSize: "1.2rem",
-              fontWeight: "800",
-              fontFamily: "KoHo, sans-serif",
-              letterSpacing: "0.07rem",
-            },
-            cellStyle: {
-              border: "0.5px solid #ccc",
-            },
-            rowStyle: (rowData) => ({
-              backgroundColor:
-                rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
-              fontWeight: "600",
-              fontSize: "1rem",
-              rowStyle: "#486684",
-            }),
-          }}
-          components={{
-            Row: (props) => (
-              <MTableBodyRow className={classes.tableRow} {...props} />
-            ),
-          }}
-        />
+        <Box display="flex" justifyContent="center">
+          <Grid item lg={10}>
+            <Container
+              style={{
+                border: "1px solid #e6e6ff",
+                borderBottom: "white",
+                backgroundColor: "white",
+                padding: "1%",
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+              }}
+            >
+              <Box display="flex" justifyContent="space-between">
+                <Typography className={classes.title}>
+                  STUDENT COURSES
+                </Typography>
+              </Box>
+            </Container>{" "}
+            <MaterialTable
+              title=""
+              data={data}
+              columns={Columns}
+              options={{
+                exportButton: true,
+                border: true,
+                headerStyle: {
+                  border: "0.5px solid #ccc",
+                  backgroundColor: "#007399",
+                  color: "white",
+                  fontSize: "1.2rem",
+                  fontWeight: "800",
+                  fontFamily: "KoHo, sans-serif",
+                  letterSpacing: "0.07rem",
+                },
+                cellStyle: {
+                  border: "0.5px solid #ccc",
+                },
+                rowStyle: (rowData) => ({
+                  backgroundColor:
+                    rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
+                  fontWeight: "600",
+                  fontSize: "1rem",
+                  rowStyle: "#486684",
+                }),
+              }}
+              components={{
+                Row: (props) => (
+                  <MTableBodyRow className={classes.tableRow} {...props} />
+                ),
+              }}
+            />
+          </Grid>
+        </Box>
       </Container>
     </div>
   );

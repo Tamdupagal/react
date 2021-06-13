@@ -7,16 +7,14 @@ const Operations = () => {
   return (
     <div>
       <Container>
-        <Container>
-          <Grid container>
-            <Grid item xs={12} lg={6}>
-              <CRMtable />
-            </Grid>
-            <Grid item xs={12} lg={6}>
-              <AdminUsers />
-            </Grid>
+        <Grid container>
+          <Grid item xs={12} lg={6}>
+            <CRMtable />
           </Grid>
-        </Container>
+          <Grid item xs={12} lg={6}>
+            <AdminUsers />
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );

@@ -4,9 +4,18 @@ import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
-import { useHistory } from 'react-router';
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router";
 
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+    fontWeight: "500",
+  },
+}))(Tooltip);
 
 const useStyles = makeStyles({
   root: {
@@ -14,19 +23,18 @@ const useStyles = makeStyles({
   },
 });
 
-
 const ClassroomActions = () => {
   const history = useHistory();
-    const handleAddLecture = () =>{
-        history.push("/add-lecture")
-    }
-    const handleViewHistory = ()=>{
-        history.push("classrooms/timeline")
-    }
+  const handleAddLecture = () => {
+    history.push("/add-lecture");
+  };
+  const handleViewHistory = () => {
+    history.push("classrooms/timeline");
+  };
   const classes = useStyles();
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Edit Classroom" placement="top">
+      <LightTooltip title="Edit Classroom" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -41,8 +49,8 @@ const ClassroomActions = () => {
         >
           <CreateIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="Add Lecture" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Add Lecture" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -58,8 +66,8 @@ const ClassroomActions = () => {
         >
           <AddIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="View Classroom History" placement="top">
+      </LightTooltip>
+      <LightTooltip title="View Classroom History" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -75,8 +83,8 @@ const ClassroomActions = () => {
         >
           <HistoryIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="Delete" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -91,7 +99,7 @@ const ClassroomActions = () => {
         >
           <DeleteIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
     </div>
   );
 };
