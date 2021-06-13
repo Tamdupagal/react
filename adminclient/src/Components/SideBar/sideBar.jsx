@@ -146,6 +146,7 @@ const useStyles = makeStyles((theme) => ({
     border: "none",
   },
   Accordion: {
+    textDecoration: "none",
     backgroundColor: "transparent",
     border: "transparent",
     margin: "0%",
@@ -335,6 +336,8 @@ const SideBar = () => {
                 border: "none",
                 margin: "0%",
                 padding: "0%",
+                boxShadow: "unset"
+
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>

@@ -6,62 +6,51 @@ import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
-import ListItemText from "@material-ui/core/ListItemText";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import MultiSelect from "react-multi-select-component";
-import Select from 'react-select';
 import { Multiselect } from "multiselect-react-dropdown";
-
-
 import Classroom from "./../CRUD/Classroom";
 
-const AddNewClassroom = () => {
+const EditClassroom = (props) => {
+  const [selectedValue, setSelectedValue] = useState([]);
+  const [classroom, setClassroom] = useState()
+  const classes = useStyles();
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
-  const newClassroomState = {
-    id: "null",
-    Name: "",
-    Course: "",
-    Teacher: "",
-    Students: "",
-  };
-  const options = [
-    { label: "Fever", value: 1, category: "cat 1" },
-{ label: "Head-ache", value: 2, category: "cat 2" },
-{ label: "Runny-nose", value: 3, category: "cat 1" },
-{ label: "Ear-pain", value: 4, category: "cat 1" },
-{ label: "Body-pain", value: 5, category: "cat 2" },
-{ label: "Cough", value: 6, category: "cat 1" }
-  ];
+  const [options, setOptions] = useState()
+  let arr = []
+  let edit;
   useEffect(() => {
-    console.log(selectedValue)
-    
+      console.log(props)
+      console.log(props.editClassroomData._id)
+      edit=props.editClassroomData.enrolled_students
+      console.log(edit)
+      const keys = Object.keys(edit)
+      console.log(keys)
+      keys.map(c=>(arr.push({"label":c})))
+      console.log(arr)
+      setOptions(arr)
+    // JSON.stringify(props.editClassroomData.enrolled_courses.map(c=>arr.push(c)))
+    // console.log(arr)
   }, [])
   
   
   const onSelect = (e) => {
     setSelectedValue(Array.isArray(e) ? e.map(x => x.label) : []);
   }
-  const [classroom, setClassroom] = useState(newClassroomState);
 
-  const [selectedValue, setSelectedValue] = useState([]);
-  const classes = useStyles();
+
   
-  const saveClassroom = () => {
+  const editClassroom = (id) => {
     var data = {
       name: nameRef.current.value,
       courses: ["1", "2", "3"],
       students: selectedValue,
 
     };
-
+    console.log(id)
     console.log(nameRef.current.value);
     console.log(selectedValue)
-    Classroom.create(data)
+    Classroom.update(id,data)
       .then((res) => {
         setClassroom({
           id: res.data.id,
@@ -93,7 +82,12 @@ const AddNewClassroom = () => {
                     size="small"
                     className={classes.textField}
                     inputRef={nameRef}
-                  />
+                    enabled
+                    defaultValue={props.editClassroomData.name}
+                    // value={props.editClassroomData.name}     
+                  >
+                      {/* {props.editClassroomData.name} */}
+                  </TextField>
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
                 {/* <form> */}{" "}
@@ -109,6 +103,7 @@ const AddNewClassroom = () => {
                   <MenuItem value={2}>hello</MenuItem>
                   <MenuItem value={3}>hola</MenuItem>
                 </Select> */}
+                <Container>
                 <Multiselect
                 options={options} 
                 value={selectedValue} 
@@ -119,6 +114,7 @@ const AddNewClassroom = () => {
                 showArrow={true}
                 avoidHighlightFirstOption={true}
                 />
+                </Container>
 
                 {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
@@ -133,7 +129,7 @@ const AddNewClassroom = () => {
                   />
                 </form> */}
                 <Container>
-                <pre>{JSON.stringify(selectedValue)}</pre>
+                {/* <pre>{JSON.stringify(selectedValue)}</pre> */}
                 <Multiselect
                 options={options} 
                 value={selectedValue} 
@@ -147,13 +143,11 @@ const AddNewClassroom = () => {
                 </Container>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <form>
-                  {/* {" "} */}
                   <TextField
                     variant="outlined"
                     size="small"
                     select
                     inputRef={courseRef}
-                    // onChange={handleChange}
                     className={classes.textField}
                   >
                     <MenuItem value={"interview"}>interview</MenuItem>
@@ -166,9 +160,9 @@ const AddNewClassroom = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={saveClassroom}
+                    onClick={()=>editClassroom(props.editClassroomData._id)}
                   >
-                    SUBMIT CLASSROOM
+                    Edit Classroom
                   </Button>
                 </div>
               </Card>
@@ -179,4 +173,4 @@ const AddNewClassroom = () => {
     </div>
   );
 };
-export default AddNewClassroom;
+export default EditClassroom;

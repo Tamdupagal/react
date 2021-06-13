@@ -7,7 +7,7 @@ import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
 import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import Courses from "./Pages/Courses";
 import AddMeet from "./Pages/AddMeet";
@@ -36,6 +36,7 @@ import Teachers from "./Pages/Teachers";
 import Operations from "./Pages/Operations";
 import TeacherTraining from "./Pages/TeacherTraining";
 import axios from "./axios";
+import EditClassroom from "./Pages/EditClassrom";
 
 const theme = createMuiTheme({
   palette: {
@@ -59,9 +60,19 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 function App() {
+  const history = useHistory()
   const { state, dispatch } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [editClassroomData, setEditClassroomData] = useState()
+  
+  const handleEditClassroom = (data) => {
+    setEditClassroomData(data);
+    console.log("done")
+   
+  }
 
   // useEffect(async()=>{
   //   console.log(screenWidth);
@@ -72,12 +83,12 @@ function App() {
   //   console.log(screenWidth);
   // },[screenWidth]);
   useEffect(async () => {
-    try {
-      const res = await axios.post("/classroom/new");
-      console.log("response:", res);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await axios.get("/classroom/60c478414d3ad53a9e514693");
+    //   console.log("response:", res);
+    // } catch (err) {
+    //   console.log(err);
+    // }    
   }, []);
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
 
@@ -94,7 +105,7 @@ function App() {
               <Route exact path="/enroll" component={Enroll} />
               <Route exact path="/meetLink" component={MeetTable} />
               <Route exact path="/courses" component={Courses} />
-              <Route exact path="/classroom" component={OneToOne} />
+              <Route exact path="/classroom" component={()=><OneToOne handleEditClassroom={handleEditClassroom}/>} />
               <Route exact path="/students" component={Students} />
               <Route exact path="/student-courses" component={StudentCourses} />
               <Route exact path="/attendances" component={Attendance} />
@@ -109,6 +120,11 @@ function App() {
                 exact
                 path="/classroom/create"
                 component={AddNewClassroom}
+              />
+              <Route
+                exact
+                path="/classroom/edit"
+                component={()=><EditClassroom editClassroomData={editClassroomData}/>}
               />
               <Route exact path="/new-room" component={AddNewRoom} />
               <Route exact path="/teacher-details" component={TeacherDetails} />

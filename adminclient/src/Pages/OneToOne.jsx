@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 import { classroomData } from "../Helpers/classroomData";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
+import Classroom from "../CRUD/Classroom";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -16,36 +17,55 @@ const useStyles = makeStyles({
   },
 });
 
-const OneToOne = () => {
+const OneToOne = (props) => {
   const classes = useStyles();
-
   const history = useHistory();
   const [data, setData] = useState();
   useEffect(() => {
-    setData(classroomData);
+    getClassroomAll()
   }, []);
-
+  const getClassroomAll = () => {
+    Classroom.getAll()
+    // fetch("https://jsonplaceholder.typicode.com/users")
+    // .then(res => res.json())
+    .then((res)=>{
+      setData(res.data)
+      console.log(res)
+      // console.log(data)
+    })
+    .catch(e => {
+      console.log(e)
+    });
+  }
   const handleAddNewClassroom = () => {
     history.push("/classroom/create");
   };
   const Columns = [
-    { title: "Name", field: "DclassName" },
-    { title: "Teacher", field: "teacher" },
-    { title: "Student", field: "student" },
-    {
-      title: "Lectures Completed",
-      field: "LecturesComplete",
-      render: (row) => <div>Hello</div>,
-    },
+    { title: "Name", field: "name" },
+    { title: "Type", field: "classroom_type" },
+    // { title: "Name", field: "students",render: (row) => (<div>demo class for {row.classroom_type}</div>) },
+    // { title: "Teacher", field: "teacher" },
+    // { title: "Student", field: "student" },
+    // {
+    //   title: "Lectures Completed",
+    //   field: "LecturesComplete",
+    //   render: (row) => <div>Hello</div>,
+    // },
     {
       title: "Actions",
       field: "name",
       render: (row) => (
         <div>
-          <ClassroomActions />
+          <ClassroomActions data={row} handleEditClassroom={props.handleEditClassroom}/>
         </div>
       ),
     },
+    
+      // { title: "ID", field: "id" },
+      // { title: "Email", field: "email" },
+      // { title: "Phone", field: "phone" },
+      // { title: "Web Link", field: 'website' }
+    
   ];
   return (
     <div>
@@ -123,6 +143,7 @@ const OneToOne = () => {
           </Grid>
         </Box>
       </Container>
+      {/* <div>{data}</div> */}
     </div>
   );
 };
