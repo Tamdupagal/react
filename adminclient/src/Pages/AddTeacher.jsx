@@ -1,10 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
-
-import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import { Button, Card, CardHeader } from "@material-ui/core";
-import FastRewindIcon from "@material-ui/icons/FastRewind";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -57,7 +54,7 @@ const AddTeacher = () => {
                     name="img"
                   />
                 </Card>
-                <h5 className={classes.infoHeading}>Student Name:</h5>{" "}
+                <h5 className={classes.infoHeading}>Teacher Name:</h5>{" "}
                 <form>
                   <TextField
                     id="outlined-basic"

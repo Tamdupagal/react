@@ -6,7 +6,8 @@ import { useHistory } from "react-router";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import StudentActions from "./StudentActions";
-import { StudentData } from "./../Helpers/StudentData";
+// import { StudentData } from "./../Helpers/StudentData";
+import Student from "./../CRUD/Students"
 
 const useStyles = makeStyles({
   tableRow: {
@@ -24,45 +25,37 @@ const Students = () => {
   const history = useHistory();
 
   const [data, setData] = useState();
-
   useEffect(() => {
-    setData(StudentData);
+    getStudentAll();
   }, []);
 
-  const handleAttendanceReport = () => {
-    history.push("/attendance/report");
-  };
-
+  const getStudentAll = () => {
+    Student.getAll()
+    .then(res =>{
+      setData(res.data)
+      console.log(res)
+    })
+    .catch(e => {
+      console.log(e)
+    });
+  }
   const Columns = [
     {
       title: "Name",
       field: "name",
     },
     { title: "Email", field: "email" },
-    { title: "Parent Name", field: "parentName" },
+    { title: "Parent Name", field: "parent_name" },
     {
-      title: "Parent's PhoneNo.",
-      field: "parentPhoneNo",
+      title: "Parent's Relation.",
+      field: "parent_relation ",
     },
-    { title: "Status", field: "status" },
+    { title: "Status", field: "active" },
     {
       title: "Actions",
       field: "name",
       render: (row) => (
         <div>
-          {/* <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#17a2b8",
-              padding: "2%",
-              color: "white",
-              fontSize: "small",
-            }}
-            onClick={handleAttendanceReport}
-          >
-            <CreateIcon /> View Attendance Report
-          
-          </Button> */}
           <StudentActions />
         </div>
       ),

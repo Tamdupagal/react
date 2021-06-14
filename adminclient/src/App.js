@@ -35,8 +35,8 @@ import { AppContext } from "./AppContext";
 import Teachers from "./Pages/Teachers";
 import Operations from "./Pages/Operations";
 import TeacherTraining from "./Pages/TeacherTraining";
-import axios from "./axios";
 import EditClassroom from "./Pages/EditClassrom";
+import EditStudent from "./Pages/EditStudent";
 
 const theme = createMuiTheme({
   palette: {
@@ -115,6 +115,7 @@ function App() {
               <Route exact path="/add-teacher" component={AddTeacher} />
               <Route exact path="/add-course" component={AddCourse} />
               <Route exact path="/operations" component={Operations} />
+              <Route exact path="/Student/Edit" component={EditStudent} />
 
               <Route
                 exact

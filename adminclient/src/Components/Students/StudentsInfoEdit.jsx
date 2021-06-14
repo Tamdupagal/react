@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import {useStyles} from "../../Styles/AddStudent"
 import { Button, Card, Grid, Divider, Paper, TextField} from '@material-ui/core'
 import Student from "./../../CRUD/Students"
 
-const StudentsInfo = (props) => {
+
+const StudentsInfoEdit = () => {
     const classes = useStyles()
     const sName = useRef()
     const pName = useRef()
@@ -11,29 +12,13 @@ const StudentsInfo = (props) => {
     const pEmail = useRef()
     const pMobileNo = useRef()
     const pRelation = useRef()
-    const handleAddStudent = () =>{
-      var data = {
-        role : "STUDENT",
-        active: "true",
-        name : sName.current.value,
-        email: sEmail.current.value,
-        parent_name: pName.current.value,
-        parent_relation: pRelation.current.value,
-        parent_email: pEmail.current.value,
-        password : "1234"
-      }
-      Student.create(data)
-      .then(res =>{
-        console.log("data Added:",res)
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    }
-    
     return (
-          <div>
-              <Grid container spacing={3} style={{ margin: "2%" }}>
+        <div>
+            <Grid container spacing={3} style={{ margin: "2%" }}>
+              <Grid item xs={12}>
+                <Divider className={classes.dividerInset0} />
+                <h3 className={classes.subheading1}>MANUALLY ADD A STUDENT</h3>
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <Divider className={classes.dividerInset1} />
                 <h3 className={classes.subheading1}>STUDENT'S INFORMATION</h3>
@@ -126,6 +111,7 @@ const StudentsInfo = (props) => {
                       size="small"
                       className={classes.textField}
                       inputRef={pMobileNo}
+                      defaultValue={handledefaultValue(props)}
                     />
                   </form>
                   <h5 className={classes.infoHeading}>Parent's relation</h5>
@@ -147,7 +133,7 @@ const StudentsInfo = (props) => {
                 </div>
               </Grid>
             </Grid>
-          </div>
+        </div>
     )
 }
-export default StudentsInfo;
+export default StudentsInfoEdit

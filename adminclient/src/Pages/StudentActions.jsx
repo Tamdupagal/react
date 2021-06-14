@@ -1,11 +1,11 @@
 import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import {useHistory} from "react-router-dom"
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -24,7 +24,11 @@ const useStyles = makeStyles({
 });
 
 const StudentActions = () => {
+  const history = useHistory()
   const classes = useStyles();
+  const handleEditStudent = () => {
+    history.push("/student/edit")
+  }
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
       <LightTooltip title="Manage Student" placement="top" arrow>
@@ -39,26 +43,11 @@ const StudentActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEditStudent}
         >
           <VisibilityIcon />
         </button>
       </LightTooltip>
-      {/* <LightTooltip title="Add Lecture" placement="top">
-        <button
-          size="small"
-          style={{
-            padding: "0%",
-            marginRight: "3%",
-            backgroundColor: "#77c13a",
-            color: "white",
-            borderColor: "#77c13a",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <AddIcon />
-        </button>
-      </LightTooltip> */}
       <LightTooltip title="Student's History" placement="top" arrow>
         <button
           size="small"

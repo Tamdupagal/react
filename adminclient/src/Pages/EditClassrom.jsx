@@ -59,6 +59,7 @@ const EditClassroom = (props) => {
       .catch((e) => {
         console.log(e);
       });
+      Window.reload()
   };
 
   return (
