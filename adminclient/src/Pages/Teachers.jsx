@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import { Box, Button, Container, makeStyles, Typography } from "@material-ui/core";
 import { useHistory } from "react-router";
-import { MTableBodyRow } from "material-table";
-import { makeStyles } from "@material-ui/core/styles";
-import TeacherActions from "./TeacherActions";
-import { teacherData } from "../Helpers/teacherData";
+import { getAllTeachers } from "../action/actions";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Alert from '@material-ui/lab/Alert';
+import { TeacherColumns, TeacherData} from "../Helpers/teacherData";
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
+import Table from '../Components/Table/Table'
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -20,44 +22,18 @@ const Teachers = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const [data, setData] = useState();
+  const { state, dispatch } = useContext(AppContext)
+  
+  const TEACHER_DATA = state?.teacherData
 
   useEffect(() => {
-    setData(teacherData);
+    getAllTeachers(dispatch)
   }, []);
 
   const handleAttendanceReport = () => {
     history.push("/attendance/report");
   };
-  const Columns = [
-    { title: "NAME", field: "Name" },
-    { title: "EMAIL", field: "email" },
-    {
-      title: "PHONE NO.",
-      field: "phone",
-    },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          {/* <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#17a2b8",
-              padding: "2%",
-              color: "white",
-              fontSize: "small",
-            }}
-            onClick={handleAttendanceReport}
-          >
-            <CreateIcon /> View Attendance Report
-          </Button> */}
-          <TeacherActions />
-        </div>
-      ),
-    },
-  ];
+  
   return (
     <div>
       <Container>
@@ -82,41 +58,13 @@ const Teachers = () => {
       </Container>
       <Container>
         {" "}
-        <MaterialTable
-          title=""
-          data={data}
-          columns={Columns}
-          options={{
-            exportButton: true,
-            border: true,
-
-            headerStyle: {
-              border: "0.5px solid #ccc",
-              backgroundColor: "#007399",
-              color: "white",
-              fontSize: "1.2rem",
-              fontWeight: "800",
-              fontFamily: "KoHo, sans-serif",
-              letterSpacing: "0.07rem",
-            },
-
-            rowStyle: (rowData) => ({
-              backgroundColor:
-                rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
-              fontWeight: "600",
-              fontSize: "1rem",
-              rowStyle: "#486684",
-            }),
-            cellStyle: {
-              border: "0.5px solid #ccc",
-            },
-          }}
-          components={{
-            Row: (props) => (
-              <MTableBodyRow className={classes.tableRow} {...props} />
-            ),
-          }}
-        />
+        {TEACHER_DATA.isLoading ? <CircularProgress /> : TEACHER_DATA.anyError ?
+          <Alert variant="outlined" severity="error">
+              Ops! Data could not be loaded, try again .
+          </Alert>
+          :
+          <Table data={TeacherData(state)} column={TeacherColumns(true)} />
+        }
       </Container>
     </div>
   );

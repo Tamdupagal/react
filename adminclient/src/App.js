@@ -82,6 +82,7 @@ function App() {
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
 
   const classes = useStyles();
+  
   return (
     <ThemeProvider theme={theme}>
       <div>

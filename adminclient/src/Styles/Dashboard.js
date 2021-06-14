@@ -22,5 +22,5 @@ export const useStyles = makeStyles((theme) => ({
     container: {
       paddingBottom: "5vh",
       borderBottom: "3px solid #ccc",
-    },
+  },
   }));
