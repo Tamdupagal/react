@@ -8,10 +8,47 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./../Styles/AddTeacher";
 import { Multiselect } from "multiselect-react-dropdown";
+import Teacher from "./../CRUD/Teacher"
 
 const AddTeacher = () => {
   const classes = useStyles();
+  const tName = useRef()
+  const tQual = useRef()
+  const tEmail = useRef()
+  const tMobileNo = useRef()  
+  const tAltMobileNo = useRef()
+  const tAddress = useRef()
+  const [selectedValue, setSelectedValue] = useState([]);
 
+  const onSelect = (e) => {
+    setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
+  };
+
+  const handleAddTeacher = () => {
+    var data = {
+      name : tName.current.value,
+      profile_picture: "null",
+      alternate_phone_number: "1234",
+      role: "Tacher",
+      is_available: "true",
+      primary_phone_number: tMobileNo.current.value,
+      email: tEmail.current.value,
+      password: "1234",
+      Country: "India",
+      zip_code: "3456",
+      address: tAddress.current.value,
+      // last_seen: "1 hour ago"
+      // courses: selectedValue,
+    };
+    console.log(selectedValue);
+    Teacher.create(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   const multiselectdata = [
     { Country: "india", id: "1" },
     { Country: "england", id: "2" },
@@ -43,8 +80,6 @@ const AddTeacher = () => {
                     padding: "1%",
                     paddingTop: "1%",
                     paddingBottom: "2%",
-
-                    // textAlign: "center",
                   }}
                   className={classes.infoHeading}
                 >
@@ -61,6 +96,7 @@ const AddTeacher = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={tName}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Teacher Email:</h5>
@@ -71,6 +107,7 @@ const AddTeacher = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={tEmail}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Phone No.:</h5>
@@ -81,6 +118,7 @@ const AddTeacher = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={tMobileNo}
                   />
                 </form>
               </Paper>
@@ -97,6 +135,7 @@ const AddTeacher = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={tQual}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Alt Phone No. :</h5>
@@ -107,6 +146,7 @@ const AddTeacher = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={tAltMobileNo}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Teacher Adress:</h5>
@@ -117,13 +157,16 @@ const AddTeacher = () => {
                     variant="outlined"
                     // size="small"
                     className={classes.textField}
+                    inputRef={tAddress}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Courses :</h5>
                 <Container>
                   <Multiselect
                     options={options}
-                    displayValue="Country"
+                    value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
                     closeIcon="cancel"
                     placeholder=""
                     showArrow={true}
@@ -134,7 +177,7 @@ const AddTeacher = () => {
             </Grid>
             <Grid item xs={12}>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary">
+                <Button variant="contained" color="secondary" onClick={handleAddTeacher}>
                   SUBMIT TEACHER
                 </Button>
               </div>

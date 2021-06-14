@@ -6,6 +6,8 @@ import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import TeacherActions from "../Components/Actions/TeacherActions";
 import { teacherData } from "../Helpers/teacherData";
+import Teacher from "./../CRUD/Teacher"
+
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -25,22 +27,32 @@ const useStyles = makeStyles({
 const Teachers = () => {
   const classes = useStyles();
   const history = useHistory();
-
+  const handleAddTeacher = () => {
+    history.push("/add-teacher")
+  }
   const [data, setData] = useState();
 
   useEffect(() => {
-    setData(teacherData);
+    getTeacherAll()
   }, []);
 
-  const handleAttendanceReport = () => {
-    history.push("/attendance/report");
-  };
+  const getTeacherAll = () => {
+    Teacher.getAll()
+    .then(res =>{
+      setData(res.data)
+      console.log(res)
+    })
+    .catch(e => {
+      console.log(e)
+    });
+  }
+
   const Columns = [
-    { title: "NAME", field: "Name" },
+    { title: "NAME", field: "name" },
     { title: "EMAIL", field: "email" },
     {
       title: "PHONE NO.",
-      field: "phone",
+      field: "primary_phone_number",
     },
     {
       title: "Actions",
@@ -86,7 +98,7 @@ const Teachers = () => {
                 <Box display="flex" justifyContent="space-between">
                   <Typography className={classes.title}>TEACHERS</Typography>
 
-                  <Button variant="contained" color="secondary">
+                  <Button variant="contained" color="secondary" onClick={handleAddTeacher}>
                     Add new Teacher
                   </Button>
                 </Box>
