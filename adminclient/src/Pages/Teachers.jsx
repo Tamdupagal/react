@@ -14,6 +14,12 @@ const useStyles = makeStyles({
     fontWeight: "700",
     fontFamily: "KoHo, sans-serif",
   },
+  mainHeading: {
+    textAlign: "center",
+    fontFamily: "'Exo', sans-serif",
+    marginTop: "3%",
+    marginBottom: "3%",
+  },
 });
 
 const Teachers = () => {
@@ -60,6 +66,9 @@ const Teachers = () => {
   ];
   return (
     <div>
+      <div>
+        <h1 className={classes.mainHeading}>Teachers Detail</h1>
+      </div>
       <Container>
         <Box display="flex" justifyContent="center">
           <Grid item lg={10}>

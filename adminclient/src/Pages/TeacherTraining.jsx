@@ -68,7 +68,7 @@ const TeacherTraining = () => {
                     color="secondary"
                     // onClick={handleAddNewClassroom}
                   >
-                    Add new Classroom
+                    Add New Room
                   </Button>
                 </Box>
               </Container>

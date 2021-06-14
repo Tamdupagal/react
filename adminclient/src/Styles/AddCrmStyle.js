@@ -32,4 +32,10 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "2%",
     padding: "2%",
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: "90%",
+    marginLeft: "5%",
+    // maxWidth: 300,
+  },
 }));
