@@ -6,16 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
-import ListItemText from "@material-ui/core/ListItemText";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import MultiSelect from "react-multi-select-component";
-import Select from 'react-select';
 import { Multiselect } from "multiselect-react-dropdown";
-
-
 import Classroom from "./../CRUD/Classroom";
 
 const AddNewClassroom = () => {
