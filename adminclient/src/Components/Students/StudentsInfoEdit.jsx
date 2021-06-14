@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {useStyles} from "../../Styles/AddStudent"
 import { Button, Card, Grid, Divider, Paper, TextField} from '@material-ui/core'
 import Student from "./../../CRUD/Students"
@@ -111,7 +111,6 @@ const StudentsInfoEdit = () => {
                       size="small"
                       className={classes.textField}
                       inputRef={pMobileNo}
-                      defaultValue={handledefaultValue(props)}
                     />
                   </form>
                   <h5 className={classes.infoHeading}>Parent's relation</h5>
@@ -127,8 +126,10 @@ const StudentsInfoEdit = () => {
                   </form>
                 </Paper>
                 <div className={classes.submitBtn}>
-                  <Button variant="contained" color="secondary" onClick={handleAddStudent}>
-                    SUBMIT STUDENT
+                  <Button variant="contained" color="secondary" 
+                //   onClick={handleEditStudent}
+                  >
+                    Edit STUDENT
                   </Button>
                 </div>
               </Grid>
