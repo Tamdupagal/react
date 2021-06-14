@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import TeacherTrainingActions from "./TeacherTrainingActions";
+import TeacherTrainingActions from "./../Actions/TeacherTrainingActions";
 import { useHistory } from "react-router";
-import { AdminData } from "../Helpers/AdminData.js";
+import { AdminData } from "./../../Helpers/AdminData";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
-import TeacherTrainingActions from "./TeacherTrainingActions";
+import TeacherTrainingActions from "../Components/Actions/TeacherTrainingActions";
 import { useHistory } from "react-router";
 // import { attendanceData } from "../Helpers/classroomData";
 import { TeacherTrainingData } from "../Helpers/TeacherTrainingData.js";

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Container, } from "@material-ui/core";
-import { Button, Card } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import { Button, Card, Box } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -22,36 +22,33 @@ const AddNewClassroom = () => {
   };
   const options = [
     { label: "Fever", value: 1, category: "cat 1" },
-{ label: "Head-ache", value: 2, category: "cat 2" },
-{ label: "Runny-nose", value: 3, category: "cat 1" },
-{ label: "Ear-pain", value: 4, category: "cat 1" },
-{ label: "Body-pain", value: 5, category: "cat 2" },
-{ label: "Cough", value: 6, category: "cat 1" }
+    { label: "Head-ache", value: 2, category: "cat 2" },
+    { label: "Runny-nose", value: 3, category: "cat 1" },
+    { label: "Ear-pain", value: 4, category: "cat 1" },
+    { label: "Body-pain", value: 5, category: "cat 2" },
+    { label: "Cough", value: 6, category: "cat 1" },
   ];
   useEffect(() => {
-    console.log(selectedValue)
-    
-  }, [])
-  
-  
+    console.log(selectedValue);
+  }, []);
+
   const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map(x => x.label) : []);
-  }
+    setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
+  };
   const [classroom, setClassroom] = useState(newClassroomState);
 
   const [selectedValue, setSelectedValue] = useState([]);
   const classes = useStyles();
-  
+
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
       courses: ["1", "2", "3"],
       students: selectedValue,
-
     };
 
     console.log(nameRef.current.value);
-    console.log(selectedValue)
+    console.log(selectedValue);
     Classroom.create(data)
       .then((res) => {
         setClassroom({
@@ -74,7 +71,7 @@ const AddNewClassroom = () => {
       </div>
       <Container>
         <div>
-          <Grid className={classes.container}>
+          <Box display="flex" justifyContent="center">
             <Grid item xs={12} lg={9}>
               <Card>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
@@ -84,6 +81,7 @@ const AddNewClassroom = () => {
                     size="small"
                     className={classes.textField}
                     inputRef={nameRef}
+                    // style={{ height: "5px" }}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
@@ -100,17 +98,18 @@ const AddNewClassroom = () => {
                   <MenuItem value={2}>hello</MenuItem>
                   <MenuItem value={3}>hola</MenuItem>
                 </Select> */}
-                <Multiselect
-                options={options} 
-                value={selectedValue} 
-                onSelect={onSelect} 
-                displayValue="label"
-                closeIcon="cancel"
-                placeholder=""
-                showArrow={true}
-                avoidHighlightFirstOption={true}
-                />
-
+                <Container>
+                  <Multiselect
+                    options={options}
+                    value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
+                    avoidHighlightFirstOption={true}
+                  />
+                </Container>
                 {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
                 {/* <form>
@@ -124,17 +123,16 @@ const AddNewClassroom = () => {
                   />
                 </form> */}
                 <Container>
-                <pre>{JSON.stringify(selectedValue)}</pre>
-                <Multiselect
-                options={options} 
-                value={selectedValue} 
-                onSelect={onSelect} 
-                displayValue="label"
-                closeIcon="cancel"
-                placeholder=""
-                showArrow={true}
-                avoidHighlightFirstOption={true}
-                />
+                  <Multiselect
+                    options={options}
+                    value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
+                    avoidHighlightFirstOption={true}
+                  />
                 </Container>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <form>
@@ -164,7 +162,7 @@ const AddNewClassroom = () => {
                 </div>
               </Card>
             </Grid>
-          </Grid>
+          </Box>
         </div>
       </Container>
     </div>

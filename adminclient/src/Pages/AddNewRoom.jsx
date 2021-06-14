@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { Button, Card } from "@material-ui/core";
+import { Button, Card, Box } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
-import {useStyles} from "./../Styles/AddNewRoom"
+import { useStyles } from "./../Styles/AddNewRoom";
 
 const AddNewRoom = () => {
   const [value, setValue] = React.useState("interview");
@@ -21,7 +21,7 @@ const AddNewRoom = () => {
       </div>
       <Container>
         <div>
-          <Grid className={classes.container}>
+          <Box display="flex" justifyContent="center">
             <Grid item xs={12} lg={9}>
               <Card className={classes.card0}>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
@@ -34,7 +34,7 @@ const AddNewRoom = () => {
                     className={classes.textField}
                   />
                 </form>
-                <h5 className={classes.infoHeading}>Assign Course:</h5>
+                <h5 className={classes.infoHeading}>Trainer Type:</h5>
                 <form>
                   {" "}
                   <TextField
@@ -51,7 +51,7 @@ const AddNewRoom = () => {
                     <MenuItem value={"hola"}>hola</MenuItem>
                   </TextField>
                 </form>
-                <h5 className={classes.infoHeading}>Assign Teacher:</h5>
+                <h5 className={classes.infoHeading}>Assign Trainer:</h5>
                 <form>
                   {" "}
                   <TextField
@@ -69,7 +69,7 @@ const AddNewRoom = () => {
                     <MenuItem value={"hola"}>hola</MenuItem>
                   </TextField>
                 </form>
-                <h5 className={classes.infoHeading}>Assign Students:</h5>
+                <h5 className={classes.infoHeading}>Assign Course:</h5>
                 <form>
                   {" "}
                   <TextField
@@ -146,7 +146,7 @@ const AddNewRoom = () => {
                 </div>
               </Card>
             </Grid>
-          </Grid>
+          </Box>
         </div>
       </Container>
     </div>

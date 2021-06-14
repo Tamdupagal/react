@@ -1,7 +1,7 @@
 import { Container, Grid } from "@material-ui/core";
 import React from "react";
-import CRMtable from "./CRMtable";
-import AdminUsers from "./AdminUsers";
+import CRMtable from "./../Components/Operations/CRMtable";
+import AdminUsers from "./../Components/Operations/AdminUsers";
 
 const Operations = () => {
   return (

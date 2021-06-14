@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
-import ClassroomActions from "./ClassroomActions";
+import ClassroomActions from "./../Components/Actions/ClassroomActions";
 import { useHistory } from "react-router";
 import { classroomData } from "../Helpers/classroomData";
 import { MTableBodyRow } from "material-table";
@@ -22,21 +22,21 @@ const OneToOne = (props) => {
   const history = useHistory();
   const [data, setData] = useState();
   useEffect(() => {
-    getClassroomAll()
+    getClassroomAll();
   }, []);
   const getClassroomAll = () => {
     Classroom.getAll()
-    // fetch("https://jsonplaceholder.typicode.com/users")
-    // .then(res => res.json())
-    .then((res)=>{
-      setData(res.data)
-      console.log(res)
-      // console.log(data)
-    })
-    .catch(e => {
-      console.log(e)
-    });
-  }
+      // fetch("https://jsonplaceholder.typicode.com/users")
+      // .then(res => res.json())
+      .then((res) => {
+        setData(res.data);
+        console.log(res);
+        // console.log(data)
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   const handleAddNewClassroom = () => {
     history.push("/classroom/create");
   };
@@ -56,16 +56,18 @@ const OneToOne = (props) => {
       field: "name",
       render: (row) => (
         <div>
-          <ClassroomActions data={row} handleEditClassroom={props.handleEditClassroom}/>
+          <ClassroomActions
+            data={row}
+            handleEditClassroom={props.handleEditClassroom}
+          />
         </div>
       ),
     },
-    
-      // { title: "ID", field: "id" },
-      // { title: "Email", field: "email" },
-      // { title: "Phone", field: "phone" },
-      // { title: "Web Link", field: 'website' }
-    
+
+    // { title: "ID", field: "id" },
+    // { title: "Email", field: "email" },
+    // { title: "Phone", field: "phone" },
+    // { title: "Web Link", field: 'website' }
   ];
   return (
     <div>

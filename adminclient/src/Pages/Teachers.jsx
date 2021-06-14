@@ -4,7 +4,7 @@ import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
-import TeacherActions from "./TeacherActions";
+import TeacherActions from "../Components/Actions/TeacherActions";
 import { teacherData } from "../Helpers/teacherData";
 
 const useStyles = makeStyles({

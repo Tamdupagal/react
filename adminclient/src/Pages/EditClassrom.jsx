@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Container, } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { Button, Card } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -11,46 +11,42 @@ import Classroom from "./../CRUD/Classroom";
 
 const EditClassroom = (props) => {
   const [selectedValue, setSelectedValue] = useState([]);
-  const [classroom, setClassroom] = useState()
+  const [classroom, setClassroom] = useState();
   const classes = useStyles();
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
-  const [options, setOptions] = useState()
-  let arr = []
+  const [options, setOptions] = useState();
+  let arr = [];
   let edit;
   useEffect(() => {
-      console.log(props)
-      console.log(props.editClassroomData._id)
-      edit=props.editClassroomData.enrolled_students
-      console.log(edit)
-      const keys = Object.keys(edit)
-      console.log(keys)
-      keys.map(c=>(arr.push({"label":c})))
-      console.log(arr)
-      setOptions(arr)
+    console.log(props);
+    console.log(props.editClassroomData._id);
+    edit = props.editClassroomData.enrolled_students;
+    console.log(edit);
+    const keys = Object.keys(edit);
+    console.log(keys);
+    keys.map((c) => arr.push({ label: c }));
+    console.log(arr);
+    setOptions(arr);
     // JSON.stringify(props.editClassroomData.enrolled_courses.map(c=>arr.push(c)))
     // console.log(arr)
-  }, [])
-  
-  
+  }, []);
+
   const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map(x => x.label) : []);
-  }
+    setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
+  };
 
-
-  
   const editClassroom = (id) => {
     var data = {
       name: nameRef.current.value,
       courses: ["1", "2", "3"],
       students: selectedValue,
-
     };
-    console.log(id)
+    console.log(id);
     console.log(nameRef.current.value);
-    console.log(selectedValue)
-    Classroom.update(id,data)
+    console.log(selectedValue);
+    Classroom.update(id, data)
       .then((res) => {
         setClassroom({
           id: res.data.id,
@@ -82,11 +78,10 @@ const EditClassroom = (props) => {
                     size="small"
                     className={classes.textField}
                     inputRef={nameRef}
-                    enabled
                     defaultValue={props.editClassroomData.name}
-                    // value={props.editClassroomData.name}     
+                    // value={props.editClassroomData.name}
                   >
-                      {/* {props.editClassroomData.name} */}
+                    {/* {props.editClassroomData.name} */}
                   </TextField>
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
@@ -104,18 +99,17 @@ const EditClassroom = (props) => {
                   <MenuItem value={3}>hola</MenuItem>
                 </Select> */}
                 <Container>
-                <Multiselect
-                options={options} 
-                value={selectedValue} 
-                onSelect={onSelect} 
-                displayValue="label"
-                closeIcon="cancel"
-                placeholder=""
-                showArrow={true}
-                avoidHighlightFirstOption={true}
-                />
+                  <Multiselect
+                    options={options}
+                    value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
+                    avoidHighlightFirstOption={true}
+                  />
                 </Container>
-
                 {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
                 {/* <form>
@@ -129,17 +123,17 @@ const EditClassroom = (props) => {
                   />
                 </form> */}
                 <Container>
-                {/* <pre>{JSON.stringify(selectedValue)}</pre> */}
-                <Multiselect
-                options={options} 
-                value={selectedValue} 
-                onSelect={onSelect} 
-                displayValue="label"
-                closeIcon="cancel"
-                placeholder=""
-                showArrow={true}
-                avoidHighlightFirstOption={true}
-                />
+                  {/* <pre>{JSON.stringify(selectedValue)}</pre> */}
+                  <Multiselect
+                    options={options}
+                    value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
+                    avoidHighlightFirstOption={true}
+                  />
                 </Container>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <form>
@@ -160,7 +154,7 @@ const EditClassroom = (props) => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={()=>editClassroom(props.editClassroomData._id)}
+                    onClick={() => editClassroom(props.editClassroomData._id)}
                   >
                     Edit Classroom
                   </Button>
