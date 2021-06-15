@@ -1,23 +1,23 @@
 import axios from "./../axios";
 
 const getAll = () => {
-    return axios.get("/api/teachers/all");
+    return axios.get("/teachers/all");
 }
 
 const get = id => {
-    return axios.get(`/api/teachers/${id}`);
+    return axios.get(`/teachers/${id}`);
 }
 
 const create = data =>{
-    return axios.post("/api/teachers/new",data);
+    return axios.post("/teachers/new",data);
 }
 
 const update = (id, data) => {
-    return axios.put(`/api/teachers/update/${id}`,data)
+    return axios.put(`/teachers/update/${id}`,data)
 }
 
 const remove = id => {
-    return axios.delete(`/api/teachers/${id}`)
+    return axios.delete(`/teachers/${id}`)
 }
 
 export default {

@@ -167,9 +167,9 @@ const Students = () => {
     getAllStudents(dispatch)
   }, []);
 
-  const handleAttendanceReport = () => {
-    history.push("/attendance/report");
-  };
+  const handleAddStudent = () =>{
+    history.push("/add-student")
+  }
 
   return (
     <div>
@@ -187,7 +187,7 @@ const Students = () => {
           <Box display="flex" justifyContent="space-between">
             <Typography className={classes.title}>STUDENTS</Typography>
 
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={handleAddStudent}>
               Add new Student
             </Button>
           </Box>
