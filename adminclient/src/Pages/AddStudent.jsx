@@ -1,7 +1,7 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Box } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import {useStyles} from "./../Styles/AddStudent"
+import { useStyles } from "./../Styles/AddStudent";
 import ImportExcel from "../Components/Students/ImportExcel";
 import StudentsInfo from "../Components/Students/StudentsInfo";
 
@@ -18,8 +18,8 @@ const AddStudent = () => {
             <Divider className={classes.dividerInset} />
             <h3 className={classes.subheading1}>IMPORT AN EXCEL FILE</h3>
           </div>
-          <ImportExcel/>
-          <StudentsInfo/>
+          <ImportExcel />
+          <StudentsInfo />
         </Container>
       </Container>
     </div>
