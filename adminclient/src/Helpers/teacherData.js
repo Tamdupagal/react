@@ -1,3 +1,4 @@
+import  TeacherActions  from "./../Components/Actions/TeacherActions"
 export const teacherData = () => {
   return [
     {
@@ -32,3 +33,27 @@ export const teacherData = () => {
     },
   ];
 };
+
+export const TeacherColumns = (withAction = false) => {
+  const col = [
+    { title: "NAME", field: "Name" },
+    { title: "EMAIL", field: "email" },
+    {
+      title: "PHONE NO.",
+      field: "phone",
+    }]
+  if (withAction) {
+    col.push({
+      title: "Actions",
+      field: "name",
+      render: (row) => (
+        <div>
+          <TeacherActions />
+        </div>
+      )
+    })
+    
+    return col
+  }
+  return col
+} 

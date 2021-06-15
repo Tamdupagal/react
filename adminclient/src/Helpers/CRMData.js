@@ -1,3 +1,5 @@
+import TeacherTrainingActions from "./../Components/Actions/TeacherTrainingActions"
+
 export const CRMData = () => {
   return [
     {
@@ -32,3 +34,22 @@ export const CRMData = () => {
     },
   ];
 };
+
+export const CrmColumn = () => {
+  return (
+  [
+    { title: "Name", field: "name" },
+    { title: "Email", field: "email" },
+    { title: "User Roles", field: "userRoles" },
+    {
+      title: "Actions",
+      field: "name",
+      render: (row) => (
+        <div>
+          <TeacherTrainingActions />
+        </div>
+      ),
+    },
+    ]
+  )
+}

@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ClassroomActions = () => {
+const TeacherActions = () => {
   const classes = useStyles();
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
@@ -95,4 +95,4 @@ const ClassroomActions = () => {
     </div>
   );
 };
-export default ClassroomActions;
+export default TeacherActions;
