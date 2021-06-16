@@ -19,14 +19,16 @@ import React, { useState } from "react";
 import { Image } from "react-bootstrap";
 import CreateIcon from "@material-ui/icons/Create";
 import Modal from "@material-ui/core/Modal";
-import AddCourseSection from "./AddCourseSection";
+import AddCourseSection from "./../Components/Courses/AddCourseSection";
 import { useHistory } from "react-router-dom";
-import courses from "./../Helpers/Courses"
+import courses from "./../Helpers/Courses";
 import useStyles from "../Styles/Courses";
+import "./../Components/Courses/Courses.css";
 
 const Courses = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+
   const history = useHistory();
   const handleOpen = () => {
     setOpen(true);
@@ -41,7 +43,7 @@ const Courses = () => {
   };
 
   const body = <AddCourseSection handleClose={handleClose} />;
-  
+
   return (
     <div>
       <Container>
@@ -56,11 +58,7 @@ const Courses = () => {
                   <Button
                     variant="outlined"
                     size="small"
-                    style={{
-                      marginRight: "20px",
-                      color: "green",
-                      border: "1px solid green",
-                    }}
+                    className={classes.greenBtn}
                     onClick={handleAddCourse}
                   >
                     <strong>Add Course</strong>
@@ -70,7 +68,7 @@ const Courses = () => {
                     color="primary"
                     size="small"
                     onClick={handleOpen}
-                    style={{ color: "#5567ff", border: "1px solid #5567ff" }}
+                    className={classes.blueBtn}
                   >
                     <strong>Add Course Section</strong>
                   </Button>
@@ -116,24 +114,48 @@ const Courses = () => {
                       </Box>
                     </Grid>
                   </Grid>
-                  <Grid container spacing={2}>
+                  <Grid container spacing={3}>
                     {course.catogories.map((c) => (
-                      <Grid item xs={12} md={6} lg={3}>
+                      <Grid item xs={12} md={6} lg={4}>
                         {" "}
                         <Card
                           key={c.id}
                           style={{ width: "80%", marginLeft: "2vw" }}
+                          className="flip-card"
                         >
-                          <Image width="100%" src={c.image} />
-                          <CardActions disableSpacing>
-                            {c.subject}
-                            <IconButton
-                              aria-label="show more"
-                              style={{ marginLeft: "auto" }}
-                            >
-                              <CreateIcon />
-                            </IconButton>
-                          </CardActions>
+                          <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                              <Image width="100%" src={c.image} />
+                              <CardActions disableSpacing>
+                                {c.subject}
+                                <IconButton
+                                  aria-label="show more"
+                                  style={{ marginLeft: "auto" }}
+                                >
+                                  <CreateIcon type="button" />
+                                </IconButton>
+                              </CardActions>
+                            </div>
+                            <div className="flip-card-back">
+                              <h2>Course Name</h2>
+                              <Button
+                                variant="outlined"
+                                size="small"
+                                color="primary"
+                                className={classes.greenBtn1}
+                              >
+                                <strong>Edit Course</strong>
+                              </Button>
+                              <Button
+                                variant="outlined"
+                                size="small"
+                                color="primary"
+                                className={classes.blueBtn1}
+                              >
+                                <strong>View Course</strong>
+                              </Button>
+                            </div>
+                          </div>
                         </Card>
                       </Grid>
                     ))}
@@ -144,6 +166,16 @@ const Courses = () => {
           ))}
         </Box>
       </Container>
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
     </div>
   );
 };
