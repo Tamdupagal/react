@@ -1,64 +1,33 @@
-export const classroomData = () => {
-  return [
+import ClassroomActions from "./../Components/Actions/ClassroomActions"
+export const classroomData = (state) => {
+  return state.classroomData.classrooms.map(classroom => (
     {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "5",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "phy",
-      teacher: "priya",
-      student: "0",
-      LecturesComplete: "2",
-    },
-    {
-      DclassName: "phy",
-      teacher: "isha",
-      student: "0",
-      LecturesComplete: "1",
-    },
-    {
-      DclassName: "sci",
-      teacher: "manisha",
-      student: "0",
-      LecturesComplete: "2",
-    },
-  ];
+      name: classroom.name,
+      classroom_type: classroom.classroom_type,
+  })
+)
+// console.log(state.classroomData)
 };
+
+export const classroomColumn = (withActions=false) => {
+
+  const col = [
+    { title: "Name", field: "name" },
+    { title: "Type", field: "classroom_type" },
+  ]
+
+  if (withActions) {
+    col.push({
+      title: "Actions",
+      field: "name",
+      render: (row) => (
+        <div>
+          {/* {row} */}
+          <ClassroomActions/>
+        </div>
+      ),
+    })
+    return col
+  }
+  return col
+}

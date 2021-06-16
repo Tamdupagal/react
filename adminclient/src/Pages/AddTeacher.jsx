@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./../Styles/AddTeacher";
 import { Multiselect } from "multiselect-react-dropdown";
-import Teacher from "./../CRUD/Teacher"
+// import Teacher from "./../CRUD/Teacher"
 
 const AddTeacher = () => {
   const classes = useStyles();
@@ -24,31 +24,38 @@ const AddTeacher = () => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
   };
 
-  const handleAddTeacher = () => {
-    var data = {
-      name : tName.current.value,
-      profile_picture: "null",
-      alternate_phone_number: "1234",
-      role: "Tacher",
-      is_available: "true",
-      primary_phone_number: tMobileNo.current.value,
-      email: tEmail.current.value,
-      password: "1234",
-      Country: "India",
-      zip_code: "3456",
-      address: tAddress.current.value,
-      // last_seen: "1 hour ago"
-      // courses: selectedValue,
-    };
-    console.log(selectedValue);
-    Teacher.create(data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const handleAddTeacher = () => {
+  //   var data = {
+  //     // name : tName.current.value,
+  //     // profile_picture: "null",
+  //     // alternate_phone_number: "1234",
+  //     // role: "Teacher",
+  //     // is_available: "true",
+  //     // primary_phone_number: tMobileNo.current.value,
+  //     // email: tEmail.current.value,
+  //     // password: "1234",
+  //     // Country: "India",
+  //     // zip_code: "3456",
+  //     // address: tAddress.current.value,
+  //     // last_seen: "1 hour ago"
+  //     // courses: selectedValue,
+  //     name: "khushboo",
+  //     primary_phone_number: "9899098001",
+  //     email:"dadcd@gmail.com",
+  //     password: "123445",
+  //     country: "Indiaa",
+  //     zip_code: "898961",
+  //     address: "Delhiii"
+  //   };
+  //   console.log(selectedValue);
+  //   Teacher.create(data)
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
   const multiselectdata = [
     { Country: "india", id: "1" },
     { Country: "england", id: "2" },
@@ -177,7 +184,7 @@ const AddTeacher = () => {
             </Grid>
             <Grid item xs={12}>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary" onClick={handleAddTeacher}>
+                <Button variant="contained" color="secondary">
                   SUBMIT TEACHER
                 </Button>
               </div>

@@ -41,7 +41,7 @@ const TeacherActions = () => {
             fontWeight: "700",
           }}
         >
-          <div Style={{ fontWeight: "700" }}>DETAIL</div>
+          <div style={{ fontWeight: "700" }}>DETAIL</div>
         </button>
       </LightTooltip>
       <LightTooltip title="View and Edit Teacher" placement="top" arrow>

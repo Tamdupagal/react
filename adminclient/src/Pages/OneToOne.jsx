@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import ClassroomActions from "./../Components/Actions/ClassroomActions";
 import { useHistory } from "react-router";
-import { classroomData } from "../Helpers/classroomData";
+import { getAllClassrooms } from "../action/actions";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
-import Classroom from "../CRUD/Classroom";
+// import Classroom from "../CRUD/Classroom";
+import { AppContext } from "../AppContext";
+import Table from '../Components/Table/Table'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { classroomData, classroomColumn } from "../Helpers/classroomData";
+
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -17,58 +22,63 @@ const useStyles = makeStyles({
   },
 });
 
-const OneToOne = (props) => {
+const OneToOne = () => {
   const classes = useStyles();
   const history = useHistory();
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
+  const { state, dispatch } = useContext(AppContext)
+  const CLASSROOM_DATA = state.classroomData
+  const student = state.studentData
   useEffect(() => {
-    getClassroomAll();
+    getAllClassrooms(dispatch)
+    // console.log(student)
+    // console.log(dispatch)
   }, []);
-  const getClassroomAll = () => {
-    Classroom.getAll()
-      // fetch("https://jsonplaceholder.typicode.com/users")
-      // .then(res => res.json())
-      .then((res) => {
-        setData(res.data);
-        console.log(res);
-        // console.log(data)
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const getClassroomAll = () => {
+  //   Classroom.getAll()
+  //     // fetch("https://jsonplaceholder.typicode.com/users")
+  //     // .then(res => res.json())
+  //     .then((res) => {
+  //       setData(res.data);
+  //       console.log(res);
+  //       // console.log(data)
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
   const handleAddNewClassroom = () => {
     history.push("/classroom/create");
   };
-  const Columns = [
-    { title: "Name", field: "name" },
-    { title: "Type", field: "classroom_type" },
-    // { title: "Name", field: "students",render: (row) => (<div>demo class for {row.classroom_type}</div>) },
-    // { title: "Teacher", field: "teacher" },
-    // { title: "Student", field: "student" },
-    // {
-    //   title: "Lectures Completed",
-    //   field: "LecturesComplete",
-    //   render: (row) => <div>Hello</div>,
-    // },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          <ClassroomActions
-            data={row}
-            handleEditClassroom={props.handleEditClassroom}
-          />
-        </div>
-      ),
-    },
+  // const Columns = [
+  //   { title: "Name", field: "name" },
+  //   { title: "Type", field: "classroom_type" },
+  //   // { title: "Name", field: "students",render: (row) => (<div>demo class for {row.classroom_type}</div>) },
+  //   // { title: "Teacher", field: "teacher" },
+  //   // { title: "Student", field: "student" },
+  //   // {
+  //   //   title: "Lectures Completed",
+  //   //   field: "LecturesComplete",
+  //   //   render: (row) => <div>Hello</div>,
+  //   // },
+  //   {
+  //     title: "Actions",
+  //     field: "name",
+  //     render: (row) => (
+  //       <div>
+  //         <ClassroomActions
+  //           data={row}
+  //           handleEditClassroom={props.handleEditClassroom}
+  //         />
+  //       </div>
+  //     ),
+  //   },
 
-    // { title: "ID", field: "id" },
-    // { title: "Email", field: "email" },
-    // { title: "Phone", field: "phone" },
-    // { title: "Web Link", field: 'website' }
-  ];
+  //   // { title: "ID", field: "id" },
+  //   // { title: "Email", field: "email" },
+  //   // { title: "Phone", field: "phone" },
+  //   // { title: "Web Link", field: 'website' }
+  // ];
   return (
     <div>
       <Container>
@@ -103,44 +113,13 @@ const OneToOne = (props) => {
               </Container>
             </Container>
             <Container>
-              {" "}
-              <MaterialTable
-                title=""
-                data={data}
-                columns={Columns}
-                style={{
-                  borderTopLeftRadius: "0px",
-                  borderTopRightRadius: "0px",
-                }}
-                options={{
-                  exportButton: true,
-                  headerStyle: {
-                    border: "0.5px solid 	 #e6e6ff",
-                    backgroundColor: "#007399",
-                    color: "white",
-                    fontSize: "1.2rem",
-                    fontWeight: "800",
-                    fontFamily: "KoHo, sans-serif",
-                    letterSpacing: "0.07rem",
-                  },
-                  cellStyle: {
-                    border: "0.5px solid 	 #e6e6ff",
-                  },
-                  rowStyle: (rowData) => ({
-                    backgroundColor:
-                      rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
-                    fontWeight: "600",
-                    fontSize: "1rem",
-                    color: "#000",
-                    rowStyle: "	 #e6e6ff",
-                  }),
-                }}
-                components={{
-                  Row: (props) => (
-                    <MTableBodyRow className={classes.tableRow} {...props} />
-                  ),
-                }}
-              />
+            {CLASSROOM_DATA.isLoading ? <CircularProgress /> : CLASSROOM_DATA.anyError ?
+            <div>
+                Ops! Data could not be loaded, try again .
+            </div>
+            :
+            <Table data={classroomData(state)} column={classroomColumn(true)} />
+            }
             </Container>
           </Grid>
         </Box>

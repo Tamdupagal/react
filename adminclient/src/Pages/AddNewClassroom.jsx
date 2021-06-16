@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Container } from "@material-ui/core";
 import { Button, Card, Box } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +7,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
-import Classroom from "./../CRUD/Classroom";
+// import Classroom from "./../CRUD/Classroom";
+import { AppContext } from "../AppContext";
+import { addClassroom } from "../action/actions";
+
 
 const AddNewClassroom = () => {
   const nameRef = useRef();
@@ -39,6 +42,7 @@ const AddNewClassroom = () => {
 
   const [selectedValue, setSelectedValue] = useState([]);
   const classes = useStyles();
+  const { state, dispatch } = useContext(AppContext)
 
   const saveClassroom = () => {
     var data = {
@@ -49,19 +53,19 @@ const AddNewClassroom = () => {
 
     console.log(nameRef.current.value);
     console.log(selectedValue);
-    Classroom.create(data)
-      .then((res) => {
-        setClassroom({
-          id: res.data.id,
-          name: res.data.Name,
-          courses: [1, 2, 3],
-          students: [1, 2, 3],
-        });
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    addClassroom(dispatch,data)
+      // .then((res) => {
+      //   setClassroom({
+      //     id: res.data.id,
+      //     name: res.data.Name,
+      //     courses: [1, 2, 3],
+      //     students: [1, 2, 3],
+      //   });
+      //   console.log(res);
+      // })
+      // .catch((e) => {
+      //   console.log(e);
+      // });
   };
 
   return (

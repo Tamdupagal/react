@@ -165,6 +165,7 @@ const Students = () => {
 
   useEffect(() => {
     getAllStudents(dispatch)
+    console.log(state.studentData)
   }, []);
 
   const handleAddStudent = () =>{

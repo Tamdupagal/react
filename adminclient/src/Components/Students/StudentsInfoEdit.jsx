@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import {useStyles} from "../../Styles/AddStudent"
 import { Button, Card, Grid, Divider, Paper, TextField} from '@material-ui/core'
-import Student from "./../../CRUD/Students"
+// import Student from "./../../CRUD/Students"
 
 
 const StudentsInfoEdit = () => {

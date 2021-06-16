@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import {useStyles} from "../../Styles/AddStudent"
 import { Button, Card, Grid, Divider, Paper, TextField} from '@material-ui/core'
-import Student from "./../../CRUD/Students"
+// import Student from "./../../CRUD/Students"
 
 const StudentsInfo = (props) => {
     const classes = useStyles()
@@ -11,25 +11,25 @@ const StudentsInfo = (props) => {
     const pEmail = useRef()
     const pMobileNo = useRef()
     const pRelation = useRef()
-    const handleAddStudent = () =>{
-      var data = {
-        role : "STUDENT",
-        active: "true",
-        name : sName.current.value,
-        email: sEmail.current.value,
-        parent_name: pName.current.value,
-        parent_relation: pRelation.current.value,
-        parent_email: pEmail.current.value,
-        password : "1234"
-      }
-      Student.create(data)
-      .then(res =>{
-        console.log("data Added:",res)
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    }
+    // // const handleAddStudent = () =>{
+    // //   var data = {
+    // //     role : "STUDENT",
+    // //     active: "true",
+    // //     name : sName.current.value,
+    // //     email: sEmail.current.value,
+    // //     parent_name: pName.current.value,
+    // //     parent_relation: pRelation.current.value,
+    // //     parent_email: pEmail.current.value,
+    // //     password : "1234"
+    // //   }
+    // //   Student.create(data)
+    // //   .then(res =>{
+    // //     console.log("data Added:",res)
+    // //   })
+    // //   .catch((e) => {
+    // //     console.log(e);
+    // //   });
+    // }
     
     return (
           <div>
@@ -145,7 +145,9 @@ const StudentsInfo = (props) => {
                   </form>
                 </Paper>
                 <div className={classes.submitBtn}>
-                  <Button variant="contained" color="secondary" onClick={handleAddStudent}>
+                  <Button variant="contained" color="secondary"
+                  //  onClick={handleAddStudent}
+                   >
                     SUBMIT STUDENT
                   </Button>
                 </div>

@@ -8,7 +8,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
 import AddNewClassroom from "./../../Pages/AddNewClassroom";
 import clsx from "clsx";
-import Classroom from "./../../CRUD/Classroom";
+// import Classroom from "./../../CRUD/Classroom";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -47,21 +47,21 @@ const ClassroomActions = (props) => {
   };
   const handleEdit = (data) => {
     history.push("/classroom/edit");
-    props.handleEditClassroom(data);
+    // props.handleEditClassroom(data);
   };
-  const handleDelete = (data) => {
-    console.log(data);
-    if (window.confirm("Delete the item?")) {
-      Classroom.remove(data._id)
-        .then((res) => {
-          console.log("deleted");
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    }
-    // history.push()
-  };
+  // const handleDelete = (data) => {
+  //   console.log(data);
+  //   if (window.confirm("Delete the item?")) {
+  //     Classroom.remove(data._id)
+  //       .then((res) => {
+  //         console.log("deleted");
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   }
+  //   // history.push()
+  // };
   // const handleRefresh = () =>{
   //   window.location.refresh()
   // }
@@ -74,7 +74,7 @@ const ClassroomActions = (props) => {
           size="small"
           className={clsx(classes.tooltip, classes.edit)}
           onClick={() => {
-            handleEdit(props.data);
+            handleEdit();
           }}
         >
           <CreateIcon />
@@ -126,9 +126,9 @@ const ClassroomActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={() => {
-            handleDelete(props.data);
-          }}
+          // onClick={() => {
+          //   handleDelete(props.data);
+          // }}
         >
           <DeleteIcon />
         </button>

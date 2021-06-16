@@ -1,6 +1,6 @@
 import React, {createContext,useReducer} from "react";
 import _ from 'lodash';
-import { GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS } from "./action/actionsType";
+import { GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS } from "./action/actionsType";
 
 const AppContext = createContext({});
 
@@ -15,6 +15,11 @@ const initialState= {
     },
     teacherData: {
         teachers: [],
+        isLoading: false,
+        anyError : null
+    },
+    classroomData: {
+        classrooms: [],
         isLoading: false,
         anyError : null
     },
@@ -33,14 +38,14 @@ const reducer = (state, {type, payload})=>{
         case GET_ALL_STUDENTS_FAIL:
             return ({ ...state, studentData: { ...state.studentData, anyError: payload, isLoading: false } })
 
-        case GET_ALL_TEACHERS_REQUEST:
-            return ({ ...state, teacherData: { ...state.teacherData, isLoading: true } })
-        case GET_ALL_TEACHERS_SUCCESS:
-            return ({ ...state, teacherData: { ...state.teacherData, teachers: payload, isLoading: false}})
-        case GET_ALL_TEACHERS_FAIL:
-            return ({ ...state, teacherData: { ...state.teacherData, anyError: payload, isLoading: false}})
+        case GET_ALL_CLASSROOMS_REQUEST:
+            return ({ ...state, classroomData: { ...state.classroomData, isLoading: true } })
+        case GET_ALL_CLASSROOMS_SUCCESS:
+            return ({ ...state, classroomData: { ...state.classroomData, classrooms: payload, isLoading: false}})
+        case GET_ALL_CLASSROOMS_FAIL:
+            return ({ ...state, classroomData: { ...state.classroomData, anyError: payload, isLoading: false}})
 
-
+        
 
         // case "setMobileView":
         //     return {...state, mobileView: action.payload};

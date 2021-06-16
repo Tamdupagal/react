@@ -6,7 +6,7 @@ import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import TeacherActions from "../Components/Actions/TeacherActions";
 import { teacherData } from "../Helpers/teacherData";
-import Teacher from "./../CRUD/Teacher"
+// import Teacher from "./../CRUD/Teacher"
 
 
 const useStyles = makeStyles({
@@ -33,19 +33,19 @@ const Teachers = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    getTeacherAll()
+    // getTeacherAll()
   }, []);
 
-  const getTeacherAll = () => {
-    Teacher.getAll()
-    .then(res =>{
-      setData(res.data)
-      console.log(res)
-    })
-    .catch(e => {
-      console.log(e)
-    });
-  }
+  // const getTeacherAll = () => {
+  //   Teacher.getAll()
+  //   .then(res =>{
+  //     setData(res.data)
+  //     console.log(res)
+  //   })
+  //   .catch(e => {
+  //     console.log(e)
+  //   });
+  // }
 
   const Columns = [
     { title: "NAME", field: "name" },

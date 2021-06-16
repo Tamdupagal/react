@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
-import Classroom from "./../CRUD/Classroom";
+// import Classroom from "./../CRUD/Classroom";
 
 const EditClassroom = (props) => {
   const [selectedValue, setSelectedValue] = useState([]);
@@ -20,15 +20,15 @@ const EditClassroom = (props) => {
   let arr = [];
   let edit;
   useEffect(() => {
-    console.log(props);
-    console.log(props.editClassroomData._id);
-    edit = props.editClassroomData.enrolled_students;
-    console.log(edit);
-    const keys = Object.keys(edit);
-    console.log(keys);
-    keys.map((c) => arr.push({ label: c }));
-    console.log(arr);
-    setOptions(arr);
+    // console.log(props);
+    // console.log(props.editClassroomData._id);
+    // edit = props.editClassroomData.enrolled_students;
+    // console.log(edit);
+    // const keys = Object.keys(edit);
+    // console.log(keys);
+    // keys.map((c) => arr.push({ label: c }));
+    // console.log(arr);
+    // setOptions(arr);
     // JSON.stringify(props.editClassroomData.enrolled_courses.map(c=>arr.push(c)))
     // console.log(arr)
   }, []);
@@ -37,30 +37,30 @@ const EditClassroom = (props) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
   };
 
-  const editClassroom = (id) => {
-    var data = {
-      name: nameRef.current.value,
-      courses: ["1", "2", "3"],
-      students: selectedValue,
-    };
-    console.log(id);
-    console.log(nameRef.current.value);
-    console.log(selectedValue);
-    Classroom.update(id, data)
-      .then((res) => {
-        setClassroom({
-          id: res.data.id,
-          name: res.data.Name,
-          courses: [1, 2, 3],
-          students: [1, 2, 3],
-        });
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-      Window.reload()
-  };
+  // const editClassroom = (id) => {
+  //   var data = {
+  //     name: nameRef.current.value,
+  //     courses: ["1", "2", "3"],
+  //     students: selectedValue,
+  //   };
+  //   console.log(id);
+  //   console.log(nameRef.current.value);
+  //   console.log(selectedValue);
+  //   Classroom.update(id, data)
+  //     .then((res) => {
+  //       setClassroom({
+  //         id: res.data.id,
+  //         name: res.data.Name,
+  //         courses: [1, 2, 3],
+  //         students: [1, 2, 3],
+  //       });
+  //       console.log(res);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  //     Window.reload()
+  // };
 
   return (
     <div>
@@ -79,7 +79,7 @@ const EditClassroom = (props) => {
                     size="small"
                     className={classes.textField}
                     inputRef={nameRef}
-                    defaultValue={props.editClassroomData.name}
+                    // defaultValue={props.editClassroomData.name}
                     // value={props.editClassroomData.name}
                   >
                     {/* {props.editClassroomData.name} */}
@@ -155,7 +155,7 @@ const EditClassroom = (props) => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => editClassroom(props.editClassroomData._id)}
+                    // onClick={() => editClassroom(props.editClassroomData._id)}
                   >
                     Edit Classroom
                   </Button>
