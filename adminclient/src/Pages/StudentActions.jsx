@@ -23,11 +23,12 @@ const useStyles = makeStyles({
   },
 });
 
-const StudentActions = () => {
+const StudentActions = (props) => {
   const history = useHistory()
   const classes = useStyles();
   const handleEditStudent = () => {
     history.push("/student/edit")
+    console.log(props.data)
   }
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
@@ -45,7 +46,8 @@ const StudentActions = () => {
           }}
           onClick={handleEditStudent}
         >
-          <VisibilityIcon />
+          {/* {props.data} */}
+          <VisibilityIcon /> 
         </button>
       </LightTooltip>
       <LightTooltip title="Student's History" placement="top" arrow>

@@ -23,7 +23,7 @@ export const classroomColumn = (withActions=false) => {
       render: (row) => (
         <div>
           {/* {row} */}
-          <ClassroomActions/>
+          <ClassroomActions data={row} />
         </div>
       ),
     })

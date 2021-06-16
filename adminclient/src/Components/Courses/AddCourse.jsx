@@ -14,50 +14,8 @@ import { Box, Container, Paper } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { useStyles } from "./../../Styles/AddCourse"
-
-const formats = [
-  "background",
-  "bold",
-  "color",
-  "font",
-  "code",
-  "italic",
-  "link",
-  "size",
-  "strike",
-  "script",
-  "underline",
-  "blockquote",
-  "header",
-  "align",
-  "direction",
-  "image",
-  "video",
-  "code-block",
-];
-
-const modules = {
-  toolbar: ".toolBar",
-  toolbar: [
-    ["bold", "italic", "underline", "strike"], // toggled buttons
-    ["blockquote", "code-block"],
-    ["link", "image", "video"],
-    [{ header: 1 }, { header: 2 }], // custom button values
-    [{ list: "ordered" }, { list: "bullet" }],
-    [{ script: "sub" }, { script: "super" }], // superscript/subscript
-    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-    [{ direction: "rtl" }], // text direction
-
-    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-
-    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-    [{ font: [] }],
-    [{ align: [] }],
-
-    ["clean"], // remove formatting button
-  ],
-};
+import formats from "../../Helpers/formats";
+import modules from "../../Helpers/modules";
 
 const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
   const classes = useStyles();

@@ -17,42 +17,12 @@ import {
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import React, { useState } from "react";
 import { Image } from "react-bootstrap";
-import ClearIcon from "@material-ui/icons/Clear";
 import CreateIcon from "@material-ui/icons/Create";
 import Modal from "@material-ui/core/Modal";
 import AddCourseSection from "./AddCourseSection";
-import AddCourse from "../Components/Courses/AddCourse";
 import { useHistory } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 800,
-  },
-  Heading: {
-    fontFamily: "KoHo, sans-serif",
-    fontSize: "140%",
-  },
-  box: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  buttons: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-  footer: {
-    fontFamily:
-      "Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol",
-  },
-  dividerInset2: {
-    margin: `10px 0 0 ${theme.spacing(10)}px`,
-    // marginBottom: "-29px",
-  },
-  btn: {
-    backgroundColor: "#e60000",
-  },
-}));
+import courses from "./../Helpers/Courses"
+import useStyles from "../Styles/Courses";
 
 const Courses = () => {
   const classes = useStyles();
@@ -71,58 +41,7 @@ const Courses = () => {
   };
 
   const body = <AddCourseSection handleClose={handleClose} />;
-  const courses = [
-    {
-      title: "HR AND HIRING",
-      catogories: [
-        {
-          id: "16",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "13",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-      ],
-    },
-    {
-      title: "TECH COURSES",
-      catogories: [
-        {
-          id: "10",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "11",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-      ],
-    },
-  ];
+  
   return (
     <div>
       <Container>

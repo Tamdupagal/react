@@ -15,10 +15,6 @@ const StudentsInfoEdit = () => {
     return (
         <div>
             <Grid container spacing={3} style={{ margin: "2%" }}>
-              <Grid item xs={12}>
-                <Divider className={classes.dividerInset0} />
-                <h3 className={classes.subheading1}>MANUALLY ADD A STUDENT</h3>
-              </Grid>
               <Grid item xs={12} sm={6}>
                 <Divider className={classes.dividerInset1} />
                 <h3 className={classes.subheading1}>STUDENT'S INFORMATION</h3>

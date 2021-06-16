@@ -77,6 +77,7 @@ const ClassroomActions = (props) => {
             handleEdit();
           }}
         >
+          {/* {props} */}
           <CreateIcon />
         </button>
       </LightTooltip>

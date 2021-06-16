@@ -24,16 +24,25 @@ export const StudentColumn = (withActions=false) => {
       title: "Parent's Email",
       field: "parentEmail",
     },
-    { title: "Status", field: "status" }
+    { title: "Status", field: "status" },
+    // {
+    //   title: "Actions",
+    //   field: "name",
+    //   render: (row) => (
+    //     <div>
+    //       <StudentActions data={row} />
+    //     </div>
+    //   ),
+    // }
   ]
 
   if (withActions) {
     col.push({
       title: "Actions",
       field: "name",
-      render: () => (
+      render: (row) => (
         <div>
-          <StudentActions />
+          <StudentActions data={row}/>
         </div>
       ),
     })
