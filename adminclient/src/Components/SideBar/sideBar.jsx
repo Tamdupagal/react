@@ -28,19 +28,23 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ImportContactsIcon from '@material-ui/icons/ImportContacts';
-import RemoveFromQueueIcon from '@material-ui/icons/RemoveFromQueue';
-import LinkIcon from '@material-ui/icons/Link';
-import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
-import CreateIcon from '@material-ui/icons/Create';
-import FaceIcon from '@material-ui/icons/Face';
-import GamesIcon from '@material-ui/icons/Games';
-import TuneIcon from '@material-ui/icons/Tune';
+import ImportContactsIcon from "@material-ui/icons/ImportContacts";
+import RemoveFromQueueIcon from "@material-ui/icons/RemoveFromQueue";
+import LinkIcon from "@material-ui/icons/Link";
+import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import CreateIcon from "@material-ui/icons/Create";
+import FaceIcon from "@material-ui/icons/Face";
+import GamesIcon from "@material-ui/icons/Games";
+import TuneIcon from "@material-ui/icons/Tune";
+import "./sidebar.css";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 const drawerWidth = 250;
 let shift;
 let display;
 let contentMargin;
+let background;
+let setStyle;
 
 if (window.innerWidth <= 600) {
   shift = drawerWidth;
@@ -154,11 +158,22 @@ const useStyles = makeStyles((theme) => ({
     border: "none",
   },
   Accordion: {
+    boxShadow: "unset",
+    // backgroundColor: background,
+    borderTopRightRadius: "15px ",
+    borderBottomRightRadius: "15px",
+    marginRight: "10px",
+  },
+  menu: {
+    marginLeft: "50px",
+    color: "white",
+  },
+  subMenu: {
+    marginLeft: "50px",
+    color: "white",
+    paddingBottom: "3%",
+    paddingTop: "3%",
     textDecoration: "none",
-    backgroundColor: "transparent",
-    border: "transparent",
-    margin: "0%",
-    padding: "0%",
   },
 }));
 
@@ -170,9 +185,11 @@ const SideBar = () => {
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [background, setBackground] = useState("#303956");
 
-  const handleChange = (panel) => (event, isExpanded) => {
+  const handleChange = (panel, background) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
+    setBackground("#262e45");
   };
 
   useEffect(() => {
@@ -200,7 +217,6 @@ const SideBar = () => {
               onClick={handleDrawerOpen}
               className={clsx(classes.menuButton, open && classes.hide)}
               color="secondary"
-              // aria-label="open drawer"
               onClick={handleDrawerOpen}
               edge="start"
             >
@@ -251,20 +267,12 @@ const SideBar = () => {
             <Link to="/dashboard" className={clsx(classes.listText)}>
               <ListItem button>
                 <ViewQuiltIcon />
-                <ListItemText
-                  primary="Dashboard"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <ListItemText primary="Dashboard" className={classes.menu} />
               </ListItem>
             </Link>
             <Accordion
               style={{
-                backgroundColor: "transparent",
-                border: "none",
-                margin: "0%",
-                padding: "0%",
-                boxShadow: "unset"
-
+                backgroundColor: background,
               }}
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
@@ -274,9 +282,14 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <ImportContactsIcon className={clsx(classes.listText)} />
-                <Typography style={{ marginLeft: "30px", color: "white" }}>
+                <Button
+                  style={{
+                    marginLeft: "30px",
+                    color: "white",
+                  }}
+                >
                   Courses
-                </Typography>
+                </Button>
               </AccordionSummary>
               <AccordionDetails
                 style={{
@@ -289,7 +302,11 @@ const SideBar = () => {
                 <Link to="/courses" className={classes.AccordionContent}>
                   <ListItemText
                     primary="Courses"
-                    style={{ marginLeft: "50px", color: "white" }}
+                    style={{
+                      marginLeft: "50px",
+                      color: "white",
+                      paddingBottom: "3%",
+                    }}
                   />
                 </Link>
                 <Link
@@ -298,7 +315,7 @@ const SideBar = () => {
                 >
                   <ListItemText
                     primary="Add Course Activity"
-                    style={{ marginLeft: "50px", color: "white" }}
+                    className={classes.subMenu}
                   />
                 </Link>
                 <Link
@@ -307,7 +324,7 @@ const SideBar = () => {
                 >
                   <ListItemText
                     primary="Add Learning Skills"
-                    style={{ marginLeft: "50px", color: "white" }}
+                    className={classes.subMenu}
                   />
                 </Link>
                 <Link
@@ -316,7 +333,7 @@ const SideBar = () => {
                 >
                   <ListItemText
                     primary="Add Spirutal Learning"
-                    style={{ marginLeft: "50px", color: "white" }}
+                    className={classes.subMenu}
                   />
                 </Link>
               </AccordionDetails>
@@ -324,34 +341,26 @@ const SideBar = () => {
             <Link to="/enroll" className={clsx(classes.listText)}>
               <ListItem button>
                 <RemoveFromQueueIcon />
-                <ListItemText
-                  primary="Enrollment"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <ListItemText primary="Enrollment" className={classes.menu} />
               </ListItem>
             </Link>
             <Link to="/meetLink" className={clsx(classes.listText)}>
               <ListItem button>
-                <LinkIcon/>
-                <ListItemText
-                  primary="Meet Links"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <LinkIcon />
+                <ListItemText primary="Meet Links" className={classes.menu} />
               </ListItem>
             </Link>
             <Accordion
+              style={{
+                backgroundColor: background,
+              }}
               expanded={expanded === "panel2"}
               onChange={handleChange("panel2")}
-              style={{
-                backgroundColor: "transparent",
-                border: "none",
-                margin: "0%",
-                padding: "0%",
-                boxShadow: "unset"
-
-              }}
+              className={classes.Accordion}
             >
-              <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: "white" }}/>}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
+              >
                 <LocalLibraryIcon className={clsx(classes.listText)} />
                 <Typography style={{ marginLeft: "30px", color: "white" }}>
                   Classroom
@@ -368,33 +377,29 @@ const SideBar = () => {
                 <Link to="/classroom" className={classes.Accordion}>
                   <ListItemText
                     primary="Students & Teachers"
-                    style={{ marginLeft: "50px", color: "white" }}
+                    className={classes.menu}
+                    className={classes.subMenu}
                   />
                 </Link>
                 <Link to="/trainer-classrooms" className={classes.Accordion}>
                   <ListItemText
                     primary="Teacher Training"
-                    style={{ marginLeft: "50px", color: "white" }}
+                    className={classes.menu}
+                    className={classes.subMenu}
                   />
                 </Link>
               </AccordionDetails>
             </Accordion>
             <Link to="/attendances" className={clsx(classes.listText)}>
               <ListItem button>
-                <CreateIcon/>
-                <ListItemText
-                  primary="Attendances"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <CreateIcon />
+                <ListItemText primary="Attendances" className={classes.menu} />
               </ListItem>
             </Link>
             <Link to="/students" className={clsx(classes.listText)}>
               <ListItem button>
                 <FaceIcon />
-                <ListItemText
-                  primary="Students"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <ListItemText primary="Students" className={classes.menu} />
               </ListItem>
             </Link>
             <Link to="/student-courses" className={clsx(classes.listText)}>
@@ -402,34 +407,66 @@ const SideBar = () => {
                 <FaceIcon />
                 <ListItemText
                   primary="Student Courses"
-                  style={{ marginLeft: "30px", color: "white" }}
+                  className={classes.menu}
                 />
               </ListItem>
             </Link>
-            <ListItem button className={clsx(classes.listText)}>
+            {/* <ListItem button className={clsx(classes.listText)}>
               <GamesIcon />
-              <ListItemText
-                primary="H5P Content"
-                style={{ marginLeft: "30px", color: "white" }}
-              />
+              <ListItemText primary="H5P Content" className={classes.menu} />
               <ChevronRightIcon />
-            </ListItem>
+            </ListItem> */}
+            <Accordion
+              style={{
+                backgroundColor: background,
+              }}
+              expanded={expanded === "panel3"}
+              onChange={handleChange("panel3")}
+              className={classes.Accordion}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
+              >
+                <LocalLibraryIcon className={clsx(classes.listText)} />
+                <Typography style={{ marginLeft: "30px", color: "white" }}>
+                  H5P Content
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails
+                style={{
+                  margin: "0%",
+                  padding: "0%",
+                  display: "flex",
+                  flexDirection: "column",
+                  textDecoration: "none",
+                }}
+              >
+                <Link to="" className={classes.Accordion}>
+                  <ListItemText
+                    primary="Add Content"
+                    className={classes.menu}
+                    className={classes.subMenu}
+                  />
+                </Link>
+                <Link to="" className={classes.Accordion}>
+                  <ListItemText
+                    primary="Edit Content"
+                    className={classes.menu}
+                    className={classes.subMenu}
+                  />
+                </Link>
+              </AccordionDetails>
+            </Accordion>
             <Link to="/teachers" className={clsx(classes.listText)}>
               <ListItem button>
                 <ViewQuiltIcon />
-                <ListItemText
-                  primary="Teachers"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <ListItemText primary="Teachers" className={classes.menu} />
               </ListItem>
             </Link>
             <Link to="/operations" className={clsx(classes.listText)}>
               <ListItem button>
                 <TuneIcon />
-                <ListItemText
-                  primary="Operations"
-                  style={{ marginLeft: "30px", color: "white" }}
-                />
+                <ListItemText primary="Operations" className={classes.menu} />
               </ListItem>
             </Link>
           </List>
