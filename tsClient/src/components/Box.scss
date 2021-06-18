@@ -2,13 +2,14 @@
 @import "../sass/utilities";
 
 .section {
-  border: 0.1rem solid $border_col;
   height: max-content;
-  border-radius: 2rem;
-  overflow: hidden;
   background-color: white;
   height: max-content;
   width: 100%;
+  border: 0.1rem solid $border_col;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
   &.dark {
     position: relative;
     border: 0.1rem solid white;

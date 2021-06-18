@@ -3,7 +3,6 @@ import Board from '../../components/Board'
 import Teacher from '../../components/Teacher'
 import Student from '../../components/Student'
 import Report from '../../components/Report'
-import Course from '../../components/Course'
 import './Bag.scss';
 
 function Bag() {
@@ -16,9 +15,6 @@ function Bag() {
             <div className="flex__row__2">
                 <Student />
                 <Report />
-            </div>
-            <div className="flex__row__3">
-                <Course/>
             </div>
         </>
     )

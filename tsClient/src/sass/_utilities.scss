@@ -8,7 +8,7 @@
 }
 
 @function theme($class: false) {
-  $color: black;
+  $color: #212529;
   @if $class == dark {
     $color: white;
   }

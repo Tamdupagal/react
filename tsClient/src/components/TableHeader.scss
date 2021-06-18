@@ -5,6 +5,7 @@
   width: 100%;
   height: max-content;
   padding: 1.5rem;
+  border-radius: 1rem;
   @include flex_layout(center, space-between);
   .header__box {
     @include flex_layout();

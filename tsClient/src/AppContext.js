@@ -1,38 +1,25 @@
 import React, {createContext,useReducer, useState} from "react";
+import { LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "./action/actionType";
 
 const AppContext = createContext({});
 
 const initialState= {
-    mobileView: false,
-    products: null,
-    users: null,
-    cartValue: 0,
-    cart:[],
     auth: {
-        isSignedIn: false,
-        user:null
-    },
-    categories:null,
-    carousels:null,
-    orders: null,
-    cat:[],
-    filter:{
-        name: null
-    },
-    filteredCategories: {},
-    filteredSubCategories:[],
-    filteredProducts: [],
-    isFilteredCategoryPresent: false,
-    productsLimited: null
+        isLoading: false,
+        token : null,
+        anyError: null,
+   }
 }
 
 const reducer = (state, {type, payload})=>{
     console.log(type);
     switch (type){
-        case "setMobileView":
-            return {...state, mobileView: payload};
-        case "isAuth":
-            return {...state, auth:{ isSignedIn: payload.flag, user: payload.user}};
+        case LOGIN_REQUEST:
+            return {...state, auth : {...state.auth, isLoading : true}}
+        case LOGIN_SUCCESS:
+            return {...state, auth : {...state.auth, token : payload}}
+        case LOGIN_FAIL:
+            return {...state, auth : {...state.auth, anyError : payload}}
         default:
             return state;
     }
@@ -51,7 +38,9 @@ const AppContextProvider = ({children}) => {
     const uiStateManager = {toggle, setToggle, slotState, setSlotState, toggleForm, setToggleForm, theme, setTheme}
     // _____________________________________________________________
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState); 
+
+
     
     const value = {state, dispatch}
 

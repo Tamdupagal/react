@@ -1,0 +1,7 @@
+@import "../../sass/utilities";
+@import "../../sass/variable";
+
+.flex__row__1 {
+  @include flex_layout(null, null);
+  margin-bottom: 3rem;
+}

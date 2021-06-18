@@ -6,6 +6,7 @@ $height__header: 7rem;
 $height__footer: 7rem;
 $dark__green: rgba(#42285a, 0.91);
 $close__btn__width: 7rem;
+$form__bg__color: #3d779e;
 
 .form__wrapper {
   position: absolute;
@@ -33,7 +34,7 @@ $close__btn__width: 7rem;
   .form__title {
     font-size: $font_size + 0.3rem;
     color: white;
-    background-color: $primary_color;
+    background-color: $form__bg__color;
     position: fixed;
     top: 0;
     left: 0;
@@ -117,7 +118,7 @@ $close__btn__width: 7rem;
     width: 100%;
     height: $height__footer;
     color: white;
-    background-color: $primary_color;
+    background-color: $form__bg__color;
     font-size: 2rem;
     border: none;
     border-radius: 25% 25% 0 0;

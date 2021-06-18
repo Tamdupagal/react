@@ -1,22 +1,6 @@
 @import "../sass/variable";
 @import "../sass/utilities";
 
-$border__width: 0.5rem;
-
-%pseudo {
-  content: "";
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
-  border-color: #b963db;
-  border-style: solid;
-  opacity: 0;
-  transition: {
-    property: opacity, transform;
-    duration: 0.3s;
-  }
-}
-
 .header {
   position: relative;
   width: 100%;
@@ -99,27 +83,29 @@ $border__width: 0.5rem;
         cursor: pointer;
         border-radius: $border_rad;
         transition: {
-          property: box-shadow;
+          property: transform;
           duration: 0.3s;
         }
-        &::after {
-          @extend %pseudo;
-          top: 0;
-          right: 0;
-          border-width: $border__width $border__width 0 0;
-          transform: translate(1rem, -1rem);
-        }
         &::before {
-          @extend %pseudo;
+          content: "";
+          position: absolute;
           bottom: 0;
-          left: 0;
-          border-width: 0 0 $border__width $border__width;
-          transform: translate(-1rem, 1rem);
+          left: 50%;
+          width: 1rem;
+          height: 1rem;
+          transform: rotateZ(-45deg) translateX(-50%);
+          border-style: solid;
+          border-width: 0.33rem 0.33rem 0 0;
+          border-color: $black;
+          opacity: 0;
+          transition: {
+            property: opacity;
+            duration: 0.3s;
+          }
         }
         &:hover {
-          &::after,
+          transform: translateY(-2rem);
           &::before {
-            transform: translate(0);
             opacity: 1;
           }
         }
@@ -127,8 +113,8 @@ $border__width: 0.5rem;
           padding: 3.5rem 2rem;
         }
         img {
-          width: 4rem;
-          height: 4rem;
+          width: 4.5rem;
+          height: 4.5rem;
           object-fit: cover;
           margin-right: 1rem;
           user-select: none;
@@ -137,7 +123,19 @@ $border__width: 0.5rem;
           color: inherit;
           font-weight: bold;
           letter-spacing: 0.03rem;
-          font-size: $font_size;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+  &.dark > &__navigation {
+    li {
+      &::before {
+        border-color: white;
+      }
+      &:hover {
+        &::before {
+          border-color: white;
         }
       }
     }

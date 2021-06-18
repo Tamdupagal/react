@@ -43,21 +43,30 @@ html {
 body {
   font-family: "Poppins", sans-serif;
 }
-
-.App {
+.content_container {
   display: flex;
   overflow: hidden;
 }
+
 .main__container {
   width: 100%;
   height: 100vh;
   overflow-y: scroll;
   padding: 2rem;
   margin-left: 0;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   transition: {
     property: margin-left;
     duration: $nav_toggle_duration;
+  }
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  @media screen and (max-width: 768px) {
+    min-width: 100vw;
+  }
+  &.active {
+    margin-left: $sidenav_width;
   }
   &.dark {
     color: white;
@@ -69,15 +78,5 @@ body {
       #172d5b,
       #191c51
     );
-  }
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-  @media screen and (max-width: 768px) {
-    min-width: 100vw;
-  }
-  &.active {
-    margin-left: $sidenav_width;
   }
 }

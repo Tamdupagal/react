@@ -1,5 +1,5 @@
 @import "../sass/variable";
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .table__wrapper {
   padding: 1rem;
@@ -7,34 +7,32 @@
 table {
   display: table;
   position: relative;
-  border-collapse: separate;
-
+  border-collapse: collapse;
   width: 100%;
   border-radius: 0.3rem;
   overflow: hidden;
-  border-spacing: 0.4rem;
+  border-spacing: 0;
   th,
   td {
-    border: 0.1rem solid rgba($black, 0.2);
+    border: 0.05rem solid rgba($black, 0.2);
     text-align: center;
     color: black;
     padding: 1.5rem 0;
     cursor: pointer;
-    font-size: 1.3rem;
     @media screen and (max-width: 400px) {
       font-size: 1.2rem;
     }
     border-radius: 0.2rem;
+    font-family: "Poppins", sans-serif;
   }
   th {
-    border: 0.1rem solid $primary_color;
     color: black;
     padding: 1.5rem 0;
-    letter-spacing: 0.1rem;
-    background-color: rgba(lightBlue, 0.4);
+    font-size: 1.5rem;
+    letter-spacing: 0.03rem;
+    background-color: $light_black;
   }
   td {
-    font-weight: 500;
     font-size: 1.4rem;
   }
   tr:nth-child(even) {
