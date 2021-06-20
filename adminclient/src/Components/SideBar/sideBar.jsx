@@ -165,14 +165,19 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "10px",
   },
   menu: {
-    marginLeft: "50px",
+    marginLeft: "30px",
     color: "white",
+    fontSize: "2rem",
+    fontWeight: "700",
   },
   subMenu: {
-    marginLeft: "50px",
+    marginLeft: "30px",
+    fontFamily: "KoHo, sans-serif",
+    fontSize: "2rem",
+    fontWeight: "700",
     color: "white",
-    paddingBottom: "3%",
-    paddingTop: "3%",
+    paddingBottom: "0.5%",
+    paddingTop: "0.5%",
     textDecoration: "none",
   },
 }));
@@ -189,7 +194,7 @@ const SideBar = () => {
 
   const handleChange = (panel, background) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
-    setBackground("#262e45");
+    setBackground(isExpanded ? "#262e45" : "#303956");
   };
 
   useEffect(() => {
@@ -252,8 +257,9 @@ const SideBar = () => {
               style={{
                 textAlign: "left",
                 color: "white",
-                fontSize: "200%",
+                fontSize: "1rem",
                 marginLeft: "10px",
+                fontFamily: "'Exo', sans-serif",
               }}
             >
               ADMIN
@@ -282,19 +288,19 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <ImportContactsIcon className={clsx(classes.listText)} />
-                <Button
+                <Typography
                   style={{
-                    marginLeft: "30px",
+                    marginLeft: "50px",
                     color: "white",
+                    paddingTop: "-1%",
+                    paddingBottom: "-1%",
                   }}
                 >
                   Courses
-                </Button>
+                </Typography>
               </AccordionSummary>
               <AccordionDetails
                 style={{
-                  margin: "0%",
-                  padding: "0%",
                   display: "flex",
                   flexDirection: "column",
                 }}
@@ -305,7 +311,6 @@ const SideBar = () => {
                     style={{
                       marginLeft: "50px",
                       color: "white",
-                      paddingBottom: "3%",
                     }}
                   />
                 </Link>
@@ -362,7 +367,7 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <LocalLibraryIcon className={clsx(classes.listText)} />
-                <Typography style={{ marginLeft: "30px", color: "white" }}>
+                <Typography style={{ marginLeft: "50px", color: "white" }}>
                   Classroom
                 </Typography>
               </AccordionSummary>

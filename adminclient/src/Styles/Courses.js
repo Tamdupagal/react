@@ -1,28 +1,14 @@
 import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 800,
-  },
   Heading: {
+    fontWeight: "700",
+    fontSize: "1.2rem",
     fontFamily: "KoHo, sans-serif",
-    fontSize: "140%",
-  },
-  box: {
-    display: "flex",
-    justifyContent: "space-between",
   },
   buttons: {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-  },
-  footer: {
-    fontFamily:
-      "Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol",
-  },
-  dividerInset2: {
-    margin: `10px 0 0 ${theme.spacing(10)}px`,
-    // marginBottom: "-29px",
   },
   btn: {
     backgroundColor: "#e60000",
@@ -48,6 +34,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "30%",
     color: "#5567ff",
     border: "1px solid #5567ff",
+  },
+  image: {
+    width: "95%",
+    marginTop: "2%",
+  },
+  courseName: {
+    justifyContent: "center",
+    fontWeight: "700",
+    fontSize: "1.5rem",
+    fontFamily: "KoHo, sans-serif",
+  },
+  dividerInset: {
+    margin: `10px 0 0 ${theme.spacing(33)}px`,
+    marginTop: "-42px",
+    // width: "84%",
+    backgroundColor: "#ccc",
   },
 }));
 export default useStyles;

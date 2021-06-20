@@ -83,83 +83,92 @@ const Courses = () => {
               <Grid container alignItems="center" justify="center">
                 <Grid item lg={10}>
                   <Grid container>
-                    <Grid item xs={12} md={10}>
-                      <Box
-                        display="flex"
-                        flexDirection="row"
-                        alignItems="center"
-                        p={1}
-                        m={1}
-                      >
-                        {" "}
-                        <Box>
+                    <Grid xs={12}>
+                      <Grid item xs={12} md={10}>
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          alignItems="center"
+                          p={1}
+                          m={1}
+                        >
                           {" "}
-                          <h1 className={classes.Heading}>{course.title}</h1>
-                        </Box>{" "}
-                        <Box m={1}>
-                          <Button
-                            startIcon={<BackspaceIcon />}
-                            variant="contained"
-                            color="secondary"
-                            size="small"
-                            className={classes.btn}
-                          >
+                          <Box>
                             {" "}
-                            Delete
-                          </Button>
+                            <h1 className={classes.Heading}>{course.title}</h1>
+                          </Box>{" "}
+                          <Box m={1}>
+                            <Button
+                              startIcon={<BackspaceIcon />}
+                              variant="contained"
+                              color="secondary"
+                              size="small"
+                              className={classes.btn}
+                            >
+                              {" "}
+                              Delete
+                            </Button>
+                          </Box>
                         </Box>
-                        <Box>
-                          <Divider className={classes.dividerInset2} />
-                        </Box>
-                      </Box>
+                      </Grid>
+                      <Grid xs={12}>
+                        {" "}
+                        <Divider className={classes.dividerInset} />
+                      </Grid>
                     </Grid>
                   </Grid>
-                  <Grid container spacing={3}>
-                    {course.catogories.map((c) => (
-                      <Grid item xs={12} md={6} lg={4}>
-                        {" "}
-                        <Card
-                          key={c.id}
-                          style={{ width: "80%", marginLeft: "2vw" }}
-                          className="flip-card"
-                        >
-                          <div className="flip-card-inner">
-                            <div className="flip-card-front">
-                              <Image width="100%" src={c.image} />
-                              <CardActions disableSpacing>
-                                {c.subject}
-                                <IconButton
-                                  aria-label="show more"
-                                  style={{ marginLeft: "auto" }}
+                  <Box>
+                    <Grid container spacing={3}>
+                      {course.catogories.map((c) => (
+                        <Grid item xs={12} md={6} lg={4}>
+                          {" "}
+                          <Card
+                            key={c.id}
+                            style={{
+                              width: "80%",
+                              marginLeft: "2vw",
+                              backgroundColor: "transparent",
+                              marginTop: "7%",
+                            }}
+                            className="flip-card"
+                          >
+                            <div className="flip-card-inner">
+                              <div className="flip-card-front">
+                                <Image
+                                  className={classes.image}
+                                  src={c.image}
+                                />
+                                <Box>
+                                  <CardActions className={classes.courseName}>
+                                    {c.subject}
+                                  </CardActions>
+                                </Box>
+                              </div>
+                              <div className="flip-card-back">
+                                <h2>Course Name</h2>
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  color="primary"
+                                  className={classes.greenBtn1}
                                 >
-                                  <CreateIcon type="button" />
-                                </IconButton>
-                              </CardActions>
+                                  <strong>Edit Course</strong>
+                                </Button>
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  color="primary"
+                                  className={classes.blueBtn1}
+                                >
+                                  <strong>View Course</strong>
+                                </Button>
+                              </div>
                             </div>
-                            <div className="flip-card-back">
-                              <h2>Course Name</h2>
-                              <Button
-                                variant="outlined"
-                                size="small"
-                                color="primary"
-                                className={classes.greenBtn1}
-                              >
-                                <strong>Edit Course</strong>
-                              </Button>
-                              <Button
-                                variant="outlined"
-                                size="small"
-                                color="primary"
-                                className={classes.blueBtn1}
-                              >
-                                <strong>View Course</strong>
-                              </Button>
-                            </div>
-                          </div>
-                        </Card>
-                      </Grid>
-                    ))}
-                  </Grid>
+                          </Card>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Box>
                 </Grid>
               </Grid>
             </Container>
