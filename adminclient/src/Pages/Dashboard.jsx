@@ -9,23 +9,15 @@ import {AppContext} from '../AppContext'
 import { getAllStudents, getAllTeachers } from "../action/actions";
 import Table from '../Components/Table/Table';
 import CircularProgress from '@material-ui/core/CircularProgress';
-// import Alert from '@material-ui/lab/Alert';
-import { TeacherColumns, teacherData } from "../Helpers/teacherData";
+import { teacherColumn, teacherData } from "../Helpers/teacherData";
 
 
 const Dashboard = () => {
-
-  
   const classes = useStyles();
-
   const [tableFor, setTableFor] = useState("")
-
-
-  const { dispatch, state } = useContext(AppContext)
-  
+  const { dispatch, state } = useContext(AppContext)  
   const STUDENT_DATA = state?.studentData;
   const TEACHER_DATA = state?.teacherData;
-
   const handleStudents = () => {
     setTableFor('students')
     getAllStudents(dispatch)
@@ -55,7 +47,7 @@ const Dashboard = () => {
           TEACHER_DATA.isLoading ? <CircularProgress /> : TEACHER_DATA.anyError ? <div>
           Ops! Data could not be loaded, try again .
         </div> : 
-          <Table data={teacherData(state)} column={TeacherColumns()}/>)
+          <Table data={teacherData(state)} column={teacherColumn()}/>)
       case "classes":
         // return <Table data={StudentData(state)} column={StudentColumn()}/>
       case "lectures":

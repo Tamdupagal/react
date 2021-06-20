@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext, useEffect } from 'react'
 import {useStyles} from "../../Styles/AddStudent"
 import { Button, Card, Grid, Divider, Paper, TextField} from '@material-ui/core'
-// import Student from "./../../CRUD/Students"
-
+import { AppContext } from "./../../AppContext"
+import { editStudent } from '../../action/actions'
 
 const StudentsInfoEdit = () => {
     const classes = useStyles()
@@ -12,6 +12,30 @@ const StudentsInfoEdit = () => {
     const pEmail = useRef()
     const pMobileNo = useRef()
     const pRelation = useRef()
+    const { state, dispatch } = useContext(AppContext)
+    let data = state.studentEditData.data
+
+    const handleEditStudent = (id) => {
+      console.log(id)
+      var data = {
+        role : "STUDENT",
+        active: "true",
+        name : sName.current.value,
+        email: sEmail.current.value,
+        parent_name: pName.current.value,
+        parent_relation: pRelation.current.value,
+        parent_email: pEmail.current.value,
+        password : "1234"
+      }
+      editStudent(dispatch,data,id)
+
+    }
+
+    useEffect(() => {
+      // console.log(data)
+      
+    }, [])
+    
     return (
         <div>
             <Grid container spacing={3} style={{ margin: "2%" }}>
@@ -123,7 +147,7 @@ const StudentsInfoEdit = () => {
                 </Paper>
                 <div className={classes.submitBtn}>
                   <Button variant="contained" color="secondary" 
-                //   onClick={handleEditStudent}
+                  onClick={()=>handleEditStudent(data._id)}
                   >
                     Edit STUDENT
                   </Button>

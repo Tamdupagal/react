@@ -118,16 +118,19 @@ const Courses = () => {
                     </Grid>
                   </Grid>
                   <Box>
-                    <Grid container spacing={3}>
+                    <Grid container
+                        spacing={2}
+                        direction="row"
+                       >
                       {course.catogories.map((c) => (
-                        <Grid item xs={12} md={6} lg={4}>
+                        <Grid item xs={12} md={6} lg={3}>
                           {" "}
                           <Card
                             key={c.id}
                             style={{
-                              width: "80%",
-                              marginLeft: "2vw",
-                              backgroundColor: "transparent",
+                              // width: "80%",
+                              // marginLeft: "2vw",
+                              // backgroundColor: "transparent",
                               marginTop: "7%",
                             }}
                             className="flip-card"
@@ -168,6 +171,33 @@ const Courses = () => {
                         </Grid>
                       ))}
                     </Grid>
+                    {/* <Container>
+                    <Grid container spacing={2}
+                    direction="row">
+                    <Grid item xs={12} md={6} lg={3}>
+                      <Card
+                        className={classes.paper}
+                        style={{ borderLeft: "4px solid red", cursor: "pointer" }}
+                      >
+                        <div className={classes.content}>
+                          83
+                          <Typography>Classes</Typography>
+                        </div>
+                      </Card>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={3}>
+                      <Card
+                        className={classes.paper}
+                        style={{ borderLeft: "4px solid red", cursor: "pointer" }}
+                        >
+                        <div className={classes.content}>
+                          83
+                          <Typography>Classes</Typography>
+                        </div>
+                      </Card>
+                    </Grid>
+                        </Grid>
+                    </Container> */}
                   </Box>
                 </Grid>
               </Grid>

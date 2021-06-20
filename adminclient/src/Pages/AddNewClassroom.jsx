@@ -9,13 +9,15 @@ import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
 // import Classroom from "./../CRUD/Classroom";
 import { AppContext } from "../AppContext";
-import { addClassroom } from "../action/actions";
+import { addClassroom, getAllClassrooms } from "../action/actions";
+import { useHistory } from "react-router-dom";
 
 
 const AddNewClassroom = () => {
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
+  const history = useHistory()
   const newClassroomState = {
     id: "null",
     Name: "",
@@ -24,12 +26,12 @@ const AddNewClassroom = () => {
     Students: "",
   };
   const options = [
-    { label: "Fever", value: 1, category: "cat 1" },
-    { label: "Head-ache", value: 2, category: "cat 2" },
-    { label: "Runny-nose", value: 3, category: "cat 1" },
-    { label: "Ear-pain", value: 4, category: "cat 1" },
-    { label: "Body-pain", value: 5, category: "cat 2" },
-    { label: "Cough", value: 6, category: "cat 1" },
+    { label: "Biology", value: 1, category: "cat 1" },
+    { label: "History", value: 2, category: "cat 2" },
+    { label: "Geomtery", value: 3, category: "cat 1" },
+    { label: "Algebra", value: 4, category: "cat 1" },
+    { label: "Chemistry", value: 5, category: "cat 2" },
+    { label: "Physics", value: 6, category: "cat 1" },
   ];
   useEffect(() => {
     console.log(selectedValue);
@@ -50,23 +52,11 @@ const AddNewClassroom = () => {
       courses: ["1", "2", "3"],
       students: selectedValue,
     };
-
     console.log(nameRef.current.value);
-    console.log(selectedValue);
+    console.log(selectedValue); 
     addClassroom(dispatch,data)
-      // .then((res) => {
-      //   setClassroom({
-      //     id: res.data.id,
-      //     name: res.data.Name,
-      //     courses: [1, 2, 3],
-      //     students: [1, 2, 3],
-      //   });
-      //   console.log(res);
-      // })
-      // .catch((e) => {
-      //   console.log(e);
-      // });
-  };
+    history.push("/classroom")
+  }
 
   return (
     <div>

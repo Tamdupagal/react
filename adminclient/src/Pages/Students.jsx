@@ -144,7 +144,6 @@ import { AppContext } from "../AppContext";
 import { getAllStudents } from "../action/actions";
 import Table from '../Components/Table/Table'
 import CircularProgress from '@material-ui/core/CircularProgress';
-// import Alert from '@material-ui/lab/Alert';
 
 
 const useStyles = makeStyles({
@@ -208,5 +207,5 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default Students; 
 

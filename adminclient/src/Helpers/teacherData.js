@@ -1,46 +1,15 @@
 import  TeacherActions  from "./../Components/Actions/TeacherActions"
-export const teacherData = () => {
-  return [
-    {
-      Name: "Ashutosh",
-      email: "ashu0987@gmail.com",
-      phone: "9876543210",
-    },
-    {
-      Name: "Ashutosh",
-      email: "ashu0987@gmail.com",
-      phone: "9876543210",
-    },
-    {
-      Name: "Ashutosh",
-      email: "ashu0987@gmail.com",
-      phone: "9876543210",
-    },
-    {
-      Name: "Ashutosh",
-      email: "ashu0987@gmail.com",
-      phone: "9876543210",
-    },
-    {
-      Name: "Ashutosh",
-      email: "ashu0987@gmail.com",
-      phone: "9876543210",
-    },
-    {
-      Name: "Ashutosh",
-      email: "ashu0987@gmail.com",
-      phone: "9876543210",
-    },
-  ];
+export const teacherData = (state) => {
+  return state.teacherData.teachers
 };
 
-export const TeacherColumns = (withAction = false) => {
+export const teacherColumn = (withAction = false) => {
   const col = [
-    { title: "NAME", field: "Name" },
+    { title: "NAME", field: "name" },
     { title: "EMAIL", field: "email" },
     {
       title: "PHONE NO.",
-      field: "phone",
+      field: "primary_phone_number",
     }]
   if (withAction) {
     col.push({
@@ -48,7 +17,7 @@ export const TeacherColumns = (withAction = false) => {
       field: "name",
       render: (row) => (
         <div>
-          <TeacherActions />
+          <TeacherActions data={row} />
         </div>
       )
     })

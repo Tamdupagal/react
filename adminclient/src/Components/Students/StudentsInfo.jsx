@@ -1,35 +1,34 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import {useStyles} from "../../Styles/AddStudent"
 import { Button, Card, Grid, Divider, Paper, TextField} from '@material-ui/core'
-// import Student from "./../../CRUD/Students"
+import { addStudent } from '../../action/actions'
+import { AppContext } from "./../../AppContext"
+import { useHistory } from 'react-router-dom'
 
 const StudentsInfo = (props) => {
     const classes = useStyles()
+    const { state, dispatch } = useContext(AppContext)
+    const history = useHistory()
     const sName = useRef()
     const pName = useRef()
     const sEmail = useRef()
     const pEmail = useRef()
     const pMobileNo = useRef()
     const pRelation = useRef()
-    // // const handleAddStudent = () =>{
-    // //   var data = {
-    // //     role : "STUDENT",
-    // //     active: "true",
-    // //     name : sName.current.value,
-    // //     email: sEmail.current.value,
-    // //     parent_name: pName.current.value,
-    // //     parent_relation: pRelation.current.value,
-    // //     parent_email: pEmail.current.value,
-    // //     password : "1234"
-    // //   }
-    // //   Student.create(data)
-    // //   .then(res =>{
-    // //     console.log("data Added:",res)
-    // //   })
-    // //   .catch((e) => {
-    // //     console.log(e);
-    // //   });
-    // }
+    const handleAddStudent = () =>{
+      var data = {
+        role : "STUDENT",
+        active: "true",
+        name : sName.current.value,
+        email: sEmail.current.value,
+        parent_name: pName.current.value,
+        parent_relation: pRelation.current.value,
+        parent_email: pEmail.current.value,
+        password : "1234"
+      }
+      addStudent(dispatch, data)
+      history.push("/students")
+    }
     
     return (
           <div>
@@ -146,7 +145,7 @@ const StudentsInfo = (props) => {
                 </Paper>
                 <div className={classes.submitBtn}>
                   <Button variant="contained" color="secondary"
-                  //  onClick={handleAddStudent}
+                   onClick={handleAddStudent}
                    >
                     SUBMIT STUDENT
                   </Button>

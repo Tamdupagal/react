@@ -27,12 +27,11 @@ const OneToOne = () => {
   const history = useHistory();
   // const [data, setData] = useState();
   const { state, dispatch } = useContext(AppContext)
-  const CLASSROOM_DATA = state.classroomData
-  const student = state.studentData
+  const CLASSROOM_DATA = state?.classroomData
+  // const student = state.studentData
   useEffect(() => {
     getAllClassrooms(dispatch)
-    // console.log(student)
-    // console.log(dispatch)
+    console.log("hy")
   }, []);
   // const getClassroomAll = () => {
   //   Classroom.getAll()
@@ -113,11 +112,12 @@ const OneToOne = () => {
               </Container>
             </Container>
             <Container>
-            {CLASSROOM_DATA.isLoading ? <CircularProgress /> : CLASSROOM_DATA.anyError ?
-            <div>
-                Ops! Data could not be loaded, try again .
-            </div>
-            :
+            {
+            // CLASSROOM_DATA.isLoading ? <CircularProgress /> : CLASSROOM_DATA.anyError ?
+            // <div>
+            //     Ops! Data could not be loaded, try again .
+            // </div>
+            // :
             <Table data={classroomData(state)} column={classroomColumn(true)} />
             }
             </Container>

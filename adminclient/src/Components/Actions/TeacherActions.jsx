@@ -1,11 +1,12 @@
-import React from "react";
-import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
+import React, { useContext, useEffect } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import { useHistory } from "react-router";
+import { deleteTeacher, editTeacherData } from "../../action/actions";
+import { AppContext } from "./../../AppContext"
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -23,8 +24,24 @@ const useStyles = makeStyles({
   },
 });
 
-const TeacherActions = () => {
+const TeacherActions = (props) => {
   const classes = useStyles();
+  const history = useHistory()
+  const { state, dispatch } = useContext(AppContext)
+
+  const handleTeacherDetail = () =>{
+    history.push("/teacher-details")
+    editTeacherData(dispatch, props.data)
+  }
+  const handleEdit = () => {
+    history.push("/edit-teacher")
+    editTeacherData(dispatch, props.data)
+  }
+  const handleDeleteTeacher = () =>{
+    if (window.confirm("Delete the item?")){
+      deleteTeacher(dispatch,props.data._id)
+    }
+  }
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
       <LightTooltip title="Teacher Details" placement="top" arrow>
@@ -40,11 +57,12 @@ const TeacherActions = () => {
             fontSize: "large",
             fontWeight: "700",
           }}
+          onClick={handleTeacherDetail}
         >
           <div style={{ fontWeight: "700" }}>DETAIL</div>
         </button>
       </LightTooltip>
-      <LightTooltip title="View and Edit Teacher" placement="top" arrow>
+      <LightTooltip title="Edit Teacher" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -56,6 +74,7 @@ const TeacherActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEdit}
         >
           <VisibilityIcon />
         </button>
@@ -88,6 +107,7 @@ const TeacherActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDeleteTeacher}
         >
           <DeleteIcon />
         </button>

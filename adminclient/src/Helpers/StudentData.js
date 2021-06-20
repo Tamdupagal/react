@@ -1,14 +1,6 @@
 import StudentActions from "./../Pages/StudentActions"
 export const StudentData = (state) => {
-  return state.studentData.students.map(student => (
-      {
-        name: student.name,
-        email: student.email,
-        parentName: student.parent_name,
-        parentEmail: student.parent_email,
-        status: "last seen : 1 minute ago.",
-    })
-  )
+  return state.studentData.students
 }
 
 export const StudentColumn = (withActions=false) => {
@@ -19,12 +11,12 @@ export const StudentColumn = (withActions=false) => {
       field: "name",
     },
     { title: "Email", field: "email" },
-    { title: "Parent Name", field: "parentName" },
+    { title: "Parent Name", field: "parent_name" },
     {
       title: "Parent's Email",
-      field: "parentEmail",
+      field: "parent_email",
     },
-    { title: "Status", field: "status" },
+    { title: "Status", field: "active" },
     // {
     //   title: "Actions",
     //   field: "name",

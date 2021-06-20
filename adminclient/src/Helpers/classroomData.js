@@ -1,12 +1,19 @@
 import ClassroomActions from "./../Components/Actions/ClassroomActions"
+import courses from "./Courses";
 export const classroomData = (state) => {
-  return state.classroomData.classrooms.map(classroom => (
-    {
-      name: classroom.name,
-      classroom_type: classroom.classroom_type,
-  })
-)
-// console.log(state.classroomData)
+  return state.classroomData.classrooms
+//   state.classroomData.classrooms.map(classroom => (
+//     {
+//       name: classroom.name,
+//       classroom_type: classroom.classroom_type,
+//       status: classroom.status,
+//       id: classroom._id,
+//       enrolledCourses : classroom.enrolled_courses,
+//       enrolledStudents: classroom.enrolled_students
+//   }
+//   )
+// )
+// console.log(state.classroomData.classrooms)
 };
 
 export const classroomColumn = (withActions=false) => {
@@ -22,7 +29,6 @@ export const classroomColumn = (withActions=false) => {
       field: "name",
       render: (row) => (
         <div>
-          {/* {row} */}
           <ClassroomActions data={row} />
         </div>
       ),

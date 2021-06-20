@@ -8,7 +8,9 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
 import AddNewClassroom from "./../../Pages/AddNewClassroom";
 import clsx from "clsx";
-// import Classroom from "./../../CRUD/Classroom";
+import { deleteClassroom, editClassroomData, getAllClassrooms } from "../../action/actions";
+import { AppContext } from "./../../AppContext";
+import axios from "../../axios";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -39,6 +41,7 @@ const useStyles = makeStyles({
 
 const ClassroomActions = (props) => {
   const history = useHistory();
+  const { state, dispatch } = useContext(AppContext)
   const handleAddLecture = () => {
     history.push("/add-lecture");
   };
@@ -47,24 +50,16 @@ const ClassroomActions = (props) => {
   };
   const handleEdit = (data) => {
     history.push("/classroom/edit");
-    // props.handleEditClassroom(data);
+    console.log(props.data)
+    editClassroomData(dispatch, props.data)
   };
-  // const handleDelete = (data) => {
-  //   console.log(data);
-  //   if (window.confirm("Delete the item?")) {
-  //     Classroom.remove(data._id)
-  //       .then((res) => {
-  //         console.log("deleted");
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   }
-  //   // history.push()
-  // };
-  // const handleRefresh = () =>{
-  //   window.location.refresh()
-  // }
+  const handleDelete = (id) => {
+    console.log(id);
+    if (window.confirm("Delete the item?")) {
+      deleteClassroom(dispatch,id)
+      history.push("/classroom")
+    }
+  };
 
   const classes = useStyles();
   return (
@@ -77,7 +72,6 @@ const ClassroomActions = (props) => {
             handleEdit();
           }}
         >
-          {/* {props} */}
           <CreateIcon />
         </button>
       </LightTooltip>
@@ -127,9 +121,9 @@ const ClassroomActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          // onClick={() => {
-          //   handleDelete(props.data);
-          // }}
+          onClick={() => {
+            handleDelete(props.data._id);
+          }}
         >
           <DeleteIcon />
         </button>

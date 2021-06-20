@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
@@ -6,6 +6,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import {useHistory} from "react-router-dom"
+import { deleteStudent, editStudentData } from "../action/actions";
+import { AppContext } from "./../AppContext"
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -25,10 +27,18 @@ const useStyles = makeStyles({
 
 const StudentActions = (props) => {
   const history = useHistory()
+  const { state, dispatch } = useContext(AppContext)
   const classes = useStyles();
-  const handleEditStudent = () => {
+  const handleEdit = () => {
     history.push("/student/edit")
     console.log(props.data)
+    editStudentData(dispatch,props.data)
+  }
+  const handleDeleteStudent = () => {
+    if (window.confirm("Delete the item?")) {
+      deleteStudent(dispatch,props.data._id)
+      history.push("/students")
+    }
   }
   return (
     <div display="flex" justifycontent="space-around" className={classes.root}>
@@ -44,7 +54,7 @@ const StudentActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleEditStudent}
+          onClick={handleEdit}
         >
           {/* {props.data} */}
           <VisibilityIcon /> 
@@ -78,6 +88,7 @@ const StudentActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDeleteStudent}
         >
           <DeleteIcon />
         </button>
