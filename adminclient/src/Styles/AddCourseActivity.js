@@ -5,14 +5,16 @@ export const useStyles = makeStyles((theme) => ({
     marginLeft: "0%",
   },
   Header: {
-    fontSize: "2rem",
+    fontSize: "1.5rem",
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
     backgroundColor: "#318ebd",
     width: "92%",
     color: "white",
     border: "2px solid #318ebd",
-    padding: "2%",
+    // padding: "0.2%",
+    display: "flex",
+    flexDirection: "row",
   },
   borderbox1: {
     border: "1px solid rgb(128, 128, 128, 0.4)",
