@@ -13,28 +13,30 @@ function AddSpiritualLearning() {
   return (
     <div>
       <Container className={classes.container}>
-        <Container className={classes.Header}>
-          <img src={praying} style={{ width: "4rem", margin: "1%" }}></img>
-          <h1>Add Spiritual Learning</h1>
-        </Container>
-        <Container>
+        <Grid container>
           <Container>
-            <Paper style={{ padding: "1%" }}>
-              <TextEditor />
-              <Box display="flex" justifyContent="center">
-                <Grid item lg={11}>
-                  <Box className={classes.paper}>
-                    <div className={classes.submitBtn}>
-                      <Button variant="contained" color="secondary">
-                        Save Changes
-                      </Button>
-                    </div>
-                  </Box>
-                </Grid>
-              </Box>
-              <Divider className={classes.endDivider} />
-            </Paper>
+            <Container className={classes.Header}>
+              <img src={praying} style={{ width: "3rem", margin: "2%" }}></img>
+              <h3>Add Spiritual Learning</h3>
+            </Container>
           </Container>
+        </Grid>
+        <Container>
+          <Paper style={{ padding: "1%" }}>
+            <TextEditor />
+            <Box display="flex" justifyContent="center">
+              <Grid item lg={12}>
+                <Box className={classes.paper}>
+                  <div className={classes.submitBtn}>
+                    <Button variant="contained" color="secondary">
+                      Save Changes
+                    </Button>
+                  </div>
+                </Box>
+              </Grid>
+            </Box>
+            <Divider className={classes.endDivider} />
+          </Paper>
         </Container>
       </Container>
     </div>

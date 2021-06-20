@@ -12,32 +12,34 @@ function AddCourseActivity() {
 
   return (
     <div>
-      <Container className={classes.container}>
-        <Container className={classes.Header}>
-          <img
-            src={Courseactivity}
-            style={{ width: "4rem", margin: "1%" }}
-          ></img>
-          <h1>Add Course Activity</h1>
-        </Container>
-        <Container>
+      <Container>
+        <Grid container>
           <Container>
-            <Paper style={{ padding: "1%" }}>
-              <TextEditor />
-              <Box display="flex" justifyContent="center">
-                <Grid item lg={11}>
-                  <Box className={classes.paper}>
-                    <div className={classes.submitBtn}>
-                      <Button variant="contained" color="secondary">
-                        Save Changes
-                      </Button>
-                    </div>
-                  </Box>
-                </Grid>
-              </Box>
-              <Divider className={classes.endDivider} />
-            </Paper>
+            <Container className={classes.Header}>
+              <img
+                src={Courseactivity}
+                style={{ width: "3rem", margin: "2%" }}
+              ></img>
+              <h3>Add Course Activity</h3>
+            </Container>
           </Container>
+        </Grid>
+        <Container>
+          <Paper style={{ padding: "1%" }}>
+            <TextEditor />
+            <Box display="flex" justifyContent="center">
+              <Grid item lg={12}>
+                <Box className={classes.paper}>
+                  <div className={classes.submitBtn}>
+                    <Button variant="contained" color="secondary">
+                      Save Changes
+                    </Button>
+                  </div>
+                </Box>
+              </Grid>
+            </Box>
+            <Divider className={classes.endDivider} />
+          </Paper>
         </Container>
       </Container>
     </div>
