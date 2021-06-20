@@ -5,6 +5,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.2rem",
     fontFamily: "KoHo, sans-serif",
   },
+  pageHeading: {
+    fontWeight: "700",
+    fontSize: "2rem",
+    fontFamily: "KoHo, sans-serif",
+  },
   buttons: {
     display: "flex",
     justifyContent: "space-around",

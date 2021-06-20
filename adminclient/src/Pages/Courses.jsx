@@ -47,36 +47,42 @@ const Courses = () => {
   return (
     <div>
       <Container>
-        <Box display="flex" justifyContent="center">
-          <Grid item xs={12} lg={10}>
-            <Grid container alignItems="center">
-              <Box display="flex" justifyContent="flex-start">
-                <h1 style={{ fontSize: "300%" }}>Courses</h1>
-              </Box>
-              <Grid item xs={12} lg={6}>
-                <Box m={1} display="flex" justifyContent="flex-end">
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    className={classes.greenBtn}
-                    onClick={handleAddCourse}
-                  >
-                    <strong>Add Course</strong>
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    onClick={handleOpen}
-                    className={classes.blueBtn}
-                  >
-                    <strong>Add Course Section</strong>
-                  </Button>
-                </Box>
-              </Grid>
+        <Container maxWidth="md">
+          <Box display="flex" justifyContent="flex-start">
+            <Grid xs={12} lg={6}>
+              <h1 className={classes.pageHeading}>Courses</h1>
             </Grid>
-          </Grid>
-        </Box>
+          </Box>
+          <Box>
+            <Box display="flex" justifyContent="flex-end">
+              <Grid
+                xs={12}
+                lg={5}
+                style={{
+                  marginTop: "-7%",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  size="small"
+                  className={classes.greenBtn}
+                  onClick={handleAddCourse}
+                >
+                  <strong>Add Course</strong>
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  onClick={handleOpen}
+                  className={classes.blueBtn}
+                >
+                  <strong>Add Course Section</strong>
+                </Button>
+              </Grid>
+            </Box>
+          </Box>
+        </Container>
         <Box>
           {courses.map((course) => (
             <Container>
@@ -118,19 +124,19 @@ const Courses = () => {
                     </Grid>
                   </Grid>
                   <Box>
-                    <Grid container
-                        spacing={2}
-                        direction="row"
-                       >
+                    <Grid container spacing={2} direction="row">
                       {course.catogories.map((c) => (
-                        <Grid item xs={12} md={6} lg={3}>
+                        <Grid
+                          item
+                          xs={12}
+                          md={6}
+                          lg={3}
+                          style={{ marginTop: "2%" }}
+                        >
                           {" "}
                           <Card
                             key={c.id}
                             style={{
-                              // width: "80%",
-                              // marginLeft: "2vw",
-                              // backgroundColor: "transparent",
                               marginTop: "7%",
                             }}
                             className="flip-card"
