@@ -48,16 +48,13 @@ const Courses = () => {
     <div>
       <Container>
         <Container maxWidth="md">
-          <Box display="flex" justifyContent="flex-start">
-            <Grid xs={12} lg={6}>
+          <Box display="flex" justifyContent="space-between">
+            <Box>
               <h1 className={classes.pageHeading}>Courses</h1>
-            </Grid>
-          </Box>
-          <Box>
-            <Box display="flex" justifyContent="flex-end">
+            </Box>
+            <Box display="flex" flexDirection="row">
               <Grid
                 xs={12}
-                lg={5}
                 style={{
                   marginTop: "-7%",
                 }}
