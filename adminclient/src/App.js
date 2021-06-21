@@ -7,7 +7,12 @@ import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
 import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import Courses from "./Pages/Courses";
 import AddMeet from "./Pages/AddMeet";
@@ -61,19 +66,16 @@ const useStyles = makeStyles({
   },
 });
 
-
-
 function App() {
-  const history = useHistory()
+  const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [editClassroomData, setEditClassroomData] = useState()
-  
+  const [editClassroomData, setEditClassroomData] = useState();
+
   const handleEditClassroom = (data) => {
     setEditClassroomData(data);
-    console.log("done")
-   
-  }
+    console.log("done");
+  };
 
   // useEffect(async()=>{
   //   console.log(screenWidth);
@@ -89,7 +91,7 @@ function App() {
     //   console.log("response:", res);
     // } catch (err) {
     //   console.log(err);
-    // }    
+    // }
   }, []);
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
 
@@ -104,7 +106,7 @@ function App() {
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/enroll" component={Enroll} />
-              <Route exact path="/meetLink" component={()=><MeetTable/>} />
+              <Route exact path="/meetLink" component={() => <MeetTable />} />
               <Route exact path="/courses" component={Courses} />
               <Route exact path="/classroom" component={OneToOne} />
               <Route exact path="/students" component={Students} />
@@ -126,7 +128,9 @@ function App() {
               <Route
                 exact
                 path="/classroom/edit"
-                component={()=><EditClassroom editClassroomData={editClassroomData}/>}
+                component={() => (
+                  <EditClassroom editClassroomData={editClassroomData} />
+                )}
               />
               <Route exact path="/new-room" component={AddNewRoom} />
               <Route exact path="/teacher-details" component={TeacherDetails} />
@@ -178,9 +182,9 @@ function App() {
               />
             </Switch>
           </div>
-          {/* <div style={{ marginLeft: 250,marginBottom: "0px"}}>
-          <Copyright />
-        </div> */}
+          <div style={{ marginLeft: 250, marginBottom: "0px" }}>
+            <Copyright />
+          </div>
         </Router>
       </div>
     </ThemeProvider>
