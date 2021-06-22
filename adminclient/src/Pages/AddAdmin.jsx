@@ -68,16 +68,21 @@ const AddAdmin = () => {
                   className={classes.textField}
                 />
               </form>
-              <h5 className={classes.infoHeading}>User Email:</h5>
-              <form>
-                {" "}
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  size="small"
-                  className={classes.textField}
-                />
-              </form>
+              <h5 className={classes.infoHeading}>User Email:</h5>{" "}
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                className={classes.textField}
+              />
+              <h5 className={classes.infoHeading}>Password:</h5>{" "}
+              <TextField
+                id="outlined-basic"
+                type="password"
+                variant="outlined"
+                size="small"
+                className={classes.textField}
+              />
               <h5 className={classes.infoHeading}>Assign Role:</h5>
               <FormControl className={classes.formControl}>
                 <Select
