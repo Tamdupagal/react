@@ -12,8 +12,8 @@ const Copyright = () => {
         borderTop: "0.4vh solid #ccc",
       }}
     >
-      <Container style={{ marginLeft: "2%" }}>
-        <Grid>
+      <Container>
+        <Grid container>
           <Grid item xs={12} lg={12}>
             <div
               style={{

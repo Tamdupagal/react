@@ -181,9 +181,9 @@ function App() {
                 component={TeacherTraining}
               />
             </Switch>
-          </div>
-          <div style={{ marginLeft: 250, marginBottom: "0px" }}>
-            <Copyright />
+            <div>
+              <Copyright />
+            </div>
           </div>
         </Router>
       </div>

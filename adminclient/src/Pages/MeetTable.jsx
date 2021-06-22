@@ -15,6 +15,7 @@ import {
   CardContent,
   TextField,
   Typography,
+  Grid,
 } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -95,66 +96,68 @@ const MeetTable = () => {
   return (
     <>
       <Box display="flex" alignItems="center" justifyContent="center">
-        <Box display="flex" alignItems="center" justifyContent="center">
-          <Card>
-            <CardHeader
-              title="Meet Link"
-              action={
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={handleOpen}
-                >
-                  {/* {handleAddMeet()} */}
-                  Add new meet Link
-                </Button>
-              }
-              style={{
-                border: "1px solid #ccc8c8",
-                borderTopLeftRadius: "3px",
-                borderTopRightRadius: "3px",
-              }}
-            ></CardHeader>
-            <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="customized table">
-                <TableHead style={{ color: "transparent" }}>
-                  <TableRow>
-                    <TableCell>Link Id</TableCell>
-                    <TableCell align="center">Link</TableCell>
-                    <TableCell align="center">Bookings</TableCell>
-                    <TableCell align="center">Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row) => (
-                    <StyledTableRow key={row.name}>
-                      <StyledTableCell component="th" scope="row">
-                        {row.name}
-                      </StyledTableCell>
-                      <TableCell align="center">{row.calories}</TableCell>
-                      <TableCell align="center">{row.fat}</TableCell>
-                      <TableCell
-                        component="span"
-                        p={0}
-                        className={`${classes.spreadBox} ${classes.box}`}
-                      >
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={handleEditOpen}
+        <Box>
+          <Grid xs={12} lg={12}>
+            <Card>
+              <CardHeader
+                title="Meet Link"
+                action={
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={handleOpen}
+                  >
+                    {/* {handleAddMeet()} */}
+                    Add new meet Link
+                  </Button>
+                }
+                style={{
+                  border: "1px solid #ccc8c8",
+                  borderTopLeftRadius: "3px",
+                  borderTopRightRadius: "3px",
+                }}
+              ></CardHeader>
+              <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="customized table">
+                  <TableHead style={{ color: "transparent" }}>
+                    <TableRow>
+                      <TableCell>Link Id</TableCell>
+                      <TableCell align="center">Link</TableCell>
+                      <TableCell align="center">Bookings</TableCell>
+                      <TableCell align="center">Actions</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map((row) => (
+                      <StyledTableRow key={row.name}>
+                        <StyledTableCell component="th" scope="row">
+                          {row.name}
+                        </StyledTableCell>
+                        <TableCell align="center">{row.calories}</TableCell>
+                        <TableCell align="center">{row.fat}</TableCell>
+                        <TableCell
+                          component="span"
+                          p={0}
+                          className={`${classes.spreadBox} ${classes.box}`}
                         >
-                          {<CreateIcon style={{ padding: "0%" }} />}
-                        </Button>
-                        <Button variant="contained" color="secondary">
-                          {<DeleteIcon style={{ padding: "0%" }} />}
-                        </Button>
-                      </TableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Card>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleEditOpen}
+                          >
+                            {<CreateIcon style={{ padding: "0%" }} />}
+                          </Button>
+                          <Button variant="contained" color="secondary">
+                            {<DeleteIcon style={{ padding: "0%" }} />}
+                          </Button>
+                        </TableCell>
+                      </StyledTableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Card>
+          </Grid>
         </Box>
         <div>
           <Modal
