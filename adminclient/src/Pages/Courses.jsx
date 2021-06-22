@@ -65,6 +65,7 @@ const Courses = () => {
                 <Button
                   variant="outlined"
                   size="small"
+                  color="primary"
                   className={classes.greenBtn}
                   onClick={handleAddCourse}
                 >
@@ -72,7 +73,7 @@ const Courses = () => {
                 </Button>
                 <Button
                   variant="outlined"
-                  color="primary"
+                  color="secondary"
                   size="small"
                   onClick={handleOpen}
                   className={classes.blueBtn}

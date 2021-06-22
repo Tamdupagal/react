@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   greenBtn: {
     margin: "1%",
     color: "green",
-    border: "1px solid green",
+    // border: "1px solid green",
   },
   greenBtn1: {
     margin: "1%",
@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
   },
   blueBtn: {
     margin: "1%",
-    color: "#5567ff",
-    border: "1px solid #5567ff",
+    // color: "#5567ff",
+    // border: "1px solid #5567ff",
   },
   blueBtn1: {
     margin: "1%",

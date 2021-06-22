@@ -24,8 +24,8 @@ export const useStyles = makeStyles((theme) => ({
       color: "#0a0a0f",
     },
     textField: {
-      width: "90%",
-      marginLeft: "5%",
+      width: "94%",
+      marginLeft: "3%",
     },
     rightContainer: {
       border: "1px solid #ccc",
@@ -33,6 +33,7 @@ export const useStyles = makeStyles((theme) => ({
       borderStartStartRadius: "8px",
       padding: "6%",
       textAlign: "center",
+      backgroundColor: "white"
     },
     mainContainer: {
       margin: "1%",

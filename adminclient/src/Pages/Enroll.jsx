@@ -19,7 +19,7 @@ const Enroll = () => {
   };
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
-      <Grid xs={12} lg={8}>
+      {/* <Grid xs={12} lg={7}> */}
         <Card className={classes.root}>
           <CardHeader
             title="Enrollment Center"
@@ -57,7 +57,7 @@ const Enroll = () => {
             </Button>
           </Box>
         </Card>
-      </Grid>
+      {/* </Grid> */}
     </Box>
   );
 };

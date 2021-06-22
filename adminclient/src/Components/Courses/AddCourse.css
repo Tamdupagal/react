@@ -5,8 +5,8 @@
 }
 .toolBar {
   padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
   /* max-width: 40rem; */
 }
 .ql-editor {

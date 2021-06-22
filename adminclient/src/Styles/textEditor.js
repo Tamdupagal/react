@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#302e2e",
     backgroundColor: "#f0f5f5",
     letterSpacing: "0.1rem",
+    marginTop:"30px",
     // marginLeft: "0%",
     // marginBottom: "5%",
     // marginTop: "50%",

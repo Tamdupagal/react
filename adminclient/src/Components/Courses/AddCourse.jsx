@@ -23,7 +23,7 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
     <div>
       <Container>
         <h1 className={classes.mainHeading}>Add a Course</h1>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} display="flex" justifyContent="center">
           <Grid item xs={12} sm={12} md={12} lg={9}>
             <Divider className={classes.dividerInset1} />
             <h3 className={classes.subheading1}>BASIC INFORMATION</h3>
@@ -48,11 +48,11 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={3}>
-            <Card className={classes.rightContainer}>
+            <Box className={classes.rightContainer}>
               <Button variant="contained" color="secondary">
                 SAVE CHANGES
               </Button>
-            </Card>
+            </Box>
             <h3 className={classes.subheading1}>OPTIONS</h3>
             <Divider className={classes.dividerInset4} />
 
