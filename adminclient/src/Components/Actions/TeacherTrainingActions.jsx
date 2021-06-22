@@ -17,16 +17,12 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
-  },
-});
+const useStyles = makeStyles({});
 
 const TeacherTrainingActions = () => {
   const classes = useStyles();
   return (
-    <div display="flex" justifycontent="space-around" className={classes.root}>
+    <div>
       <LightTooltip title="Edit" placement="top" arrow>
         <button
           size="small"

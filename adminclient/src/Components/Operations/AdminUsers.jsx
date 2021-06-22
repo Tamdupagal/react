@@ -32,6 +32,7 @@ const AdminUsers = () => {
     {
       title: "Actions",
       field: "name",
+
       render: (row) => (
         <div>
           <TeacherTrainingActions />
@@ -72,7 +73,10 @@ const AdminUsers = () => {
             title=""
             data={data}
             columns={Columns}
-            style={{ borderTopLeftRadius: "0px", borderTopRightRadius: "0px" }}
+            style={{
+              borderTopLeftRadius: "0px",
+              borderTopRightRadius: "0px",
+            }}
             options={{
               exportButton: true,
               headerStyle: {
@@ -83,9 +87,12 @@ const AdminUsers = () => {
                 fontWeight: "800",
                 fontFamily: "KoHo, sans-serif",
                 letterSpacing: "0.07rem",
+                // whiteSpace: "nowrap",
               },
               cellStyle: {
                 border: "0.5px solid white",
+                whiteSpace: "nowrap",
+                width: "fit-content",
               },
               rowStyle: (rowData) => ({
                 backgroundColor:

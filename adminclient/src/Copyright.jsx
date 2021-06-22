@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Footer } from "@material-ui/core";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import Grid from "@material-ui/core/Grid";
 
@@ -7,7 +7,7 @@ const Copyright = () => {
   return (
     <Container
       style={{
-        marginTop: "63vh",
+        marginTop: "40vh",
         backgroundColor: "white",
         borderTop: "0.4vh solid #ccc",
       }}

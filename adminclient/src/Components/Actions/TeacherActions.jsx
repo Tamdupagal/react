@@ -6,7 +6,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useHistory } from "react-router";
 import { deleteTeacher, editTeacherData } from "../../action/actions";
-import { AppContext } from "./../../AppContext"
+import { AppContext } from "./../../AppContext";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -18,32 +18,28 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
-  },
-});
+const useStyles = makeStyles({});
 
 const TeacherActions = (props) => {
   const classes = useStyles();
-  const history = useHistory()
-  const { state, dispatch } = useContext(AppContext)
+  const history = useHistory();
+  const { state, dispatch } = useContext(AppContext);
 
-  const handleTeacherDetail = () =>{
-    history.push("/teacher-details")
-    editTeacherData(dispatch, props.data)
-  }
+  const handleTeacherDetail = () => {
+    history.push("/teacher-details");
+    editTeacherData(dispatch, props.data);
+  };
   const handleEdit = () => {
-    history.push("/edit-teacher")
-    editTeacherData(dispatch, props.data)
-  }
-  const handleDeleteTeacher = () =>{
-    if (window.confirm("Delete the item?")){
-      deleteTeacher(dispatch,props.data._id)
+    history.push("/edit-teacher");
+    editTeacherData(dispatch, props.data);
+  };
+  const handleDeleteTeacher = () => {
+    if (window.confirm("Delete the item?")) {
+      deleteTeacher(dispatch, props.data._id);
     }
-  }
+  };
   return (
-    <div display="flex" justifycontent="space-around" className={classes.root}>
+    <div>
       <LightTooltip title="Teacher Details" placement="top" arrow>
         <button
           size="small"

@@ -8,7 +8,11 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
 import AddNewClassroom from "./../../Pages/AddNewClassroom";
 import clsx from "clsx";
-import { deleteClassroom, editClassroomData, getAllClassrooms } from "../../action/actions";
+import {
+  deleteClassroom,
+  editClassroomData,
+  getAllClassrooms,
+} from "../../action/actions";
 import { AppContext } from "./../../AppContext";
 import axios from "../../axios";
 
@@ -23,9 +27,6 @@ const LightTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 const useStyles = makeStyles({
-  root: {
-    width: 500,
-  },
   tooltip: {
     padding: "0%",
     marginRight: "3%",
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
 
 const ClassroomActions = (props) => {
   const history = useHistory();
-  const { state, dispatch } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext);
   const handleAddLecture = () => {
     history.push("/add-lecture");
   };
@@ -50,20 +51,20 @@ const ClassroomActions = (props) => {
   };
   const handleEdit = (data) => {
     history.push("/classroom/edit");
-    console.log(props.data)
-    editClassroomData(dispatch, props.data)
+    console.log(props.data);
+    editClassroomData(dispatch, props.data);
   };
   const handleDelete = (id) => {
     console.log(id);
     if (window.confirm("Delete the item?")) {
-      deleteClassroom(dispatch,id)
-      history.push("/classroom")
+      deleteClassroom(dispatch, id);
+      history.push("/classroom");
     }
   };
 
   const classes = useStyles();
   return (
-    <div display="flex" justifycontent="space-around" className={classes.root}>
+    <div>
       <LightTooltip title="Edit Classroom" placement="top" arrow>
         <button
           size="small"
