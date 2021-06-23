@@ -40,7 +40,7 @@ const Attendance = () => {
     {
       title: "ABSENT",
       field: "absent",
-    },
+    }, 
     {
       title: "Actions",
       field: "name",

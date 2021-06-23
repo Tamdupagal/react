@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import TeacherTrainingActions from "./../Actions/TeacherTrainingActions";
 import { useHistory } from "react-router";
-import { AdminData } from "./../../Helpers/AdminData";
-import { MTableBodyRow } from "material-table";
+import { AdminColumn, AdminData } from "./../../Helpers/AdminData";
 import { makeStyles } from "@material-ui/core/styles";
+import { AppContext } from "./../../AppContext"
+import { getAllAdmins } from "../../action/actions";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Table from './../Table/Table'
+
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -21,25 +25,18 @@ const AdminUsers = () => {
 
   const history = useHistory();
   const [data, setData] = useState();
+  const {state, dispatch} = useContext(AppContext)
+  let ADMIN_DATA = state?.adminData
+
+  const handleAddAdmin = () => {
+    history.push("/add-admin")
+  }
+
   useEffect(() => {
-    setData(AdminData);
+    getAllAdmins(dispatch)
   }, []);
 
-  const Columns = [
-    { title: "Name", field: "name" },
-    { title: "Email", field: "email" },
-    { title: "User Roles", field: "userRoles" },
-    {
-      title: "Actions",
-      field: "name",
 
-      render: (row) => (
-        <div>
-          <TeacherTrainingActions />
-        </div>
-      ),
-    },
-  ];
   return (
     <div>
       <div>
@@ -60,7 +57,7 @@ const AdminUsers = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                // onClick={handleAddNewClassroom}
+                onClick={handleAddAdmin}
               >
                 ADD NEW ADMIN
               </Button>
@@ -68,49 +65,16 @@ const AdminUsers = () => {
           </Container>
         </Container>
         <Container>
-          {" "}
-          <MaterialTable
-            title=""
-            data={data}
-            columns={Columns}
-            style={{
-              borderTopLeftRadius: "0px",
-              borderTopRightRadius: "0px",
-            }}
-            options={{
-              exportButton: true,
-              headerStyle: {
-                border: "0.5px solid 	 #e6e6ff",
-                backgroundColor: "#007399",
-                color: "white",
-                fontSize: "1.2rem",
-                fontWeight: "800",
-                fontFamily: "KoHo, sans-serif",
-                letterSpacing: "0.07rem",
-                // whiteSpace: "nowrap",
-              },
-              cellStyle: {
-                border: "0.5px solid white",
-                whiteSpace: "nowrap",
-                width: "fit-content",
-              },
-              rowStyle: (rowData) => ({
-                backgroundColor:
-                  rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
-                fontWeight: "600",
-                fontSize: "1rem",
-                maxWidth: "2vw",
-                color: "#000",
-                rowStyle: "	 #e6e6ff",
-              }),
-            }}
-            components={{
-              Row: (props) => (
-                <MTableBodyRow className={classes.tableRow} {...props} />
-              ),
-            }}
-          />
-        </Container>
+        {
+        ADMIN_DATA.isLoading ? <CircularProgress /> : ADMIN_DATA.anyError ?
+          <div>
+              Ops! Data could not be loaded, try again .
+          </div>
+          :
+          <Table data={AdminData(state)} column={AdminColumn(true)} />
+        }
+        
+      </Container>
       </div>
     </div>
   );

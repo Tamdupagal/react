@@ -43,6 +43,7 @@ import TeacherTraining from "./Pages/TeacherTraining";
 import EditClassroom from "./Pages/EditClassroom";
 import EditStudent from "./Pages/EditStudent";
 import EditTeacher from "./Pages/EditTeacher";
+import EditCourse from "./Pages/EditCourse";
 
 const theme = createMuiTheme({
   palette: {
@@ -179,6 +180,11 @@ function App() {
                 exact
                 path="/trainer-classrooms"
                 component={TeacherTraining}
+              />
+              <Route
+                exact
+                path="/edit-course"
+                component={EditCourse}
               />
             </Switch>
             <div>

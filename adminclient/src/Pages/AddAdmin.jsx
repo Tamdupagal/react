@@ -1,5 +1,5 @@
 import { Container } from "@material-ui/core";
-import React from "react";
+import React, { useContext, useRef } from "react";
 import { Button, Card, Box } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -7,6 +7,9 @@ import { useStyles } from "./../Styles/AddAdminStyle";
 import { useTheme } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
+import { addAdmin } from "../action/actions";
+import { AppContext } from "../AppContext";
+import { useHistory } from "react-router-dom";
 
 const AddAdmin = () => {
   const [value, setValue] = React.useState("All");
@@ -16,6 +19,11 @@ const AddAdmin = () => {
   };
   const classes = useStyles();
   const theme = useTheme();
+  const username = useRef()
+  const email = useRef()
+  const password = useRef()
+  const {state, dispatch} = useContext(AppContext)
+  const history = useHistory()
   const [personName, setPersonName] = React.useState([]);
 
   const names = [
@@ -49,6 +57,15 @@ const AddAdmin = () => {
     }
     setPersonName(value);
   };
+  const handleAddAdmin = () => {
+    var data = {
+      name : username.current.value,
+      email: email.current.value,
+      password: password.current.value
+    }
+    addAdmin(dispatch, data)
+    history.push("/operations")
+  }
   return (
     <div>
       <Container>
@@ -66,6 +83,7 @@ const AddAdmin = () => {
                   variant="outlined"
                   size="small"
                   className={classes.textField}
+                  inputRef={username}
                 />
               </form>
               <h5 className={classes.infoHeading}>User Email:</h5>{" "}
@@ -74,6 +92,7 @@ const AddAdmin = () => {
                 variant="outlined"
                 size="small"
                 className={classes.textField}
+                inputRef={email}
               />
               <h5 className={classes.infoHeading}>Password:</h5>{" "}
               <TextField
@@ -82,6 +101,7 @@ const AddAdmin = () => {
                 variant="outlined"
                 size="small"
                 className={classes.textField}
+                inputRef={password}
               />
               <h5 className={classes.infoHeading}>Assign Role:</h5>
               <FormControl className={classes.formControl}>
@@ -103,7 +123,9 @@ const AddAdmin = () => {
                 </Select>
               </FormControl>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary">
+                <Button variant="contained" color="secondary"
+                onClick={handleAddAdmin}
+                >
                   CREATE ADMIN
                 </Button>
               </div>

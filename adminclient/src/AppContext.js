@@ -1,6 +1,6 @@
 import React, {createContext,useReducer} from "react";
 import _ from 'lodash';
-import { ADD_CLASSROOM_FAIL, ADD_CLASSROOM_SUCCESS, ADD_LECTURE_SUCCESS, ADD_STUDENT_SUCCESS, DELETE_CLASSROOM_FAIL, DELETE_CLASSROOM_REQUEST, DELETE_CLASSROOM_SUCCESS, EDIT_CLASSROOM_FAIL, EDIT_CLASSROOM_REQUEST, EDIT_CLASSROOM_SUCCESS, EDIT_STUDENT_FAIL, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS, GET_EDIT_CLASSROOM_FAIL, GET_EDIT_CLASSROOM_SUCCESS, GET_EDIT_STUDENT_FAIL, GET_EDIT_STUDENT_SUCCESS, GET_EDIT_TEACHER_FAIL, GET_EDIT_TEACHER_SUCCESS } from "./action/actionsType";
+import { ADD_ADMIN_SUCCESS, ADD_CLASSROOM_FAIL, ADD_CLASSROOM_SUCCESS, ADD_LECTURE_SUCCESS, ADD_STUDENT_SUCCESS, DELETE_CLASSROOM_FAIL, DELETE_CLASSROOM_REQUEST, DELETE_CLASSROOM_SUCCESS, EDIT_CLASSROOM_FAIL, EDIT_CLASSROOM_REQUEST, EDIT_CLASSROOM_SUCCESS, EDIT_STUDENT_FAIL, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, GET_ALL_ADMINS_FAIL, GET_ALL_ADMINS_REQUEST, GET_ALL_ADMINS_SUCCESS, GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS, GET_EDIT_CLASSROOM_FAIL, GET_EDIT_CLASSROOM_SUCCESS, GET_EDIT_STUDENT_FAIL, GET_EDIT_STUDENT_SUCCESS, GET_EDIT_TEACHER_FAIL, GET_EDIT_TEACHER_SUCCESS } from "./action/actionsType";
 
 const AppContext = createContext({});
 
@@ -42,14 +42,17 @@ const initialState= {
         data: [],
         isloading: false,
         anyError : null
+    },
+    adminData: {
+        admins: [],
+        isloading: false,
+        anyError: null 
     }
 }
 
 const reducer = (state=initialState, {type, payload})=>{
     console.log(type);
     switch (type){
-
-
 
         case GET_ALL_STUDENTS_REQUEST:
             return ({ ...state, studentData: { ...state.studentData, isLoading: true } })
@@ -136,6 +139,15 @@ const reducer = (state=initialState, {type, payload})=>{
         case GET_EDIT_TEACHER_FAIL:
             return ({ ...state, teacherEditData: { ...state.teacherEditData, anyError: payload, isLoading: false}})    
 
+        case GET_ALL_ADMINS_REQUEST:
+            return ({ ...state, adminData: { ...state.adminData, isLoading: true } })
+        case GET_ALL_ADMINS_SUCCESS:
+            return ({ ...state, adminData: { ...state.adminData, admins: payload, isLoading: false}})
+        case GET_ALL_ADMINS_FAIL:
+            return ({ ...state, adminData: { ...state.adminData, anyError: payload, isLoading: false } })
+
+        case ADD_ADMIN_SUCCESS:
+            return ({ ...state, admins: { ...state.adminData.admins.concat(payload)}})
 
         default:
             return state;
