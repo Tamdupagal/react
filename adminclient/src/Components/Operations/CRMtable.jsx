@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import TeacherTrainingActions from "./../Actions/TeacherTrainingActions";
+import CRMActions from "./../Actions/CRMActions";
 import { useHistory } from "react-router";
 import { CRMData } from "./../../Helpers/CRMData";
 import { MTableBodyRow } from "material-table";
@@ -28,13 +28,13 @@ const CRMtable = () => {
   const Columns = [
     { title: "Name", field: "name" },
     { title: "Email", field: "email" },
-    { title: "User Roles", field: "userRoles" },
+    { title: "User Roles", field: "userRoles", width: "10%" },
     {
       title: "Actions",
       field: "name",
       render: (row) => (
         <div>
-          <TeacherTrainingActions />
+          <CRMActions />
         </div>
       ),
     },

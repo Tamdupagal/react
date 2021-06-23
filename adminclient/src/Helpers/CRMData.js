@@ -1,34 +1,34 @@
-import TeacherTrainingActions from "./../Components/Actions/TeacherTrainingActions"
+import TeacherTrainingActions from "./../Components/Actions/TeacherTrainingActions";
 
 export const CRMData = () => {
   return [
     {
-      name: "Malik Arjun",
+      name: "Malik",
       email: "malik1234@gmail.com",
       userRoles: "All",
     },
     {
-      name: "Malik Arjun",
+      name: "Malik",
       email: "malik1234@gmail.com",
       userRoles: "All",
     },
     {
-      name: "Malik Arjun",
+      name: "Malik",
       email: "malik1234@gmail.com",
       userRoles: "All",
     },
     {
-      name: "Malik Arjun",
+      name: "Malik",
       email: "malik1234@gmail.com",
       userRoles: "All",
     },
     {
-      name: "Malik Arjun",
+      name: "Malik",
       email: "malik1234@gmail.com",
       userRoles: "All",
     },
     {
-      name: "Malik Arjun",
+      name: "Malik",
       email: "malik1234@gmail.com",
       userRoles: "All",
     },
@@ -36,8 +36,7 @@ export const CRMData = () => {
 };
 
 export const CrmColumn = () => {
-  return (
-  [
+  return [
     { title: "Name", field: "name" },
     { title: "Email", field: "email" },
     { title: "User Roles", field: "userRoles" },
@@ -50,6 +49,5 @@ export const CrmColumn = () => {
         </div>
       ),
     },
-    ]
-  )
-}
+  ];
+};
