@@ -1,3 +1,9 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import SideBar from "./Components/SideBar/sideBar";
 import Dashboard from "./Pages/Dashboard";
 import { Container } from "react-bootstrap";
@@ -7,12 +13,6 @@ import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
 import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import Courses from "./Pages/Courses";
 import AddMeet from "./Pages/AddMeet";
@@ -44,6 +44,8 @@ import EditClassroom from "./Pages/EditClassroom";
 import EditStudent from "./Pages/EditStudent";
 import EditTeacher from "./Pages/EditTeacher";
 import EditCourse from "./Pages/EditCourse";
+import CourseMaterial from "./Pages/CourseMaterial";
+import AddNewMaterial from "./Pages/AddNewMaterial";
 
 const theme = createMuiTheme({
   palette: {
@@ -181,11 +183,9 @@ function App() {
                 path="/trainer-classrooms"
                 component={TeacherTraining}
               />
-              <Route
-                exact
-                path="/edit-course"
-                component={EditCourse}
-              />
+              <Route exact path="/edit-course" component={EditCourse} />
+              <Route exact path="/course-material" component={CourseMaterial} />
+              <Route exact path="/add-materail" component={AddNewMaterial} />
             </Switch>
             <div>
               <Copyright />

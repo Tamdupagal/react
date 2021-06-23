@@ -42,6 +42,10 @@ const Courses = () => {
     history.push("/add-course");
   };
 
+  const handleEditCourse = () => {
+    history.push("/edit-course");
+  };
+
   const body = <AddCourseSection handleClose={handleClose} />;
 
   return (
@@ -161,13 +165,14 @@ const Courses = () => {
                                   size="small"
                                   color="primary"
                                   className={classes.greenBtn1}
+                                  onClick={handleEditCourse}
                                 >
                                   <strong>Edit Course</strong>
                                 </Button>
                                 <Button
                                   variant="outlined"
                                   size="small"
-                                  color="primary"
+                                  color="secondary"
                                   className={classes.blueBtn1}
                                 >
                                   <strong>View Course</strong>
