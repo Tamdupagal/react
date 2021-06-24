@@ -1,7 +1,7 @@
 import React from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "./../Components/Courses/AddCourse.css";
+// import "./../Components/Courses/AddCourse.css";
 import { Button, Card, CardHeader } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -23,7 +23,7 @@ const AddCourseSections = ({ withoutButton, withoutTitle, styles }) => {
     <div>
       <Container>
         <Container>
-          <h1 className={classes.mainHeading}>Add a Course Section</h1>
+          <h1 className={classes.mainHeading}>Add Course Section</h1>
           <Grid container spacing={3} display="flex" justifyContent="center">
             <Grid item xs={12} sm={12} md={12} lg={9}>
               <Divider className={classes.dividerInset1} />

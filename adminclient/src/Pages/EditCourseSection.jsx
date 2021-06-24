@@ -29,7 +29,7 @@ const EditCourseSection = ({ withoutButton, withoutTitle, styles }) => {
     <div>
       <Container>
         <Container>
-          <h1 className={classes.mainHeading}>Edit a Course Section</h1>
+          <h1 className={classes.mainHeading}>Edit Course Section</h1>
           <Grid container spacing={3} display="flex" justifyContent="center">
             <Grid item xs={12} sm={12} md={12} lg={9}>
               <Divider className={classes.dividerInset1} />
