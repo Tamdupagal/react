@@ -1,7 +1,7 @@
 import React from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "./AddCourse.css";
+import "./../Components/Courses/AddCourse.css";
 import { Button, Card, CardHeader } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -13,23 +13,29 @@ import Divider from "@material-ui/core/Divider";
 import { Box, Container, Paper } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import { useStyles } from "./../../Styles/AddCourse";
-import formats from "../../Helpers/formats";
-import modules from "../../Helpers/modules";
+import { useStyles } from "../Styles/AddCourse";
+import formats from "../Helpers/formats";
+import modules from "../Helpers/modules";
+import { useHistory } from "react-router";
 
-const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
+const EditCourseSection = ({ withoutButton, withoutTitle, styles }) => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleViewMaterialCourse = () => {
+    history.push("/course-material");
+  };
   return (
     <div>
       <Container>
         <Container>
-          <h1 className={classes.mainHeading}>Add a Course</h1>
+          <h1 className={classes.mainHeading}>Edit a Course Section</h1>
           <Grid container spacing={3} display="flex" justifyContent="center">
             <Grid item xs={12} sm={12} md={12} lg={9}>
               <Divider className={classes.dividerInset1} />
               <h3 className={classes.subheading1}>BASIC INFORMATION</h3>
               <Paper className={classes.mainContainer}>
-                <h3 className={classes.subheading2}>COURSE TITLE</h3>
+                <h3 className={classes.subheading2}>COURSE SECTION TITLE</h3>
                 <TextField
                   id="outlined-basic"
                   placeholder="Course title"
@@ -53,12 +59,20 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
                 <Button variant="contained" color="secondary">
                   SAVE CHANGES
                 </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.materialBtn}
+                  onClick={handleViewMaterialCourse}
+                >
+                  VIEW COURSE MATERIAL
+                </Button>
               </Box>
               <h3 className={classes.subheading1}>OPTIONS</h3>
               <Divider className={classes.dividerInset4} />
 
               <Card className={classes.rightContainer1}>
-                <h3 className={classes.subheading3}>SECTION</h3>
+                <h3 className={classes.subheading3}>COURSE</h3>
                 <form>
                   {" "}
                   <TextField
@@ -106,4 +120,4 @@ const AddCourse = ({ withoutButton, withoutTitle, styles }) => {
   );
 };
 
-export default AddCourse;
+export default EditCourseSection;

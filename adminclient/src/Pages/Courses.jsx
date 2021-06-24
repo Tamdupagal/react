@@ -19,7 +19,7 @@ import React, { useState } from "react";
 import { Image } from "react-bootstrap";
 import CreateIcon from "@material-ui/icons/Create";
 import Modal from "@material-ui/core/Modal";
-import AddCourseSection from "./../Components/Courses/AddCourseSection";
+import AddCourses from "../Components/Courses/AddCourses";
 import { useHistory } from "react-router-dom";
 import courses from "./../Helpers/Courses";
 import useStyles from "../Styles/Courses";
@@ -38,15 +38,15 @@ const Courses = () => {
     setOpen(false);
   };
 
-  const handleAddCourse = () => {
-    history.push("/add-course");
+  const handleAddCourseSection = () => {
+    history.push("/add-course-section");
   };
 
   const handleEditCourse = () => {
-    history.push("/edit-course");
+    history.push("/edit-course-section");
   };
 
-  const body = <AddCourseSection handleClose={handleClose} />;
+  const body = <AddCourses handleClose={handleClose} />;
 
   return (
     <div>
@@ -71,9 +71,9 @@ const Courses = () => {
                   size="small"
                   color="primary"
                   className={classes.greenBtn}
-                  onClick={handleAddCourse}
+                  onClick={handleAddCourseSection}
                 >
-                  <strong>Add Course</strong>
+                  <strong>Add Course Section</strong>
                 </Button>
                 <Button
                   variant="outlined"
@@ -82,7 +82,7 @@ const Courses = () => {
                   onClick={handleOpen}
                   className={classes.blueBtn}
                 >
-                  <strong>Add Course Section</strong>
+                  <strong>Add Courses</strong>
                 </Button>
               </Grid>
             </Box>
@@ -167,7 +167,7 @@ const Courses = () => {
                                   className={classes.greenBtn1}
                                   onClick={handleEditCourse}
                                 >
-                                  <strong>Edit Course</strong>
+                                  <strong>Edit Course Section</strong>
                                 </Button>
                                 <Button
                                   variant="outlined"
@@ -175,7 +175,7 @@ const Courses = () => {
                                   color="secondary"
                                   className={classes.blueBtn1}
                                 >
-                                  <strong>View Course</strong>
+                                  <strong>View Course Section</strong>
                                 </Button>
                               </div>
                             </div>

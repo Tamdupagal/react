@@ -21,7 +21,7 @@ import Students from "./Pages/Students";
 import AddTeacher from "./Pages/AddTeacher";
 import TeacherDetails from "./Pages/TeacherDetails";
 import TeacherHistory from "./Pages/TeacherHistory";
-import AddCourse from "./Components/Courses/AddCourse";
+import AddCourseSections from "./Pages/AddCourseSections";
 import AddNewRoom from "./Pages/AddNewRoom";
 import AddCRM from "./Pages/AddCRM";
 import AddAdmin from "./Pages/AddAdmin";
@@ -43,7 +43,7 @@ import TeacherTraining from "./Pages/TeacherTraining";
 import EditClassroom from "./Pages/EditClassroom";
 import EditStudent from "./Pages/EditStudent";
 import EditTeacher from "./Pages/EditTeacher";
-import EditCourse from "./Pages/EditCourse";
+import EditCourseSection from "./Pages/EditCourseSection";
 import CourseMaterial from "./Pages/CourseMaterial";
 import AddNewMaterial from "./Pages/AddNewMaterial";
 import EditAdmin from "./Pages/EditAdmin";
@@ -120,7 +120,11 @@ function App() {
               <Route exact path="/add-meet" component={AddMeet} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
-              <Route exact path="/add-course" component={AddCourse} />
+              <Route
+                exact
+                path="/add-course-section"
+                component={AddCourseSections}
+              />
               <Route exact path="/operations" component={Operations} />
               <Route exact path="/Student/Edit" component={EditStudent} />
 
@@ -184,16 +188,14 @@ function App() {
                 path="/trainer-classrooms"
                 component={TeacherTraining}
               />
-              <Route exact path="/edit-course" component={EditCourse} />
-              <Route exact path="/course-material" component={CourseMaterial} />
-              <Route exact path="/add-materail" component={AddNewMaterial} />
               <Route
                 exact
-                path="/edit-admin"
-                component={() => (
-                  <EditAdmin/>
-                )}
+                path="/edit-course-section"
+                component={EditCourseSection}
               />
+              <Route exact path="/course-material" component={CourseMaterial} />
+              <Route exact path="/add-materail" component={AddNewMaterial} />
+              <Route exact path="/edit-admin" component={() => <EditAdmin />} />
             </Switch>
             <div>
               <Copyright />
