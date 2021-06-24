@@ -46,6 +46,7 @@ import EditTeacher from "./Pages/EditTeacher";
 import EditCourse from "./Pages/EditCourse";
 import CourseMaterial from "./Pages/CourseMaterial";
 import AddNewMaterial from "./Pages/AddNewMaterial";
+import EditAdmin from "./Pages/EditAdmin";
 
 const theme = createMuiTheme({
   palette: {
@@ -186,6 +187,13 @@ function App() {
               <Route exact path="/edit-course" component={EditCourse} />
               <Route exact path="/course-material" component={CourseMaterial} />
               <Route exact path="/add-materail" component={AddNewMaterial} />
+              <Route
+                exact
+                path="/edit-admin"
+                component={() => (
+                  <EditAdmin/>
+                )}
+              />
             </Switch>
             <div>
               <Copyright />

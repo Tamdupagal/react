@@ -1,4 +1,4 @@
-import TeacherTrainingActions from "./../Components/Actions/TeacherTrainingActions"
+import AdminActions from "./../Components/Actions/AdminActions"
 export const AdminData = (state) => {
   return state.adminData.admins
 };
@@ -17,7 +17,7 @@ export const AdminColumn = (withActions=false) => {
       field: "name",
       render: (row) => (
         <div>
-          <TeacherTrainingActions data={row} />
+          <AdminActions data={row} />
         </div>
       ),
     })

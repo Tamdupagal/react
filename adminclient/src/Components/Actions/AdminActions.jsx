@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -7,6 +7,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
+import { useHistory } from "react-router";
+import { AppContext } from "./../../AppContext";
+import { editAdminData } from "../../action/actions";
+
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -20,8 +24,15 @@ const LightTooltip = withStyles((theme) => ({
 
 const useStyles = makeStyles({});
 
-const AdminActions = () => {
+const AdminActions = (props) => {
   const classes = useStyles();
+  const history = useHistory()
+  const {state, dispatch} = useContext(AppContext)
+
+  const handleEdit = () => {
+    history.push("/edit-admin")
+    editAdminData(dispatch,props.data)
+  }
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>
@@ -36,6 +47,7 @@ const AdminActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEdit}
         >
           <CreateIcon />
         </button>
