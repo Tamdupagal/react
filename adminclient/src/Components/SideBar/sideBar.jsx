@@ -290,7 +290,7 @@ const SideBar = () => {
                 <ImportContactsIcon className={clsx(classes.listText)} />
                 <Typography
                   style={{
-                    marginLeft: "50px",
+                    marginLeft: "30px",
                     color: "white",
                     paddingTop: "-1%",
                     paddingBottom: "-1%",
@@ -367,7 +367,7 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <LocalLibraryIcon className={clsx(classes.listText)} />
-                <Typography style={{ marginLeft: "50px", color: "white" }}>
+                <Typography style={{ marginLeft: "30px", color: "white" }}>
                   Classroom
                 </Typography>
               </AccordionSummary>

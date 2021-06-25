@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "2%",
   },
   content: {
-    fontSize: "1.5rem",
+    fontSize: "1.7rem",
     fontFamily: "'Exo', sans-serif",
     color: "#33334d",
   },
