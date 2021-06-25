@@ -25,7 +25,7 @@ const EditAdmin = () => {
   const {state, dispatch} = useContext(AppContext)
   const history = useHistory()
   const [personName, setPersonName] = React.useState([]);
-  let data = state.adminEditData.data
+  let adminEditableData = state.adminEditData.data
   const names = [
     "Oliver Hansen",
     "Van Henry",
@@ -40,7 +40,7 @@ const EditAdmin = () => {
   ];
 
   useEffect(() => {
-      console.log(data)
+      // console.log(data)
   }, [])
   const handleChangeMultiple = (event) => {
     const { options } = event.target;
@@ -56,11 +56,12 @@ const EditAdmin = () => {
 
   const handleEditAdmin = () => {
     var data = {
+      id: adminEditableData._id,
       name : username.current.value,
       email: email.current.value,
       password: password.current.value
     }
-    EditAdmin(dispatch, data)
+    editAdmin(dispatch, data, data._id)
     history.push("/operations")
   }
   return (

@@ -10,19 +10,25 @@ export const LectureInput = () => {
     const time = useRef()
     const date = useRef()
     const { state, dispatch } = useContext(AppContext)
+    let cid = state.classroomEditData.data._id
+    let Date
 
     // const date ="2017-05-24"
 
     const handleAddLecture = () => {
         console.log(time.current.value)
         console.log(date.current.value)
+        console.log(cid)
+        // Date = new Date(date)
+        // console.log(Date)
         var data ={
-            classroom_id : "60cc8714f922064fdb5607b9",
+            classroom_id : cid,
             course_id: "68912345690",
             date_and_time : "2017-05-24T10:30",
-            status : "last seen: 1 minute ago"
+            status : "ongoing"
         }
-        addLecture(dispatch,data,"60cc8714f922064fdb5607b9")
+        console.log(data)
+        addLecture(dispatch,data,cid)
     }
     return (
         <div>
@@ -39,6 +45,7 @@ export const LectureInput = () => {
                     InputLabelProps={{
                     shrink: true,
                     }}
+                    inputRef={date}
                 />
             </form>
             <h5 className={classes.infoHeading}>Lecture Time</h5>
@@ -55,6 +62,7 @@ export const LectureInput = () => {
                     inputProps={{
                     step: 300,
                     }}
+                    inputRef={time}
                 />
             </form>
             <div className={classes.submitBtn}>

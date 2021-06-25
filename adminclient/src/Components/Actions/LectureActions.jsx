@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -6,11 +6,6 @@ import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import LockRoundedIcon from "@material-ui/icons/LockRounded";
-import { useHistory } from "react-router";
-import { AppContext } from "./../../AppContext";
-import { deleteAdmin, editAdminData } from "../../action/actions";
-
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -24,21 +19,8 @@ const LightTooltip = withStyles((theme) => ({
 
 const useStyles = makeStyles({});
 
-const AdminActions = (props) => {
+const LectureActions = () => {
   const classes = useStyles();
-  const history = useHistory()
-  const {state, dispatch} = useContext(AppContext)
-
-  const handleEdit = () => {
-    history.push("/edit-admin")
-    editAdminData(dispatch,props.data)
-  }
-  const handleDelete = () => {
-    if(window.confirm("Delete the item?")){
-      deleteAdmin(dispatch,props.data._id)
-      history.push("/operations")
-    }
-  }
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>
@@ -53,12 +35,11 @@ const AdminActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleEdit}
         >
           <CreateIcon />
         </button>
       </LightTooltip>
-      <Tooltip title="Add Lecture" placement="top">
+      {/* <Tooltip title="Add Lecture" placement="top">
         <button
           size="small"
           style={{
@@ -71,9 +52,9 @@ const AdminActions = (props) => {
             fontSize: "small",
           }}
         >
-          <LockRoundedIcon />
+          <AddIcon />
         </button>
-      </Tooltip>
+      </Tooltip> */}
       {/* <Tooltip title="Student's History" placement="top">
         <button
           size="small"
@@ -102,7 +83,6 @@ const AdminActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleDelete}
         >
           <DeleteIcon />
         </button>
@@ -110,4 +90,4 @@ const AdminActions = (props) => {
     </div>
   );
 };
-export default AdminActions;
+export default LectureActions;

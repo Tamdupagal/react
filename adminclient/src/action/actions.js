@@ -1,5 +1,5 @@
 import axios from '../axios'
-import { ADD_ADMIN_FAIL, ADD_ADMIN_REQUEST, ADD_ADMIN_SUCCESS, ADD_CLASSROOM_FAIL, ADD_CLASSROOM_REQUEST, ADD_CLASSROOM_SUCCESS, ADD_LECTURE_FAIL, ADD_LECTURE_REQUEST, ADD_LECTURE_SUCCESS, ADD_STUDENT_FAIL, ADD_STUDENT_REQUEST, ADD_STUDENT_SUCCESS, ADD_TEACHER_FAIL, ADD_TEACHER_REQUEST, ADD_TEACHER_SUCCESS, DELETE_ADMIN_FAIL, DELETE_ADMIN_REQUEST, DELETE_ADMIN_SUCCESS, DELETE_CLASSROOM_FAIL, DELETE_CLASSROOM_REQUEST, DELETE_CLASSROOM_SUCCESS, DELETE_STUDENT_FAIL, DELETE_STUDENT_REQUEST, DELETE_STUDENT_SUCCESS, DELETE_TEACHER_FAIL, DELETE_TEACHER_REQUEST, DELETE_TEACHER_SUCCESS, EDIT_ADMIN_FAIL, EDIT_ADMIN_REQUEST, EDIT_ADMIN_SUCCESS, EDIT_CLASSROOM_FAIL, EDIT_CLASSROOM_REQUEST, EDIT_CLASSROOM_SUCCESS, EDIT_STUDENT_FAIL, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, EDIT_TEACHER_FAIL, EDIT_TEACHER_REQUEST, EDIT_TEACHER_SUCCESS, GET_ALL_ADMINS_FAIL, GET_ALL_ADMINS_REQUEST, GET_ALL_ADMINS_SUCCESS, GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS, GET_EDIT_ADMIN_FAIL, GET_EDIT_ADMIN_SUCCESS, GET_EDIT_CLASSROOM_FAIL, GET_EDIT_CLASSROOM_SUCCESS, GET_EDIT_STUDENT_FAIL, GET_EDIT_STUDENT_SUCCESS, GET_EDIT_TEACHER_FAIL, GET_EDIT_TEACHER_SUCCESS } from './actionsType';
+import { ADD_ADMIN_FAIL, ADD_ADMIN_REQUEST, ADD_ADMIN_SUCCESS, ADD_CLASSROOM_FAIL, ADD_CLASSROOM_REQUEST, ADD_CLASSROOM_SUCCESS, ADD_LECTURE_FAIL, ADD_LECTURE_REQUEST, ADD_LECTURE_SUCCESS, ADD_STUDENT_FAIL, ADD_STUDENT_REQUEST, ADD_STUDENT_SUCCESS, ADD_TEACHER_FAIL, ADD_TEACHER_REQUEST, ADD_TEACHER_SUCCESS, DELETE_ADMIN_FAIL, DELETE_ADMIN_REQUEST, DELETE_ADMIN_SUCCESS, DELETE_CLASSROOM_FAIL, DELETE_CLASSROOM_REQUEST, DELETE_CLASSROOM_SUCCESS, DELETE_STUDENT_FAIL, DELETE_STUDENT_REQUEST, DELETE_STUDENT_SUCCESS, DELETE_TEACHER_FAIL, DELETE_TEACHER_REQUEST, DELETE_TEACHER_SUCCESS, EDIT_ADMIN_FAIL, EDIT_ADMIN_REQUEST, EDIT_ADMIN_SUCCESS, EDIT_CLASSROOM_FAIL, EDIT_CLASSROOM_REQUEST, EDIT_CLASSROOM_SUCCESS, EDIT_STUDENT_FAIL, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, EDIT_TEACHER_FAIL, EDIT_TEACHER_REQUEST, EDIT_TEACHER_SUCCESS, GET_ALL_ADMINS_FAIL, GET_ALL_ADMINS_REQUEST, GET_ALL_ADMINS_SUCCESS, GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_LECTURES_FAIL, GET_ALL_LECTURES_REQUEST, GET_ALL_LECTURES_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS, GET_EDIT_ADMIN_FAIL, GET_EDIT_ADMIN_SUCCESS, GET_EDIT_CLASSROOM_FAIL, GET_EDIT_CLASSROOM_SUCCESS, GET_EDIT_STUDENT_FAIL, GET_EDIT_STUDENT_SUCCESS, GET_EDIT_TEACHER_FAIL, GET_EDIT_TEACHER_SUCCESS } from './actionsType';
 
 
 // export const mobileView= (flag)=>{
@@ -48,6 +48,7 @@ export const addClassroom = async (dispatch,data) => {
 export const editClassroomData = async (dispatch,data) => {
     try{
         dispatch({type : GET_EDIT_CLASSROOM_SUCCESS, payload: data})
+        console.log("data accessed",data)
     } catch (err) {
         dispatch({type : GET_EDIT_CLASSROOM_FAIL, payload : err})
     }
@@ -192,10 +193,22 @@ export const deleteTeacher= async (dispatch, id) => {
 
 // *****************LECTURES*****************
 
-export const addLecture = async (dispatch,data,id) => {
+export const getAllLectures = async (dispatch,cid) => {
     try {
-        dispatch ({ type: ADD_LECTURE_REQUEST })
-        await axios.post(`/classroom/${id}/lecture/new`,data)
+        dispatch({ type: GET_ALL_LECTURES_REQUEST})
+        const res = await axios.get(`classroom/${cid}/lecture/all`)
+        console.log(res.data)
+        dispatch({type : GET_ALL_LECTURES_SUCCESS, payload : res.data})
+    } catch (err) {
+        dispatch({type : GET_ALL_LECTURES_FAIL, payload : err})
+    }
+}
+
+
+export const addLecture = async (dispatch,data,cid) => {
+    try {
+        dispatch ({ type: ADD_LECTURE_REQUEST})
+        await axios.post(`/classroom/${cid}/lecture/new`,data)
         console.log(data)
         dispatch({type : ADD_LECTURE_SUCCESS, payload : data})
         // getAllLectures(dispatch)
@@ -238,10 +251,10 @@ export const editAdminData = async (dispatch,data) => {
     }
 }
 
-export const editAdmin = async (dispatch, data, id) => {
+export const editAdmin = async (dispatch, data) => {
     try{
         dispatch ({ type: EDIT_ADMIN_REQUEST })
-        await axios.put(`/admin/update/${id}`, data)
+        await axios.put(`/admin/update/details`, data)
         dispatch({type : EDIT_ADMIN_SUCCESS, payload : data})
         getAllAdmins(dispatch)
     } catch (err) {
@@ -252,7 +265,7 @@ export const editAdmin = async (dispatch, data, id) => {
 export const deleteAdmin= async (dispatch, id) => {
     try{
         dispatch ({ type: DELETE_ADMIN_REQUEST})
-        await axios.delete(`/admin/${id}`)
+        await axios.delete(`/admin/delete/${id}`)
         dispatch({type : DELETE_ADMIN_SUCCESS, payload: id})
         getAllAdmins(dispatch)
     } catch (err) {
