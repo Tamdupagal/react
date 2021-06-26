@@ -23,7 +23,7 @@ import AddCourses from "../Components/Courses/AddCourses";
 import { useHistory } from "react-router-dom";
 import courses from "./../Helpers/Courses";
 import useStyles from "../Styles/Courses";
-import "./../Components/Courses/Courses.css";
+import "./../css/Courses.css"
 
 const Courses = () => {
   const classes = useStyles();

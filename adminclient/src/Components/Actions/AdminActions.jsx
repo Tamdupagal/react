@@ -7,7 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
-import { useHistory } from "react-router";
+import { useHistory, Link } from "react-router-dom";
 import { AppContext } from "./../../AppContext";
 import { deleteAdmin, editAdminData } from "../../action/actions";
 
@@ -30,8 +30,7 @@ const AdminActions = (props) => {
   const {state, dispatch} = useContext(AppContext)
 
   const handleEdit = () => {
-    history.push("/edit-admin")
-    editAdminData(dispatch,props.data)
+    history.push(`/edit-admin/${props.data._id}`)
   }
   const handleDelete = () => {
     if(window.confirm("Delete the item?")){
@@ -41,6 +40,10 @@ const AdminActions = (props) => {
   }
   return (
     <div>
+      {/* <Link to={{
+        pathname: `/edit-admin/${props.data._id}`,
+        state: {name:props}
+        }}> */}
       <LightTooltip title="Edit" placement="top" arrow>
         <button
           size="small"
@@ -58,6 +61,7 @@ const AdminActions = (props) => {
           <CreateIcon />
         </button>
       </LightTooltip>
+      {/* </Link> */}
       <Tooltip title="Add Lecture" placement="top">
         <button
           size="small"

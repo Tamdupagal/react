@@ -9,10 +9,11 @@ import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { editAdmin } from "../action/actions";
 import { AppContext } from "../AppContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter, useLocation, useParams } from "react-router-dom";
 
-const EditAdmin = () => {
+const EditAdmin = (props) => {
   const [value, setValue] = React.useState("All");
+  const location=useLocation()
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -26,6 +27,8 @@ const EditAdmin = () => {
   const history = useHistory()
   const [personName, setPersonName] = React.useState([]);
   let adminEditableData = state.adminEditData.data
+  const {id} = useParams()
+  // id  = props.match.params
   const names = [
     "Oliver Hansen",
     "Van Henry",
@@ -38,10 +41,14 @@ const EditAdmin = () => {
     "Virginia Andrews",
     "Kelly Snyder",
   ];
-
+  // const useQuery = () => {
+  //   return
+  // }
   useEffect(() => {
-      // console.log(data)
-  }, [])
+      console.log(location.state)
+      console.log(id)
+
+  }, [location])
   const handleChangeMultiple = (event) => {
     const { options } = event.target;
     const value = [];

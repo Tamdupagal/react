@@ -1,7 +1,7 @@
 import React from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "./../Components/Courses/AddCourse.css";
+// import "./../Components/Courses/AddCourse.css";
 import { Button, Card, CardHeader } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";

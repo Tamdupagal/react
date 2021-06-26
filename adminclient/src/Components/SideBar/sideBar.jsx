@@ -36,7 +36,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import FaceIcon from "@material-ui/icons/Face";
 import GamesIcon from "@material-ui/icons/Games";
 import TuneIcon from "@material-ui/icons/Tune";
-import "./sidebar.css";
+import "./../../css/sidebar.css";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 const drawerWidth = 250;

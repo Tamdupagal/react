@@ -64,7 +64,7 @@ const Attendance = () => {
   ];
   return (
     <div>
-      <Container>
+      <Container style={{marginBottom: "120px"}}>
         <Box display="flex" justifyContent="center">
           <Grid item lg={10}>
             <Container

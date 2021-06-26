@@ -7,7 +7,7 @@ const Copyright = () => {
   return (
     <Container
       style={{
-        marginTop: "40vh",
+        // marginTop: "40vh",
         backgroundColor: "white",
         borderTop: "0.4vh solid #ccc",
       }}

@@ -6,6 +6,7 @@ import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import { useHistory } from "react-router-dom";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -19,8 +20,12 @@ const LightTooltip = withStyles((theme) => ({
 
 const useStyles = makeStyles({});
 
-const LectureActions = () => {
+const LectureActions = (props) => {
   const classes = useStyles();
+  const history = useHistory()
+  const handleEdit = () => {
+      history.push(`/edit-lecture/${props.data._id}`)
+  }
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>
@@ -35,6 +40,7 @@ const LectureActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEdit}
         >
           <CreateIcon />
         </button>

@@ -5,7 +5,8 @@ export const LectureData = (state) => {
 
 export const LectureColumn = (withActions=false) => {
   const col = [
-    { title: "Time", field: "data_and_time" },
+    { title: "Time", field: "data_and_time",render: (row) => (<div>{new Date(row.date_and_time).toLocaleString()}</div>)
+     },
     { title: "Meet Link", field: "crm_meeting_link" },
     { title: "Status", field: "status",},
   ];

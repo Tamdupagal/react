@@ -8,6 +8,7 @@ export const LectureInput = () => {
   const classes = useStyles();
   const time = useRef();
   const date = useRef();
+  const meetLink = useRef();
   const { state, dispatch } = useContext(AppContext);
   let cid = state.classroomEditData.data._id;
   let Date;
@@ -22,9 +23,10 @@ export const LectureInput = () => {
     // console.log(Date)
     var data = {
       classroom_id: cid,
-      course_id: "68912345690",
+      course_id: "507f1f77bcf86cd799439012",
       date_and_time: "2017-05-24T10:30",
       status: "ongoing",
+      crm_meeting_link: meetLink.current.value
     };
     console.log(data);
     addLecture(dispatch, data, cid);
@@ -72,6 +74,7 @@ export const LectureInput = () => {
           variant="outlined"
           size="small"
           style={{ marginLeft: "5%", width: "90%" }}
+          inputRef={meetLink}
         />
       </form>
       <div className={classes.submitBtn}>

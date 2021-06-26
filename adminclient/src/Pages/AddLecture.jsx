@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, CardHeader, Container, Divider, Grid, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
 import React, { useContext, useEffect } from 'react'
-import {useHistory} from "react-router-dom"
+import {useHistory, useParams} from "react-router-dom"
 import { AppContext } from '../AppContext'
 import  Table  from "./../Components/Table/Table"
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -11,14 +11,15 @@ import { getAllLectures } from '../action/actions'
 const AddLecture = () => {
     const {state, dispatch} = useContext(AppContext)
     const history = useHistory();
+    const { id } = useParams()
     const handleAddNewLecture = () =>{
         history.push("/lectures/create")
     }
     const LECTURE_DATA = state?.lectureData
-    let cid = state.classroomEditData.data._id
+    // let cid = state.classroomEditData.data._id
     useEffect(() => {
-        console.log(cid)
-        getAllLectures(dispatch,cid)
+        console.log(id)
+        getAllLectures(dispatch,id)
     }, [])
     return (
             <Container >
@@ -38,27 +39,17 @@ const AddLecture = () => {
                                 }
                                 />
                                 <Divider/>
-                                {/* <CardContent>
-                                    <Table>
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell align="center">Time</TableCell>
-                                                <TableCell align="center">Meet Link</TableCell>
-                                                <TableCell align="center">Status</TableCell>
-                                                <TableCell align="center">Actions</TableCell>
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                        </TableBody>
-                                    </Table>
-                                </CardContent> */}
-                                {LECTURE_DATA.isLoading ? <CircularProgress /> : LECTURE_DATA.anyError ?
+                                <CardContent>
+
+                                {
+                                 LECTURE_DATA.isLoading ? <CircularProgress/> : LECTURE_DATA.anyError ?
                                     <div>
                                         Ops! Data could not be loaded, try again .
                                     </div>
                                     :
                                     <Table data={LectureData(state)} column={LectureColumn(true)} />
                                 }
+                                </CardContent>
                             </Card>
                         </Grid>
                     </Grid>

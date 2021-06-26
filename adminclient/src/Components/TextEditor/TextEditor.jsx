@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Button } from "@material-ui/core";
-import "../../Styles/TextEditor.css";
+import "./../../css/TextEditor.css";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Grid from "@material-ui/core/Grid";

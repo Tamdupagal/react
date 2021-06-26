@@ -44,14 +44,13 @@ const ClassroomActions = (props) => {
   const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
   const handleAddLecture = () => {
-    history.push("/add-lecture");
-    editClassroomData(dispatch, props.data);
+    history.push(`/${props.data._id}/lectures`);
   };
   const handleViewHistory = () => {
     history.push("classrooms/timeline");
   };
   const handleEdit = (data) => {
-    history.push("/classroom/edit");
+    history.push(`/classroom/edit`);
     console.log(props.data);
     editClassroomData(dispatch, props.data);
   };
