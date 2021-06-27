@@ -22,6 +22,6 @@ export const useStyles = makeStyles((theme) => ({
   container: {
     paddingBottom: "5vh",
     borderBottom: "2px solid #ccc",
-    marginBottom: "37vh",
+    marginBottom: "42vh",
   },
 }));

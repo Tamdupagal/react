@@ -21,7 +21,7 @@ const Enroll = () => {
     <Box
       display="flex"
       justifyContent="center"
-      style={{ marginBottom: "25vh" }}
+      style={{ marginBottom: "36vh" }}
     >
       <Grid xs={12} lg={10}>
         <Card>
