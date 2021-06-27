@@ -16,14 +16,20 @@ import TextField from "@material-ui/core/TextField";
 import { useStyles } from "../Styles/AddCourse";
 import formats from "../Helpers/formats";
 import modules from "../Helpers/modules";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
-const AddCourseSections = ({ withoutButton, withoutTitle, styles }) => {
+const ViewCourseSection = ({ withoutButton, withoutTitle, styles }) => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleViewMaterialCourse = () => {
+    history.push("/course-material");
+  };
   return (
     <div>
       <Container style={{ marginBottom: "20vh" }}>
         <Container>
-          <h1 className={classes.mainHeading}>Add Course Section</h1>
           <Grid container spacing={3} display="flex" justifyContent="center">
             <Grid item xs={12} sm={12} md={12} lg={9}>
               <Divider className={classes.dividerInset1} />
@@ -50,8 +56,27 @@ const AddCourseSections = ({ withoutButton, withoutTitle, styles }) => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
               <Box className={classes.rightContainer}>
-                <Button variant="contained" color="secondary">
-                  SAVE CHANGES
+                <Link
+                  to="/edit-course-section"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ fontFamily: "'Exo', sans-serif" }}
+                  >
+                    EDIT CHANGES
+                  </Button>
+                </Link>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.materialBtn}
+                  onClick={handleViewMaterialCourse}
+                >
+                  VIEW COURSE MATERIAL
                 </Button>
               </Box>
               <h3 className={classes.subheading1}>OPTIONS</h3>
@@ -106,4 +131,4 @@ const AddCourseSections = ({ withoutButton, withoutTitle, styles }) => {
   );
 };
 
-export default AddCourseSections;
+export default ViewCourseSection;

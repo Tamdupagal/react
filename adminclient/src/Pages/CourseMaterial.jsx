@@ -61,7 +61,7 @@ const CourseMaterial = () => {
   return (
     <div>
       <div>
-        <Container>
+        <Container style={{ marginBottom: "20vh" }}>
           <Container>
             <Container
               style={{

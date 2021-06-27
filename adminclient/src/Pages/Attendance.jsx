@@ -30,17 +30,17 @@ const Attendance = () => {
   }, []);
 
   const Columns = [
-    { title: "CLASSROOM", field: "classroom" },
-    { title: "LECTURE ON", field: "lectureOn" },
+    { title: "Classroom", field: "classroom" },
+    { title: "Lecture On", field: "lectureOn" },
     {
-      title: "TOTAL",
+      title: "Total",
       field: "total",
       Style: { border: "1px solid black" },
     },
     {
-      title: "ABSENT",
+      title: "Absent",
       field: "absent",
-    }, 
+    },
     {
       title: "Actions",
       field: "name",
@@ -64,7 +64,7 @@ const Attendance = () => {
   ];
   return (
     <div>
-      <Container style={{marginBottom: "120px"}}>
+      <Container style={{ marginBottom: "20vh" }}>
         <Box display="flex" justifyContent="center">
           <Grid item lg={10}>
             <Container

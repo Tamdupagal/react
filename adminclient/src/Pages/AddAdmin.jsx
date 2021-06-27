@@ -19,11 +19,11 @@ const AddAdmin = () => {
   };
   const classes = useStyles();
   const theme = useTheme();
-  const username = useRef()
-  const email = useRef()
-  const password = useRef()
-  const {state, dispatch} = useContext(AppContext)
-  const history = useHistory()
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const { state, dispatch } = useContext(AppContext);
+  const history = useHistory();
   const [personName, setPersonName] = React.useState([]);
 
   const names = [
@@ -59,13 +59,13 @@ const AddAdmin = () => {
   };
   const handleAddAdmin = () => {
     var data = {
-      name : username.current.value,
+      name: username.current.value,
       email: email.current.value,
-      password: password.current.value
-    }
-    addAdmin(dispatch, data)
-    history.push("/operations")
-  }
+      password: password.current.value,
+    };
+    addAdmin(dispatch, data);
+    history.push("/operations");
+  };
   return (
     <div>
       <Container>
@@ -123,8 +123,11 @@ const AddAdmin = () => {
                 </Select>
               </FormControl>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary"
-                onClick={handleAddAdmin}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleAddAdmin}
+                  style={{ fontFamily: "'Exo', sans-serif" }}
                 >
                   CREATE ADMIN
                 </Button>

@@ -95,7 +95,12 @@ const MeetTable = () => {
   const body = <AddMeet handleClose={handleClose} />;
   return (
     <>
-      <Box display="flex" alignItems="center" justifyContent="center">
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        style={{ marginBottom: "20vh" }}
+      >
         <Box>
           <Grid xs={12} lg={12}>
             <Card>

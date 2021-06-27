@@ -60,6 +60,7 @@ const CRMtable = () => {
                 variant="contained"
                 color="secondary"
                 // onClick={handleAddNewClassroom}
+                style={{ fontFamily: "'Exo', sans-serif" }}
               >
                 ADD NEW CRM USER
               </Button>

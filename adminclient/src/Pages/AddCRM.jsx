@@ -53,7 +53,7 @@ const AddCRM = () => {
 
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <div>
           <h1 className={classes.mainHeading}>Add a CRM:User</h1>
         </div>
@@ -101,7 +101,11 @@ const AddCRM = () => {
                   </Select>
                 </FormControl>
                 <div className={classes.submitBtn}>
-                  <Button variant="contained" color="secondary">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ fontFamily: "'Exo', sans-serif" }}
+                  >
                     CREATE CRM USER
                   </Button>
                 </div>

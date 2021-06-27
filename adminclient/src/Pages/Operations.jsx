@@ -6,7 +6,7 @@ import AdminUsers from "./../Components/Operations/AdminUsers";
 const Operations = () => {
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Grid container>
           <Grid item xs={12} lg={6}>
             <CRMtable />

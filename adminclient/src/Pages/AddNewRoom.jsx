@@ -19,7 +19,7 @@ const AddNewRoom = () => {
       <div>
         <h1 className={classes.mainHeading}>Add a Classroom</h1>
       </div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <div>
           <Box display="flex" justifyContent="center">
             <Grid item xs={12} lg={9}>

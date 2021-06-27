@@ -12,7 +12,11 @@ function AddCourseActivity() {
 
   return (
     <div>
-      <Box display="flex" justifyContent="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        style={{ marginBottom: "20vh" }}
+      >
         <Grid xs={12} lg={10}>
           <Grid container>
             <Container>

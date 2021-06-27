@@ -1,16 +1,17 @@
-import  TeacherActions  from "./../Components/Actions/TeacherActions"
+import TeacherActions from "./../Components/Actions/TeacherActions";
 export const teacherData = (state) => {
-  return state.teacherData.teachers
+  return state.teacherData.teachers;
 };
 
 export const teacherColumn = (withAction = false) => {
   const col = [
-    { title: "NAME", field: "name" },
-    { title: "EMAIL", field: "email" },
+    { title: "Name", field: "name" },
+    { title: "Email", field: "email" },
     {
-      title: "PHONE NO.",
+      title: "Phone No.",
       field: "primary_phone_number",
-    }]
+    },
+  ];
   if (withAction) {
     col.push({
       title: "Actions",
@@ -19,10 +20,10 @@ export const teacherColumn = (withAction = false) => {
         <div>
           <TeacherActions data={row} />
         </div>
-      )
-    })
-    
-    return col
+      ),
+    });
+
+    return col;
   }
-  return col
-} 
+  return col;
+};

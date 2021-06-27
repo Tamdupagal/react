@@ -23,7 +23,7 @@ import AddCourses from "../Components/Courses/AddCourses";
 import { useHistory } from "react-router-dom";
 import courses from "./../Helpers/Courses";
 import useStyles from "../Styles/Courses";
-import "./../css/Courses.css"
+import "./../css/Courses.css";
 
 const Courses = () => {
   const classes = useStyles();
@@ -42,15 +42,19 @@ const Courses = () => {
     history.push("/add-course-section");
   };
 
-  const handleEditCourse = () => {
+  const handleEditCourseSection = () => {
     history.push("/edit-course-section");
+  };
+
+  const handleViewCourseSection = () => {
+    history.push("/view-course-section");
   };
 
   const body = <AddCourses handleClose={handleClose} />;
 
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Container maxWidth="md">
           <Box display="flex" justifyContent="flex-start">
             <Grid xs={12} lg={6}>
@@ -165,7 +169,7 @@ const Courses = () => {
                                   size="small"
                                   color="primary"
                                   className={classes.greenBtn1}
-                                  onClick={handleEditCourse}
+                                  onClick={handleEditCourseSection}
                                 >
                                   <strong>Edit Course Section</strong>
                                 </Button>
@@ -174,6 +178,7 @@ const Courses = () => {
                                   size="small"
                                   color="secondary"
                                   className={classes.blueBtn1}
+                                  onClick={handleViewCourseSection}
                                 >
                                   <strong>View Course Section</strong>
                                 </Button>

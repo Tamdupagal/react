@@ -12,7 +12,11 @@ function AddSpiritualLearning() {
 
   return (
     <div>
-      <Box display="flex" justifyContent="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        style={{ marginBottom: "20vh" }}
+      >
         <Grid item xs={12} lg={10}>
           <Grid container>
             <Container>

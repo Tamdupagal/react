@@ -5,11 +5,10 @@ import TeacherTrainingActions from "./../Actions/TeacherTrainingActions";
 import { useHistory } from "react-router";
 import { AdminColumn, AdminData } from "./../../Helpers/AdminData";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppContext } from "./../../AppContext"
+import { AppContext } from "./../../AppContext";
 import { getAllAdmins } from "../../action/actions";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Table from './../Table/Table'
-
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Table from "./../Table/Table";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -25,17 +24,16 @@ const AdminUsers = () => {
 
   const history = useHistory();
   const [data, setData] = useState();
-  const {state, dispatch} = useContext(AppContext)
-  let ADMIN_DATA = state?.adminData
+  const { state, dispatch } = useContext(AppContext);
+  let ADMIN_DATA = state?.adminData;
 
   const handleAddAdmin = () => {
-    history.push("/add-admin")
-  }
+    history.push("/add-admin");
+  };
 
   useEffect(() => {
-    getAllAdmins(dispatch)
+    getAllAdmins(dispatch);
   }, []);
-
 
   return (
     <div>
@@ -58,6 +56,7 @@ const AdminUsers = () => {
                 variant="contained"
                 color="secondary"
                 onClick={handleAddAdmin}
+                style={{ fontFamily: "'Exo', sans-serif" }}
               >
                 ADD NEW ADMIN
               </Button>
@@ -65,16 +64,14 @@ const AdminUsers = () => {
           </Container>
         </Container>
         <Container>
-        {
-        ADMIN_DATA.isLoading ? <CircularProgress /> : ADMIN_DATA.anyError ?
-          <div>
-              Ops! Data could not be loaded, try again .
-          </div>
-          :
-          <Table data={AdminData(state)} column={AdminColumn(true)} />
-        }
-        
-      </Container>
+          {ADMIN_DATA.isLoading ? (
+            <CircularProgress />
+          ) : ADMIN_DATA.anyError ? (
+            <div>Ops! Data could not be loaded, try again .</div>
+          ) : (
+            <Table data={AdminData(state)} column={AdminColumn(true)} />
+          )}
+        </Container>
       </div>
     </div>
   );

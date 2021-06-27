@@ -44,6 +44,7 @@ import EditClassroom from "./Pages/EditClassroom";
 import EditStudent from "./Pages/EditStudent";
 import EditTeacher from "./Pages/EditTeacher";
 import EditCourseSection from "./Pages/EditCourseSection";
+import ViewCourseSection from "./Pages/ViewCourseSection";
 import CourseMaterial from "./Pages/CourseMaterial";
 import AddNewMaterial from "./Pages/AddNewMaterial";
 import EditAdmin from "./Pages/EditAdmin";
@@ -192,6 +193,11 @@ function App() {
                 exact
                 path="/edit-course-section"
                 component={EditCourseSection}
+              />
+              <Route
+                exact
+                path="/view-course-section"
+                component={ViewCourseSection}
               />
               <Route exact path="/course-material" component={CourseMaterial} />
               <Route exact path="/add-materail" component={AddNewMaterial} />

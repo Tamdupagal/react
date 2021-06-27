@@ -8,10 +8,9 @@ import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 // import Classroom from "../CRUD/Classroom";
 import { AppContext } from "../AppContext";
-import Table from '../Components/Table/Table'
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Table from "../Components/Table/Table";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { classroomData, classroomColumn } from "../Helpers/classroomData";
-
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -26,12 +25,12 @@ const OneToOne = () => {
   const classes = useStyles();
   const history = useHistory();
   // const [data, setData] = useState();
-  const { state, dispatch } = useContext(AppContext)
-  const CLASSROOM_DATA = state?.classroomData
+  const { state, dispatch } = useContext(AppContext);
+  const CLASSROOM_DATA = state?.classroomData;
   // const student = state.studentData
   useEffect(() => {
-    getAllClassrooms(dispatch)
-    console.log("hy")
+    getAllClassrooms(dispatch);
+    console.log("hy");
   }, []);
   // const getClassroomAll = () => {
   //   Classroom.getAll()
@@ -80,7 +79,7 @@ const OneToOne = () => {
   // ];
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Box display="flex" justifyContent="center">
           <Grid item lg={10}>
             <Container>
@@ -112,14 +111,17 @@ const OneToOne = () => {
               </Container>
             </Container>
             <Container>
-            {
-            // CLASSROOM_DATA.isLoading ? <CircularProgress /> : CLASSROOM_DATA.anyError ?
-            // <div>
-            //     Ops! Data could not be loaded, try again .
-            // </div>
-            // :
-            <Table data={classroomData(state)} column={classroomColumn(true)} />
-            }
+              {
+                // CLASSROOM_DATA.isLoading ? <CircularProgress /> : CLASSROOM_DATA.anyError ?
+                // <div>
+                //     Ops! Data could not be loaded, try again .
+                // </div>
+                // :
+                <Table
+                  data={classroomData(state)}
+                  column={classroomColumn(true)}
+                />
+              }
             </Container>
           </Grid>
         </Box>

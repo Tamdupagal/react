@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
     marginLeft: "0%",
   },
   Header: {
-    fontSize: "1.5rem",
+    fontSize: "1.8rem",
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
     backgroundColor: "#0086b3",
@@ -14,6 +14,8 @@ export const useStyles = makeStyles((theme) => ({
     border: "2px solid #0086b3",
     display: "flex",
     flexDirection: "row",
+    letterSpacing: "0.1rem",
+    fontWeight: "700",
   },
   paper1: {
     padding: theme.spacing(2),

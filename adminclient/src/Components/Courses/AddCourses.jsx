@@ -41,7 +41,9 @@ const AddCourses = (props) => {
             <Divider />
             <CardContent>
               <Typography>
-                <strong>COURSE NAME:</strong>
+                <strong style={{ fontFamily: "'Exo', sans-serif" }}>
+                  COURSE NAME:
+                </strong>
               </Typography>
               <TextField
                 className={classes.TextField}
@@ -59,12 +61,17 @@ const AddCourses = (props) => {
               <Button
                 size="medium"
                 variant="contained"
-                style={{ marginRight: "10px" }}
+                style={{ marginRight: "10px", fontFamily: "'Exo', sans-serif" }}
                 onClick={props.handleClose}
               >
                 Close
               </Button>
-              <Button size="medium" variant="contained" color="primary">
+              <Button
+                size="medium"
+                variant="contained"
+                color="primary"
+                style={{ fontFamily: "'Exo', sans-serif" }}
+              >
                 Save Changes
               </Button>
             </Box>

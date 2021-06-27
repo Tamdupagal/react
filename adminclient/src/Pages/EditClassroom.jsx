@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Container } from "@material-ui/core";
+import { Container, Box } from "@material-ui/core";
 import { Button, Card } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -20,20 +20,19 @@ const EditClassroom = (props) => {
   const courseRef = useRef();
   const studentRef = useRef();
   const [studentOptions, setStudentOptions] = useState();
-  const { state, dispatch } = useContext(AppContext)
-  const history = useHistory()
-  let data = state.classroomEditData.data
+  const { state, dispatch } = useContext(AppContext);
+  const history = useHistory();
+  let data = state.classroomEditData.data;
   let students = [];
   useEffect(() => {
     // console.log(props);
     // console.log(props.editClassroomData._id);
     // edit = state.classroomEditData.data.enrolledStudents;
     // console.log(edit);
-    console.log(data)
+    console.log(data);
     Object.keys(data.enrolled_students).map((c) => students.push({ label: c }));
     setStudentOptions(students);
-    console.log(students)
-    
+    console.log(students);
   }, []);
 
   const onSelect = (e) => {
@@ -49,13 +48,12 @@ const EditClassroom = (props) => {
     console.log(id);
     console.log(nameRef.current.value);
     console.log(selectedValue);
-    
-    console.log(id)
+
+    console.log(id);
     // axios.put(`/classroom/update/${id}`, data)
-    editClassroom(dispatch,data,id)
-    history.push("/classroom")
+    editClassroom(dispatch, data, id);
+    history.push("/classroom");
     // getAllClassrooms(dispatch)
-      
   };
 
   return (
@@ -65,7 +63,7 @@ const EditClassroom = (props) => {
       </div>
       <Container>
         <div>
-          <Grid className={classes.container}>
+          <Box display="flex" justifyContent="center">
             <Grid item xs={12} lg={9}>
               <Card>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
@@ -76,8 +74,7 @@ const EditClassroom = (props) => {
                     className={classes.textField}
                     inputRef={nameRef}
                     // defaultValue={state.classroomEditData.data.name}
-                  >
-                  </TextField>
+                  ></TextField>
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
                 {/* <form> */}{" "}
@@ -148,14 +145,15 @@ const EditClassroom = (props) => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={()=>handleEditClassroom(data._id)}
+                    onClick={() => handleEditClassroom(data._id)}
+                    style={{ fontFamily: "'Exo', sans-serif" }}
                   >
                     Edit Classroom
                   </Button>
                 </div>
               </Card>
             </Grid>
-          </Grid>
+          </Box>
         </div>
       </Container>
     </div>

@@ -18,15 +18,16 @@ const Enroll = () => {
     history.push("/add-teacher");
   };
   return (
-    <Box display="flex" alignItems="center" justifyContent="center">
-      {/* <Grid xs={12} lg={7}> */}
-        <Card className={classes.root}>
+    <Box
+      display="flex"
+      justifyContent="center"
+      style={{ marginBottom: "25vh" }}
+    >
+      <Grid xs={12} lg={10}>
+        <Card>
           <CardHeader
             title="Enrollment Center"
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-            }}
+            className={classes.cardHeader}
           ></CardHeader>
           <CardContent>
             <Typography variant="h5" component="h5">
@@ -39,25 +40,31 @@ const Enroll = () => {
             m={1}
             className={`${classes.spreadBox} ${classes.box}`}
           >
-            <Button
-              variant="contained"
-              color="secondary"
-              style={{ height: 30, marginLeft: "-1%" }}
-              onClick={handleAddStudent}
-            >
-              ADD STUDENT(can be made from based)
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ height: 30, paddingLeft: "15%", paddingRight: "15%" }}
-              onClick={handleAddTeacher}
-            >
-              Add Teachers
-            </Button>
+            <Grid container spacing={2}>
+              <Grid item xs={12} lg={6}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classes.blueBtn}
+                  onClick={handleAddStudent}
+                >
+                  ADD STUDENT(can be made form based)
+                </Button>
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.greenBtn}
+                  onClick={handleAddTeacher}
+                >
+                  Add Teachers
+                </Button>
+              </Grid>
+            </Grid>
           </Box>
         </Card>
-      {/* </Grid> */}
+      </Grid>
     </Box>
   );
 };

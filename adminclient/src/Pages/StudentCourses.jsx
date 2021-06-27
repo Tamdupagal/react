@@ -29,18 +29,18 @@ const StudentCourses = () => {
     history.push("/student-courses/manage");
   };
   const Columns = [
-    { title: "NAME", field: "name" },
-    { title: "EMAIL", field: "email" },
+    { title: "Name", field: "name" },
+    { title: "Email", field: "email" },
     {
-      title: "COURSE ASSIGNED",
+      title: "Course Assigned",
       field: "courseAssigned",
     },
     {
-      title: "CLASSROOM/S",
+      title: "Classroom/s",
       field: "classroom",
     },
     {
-      title: "ACTIONS",
+      title: "Actions",
       field: "name",
       render: (row) => (
         <div style={{ fontWeight: "700" }}>
@@ -63,7 +63,7 @@ const StudentCourses = () => {
 
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Box display="flex" justifyContent="center">
           <Grid item lg={10}>
             <Container

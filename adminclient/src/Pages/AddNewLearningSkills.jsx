@@ -12,7 +12,11 @@ function AddNewLearningSkills() {
 
   return (
     <div>
-      <Box display="flex" justifyContent="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        style={{ marginBottom: "20vh" }}
+      >
         <Grid item xs={12} lg={10}>
           <Grid container>
             <Container>
@@ -21,7 +25,7 @@ function AddNewLearningSkills() {
                   src={newskills}
                   style={{ width: "4rem", margin: "2%" }}
                 ></img>
-                <h3>Add New Learning Skills</h3>
+                <h3>Add Learning Skills</h3>
               </Container>
             </Container>
           </Grid>

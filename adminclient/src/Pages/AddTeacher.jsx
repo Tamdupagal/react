@@ -9,19 +9,19 @@ import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./../Styles/AddTeacher";
 import { Multiselect } from "multiselect-react-dropdown";
 import { addTeacher } from "../action/actions";
-import { AppContext } from "./../AppContext"
-import { useHistory } from "react-router-dom"
+import { AppContext } from "./../AppContext";
+import { useHistory } from "react-router-dom";
 const AddTeacher = () => {
   const classes = useStyles();
-  const tName = useRef()
-  const tQual = useRef()
-  const tEmail = useRef()
-  const tMobileNo = useRef()  
-  const tAltMobileNo = useRef()
-  const tAddress = useRef()
-  const { state, dispatch } = useContext(AppContext)
+  const tName = useRef();
+  const tQual = useRef();
+  const tEmail = useRef();
+  const tMobileNo = useRef();
+  const tAltMobileNo = useRef();
+  const tAddress = useRef();
+  const { state, dispatch } = useContext(AppContext);
   const [selectedValue, setSelectedValue] = useState([]);
-  const history = useHistory()
+  const history = useHistory();
 
   const onSelect = (e) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
@@ -42,13 +42,13 @@ const AddTeacher = () => {
       // address: tAddress.current.value,
       // last_seen: "1 hour ago"
       // courses: selectedValue,
-      name : tName.current.value,
-      primary_phone_number : tMobileNo.current.value,
-      email : tEmail.current.value,
-      password : "123445",
-      country : "Indiaa",
+      name: tName.current.value,
+      primary_phone_number: tMobileNo.current.value,
+      email: tEmail.current.value,
+      password: "123445",
+      country: "Indiaa",
       zip_code: "898961",
-      address: tAddress.current.value
+      address: tAddress.current.value,
       // name: "barkha",
       // primary_phone_number: "6301234523",
       // email:"barkha@mail",
@@ -57,19 +57,19 @@ const AddTeacher = () => {
       // zip_code: "898968",
       // address: "Mumbai"
 
-//       name: "khush",
-// primary_phone_number: "9899097100",
-// email: "khush@gmail.com",
-// password: "678901",
-// country: "Indiaa",
-// zip_code: "898960",
-// address: "Delhii  "
+      //       name: "khush",
+      // primary_phone_number: "9899097100",
+      // email: "khush@gmail.com",
+      // password: "678901",
+      // country: "Indiaa",
+      // zip_code: "898960",
+      // address: "Delhii  "
     };
-    console.log(data)
+    console.log(data);
 
     // console.log(selectedValue);
-    addTeacher(dispatch,data)
-    history.push("/teachers")
+    addTeacher(dispatch, data);
+    history.push("/teachers");
   };
   const multiselectdata = [
     { Country: "india", id: "1" },
@@ -199,8 +199,11 @@ const AddTeacher = () => {
             </Grid>
             <Grid item xs={12}>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary"
-                onClick={handleAddTeacher}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleAddTeacher}
+                  style={{ fontFamily: "'Exo', sans-serif" }}
                 >
                   SUBMIT TEACHER
                 </Button>

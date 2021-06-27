@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useState, useRef } from "react";
 import { Container } from "@material-ui/core";
-import { Button, Card, } from "@material-ui/core";
+import { Button, Card } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -9,24 +9,24 @@ import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./../Styles/AddTeacher";
 import { Multiselect } from "multiselect-react-dropdown";
 import { editTeacher } from "../action/actions";
-import { AppContext } from "./../AppContext"
-import { useHistory } from "react-router-dom"
+import { AppContext } from "./../AppContext";
+import { useHistory } from "react-router-dom";
 const EditTeacher = () => {
   const classes = useStyles();
-  const tName = useRef()
-  const tQual = useRef()
-  const tEmail = useRef()
-  const tMobileNo = useRef()  
-  const tAltMobileNo = useRef()
-  const tAddress = useRef()
-  const { state, dispatch } = useContext(AppContext)
+  const tName = useRef();
+  const tQual = useRef();
+  const tEmail = useRef();
+  const tMobileNo = useRef();
+  const tAltMobileNo = useRef();
+  const tAddress = useRef();
+  const { state, dispatch } = useContext(AppContext);
   const [selectedValue, setSelectedValue] = useState([]);
-  const history = useHistory()
-  let editableData = state.teacherEditData.data
+  const history = useHistory();
+  let editableData = state.teacherEditData.data;
 
   useEffect(() => {
-     console.log(editableData)
-  }, [])
+    console.log(editableData);
+  }, []);
 
   const onSelect = (e) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
@@ -34,19 +34,18 @@ const EditTeacher = () => {
 
   const handleEditTeacher = () => {
     var data = {
-      name : tName.current.value,
-      primary_phone_number : tMobileNo.current.value,
-      email : tEmail.current.value,
-      password : "123445",
-      country : "Indiaa",
+      name: tName.current.value,
+      primary_phone_number: tMobileNo.current.value,
+      email: tEmail.current.value,
+      password: "123445",
+      country: "Indiaa",
       zip_code: "898961",
-      address: tAddress.current.value      
+      address: tAddress.current.value,
     };
-    console.log(data)
-    editTeacher(dispatch,data,editableData._id)
-    history.push("/teachers")
-    console.log("successfull")
-
+    console.log(data);
+    editTeacher(dispatch, data, editableData._id);
+    history.push("/teachers");
+    console.log("successfull");
   };
   const multiselectdata = [
     { Country: "india", id: "1" },
@@ -59,7 +58,7 @@ const EditTeacher = () => {
 
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <div>
           <h1 className={classes.mainHeading}> Add a Teacher</h1>
         </div>
@@ -171,8 +170,10 @@ const EditTeacher = () => {
             </Grid>
             <Grid item xs={12}>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary"
-                onClick={handleEditTeacher}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleEditTeacher}
                 >
                   Edit TEACHER
                 </Button>

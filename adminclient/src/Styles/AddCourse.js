@@ -64,5 +64,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   materialBtn: {
     marginTop: "5%",
+    fontFamily: "'Exo', sans-serif",
   },
 }));

@@ -9,25 +9,30 @@ import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { editAdmin } from "../action/actions";
 import { AppContext } from "../AppContext";
-import { useHistory, withRouter, useLocation, useParams } from "react-router-dom";
+import {
+  useHistory,
+  withRouter,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 
 const EditAdmin = (props) => {
   const [value, setValue] = React.useState("All");
-  const location=useLocation()
+  const location = useLocation();
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   const classes = useStyles();
   const theme = useTheme();
-  const username = useRef()
-  const email = useRef()
-  const password = useRef()
-  const {state, dispatch} = useContext(AppContext)
-  const history = useHistory()
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const { state, dispatch } = useContext(AppContext);
+  const history = useHistory();
   const [personName, setPersonName] = React.useState([]);
-  let adminEditableData = state.adminEditData.data
-  const {id} = useParams()
+  let adminEditableData = state.adminEditData.data;
+  const { id } = useParams();
   // id  = props.match.params
   const names = [
     "Oliver Hansen",
@@ -45,10 +50,9 @@ const EditAdmin = (props) => {
   //   return
   // }
   useEffect(() => {
-      console.log(location.state)
-      console.log(id)
-
-  }, [location])
+    console.log(location.state);
+    console.log(id);
+  }, [location]);
   const handleChangeMultiple = (event) => {
     const { options } = event.target;
     const value = [];
@@ -60,20 +64,19 @@ const EditAdmin = (props) => {
     setPersonName(value);
   };
 
-
   const handleEditAdmin = () => {
     var data = {
       id: adminEditableData._id,
-      name : username.current.value,
+      name: username.current.value,
       email: email.current.value,
-      password: password.current.value
-    }
-    editAdmin(dispatch, data, data._id)
-    history.push("/operations")
-  }
+      password: password.current.value,
+    };
+    editAdmin(dispatch, data, data._id);
+    history.push("/operations");
+  };
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <div>
           <h1 className={classes.mainHeading}>Edit an Admin</h1>
         </div>
@@ -128,8 +131,10 @@ const EditAdmin = (props) => {
                 </Select>
               </FormControl>
               <div className={classes.submitBtn}>
-                <Button variant="contained" color="secondary"
-                onClick={handleEditAdmin}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleEditAdmin}
                 >
                   CREATE ADMIN
                 </Button>

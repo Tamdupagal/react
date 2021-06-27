@@ -12,12 +12,11 @@ import { AppContext } from "../AppContext";
 import { addClassroom, getAllClassrooms } from "../action/actions";
 import { useHistory } from "react-router-dom";
 
-
 const AddNewClassroom = () => {
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
-  const history = useHistory()
+  const history = useHistory();
   const newClassroomState = {
     id: "null",
     Name: "",
@@ -44,7 +43,7 @@ const AddNewClassroom = () => {
 
   const [selectedValue, setSelectedValue] = useState([]);
   const classes = useStyles();
-  const { state, dispatch } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext);
 
   const saveClassroom = () => {
     var data = {
@@ -53,10 +52,10 @@ const AddNewClassroom = () => {
       students: selectedValue,
     };
     console.log(nameRef.current.value);
-    console.log(selectedValue); 
-    addClassroom(dispatch,data)
-    history.push("/classroom")
-  }
+    console.log(selectedValue);
+    addClassroom(dispatch, data);
+    history.push("/classroom");
+  };
 
   return (
     <div>
@@ -150,6 +149,7 @@ const AddNewClassroom = () => {
                     variant="contained"
                     color="secondary"
                     onClick={saveClassroom}
+                    style={{ fontFamily: "'Exo', sans-serif" }}
                   >
                     SUBMIT CLASSROOM
                   </Button>

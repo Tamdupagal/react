@@ -44,7 +44,7 @@ const TeacherTraining = () => {
   ];
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Box display="flex" justifyContent="center">
           <Grid item lg={10}>
             <Container>

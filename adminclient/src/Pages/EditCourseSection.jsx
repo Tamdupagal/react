@@ -27,7 +27,7 @@ const EditCourseSection = ({ withoutButton, withoutTitle, styles }) => {
   };
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Container>
           <h1 className={classes.mainHeading}>Edit Course Section</h1>
           <Grid container spacing={3} display="flex" justifyContent="center">
@@ -56,7 +56,11 @@ const EditCourseSection = ({ withoutButton, withoutTitle, styles }) => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={3}>
               <Box className={classes.rightContainer}>
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  style={{ fontFamily: "'Exo', sans-serif" }}
+                >
                   SAVE CHANGES
                 </Button>
                 <Button

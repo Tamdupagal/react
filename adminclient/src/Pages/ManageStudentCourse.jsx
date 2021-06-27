@@ -88,7 +88,11 @@ const ManageStudentCourse = () => {
               </Select>
             </FormControl>
             <div className={classes.submitBtn}>
-              <Button variant="contained" color="secondary">
+              <Button
+                variant="contained"
+                color="secondary"
+                style={{ fontFamily: "'Exo', sans-serif" }}
+              >
                 SUBMIT
               </Button>
             </div>

@@ -135,16 +135,15 @@
 
 // export default Students;
 
-import React, { useState, useEffect, useContext} from "react";
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import React, { useState, useEffect, useContext } from "react";
+import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
-import { StudentData, StudentColumn} from "./../Helpers/StudentData";
+import { StudentData, StudentColumn } from "./../Helpers/StudentData";
 import { AppContext } from "../AppContext";
 import { getAllStudents } from "../action/actions";
-import Table from '../Components/Table/Table'
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import Table from "../Components/Table/Table";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles({
   title: {
@@ -158,54 +157,66 @@ const Students = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const { state, dispatch } = useContext(AppContext)
-  
-  const STUDENT_DATA = state?.studentData
+  const { state, dispatch } = useContext(AppContext);
+
+  const STUDENT_DATA = state?.studentData;
 
   useEffect(() => {
-    getAllStudents(dispatch)
-    console.log(state.studentData)
+    getAllStudents(dispatch);
+    console.log(state.studentData);
   }, []);
 
-  const handleAddStudent = () =>{
-    history.push("/add-student")
-  }
+  const handleAddStudent = () => {
+    history.push("/add-student");
+  };
 
   return (
     <div>
-      <Container>
-        <Container
-          style={{
-            border: "1px solid #e6e6ff",
-            borderBottom: "white",
-            backgroundColor: "white",
-            padding: "1%",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
-          }}
-        >
-          <Box display="flex" justifyContent="space-between">
-            <Typography className={classes.title}>STUDENTS</Typography>
+      <Box
+        display="flex"
+        justifyContent="center"
+        style={{ marginBottom: "20vh" }}
+      >
+        <Grid item xs={12} lg={11}>
+          <Container>
+            <Container
+              style={{
+                border: "1px solid #e6e6ff",
+                borderBottom: "white",
+                backgroundColor: "white",
+                padding: "1%",
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+              }}
+            >
+              <Box display="flex" justifyContent="space-between">
+                <Typography className={classes.title}>STUDENTS</Typography>
 
-            <Button variant="contained" color="secondary" onClick={handleAddStudent}>
-              Add new Student
-            </Button>
-          </Box>
-        </Container>
-      </Container>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleAddStudent}
+                  style={{ fontFamily: "'Exo', sans-serif" }}
+                >
+                  Add new Student
+                </Button>
+              </Box>
+            </Container>
+          </Container>
 
-      <Container>
-        {STUDENT_DATA.isLoading ? <CircularProgress /> : STUDENT_DATA.anyError ?
-          <div>
-              Ops! Data could not be loaded, try again .
-          </div>
-          :
-          <Table data={StudentData(state)} column={StudentColumn(true)} />
-        }
-      </Container>
+          <Container>
+            {STUDENT_DATA.isLoading ? (
+              <CircularProgress />
+            ) : STUDENT_DATA.anyError ? (
+              <div>Ops! Data could not be loaded, try again .</div>
+            ) : (
+              <Table data={StudentData(state)} column={StudentColumn(true)} />
+            )}
+          </Container>
+        </Grid>
+      </Box>
     </div>
   );
 };
 
-export default Students; 
-
+export default Students;

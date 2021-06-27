@@ -20,7 +20,7 @@ const AddNewMaterial = () => {
   const classes = useStyles();
   return (
     <div>
-      <Container>
+      <Container style={{ marginBottom: "20vh" }}>
         <Box display="flex" justifyContent="center">
           <Grid item xs={12} lg={10}>
             <div>
@@ -86,7 +86,11 @@ const AddNewMaterial = () => {
                 justifyContent="center"
                 className={classes.btn}
               >
-                <Button color="secondary" variant="contained">
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  style={{ fontFamily: "'Exo',sans-serif" }}
+                >
                   SUBMIT MATERIAL
                 </Button>
               </Box>

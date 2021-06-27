@@ -15,12 +15,13 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "2%",
   },
   content: {
-    fontSize: "1.7rem",
+    fontSize: "2rem",
     fontFamily: "'Exo', sans-serif",
     color: "#33334d",
   },
   container: {
     paddingBottom: "5vh",
     borderBottom: "2px solid #ccc",
+    marginBottom: "37vh",
   },
 }));

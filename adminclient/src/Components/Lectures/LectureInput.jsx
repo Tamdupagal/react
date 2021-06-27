@@ -26,7 +26,7 @@ export const LectureInput = () => {
       course_id: "507f1f77bcf86cd799439012",
       date_and_time: "2017-05-24T10:30",
       status: "ongoing",
-      crm_meeting_link: meetLink.current.value
+      crm_meeting_link: meetLink.current.value,
     };
     console.log(data);
     addLecture(dispatch, data, cid);
@@ -82,6 +82,7 @@ export const LectureInput = () => {
           variant="contained"
           color="secondary"
           onClick={handleAddLecture}
+          style={{ fontFamily: "'Exo', sans-serif" }}
         >
           ADD LECTURE
         </Button>
