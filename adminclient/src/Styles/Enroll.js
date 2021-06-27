@@ -30,7 +30,6 @@ export const useStyles = makeStyles({
     borderBottom: "1px solid #ccc",
     borderRadius: "5px",
     fontFamily: "'Exo', sans-serif",
-    // backgroundColor: "red",
-    fontSize: "2rem",
+    fontSize: "1rem",
   },
 });

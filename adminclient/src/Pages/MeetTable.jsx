@@ -58,16 +58,39 @@ const rows = [
 
 const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 700,
+    minWidth: 900,
     backgroundColor: "transparent",
   },
-  box: {
-    display: "flex",
-    padding: 8,
-  },
+
   spreadBox: {
     justifyContent: "space-around",
-    alignItems: "center",
+    display: "flex",
+    // fontSize: "1rem",
+  },
+  cardHeader: {
+    border: "1px solid #ccc",
+    padding: "1%",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
+    // fontSize: "1rem",
+  },
+  Heading: {
+    fontFamily: "'Exo',sans-serif",
+    border: "1px solid #ccc",
+  },
+  cell: {
+    border: "1px solid #ccc",
+    fontSize: "1rem",
+    color: "#000000",
+  },
+  actions: {
+    border: "1px solid #ccc",
+    fontSize: "1rem",
+    // justifyContent: "space-around",
+    // display: "flex",
+  },
+  Btns: {
+    marginLeft: "7%",
   },
 }));
 
@@ -104,56 +127,73 @@ const MeetTable = () => {
         <Box>
           <Grid xs={12} lg={12}>
             <Card>
-              <CardHeader
-                title="Meet Link"
-                action={
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={handleOpen}
-                  >
-                    {/* {handleAddMeet()} */}
-                    Add new meet Link
-                  </Button>
-                }
-                style={{
-                  border: "1px solid #ccc8c8",
-                  borderTopLeftRadius: "3px",
-                  borderTopRightRadius: "3px",
-                }}
-              ></CardHeader>
+              <Box
+                className={classes.cardHeader}
+                display="flex"
+                flexDirection="row"
+                justifyContent="space-between"
+              >
+                <h3 style={{ fontFamily: "'Exo',sans-serif" }}>Meet Link</h3>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleOpen}
+                  style={{ fontFamily: "'Exo',sans-serif" }}
+                >
+                  {/* {handleAddMeet()} */}
+                  Add new meet Link
+                </Button>
+              </Box>
               <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">
                   <TableHead style={{ color: "transparent" }}>
                     <TableRow>
-                      <TableCell>Link Id</TableCell>
-                      <TableCell align="center">Link</TableCell>
-                      <TableCell align="center">Bookings</TableCell>
-                      <TableCell align="center">Actions</TableCell>
+                      <TableCell className={classes.Heading} align="center">
+                        Link Id
+                      </TableCell>
+                      <TableCell className={classes.Heading} align="center">
+                        Link
+                      </TableCell>
+                      <TableCell className={classes.Heading} align="center">
+                        Bookings
+                      </TableCell>
+                      <TableCell className={classes.Heading} align="center">
+                        Actions
+                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {rows.map((row) => (
                       <StyledTableRow key={row.name}>
-                        <StyledTableCell component="th" scope="row">
-                          {row.name}
-                        </StyledTableCell>
-                        <TableCell align="center">{row.calories}</TableCell>
-                        <TableCell align="center">{row.fat}</TableCell>
                         <TableCell
-                          component="span"
-                          p={0}
-                          className={`${classes.spreadBox} ${classes.box}`}
+                          // component="th"
+                          // scope="row"
+                          className={classes.cell}
+                          align="center"
                         >
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="center" className={classes.cell}>
+                          {row.calories}
+                        </TableCell>
+                        <TableCell align="center" className={classes.cell}>
+                          {row.fat}
+                        </TableCell>
+                        <TableCell p={0} className={classes.cell}>
                           <Button
                             variant="contained"
                             color="primary"
                             onClick={handleEditOpen}
+                            className={classes.Btns}
                           >
-                            {<CreateIcon style={{ padding: "0%" }} />}
+                            {<CreateIcon style={{ padding: "2%" }} />}
                           </Button>
-                          <Button variant="contained" color="secondary">
-                            {<DeleteIcon style={{ padding: "0%" }} />}
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            className={classes.Btns}
+                          >
+                            {<DeleteIcon style={{ padding: "2%" }} />}
                           </Button>
                         </TableCell>
                       </StyledTableRow>

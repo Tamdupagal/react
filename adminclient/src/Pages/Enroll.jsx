@@ -25,12 +25,16 @@ const Enroll = () => {
     >
       <Grid xs={12} lg={10}>
         <Card>
-          <CardHeader
-            title="Enrollment Center"
-            className={classes.cardHeader}
-          ></CardHeader>
+          <Box className={classes.cardHeader}>
+            {" "}
+            <h3 style={{ marginLeft: "3%" }}>Enrollment Center</h3>
+          </Box>
           <CardContent>
-            <Typography variant="h5" component="h5">
+            <Typography
+              // variant="h5"
+              // component="h5"
+              style={{ fontFamily: "'Exo', sans-serif", textAlign: "center" }}
+            >
               HERE, SHOULD BE SOME GRAPHS OR ANALYTICS DATA ABOUT ENROLLMENT.
             </Typography>
           </CardContent>
