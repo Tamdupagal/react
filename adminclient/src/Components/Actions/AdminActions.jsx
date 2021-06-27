@@ -30,7 +30,12 @@ const AdminActions = (props) => {
   const {state, dispatch} = useContext(AppContext)
 
   const handleEdit = () => {
-    history.push(`/edit-admin/${props.data._id}`)
+    history.push({
+      pathname: `/edit-admin/${props.data._id}`,
+      state: {data: props.data}
+      
+    }
+    )
   }
   const handleDelete = () => {
     if(window.confirm("Delete the item?")){
@@ -42,7 +47,7 @@ const AdminActions = (props) => {
     <div>
       {/* <Link to={{
         pathname: `/edit-admin/${props.data._id}`,
-        state: {name:props}
+        state: {data:props.data}
         }}> */}
       <LightTooltip title="Edit" placement="top" arrow>
         <button

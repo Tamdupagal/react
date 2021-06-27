@@ -151,8 +151,8 @@ function App() {
                 component={TeacherHistory}
               />
               <Route exact path="/students-table" component={Students} />
-              <Route path="/:id/lectures" component={AddLecture} />
-              <Route exact path="/lectures/create" component={AddNewLecture} />
+              <Route path="/:cid/lectures" component={AddLecture} />
+              <Route path="/:cid/add-lecture" component={AddNewLecture} />
               <Route exact path="/edit-teacher" component={EditTeacher} />
               <Route
                 exact
@@ -201,8 +201,8 @@ function App() {
               />
               <Route exact path="/course-material" component={CourseMaterial} />
               <Route exact path="/add-materail" component={AddNewMaterial} />
-              {/* <Route path="/edit-admin/:id" component={() => <EditAdmin />} /> */}
-              <Route path="/edit-lecture/:id" component={AddNewLecture} />
+              <Route path="/edit-admin/:id" component={EditAdmin} />
+              <Route path="/:cid/edit-lecture/:id" component={AddNewLecture} />
             </Switch>
             <div>
               <Copyright />

@@ -7,6 +7,7 @@ import { useStyles } from "./../Styles/AddNewLecture";
 
 const AddNewLecture = () => {
     const classes = useStyles();
+    const {cid} = useParams()
     const {id} = useParams()
     return (
         <Container style={{ marginBottom: "120px" }}>

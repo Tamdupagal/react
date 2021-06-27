@@ -1,8 +1,9 @@
 import React, { useRef, useState, useContext } from 'react'
 import { Button, Card, Container, Grid, TextField } from '@material-ui/core';
 import {useStyles} from "../../Styles/AddNewLecture"
-import { addLecture } from '../../action/actions';
+import { editLecture } from '../../action/actions';
 import { AppContext } from "./../../AppContext"
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 
 
 export const LectureInputEdit = () => {
@@ -10,9 +11,12 @@ export const LectureInputEdit = () => {
     const time = useRef()
     const date = useRef()
     const meetLink = useRef();
+    const history = useHistory()
     const { state, dispatch } = useContext(AppContext)
-    let cid = state.classroomEditData.data._id
-    
+    // let cid = state.classroomEditData.data._id
+    const {id} = useParams()
+    const {cid} = useParams()
+    const editableLectureData = useLocation()
 
     // const date ="2017-05-24"
 
@@ -24,14 +28,17 @@ export const LectureInputEdit = () => {
         // console.log(Date)
         var data ={
             classroom_id : cid,
-            course_id: "68912345690",
+            course_id: "507f1f77bcf86cd799439015",
             date_and_time : "2017-05-24T10:30",
             status : "ongoing",
-            crm_meeting_link: "https://meet.google.com/smv-sxmm-yct"
+            crm_meeting_link: meetLink.current.value
         }
         console.log(data)
-        addLecture(dispatch,data,cid)
+        editLecture(dispatch,data,cid,id)
+        history.push(`/${cid}/lectures`)
     }
+
+
     return (
         <div>
             <h5 className={classes.infoHeading}>Lecture Date:</h5>
@@ -75,6 +82,7 @@ export const LectureInputEdit = () => {
           variant="outlined"
           size="small"
           style={{ marginLeft: "5%", width: "90%" }}
+          defaultValue={editableLectureData.state.data.crm_meeting_link}
           inputRef={meetLink}
         />
       </form>

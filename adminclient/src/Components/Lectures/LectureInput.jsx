@@ -3,15 +3,17 @@ import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
 import { useStyles } from "../../Styles/AddNewLecture";
 import { addLecture } from "../../action/actions";
 import { AppContext } from "./../../AppContext";
+import { useHistory, useParams } from "react-router-dom";
 
 export const LectureInput = () => {
   const classes = useStyles();
   const time = useRef();
   const date = useRef();
   const meetLink = useRef();
+  const history = useHistory()
   const { state, dispatch } = useContext(AppContext);
-  let cid = state.classroomEditData.data._id;
-  let Date;
+  // let cid = state.classroomEditData.data._id;
+  const { cid } = useParams()
 
   // const date ="2017-05-24"
 
@@ -30,6 +32,7 @@ export const LectureInput = () => {
     };
     console.log(data);
     addLecture(dispatch, data, cid);
+    history.push(`/${cid}/lectures`)
   };
   return (
     <div>

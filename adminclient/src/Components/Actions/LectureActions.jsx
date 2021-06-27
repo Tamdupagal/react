@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -6,7 +6,9 @@ import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { deleteLecture } from "../../action/actions";
+import { AppContext } from "../../AppContext";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -19,12 +21,22 @@ const LightTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 const useStyles = makeStyles({});
-
 const LectureActions = (props) => {
   const classes = useStyles();
+  const { cid } = useParams()
+  const { state, dispatch } = useContext(AppContext);
   const history = useHistory()
   const handleEdit = () => {
-      history.push(`/edit-lecture/${props.data._id}`)
+      history.push({
+        pathname:`/${cid}/edit-lecture/${props.data._id}`,
+        state: {data: props.data}
+      }
+      )
+  }
+  const handleDelete = () => {
+    if(window.confirm("Delete the Lecture?")){
+      deleteLecture(dispatch,cid,props.data._id)
+    }
   }
   return (
     <div>
@@ -89,6 +101,7 @@ const LectureActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDelete}
         >
           <DeleteIcon />
         </button>

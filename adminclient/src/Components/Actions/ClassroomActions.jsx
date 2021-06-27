@@ -44,7 +44,11 @@ const ClassroomActions = (props) => {
   const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
   const handleAddLecture = () => {
-    history.push(`/${props.data._id}/lectures`);
+    history.push({
+      pathname:`/${props.data._id}/lectures`,
+      state: {classroomData: props.data}
+    }
+      );
   };
   const handleViewHistory = () => {
     history.push("classrooms/timeline");
