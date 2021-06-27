@@ -212,7 +212,7 @@ const SideBar = () => {
   return (
     <>
       <div className={classes.root}>
-        <CssBaseline />
+        <CssBaseline/>
         <AppBar
           className={clsx(classes.appBar, { [classes.appBarShift]: open })}
         >

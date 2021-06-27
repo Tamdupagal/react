@@ -12,7 +12,7 @@ export const LectureInputEdit = () => {
     const meetLink = useRef();
     const { state, dispatch } = useContext(AppContext)
     let cid = state.classroomEditData.data._id
-    let Date
+    
 
     // const date ="2017-05-24"
 
