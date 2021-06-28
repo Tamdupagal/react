@@ -1,5 +1,5 @@
-import React, { useRef, useState, useContext } from "react";
-import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
+import React, { useRef, useContext } from "react";
+import { Button, TextField } from "@material-ui/core";
 import { useStyles } from "../../Styles/AddNewLecture";
 import { addLecture } from "../../action/actions";
 import { AppContext } from "./../../AppContext";
@@ -11,18 +11,13 @@ export const LectureInput = () => {
   const date = useRef();
   const meetLink = useRef();
   const history = useHistory()
-  const { state, dispatch } = useContext(AppContext);
-  // let cid = state.classroomEditData.data._id;
+  const { dispatch } = useContext(AppContext);
   const { cid } = useParams()
-
-  // const date ="2017-05-24"
 
   const handleAddLecture = () => {
     console.log(time.current.value);
     console.log(date.current.value);
     console.log(cid);
-    // Date = new Date(date)
-    // console.log(Date)
     var data = {
       classroom_id: cid,
       course_id: "507f1f77bcf86cd799439012",

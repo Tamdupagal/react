@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import { Container, withStyles } from "@material-ui/core";
-import { Button, Card, CardHeader } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import { useStyles } from "./../Styles/TeacherDetails";
-import { AppContext } from "../AppContext";
+import { useLocation } from "react-router-dom";
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
@@ -22,8 +20,8 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const TeacherDetails = () => {
-  const { state } = useContext(AppContext);
-  let data = state.teacherEditData.data;
+  const teacherData = useLocation()
+  const data = teacherData.state.data
   const classes = useStyles();
   return (
     <div>

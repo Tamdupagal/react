@@ -1,11 +1,8 @@
 import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
-import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 
 const LightTooltip = withStyles((theme) => ({
@@ -21,7 +18,6 @@ const LightTooltip = withStyles((theme) => ({
 const useStyles = makeStyles({});
 
 const CRMActions = () => {
-  const classes = useStyles();
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>

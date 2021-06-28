@@ -5,9 +5,9 @@ import { addStudent } from '../../action/actions'
 import { AppContext } from "./../../AppContext"
 import { useHistory } from 'react-router-dom'
 
-const StudentsInfo = (props) => {
+const StudentsInfo = () => {
     const classes = useStyles()
-    const { state, dispatch } = useContext(AppContext)
+    const { dispatch } = useContext(AppContext)
     const history = useHistory()
     const sName = useRef()
     const pName = useRef()
@@ -78,7 +78,6 @@ const StudentsInfo = (props) => {
                   >
                     <input
                       type="file"
-                      // onChange={(e) => this.upload(e)}
                       name="img"
                     />
                   </Card>

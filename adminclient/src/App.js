@@ -41,7 +41,7 @@ import Teachers from "./Pages/Teachers";
 import Operations from "./Pages/Operations";
 import TeacherTraining from "./Pages/TeacherTraining";
 import EditClassroom from "./Pages/EditClassroom";
-import EditStudent from "./Pages/EditStudent";
+// import Student from "./Pages/Student";
 import EditTeacher from "./Pages/EditTeacher";
 import EditCourseSection from "./Pages/EditCourseSection";
 import ViewCourseSection from "./Pages/ViewCourseSection";
@@ -127,7 +127,7 @@ function App() {
                 component={AddCourseSections}
               />
               <Route exact path="/operations" component={Operations} />
-              <Route exact path="/Student/Edit" component={EditStudent} />
+              {/* <Route exact path="/student/:id/Edit" component={Student} /> */}
 
               <Route
                 exact
@@ -142,7 +142,7 @@ function App() {
                 )}
               />
               <Route exact path="/new-room" component={AddNewRoom} />
-              <Route exact path="/teacher-details" component={TeacherDetails} />
+              <Route exact path="/teacher/details/:id" component={TeacherDetails} />
               <Route exact path="/add-crm" component={AddCRM} />
               <Route exact path="/add-admin" component={AddAdmin} />
               <Route
@@ -153,7 +153,7 @@ function App() {
               <Route exact path="/students-table" component={Students} />
               <Route path="/:cid/lectures" component={AddLecture} />
               <Route path="/:cid/add-lecture" component={AddNewLecture} />
-              <Route exact path="/edit-teacher" component={EditTeacher} />
+              <Route exact path="/teacher/edit/:id" component={EditTeacher} />
               <Route
                 exact
                 path="/attendance/report"
@@ -201,8 +201,9 @@ function App() {
               />
               <Route exact path="/course-material" component={CourseMaterial} />
               <Route exact path="/add-materail" component={AddNewMaterial} />
-              <Route path="/edit-admin/:id" component={EditAdmin} />
-              <Route path="/:cid/edit-lecture/:id" component={AddNewLecture} />
+              <Route exact path="/edit-admin/:id" component={EditAdmin} />
+              <Route exact path="/:cid/edit-lecture/:id" component={AddNewLecture} />
+              <Route exact path="/student/edit/:id" component={AddStudent} />
             </Switch>
             <div>
               <Copyright />

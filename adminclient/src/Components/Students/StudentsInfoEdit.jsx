@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { AppContext } from "./../../AppContext";
 import { editStudent } from "../../action/actions";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 
 const StudentsInfoEdit = () => {
   const classes = useStyles();
@@ -20,9 +21,12 @@ const StudentsInfoEdit = () => {
   const pMobileNo = useRef();
   const pRelation = useRef();
   const { state, dispatch } = useContext(AppContext);
-  let data = state.studentEditData.data;
+  const editableStudentData = useLocation()
+  const {id} = useParams()
+  let data = editableStudentData.state.data
+  const history = useHistory()
 
-  const handleEditStudent = (id) => {
+  const handleEditStudent = () => {
     console.log(id);
     var data = {
       role: "STUDENT",
@@ -34,11 +38,13 @@ const StudentsInfoEdit = () => {
       parent_email: pEmail.current.value,
       password: "1234",
     };
-    editStudent(dispatch, data, id);
+    editStudent(dispatch, data,id);
+    history.push("/students")
   };
 
   useEffect(() => {
     // console.log(data)
+    console.log(data._id)
   }, []);
 
   return (
@@ -57,6 +63,7 @@ const StudentsInfoEdit = () => {
                 size="small"
                 style={{ marginLeft: "5%", width: "60%" }}
                 inputRef={sName}
+                defaultValue={data.name}
               />
             </form>
             <h5 className={classes.infoHeading}>Student Email:</h5>
@@ -68,6 +75,7 @@ const StudentsInfoEdit = () => {
                 size="small"
                 style={{ marginLeft: "5%", width: "60%" }}
                 inputRef={sEmail}
+                defaultValue={data.email}
               />
             </form>
             <h5 className={classes.infoHeading}>Student's profile picture:</h5>
@@ -102,6 +110,7 @@ const StudentsInfoEdit = () => {
                 size="small"
                 className={classes.textField}
                 inputRef={pName}
+                defaultValue={data.parent_name}
               />
             </form>
             <h5 className={classes.infoHeading}>Parent's Email:</h5>
@@ -113,6 +122,7 @@ const StudentsInfoEdit = () => {
                 size="small"
                 className={classes.textField}
                 inputRef={pEmail}
+                defaultValue={data.parent_email}
               />
             </form>
             <h5 className={classes.infoHeading}>Alternate Email:</h5>
@@ -145,6 +155,7 @@ const StudentsInfoEdit = () => {
                 size="small"
                 className={classes.textField}
                 inputRef={pRelation}
+                defaultValue={data.parent_relation}
               />
             </form>
           </Paper>
@@ -152,7 +163,7 @@ const StudentsInfoEdit = () => {
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => handleEditStudent(data._id)}
+              onClick={handleEditStudent}
               style={{ fontFamily: "'Exo', sans-serif" }}
             >
               Edit STUDENT

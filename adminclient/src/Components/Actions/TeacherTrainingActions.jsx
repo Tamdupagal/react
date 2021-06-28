@@ -1,11 +1,8 @@
 import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
-import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import { withStyles } from "@material-ui/core/styles";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -17,10 +14,7 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({});
-
 const TeacherTrainingActions = () => {
-  const classes = useStyles();
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>
@@ -39,38 +33,6 @@ const TeacherTrainingActions = () => {
           <CreateIcon />
         </button>
       </LightTooltip>
-      {/* <Tooltip title="Add Lecture" placement="top">
-        <button
-          size="small"
-          style={{
-            padding: "0%",
-            marginRight: "3%",
-            backgroundColor: "#77c13a",
-            color: "white",
-            borderColor: "#77c13a",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <AddIcon />
-        </button>
-      </Tooltip> */}
-      {/* <Tooltip title="Student's History" placement="top">
-        <button
-          size="small"
-          style={{
-            padding: "1%",
-            marginRight: "3%",
-            backgroundColor: "#5567ff",
-            color: "white",
-            borderColor: "#5567ff",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <HistoryIcon />
-        </button>
-      </Tooltip> */}
       <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"

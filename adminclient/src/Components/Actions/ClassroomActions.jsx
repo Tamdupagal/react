@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -6,15 +6,12 @@ import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
-import AddNewClassroom from "./../../Pages/AddNewClassroom";
 import clsx from "clsx";
 import {
   deleteClassroom,
   editClassroomData,
-  getAllClassrooms,
 } from "../../action/actions";
 import { AppContext } from "./../../AppContext";
-import axios from "../../axios";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -42,7 +39,7 @@ const useStyles = makeStyles({
 
 const ClassroomActions = (props) => {
   const history = useHistory();
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const handleAddLecture = () => {
     history.push({
       pathname:`/${props.data._id}/lectures`,
@@ -53,7 +50,7 @@ const ClassroomActions = (props) => {
   const handleViewHistory = () => {
     history.push("classrooms/timeline");
   };
-  const handleEdit = (data) => {
+  const handleEdit = () => {
     history.push(`/classroom/edit`);
     console.log(props.data);
     editClassroomData(dispatch, props.data);
@@ -73,9 +70,7 @@ const ClassroomActions = (props) => {
         <button
           size="small"
           className={clsx(classes.tooltip, classes.edit)}
-          onClick={() => {
-            handleEdit();
-          }}
+          onClick={handleEdit}
         >
           <CreateIcon />
         </button>
@@ -126,9 +121,7 @@ const ClassroomActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={() => {
-            handleDelete(props.data._id);
-          }}
+          onClick={handleDelete}
         >
           <DeleteIcon />
         </button>

@@ -26,9 +26,12 @@ const StudentActions = (props) => {
   const { state, dispatch } = useContext(AppContext);
   const classes = useStyles();
   const handleEdit = () => {
-    history.push("/student/edit");
-    console.log(props.data);
-    editStudentData(dispatch, props.data);
+    history.push({
+      pathname: `/student/edit/${props.data._id}`,
+      state: {data: props.data}
+    });
+    // console.log(props.data);
+    // editStudentData(dispatch, props.data);
   };
   const handleDeleteStudent = () => {
     if (window.confirm("Delete the item?")) {

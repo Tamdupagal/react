@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import MaterialTable from "material-table";
 import { Box, Button, Container, Typography } from "@material-ui/core";
-import TeacherTrainingActions from "./../Actions/TeacherTrainingActions";
 import { useHistory } from "react-router";
 import { AdminColumn, AdminData } from "./../../Helpers/AdminData";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,7 +21,6 @@ const AdminUsers = () => {
   const classes = useStyles();
 
   const history = useHistory();
-  const [data, setData] = useState();
   const { state, dispatch } = useContext(AppContext);
   let ADMIN_DATA = state?.adminData;
 

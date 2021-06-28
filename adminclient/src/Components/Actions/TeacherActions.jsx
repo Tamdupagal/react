@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -18,20 +18,22 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({});
-
 const TeacherActions = (props) => {
-  const classes = useStyles();
   const history = useHistory();
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
+  const id = props.data._id
 
   const handleTeacherDetail = () => {
-    history.push("/teacher-details");
-    editTeacherData(dispatch, props.data);
+    history.push({
+      pathname: `/teacher/details/${id}`,
+      state: {data : props.data}
+    });
   };
   const handleEdit = () => {
-    history.push("/edit-teacher");
-    editTeacherData(dispatch, props.data);
+    history.push({
+      pathname: `/teacher/edit/${id}`,
+      state: {data : props.data}
+    });
   };
   const handleDeleteTeacher = () => {
     if (window.confirm("Delete the item?")) {

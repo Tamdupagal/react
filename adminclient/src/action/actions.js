@@ -20,8 +20,6 @@ import { ADD_ADMIN_FAIL, ADD_ADMIN_REQUEST, ADD_ADMIN_SUCCESS, ADD_CLASSROOM_FAI
 //     }
 // }
 
-
-
 export const getAllClassrooms = async (dispatch) => {
     try {
         dispatch ({ type: GET_ALL_CLASSROOMS_REQUEST })
