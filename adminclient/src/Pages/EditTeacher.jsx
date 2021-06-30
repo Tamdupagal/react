@@ -10,7 +10,7 @@ import { useStyles } from "./../Styles/AddTeacher";
 import { Multiselect } from "multiselect-react-dropdown";
 import { editTeacher } from "../action/actions";
 import { AppContext } from "./../AppContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 const EditTeacher = () => {
   const classes = useStyles();
   const tName = useRef();
@@ -22,10 +22,10 @@ const EditTeacher = () => {
   const { state, dispatch } = useContext(AppContext);
   const [selectedValue, setSelectedValue] = useState([]);
   const history = useHistory();
-  let editableData = state.teacherEditData.data;
+  const editableData = useLocation()
 
   useEffect(() => {
-    console.log(editableData);
+    console.log(editableData.state.data);
   }, []);
 
   const onSelect = (e) => {
@@ -43,7 +43,7 @@ const EditTeacher = () => {
       address: tAddress.current.value,
     };
     console.log(data);
-    editTeacher(dispatch, data, editableData._id);
+    editTeacher(dispatch, data, editableData.state.data._id);
     history.push("/teachers");
     console.log("successfull");
   };

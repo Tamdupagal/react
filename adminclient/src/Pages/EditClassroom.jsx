@@ -8,8 +8,8 @@ import { useStyles } from "../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
 import { AppContext } from "../AppContext";
-import { editClassroom, getAllClassrooms } from "../action/actions";
-import { useHistory } from "react-router-dom";
+import { editClassroom } from "../action/actions";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import axios from "../axios";
 
 const EditClassroom = (props) => {
@@ -22,7 +22,9 @@ const EditClassroom = (props) => {
   const [studentOptions, setStudentOptions] = useState();
   const { state, dispatch } = useContext(AppContext);
   const history = useHistory();
-  let data = state.classroomEditData.data;
+  const {id} = useParams()
+  let editableData = useLocation()
+  let data = editableData.state.data
   let students = [];
   useEffect(() => {
     // console.log(props);
@@ -73,7 +75,7 @@ const EditClassroom = (props) => {
                     size="small"
                     className={classes.textField}
                     inputRef={nameRef}
-                    // defaultValue={state.classroomEditData.data.name}
+                    defaultValue={data.name}
                   ></TextField>
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>

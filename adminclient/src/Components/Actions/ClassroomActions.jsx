@@ -51,9 +51,10 @@ const ClassroomActions = (props) => {
     history.push("classrooms/timeline");
   };
   const handleEdit = () => {
-    history.push(`/classroom/edit`);
-    console.log(props.data);
-    editClassroomData(dispatch, props.data);
+    history.push({
+      pathname: `/classroom/edit/${props.data._id}`,
+      state: {data:props.data}
+    });
   };
   const handleDelete = (id) => {
     console.log(id);
