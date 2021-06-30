@@ -15,41 +15,9 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const CRMActions = () => {
+const ManageStudentCourseActions = () => {
   return (
     <div>
-      <LightTooltip title="Edit" placement="top" arrow>
-        <button
-          size="small"
-          style={{
-            padding: "0%",
-            marginRight: "3%",
-            backgroundColor: "#77c13a",
-            color: "white",
-            borderColor: "#77c13a",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <CreateIcon />
-        </button>
-      </LightTooltip>
-      <LightTooltip title="Reset Password" placement="top" arrow>
-        <button
-          size="small"
-          style={{
-            padding: "0%",
-            marginRight: "3%",
-            backgroundColor: "#5567ff",
-            color: "white",
-            borderColor: "#5567ff",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <LockRoundedIcon />
-        </button>
-      </LightTooltip>
       <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
@@ -69,4 +37,4 @@ const CRMActions = () => {
     </div>
   );
 };
-export default CRMActions;
+export default ManageStudentCourseActions;

@@ -1,19 +1,14 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideBar from "./Components/SideBar/sideBar";
 import Dashboard from "./Pages/Dashboard";
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
 import Enroll from "./Pages/Enroll";
 import MeetLink from "./Pages/MeetLink";
 import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
 import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Courses from "./Pages/Courses";
 import AddMeet from "./Pages/AddMeet";
 import AddStudent from "./Pages/AddStudent";
@@ -35,13 +30,10 @@ import AddLecture from "./Pages/AddLecture";
 import AddNewLecture from "./Pages/AddNewLecture";
 import ViewClassroomHistory from "./Pages/ViewClassroomHistory";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { mobileView } from "./action/actions";
-import { AppContext } from "./AppContext";
 import Teachers from "./Pages/Teachers";
 import Operations from "./Pages/Operations";
 import TeacherTraining from "./Pages/TeacherTraining";
 import EditClassroom from "./Pages/EditClassroom";
-// import Student from "./Pages/Student";
 import EditTeacher from "./Pages/EditTeacher";
 import EditCourseSection from "./Pages/EditCourseSection";
 import ViewCourseSection from "./Pages/ViewCourseSection";
@@ -73,15 +65,15 @@ const useStyles = makeStyles({
 });
 
 function App() {
-  const history = useHistory();
-  const { state, dispatch } = useContext(AppContext);
+  // const history = useHistory();
+  // const { state, dispatch } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [editClassroomData, setEditClassroomData] = useState();
 
-  const handleEditClassroom = (data) => {
-    setEditClassroomData(data);
-    console.log("done");
-  };
+  // const handleEditClassroom = (data) => {
+  //   setEditClassroomData(data);
+  //   console.log("done");
+  // };
 
   // useEffect(async()=>{
   //   console.log(screenWidth);

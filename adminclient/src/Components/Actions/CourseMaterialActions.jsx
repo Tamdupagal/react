@@ -2,7 +2,7 @@ import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -14,10 +14,7 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({});
-
 const CourseMaterialActions = () => {
-  const classes = useStyles();
   return (
     <div>
       <LightTooltip title="Edit Material" placement="top" arrow>

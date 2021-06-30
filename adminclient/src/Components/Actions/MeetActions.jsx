@@ -2,8 +2,7 @@ import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import LockRoundedIcon from "@material-ui/icons/LockRounded";
+import { withStyles } from "@material-ui/core/styles";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -14,8 +13,6 @@ const LightTooltip = withStyles((theme) => ({
     fontWeight: "500",
   },
 }))(Tooltip);
-
-const useStyles = makeStyles({});
 
 const MeetActions = () => {
   return (

@@ -6,6 +6,8 @@ import { useHistory } from "react-router";
 import { MeetData } from "./../Helpers/MeetData";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import AddMeet from "./AddMeet";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -18,8 +20,22 @@ const useStyles = makeStyles({
 
 const MeetLink = () => {
   const classes = useStyles();
-
   const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const [editOpen, setEditOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleEditClose = () => {
+    setEditOpen(false);
+  };
+
+  const body = <AddMeet handleClose={handleClose} />;
   const [data, setData] = useState();
   useEffect(() => {
     setData(MeetData);
@@ -64,7 +80,7 @@ const MeetLink = () => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  // onClick={}
+                  onClick={handleOpen}
                   style={{ fontFamily: "'Exo', sans-serif" }}
                 >
                   ADD NEW MEET LINK
@@ -115,6 +131,26 @@ const MeetLink = () => {
           </Container>
         </Grid>
       </Box>
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
+      <div>
+        <Modal
+          open={editOpen}
+          onClose={handleEditClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
     </div>
   );
 };

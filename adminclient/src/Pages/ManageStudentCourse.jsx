@@ -1,105 +1,118 @@
-import React from "react";
-import { useStyles } from "./../Styles/ManageStudentCourses";
-import { Container } from "@material-ui/core";
-import { Button, Card } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import MenuItem from "@material-ui/core/MenuItem";
-import { useTheme } from "@material-ui/core/styles";
-import Select from "@material-ui/core/Select";
-import FormControl from "@material-ui/core/FormControl";
+import React, { useState, useEffect } from "react";
+import MaterialTable from "material-table";
+import { Box, Container, Typography, Grid } from "@material-ui/core";
+import ManageStudentCourseActions from "./../Components/Actions/ManageStudentCourseActions";
+import { useHistory } from "react-router";
+import { ManageStudentData } from "./../Helpers/ManageStudentData";
+import { MTableBodyRow } from "material-table";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
+  title: {
+    fontSize: "2rem",
+    fontWeight: "700",
+    fontFamily: "KoHo, sans-serif",
+  },
+});
 
 const ManageStudentCourse = () => {
-  const [value, setValue] = React.useState("interview");
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
   const classes = useStyles();
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
 
-  const names = [
-    "Oliver Hansen",
-    "Van Henry",
-    "April Tucker",
-    "Ralph Hubbard",
-    "Omar Alexander",
-    "Carlos Abbott",
-    "Miriam Wagner",
-    "Bradley Wilkerson",
-    "Virginia Andrews",
-    "Kelly Snyder",
+  const history = useHistory();
+  const [data, setData] = useState();
+  useEffect(() => {
+    setData(ManageStudentData);
+  }, []);
+
+  const Columns = [
+    { title: "Course", field: "name" },
+    {
+      title: "Actions",
+      field: "name",
+      render: (row) => (
+        <div>
+          <ManageStudentCourseActions />
+        </div>
+      ),
+    },
   ];
-
-  function getStyles(name, personName, theme) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
-  const handleChangeMultiple = (event) => {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    setPersonName(value);
-  };
-
   return (
     <div>
-      <div>
-        <h1 className={classes.mainHeading}>Manage Course for Name</h1>
-      </div>
-      <Container>
-        <Grid xs={12} md={9} className={classes.container}>
-          <Card className={classes.card0}>
-            <h5 className={classes.infoHeading}>Classroom Name:</h5>
-            <form>
-              {" "}
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                size="small"
-                className={classes.textField}
-              />
-            </form>
-            <h5 className={classes.infoHeading}>Assign Course:</h5>
-            <FormControl className={classes.formControl}>
-              <Select
-                variant="outlined"
-                multiple
-                native
-                value={personName}
-                onChange={handleChangeMultiple}
-                inputProps={{
-                  id: "select-multiple-native",
-                }}
-              >
-                {names.map((name) => (
-                  <option key={name} value={name}>
-                    {name}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
-            <div className={classes.submitBtn}>
-              <Button
-                variant="contained"
+      <Box display="flex" justifyContent="center">
+        <Grid item xs={12} lg={10}>
+          <Container>
+            <Container
+              style={{
+                border: "1px solid #e6e6ff",
+                borderBottom: "white",
+                backgroundColor: "white",
+                padding: "1%",
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+              }}
+            >
+              <Box display="flex" justifyContent="space-between">
+                <Typography className={classes.title}>
+                  Manage Student Course For (name)
+                </Typography>
+
+                {/* <Button
+                variant="contained" 
                 color="secondary"
+                onClick={handleAddCRM}
                 style={{ fontFamily: "'Exo', sans-serif" }}
               >
-                SUBMIT
-              </Button>
-            </div>
-          </Card>
+                ADD NEW CRM USER
+              </Button> */}
+              </Box>
+            </Container>
+          </Container>
+          <Container>
+            {" "}
+            <MaterialTable
+              title=""
+              data={data}
+              columns={Columns}
+              style={{
+                borderTopLeftRadius: "0px",
+                borderTopRightRadius: "0px",
+              }}
+              options={{
+                exportButton: true,
+                headerStyle: {
+                  border: "0.5px solid 	 #e6e6ff",
+                  backgroundColor: "#007399",
+                  color: "white",
+                  fontSize: "1.2rem",
+                  fontWeight: "800",
+                  fontFamily: "KoHo, sans-serif",
+                  letterSpacing: "0.07rem",
+                },
+                cellStyle: {
+                  border: "0.5px solid white",
+                },
+                rowStyle: (rowData) => ({
+                  backgroundColor:
+                    rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
+                  fontWeight: "600",
+                  fontSize: "1rem",
+                  maxWidth: "2vw",
+                  color: "#000",
+                  rowStyle: "	 #e6e6ff",
+                }),
+              }}
+              components={{
+                Row: (props) => (
+                  <MTableBodyRow className={classes.tableRow} {...props} />
+                ),
+              }}
+            />
+          </Container>
         </Grid>
-      </Container>
+      </Box>
     </div>
   );
 };
+
 export default ManageStudentCourse;

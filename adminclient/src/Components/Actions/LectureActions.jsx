@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { useHistory, useParams } from "react-router-dom";
 import { deleteLecture } from "../../action/actions";
 import { AppContext } from "../../AppContext";
@@ -17,23 +17,21 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({});
 const LectureActions = (props) => {
-  const { cid } = useParams()
+  const { cid } = useParams();
   const { dispatch } = useContext(AppContext);
-  const history = useHistory()
+  const history = useHistory();
   const handleEdit = () => {
-      history.push({
-        pathname:`/${cid}/edit-lecture/${props.data._id}`,
-        state: {data: props.data}
-      }
-      )
-  }
+    history.push({
+      pathname: `/${cid}/edit-lecture/${props.data._id}`,
+      state: { data: props.data },
+    });
+  };
   const handleDelete = () => {
-    if(window.confirm("Delete the Lecture?")){
-      deleteLecture(dispatch,cid,props.data._id)
+    if (window.confirm("Delete the Lecture?")) {
+      deleteLecture(dispatch, cid, props.data._id);
     }
-  }
+  };
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>

@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useHistory } from "react-router";
-import { deleteTeacher, editTeacherData } from "../../action/actions";
+import { deleteTeacher } from "../../action/actions";
 import { AppContext } from "./../../AppContext";
 
 const LightTooltip = withStyles((theme) => ({
@@ -21,18 +21,18 @@ const LightTooltip = withStyles((theme) => ({
 const TeacherActions = (props) => {
   const history = useHistory();
   const { dispatch } = useContext(AppContext);
-  const id = props.data._id
+  const id = props.data._id;
 
   const handleTeacherDetail = () => {
     history.push({
       pathname: `/teacher/details/${id}`,
-      state: {data : props.data}
+      state: { data: props.data },
     });
   };
   const handleEdit = () => {
     history.push({
       pathname: `/teacher/edit/${id}`,
-      state: {data : props.data}
+      state: { data: props.data },
     });
   };
   const handleDeleteTeacher = () => {

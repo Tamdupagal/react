@@ -1,13 +1,12 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
-import { useHistory,} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AppContext } from "./../../AppContext";
 import { deleteAdmin } from "../../action/actions";
-
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -19,26 +18,22 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const useStyles = makeStyles({});
-
 const AdminActions = (props) => {
-  const history = useHistory()
-  const {dispatch} = useContext(AppContext)
+  const history = useHistory();
+  const { dispatch } = useContext(AppContext);
 
   const handleEdit = () => {
     history.push({
       pathname: `/edit-admin/${props.data._id}`,
-      state: {data: props.data}
-      
-    }
-    )
-  }
+      state: { data: props.data },
+    });
+  };
   const handleDelete = () => {
-    if(window.confirm("Delete the item?")){
-      deleteAdmin(dispatch,props.data._id)
-      history.push("/operations")
+    if (window.confirm("Delete the item?")) {
+      deleteAdmin(dispatch, props.data._id);
+      history.push("/operations");
     }
-  }
+  };
   return (
     <div>
       {/* <Link to={{
@@ -63,7 +58,7 @@ const AdminActions = (props) => {
         </button>
       </LightTooltip>
       {/* </Link> */}
-      <Tooltip title="Add Lecture" placement="top">
+      <LightTooltip title="Add Lecture" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -78,23 +73,7 @@ const AdminActions = (props) => {
         >
           <LockRoundedIcon />
         </button>
-      </Tooltip>
-      {/* <Tooltip title="Student's History" placement="top">
-        <button
-          size="small"
-          style={{
-            padding: "1%",
-            marginRight: "3%",
-            backgroundColor: "#5567ff",
-            color: "white",
-            borderColor: "#5567ff",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <HistoryIcon />
-        </button>
-      </Tooltip> */}
+      </LightTooltip>
       <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
