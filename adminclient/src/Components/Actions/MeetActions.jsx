@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
-import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import { useHistory } from "react-router-dom";
-import { deleteStudent, editStudentData } from "../action/actions";
-import { AppContext } from "./../AppContext";
+import LockRoundedIcon from "@material-ui/icons/LockRounded";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -21,45 +17,42 @@ const LightTooltip = withStyles((theme) => ({
 
 const useStyles = makeStyles({});
 
-const StudentActions = (props) => {
-  const history = useHistory();
-  const { state, dispatch } = useContext(AppContext);
-  const classes = useStyles();
-  const handleEdit = () => {
-    history.push({
-      pathname: `/student/edit/${props.data._id}`,
-      state: { data: props.data },
-    });
-    // console.log(props.data);
-    // editStudentData(dispatch, props.data);
-  };
-  const handleDeleteStudent = () => {
-    if (window.confirm("Delete the item?")) {
-      deleteStudent(dispatch, props.data._id);
-      history.push("/students");
-    }
-  };
+const MeetActions = () => {
   return (
     <div>
-      <LightTooltip title="Edit Student" placement="top" arrow>
+      <LightTooltip title="Edit link" placement="top" arrow>
         <button
           size="small"
           style={{
-            padding: "1%",
+            padding: "0%",
             marginRight: "3%",
-            backgroundColor: "#17a2b8",
+            backgroundColor: "#77c13a",
             color: "white",
-            borderColor: "#17a2b8",
+            borderColor: "#77c13a",
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleEdit}
         >
-          {/* {props.data} */}
-          <VisibilityIcon />
+          <CreateIcon />
         </button>
       </LightTooltip>
-      <LightTooltip title="Student's History" placement="top" arrow>
+      {/* <LightTooltip title="Reset Password" placement="top" arrow>
+        <button
+          size="small"
+          style={{
+            padding: "0%",
+            marginRight: "3%",
+            backgroundColor: "#5567ff",
+            color: "white",
+            borderColor: "#5567ff",
+            borderRadius: "4px",
+            fontSize: "small",
+          }}
+        >
+          <LockRoundedIcon />
+        </button>
+      </LightTooltip> */}
+      {/* <Tooltip title="Student's History" placement="top">
         <button
           size="small"
           style={{
@@ -74,12 +67,12 @@ const StudentActions = (props) => {
         >
           <HistoryIcon />
         </button>
-      </LightTooltip>
-      <LightTooltip title="Delete" placement="top" arrow>
+      </Tooltip> */}
+      <LightTooltip title="Delete link" placement="top" arrow>
         <button
           size="small"
           style={{
-            padding: "1%",
+            padding: "0%",
             marginRight: "3%",
             backgroundColor: "#d9534f",
             color: "white",
@@ -87,7 +80,6 @@ const StudentActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleDeleteStudent}
         >
           <DeleteIcon />
         </button>
@@ -95,4 +87,4 @@ const StudentActions = (props) => {
     </div>
   );
 };
-export default StudentActions;
+export default MeetActions;

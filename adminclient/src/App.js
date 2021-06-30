@@ -8,7 +8,7 @@ import SideBar from "./Components/SideBar/sideBar";
 import Dashboard from "./Pages/Dashboard";
 import { Container } from "react-bootstrap";
 import Enroll from "./Pages/Enroll";
-import MeetTable from "./Pages/MeetTable";
+import MeetLink from "./Pages/MeetLink";
 import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
 import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
@@ -48,6 +48,7 @@ import ViewCourseSection from "./Pages/ViewCourseSection";
 import CourseMaterial from "./Pages/CourseMaterial";
 import AddNewMaterial from "./Pages/AddNewMaterial";
 import EditAdmin from "./Pages/EditAdmin";
+import Carousel from "./Components/Carousel";
 
 const theme = createMuiTheme({
   palette: {
@@ -111,7 +112,7 @@ function App() {
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/enroll" component={Enroll} />
-              <Route exact path="/meetLink" component={() => <MeetTable />} />
+              <Route exact path="/meetLink" component={MeetLink} />
               <Route exact path="/courses" component={Courses} />
               <Route exact path="/classroom" component={OneToOne} />
               <Route exact path="/students" component={Students} />
@@ -121,6 +122,7 @@ function App() {
               <Route exact path="/add-meet" component={AddMeet} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
+              <Route exact path="/carousel" component={Carousel} />
               <Route
                 exact
                 path="/add-course-section"
@@ -142,7 +144,11 @@ function App() {
                 )}
               />
               <Route exact path="/new-room" component={AddNewRoom} />
-              <Route exact path="/teacher/details/:id" component={TeacherDetails} />
+              <Route
+                exact
+                path="/teacher/details/:id"
+                component={TeacherDetails}
+              />
               <Route exact path="/add-crm" component={AddCRM} />
               <Route exact path="/add-admin" component={AddAdmin} />
               <Route
@@ -202,7 +208,11 @@ function App() {
               <Route exact path="/course-material" component={CourseMaterial} />
               <Route exact path="/add-materail" component={AddNewMaterial} />
               <Route exact path="/edit-admin/:id" component={EditAdmin} />
-              <Route exact path="/:cid/edit-lecture/:id" component={AddNewLecture} />
+              <Route
+                exact
+                path="/:cid/edit-lecture/:id"
+                component={AddNewLecture}
+              />
               <Route exact path="/student/edit/:id" component={AddStudent} />
             </Switch>
             <div>

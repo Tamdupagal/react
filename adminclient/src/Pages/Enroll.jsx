@@ -27,7 +27,7 @@ const Enroll = () => {
         <Card>
           <Box className={classes.cardHeader}>
             {" "}
-            <h3 style={{ marginLeft: "3%" }}>Enrollment Center</h3>
+            <h2 style={{ marginLeft: "3%" }}>Enrollment Center</h2>
           </Box>
           <CardContent>
             <Typography

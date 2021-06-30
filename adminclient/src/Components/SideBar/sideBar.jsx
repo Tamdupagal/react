@@ -37,6 +37,8 @@ import FaceIcon from "@material-ui/icons/Face";
 import GamesIcon from "@material-ui/icons/Games";
 import TuneIcon from "@material-ui/icons/Tune";
 import "./../../css/sidebar.css";
+import GamepadIcon from "@material-ui/icons/Gamepad";
+import { FaUserGraduate } from "react-icons/fa";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 const drawerWidth = 250;
@@ -117,6 +119,7 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     // ...theme.mixins.toolbar,
     // justifyContent: 'flex-start',
+    marginTop: "22%",
   },
   content: {
     flexGrow: 1,
@@ -153,32 +156,52 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   AccordionContent: {
-    textDecoration: "none",
     marginLeft: "5%",
     border: "none",
+    textDecoration: "none",
   },
   Accordion: {
     boxShadow: "unset",
-    // backgroundColor: background,
     borderTopRightRadius: "15px ",
     borderBottomRightRadius: "15px",
-    marginRight: "10px",
+    textDecoration: "none",
+    marginTop: "-10px",
   },
   menu: {
-    marginLeft: "30px",
+    marginLeft: "15px",
     color: "white",
-    fontSize: "2rem",
-    fontWeight: "700",
   },
   subMenu: {
-    marginLeft: "30px",
-    fontFamily: "KoHo, sans-serif",
-    fontSize: "2rem",
-    fontWeight: "700",
+    marginLeft: "25px",
     color: "white",
-    paddingBottom: "0.5%",
-    paddingTop: "0.5%",
     textDecoration: "none",
+  },
+  AccordionDetails: {
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: "-30px",
+    marginTop: "-5px",
+  },
+  Img: {
+    borderRadius: "100%",
+    width: "60px",
+    height: "60px",
+  },
+  Heading: {
+    textAlign: "left",
+    color: "white",
+    fontSize: "1rem",
+    fontFamily: "'Exo', sans-serif",
+    letterSpacing: "0.1rem",
+  },
+  subMenu1: {
+    marginLeft: "25px",
+    color: "white",
+    marginTop: "-15px",
+  },
+  AccordionName: {
+    marginLeft: "15px",
+    color: "white",
   },
 }));
 
@@ -192,9 +215,12 @@ const SideBar = () => {
   const [expanded, setExpanded] = useState(false);
   const [background, setBackground] = useState("#303956");
 
+  const handleClick = () => {
+    setBackground("#262e45");
+  };
   const handleChange = (panel, background) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
-    setBackground(isExpanded ? "#262e45" : "#303956");
+    // setBackground( ? "#262e45" : "#303956");
   };
 
   useEffect(() => {
@@ -212,7 +238,7 @@ const SideBar = () => {
   return (
     <>
       <div className={classes.root}>
-        <CssBaseline/>
+        <CssBaseline />
         <AppBar
           className={clsx(classes.appBar, { [classes.appBarShift]: open })}
         >
@@ -234,6 +260,7 @@ const SideBar = () => {
               size="medium"
               color="secondary"
               startIcon={<PowerSettingsNewRoundedIcon />}
+              style={{ fontFamily: "'Exo', sans-serif" }}
             >
               Log Out
             </Button>
@@ -249,21 +276,8 @@ const SideBar = () => {
           }}
         >
           <div className={classes.drawerHeader}>
-            <Image
-              style={{ borderRadius: "100%", width: "60px", height: "60px" }}
-              src={MainLogo}
-            />
-            <h3
-              style={{
-                textAlign: "left",
-                color: "white",
-                fontSize: "1rem",
-                marginLeft: "10px",
-                fontFamily: "'Exo', sans-serif",
-              }}
-            >
-              ADMIN
-            </h3>
+            <Image className={classes.Img} src={MainLogo} />
+            <h3 className={classes.Heading}>ADMIN</h3>
             <ChevronLeftIcon
               className={clsx(classes.leftIcon, classes.listText && open)}
               onClick={handleDrawerClose}
@@ -282,36 +296,22 @@ const SideBar = () => {
               }}
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
+              // onClick={() => setBackground("#262e45")}
               className={classes.Accordion}
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <ImportContactsIcon className={clsx(classes.listText)} />
-                <Typography
-                  style={{
-                    marginLeft: "30px",
-                    color: "white",
-                    paddingTop: "-1%",
-                    paddingBottom: "-1%",
-                  }}
-                >
+                <Typography className={classes.AccordionName}>
                   Courses
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
+              <AccordionDetails className={classes.AccordionDetails}>
                 <Link to="/courses" className={classes.AccordionContent}>
                   <ListItemText
                     primary="Courses"
-                    style={{
-                      marginLeft: "50px",
-                      color: "white",
-                    }}
+                    className={classes.subMenu1}
                   />
                 </Link>
                 <Link
@@ -367,29 +367,23 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <LocalLibraryIcon className={clsx(classes.listText)} />
-                <Typography style={{ marginLeft: "30px", color: "white" }}>
+                <Typography className={classes.AccordionName}>
                   Classroom
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails
-                style={{
-                  margin: "0%",
-                  padding: "0%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Link to="/classroom" className={classes.Accordion}>
+              <AccordionDetails className={classes.AccordionDetails}>
+                <Link to="/classroom" className={classes.AccordionContent}>
                   <ListItemText
                     primary="Students & Teachers"
-                    className={classes.menu}
-                    className={classes.subMenu}
+                    className={classes.subMenu1}
                   />
                 </Link>
-                <Link to="/trainer-classrooms" className={classes.Accordion}>
+                <Link
+                  to="/trainer-classrooms"
+                  className={classes.AccordionContent}
+                >
                   <ListItemText
                     primary="Teacher Training"
-                    className={classes.menu}
                     className={classes.subMenu}
                   />
                 </Link>
@@ -432,31 +426,21 @@ const SideBar = () => {
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <LocalLibraryIcon className={clsx(classes.listText)} />
-                <Typography style={{ marginLeft: "30px", color: "white" }}>
+                <GamepadIcon className={clsx(classes.listText)} />
+                <Typography className={classes.AccordionName}>
                   H5P Content
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails
-                style={{
-                  margin: "0%",
-                  padding: "0%",
-                  display: "flex",
-                  flexDirection: "column",
-                  textDecoration: "none",
-                }}
-              >
-                <Link to="" className={classes.Accordion}>
+              <AccordionDetails className={classes.AccordionDetails}>
+                <Link to="" className={classes.AccordionContent}>
                   <ListItemText
                     primary="Add Content"
-                    className={classes.menu}
-                    className={classes.subMenu}
+                    className={classes.subMenu1}
                   />
                 </Link>
-                <Link to="" className={classes.Accordion}>
+                <Link to="" className={classes.AccordionContent}>
                   <ListItemText
                     primary="Edit Content"
-                    className={classes.menu}
                     className={classes.subMenu}
                   />
                 </Link>
@@ -464,7 +448,7 @@ const SideBar = () => {
             </Accordion>
             <Link to="/teachers" className={clsx(classes.listText)}>
               <ListItem button>
-                <ViewQuiltIcon />
+                <FaUserGraduate style={{ fontSize: "1.4rem" }} />
                 <ListItemText primary="Teachers" className={classes.menu} />
               </ListItem>
             </Link>

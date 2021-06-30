@@ -21,10 +21,10 @@ const StudentsInfoEdit = () => {
   const pMobileNo = useRef();
   const pRelation = useRef();
   const { state, dispatch } = useContext(AppContext);
-  const editableStudentData = useLocation()
-  const {id} = useParams()
-  let data = editableStudentData.state.data
-  const history = useHistory()
+  const editableStudentData = useLocation();
+  const { id } = useParams();
+  let data = editableStudentData.state.data;
+  const history = useHistory();
 
   const handleEditStudent = () => {
     console.log(id);
@@ -38,18 +38,18 @@ const StudentsInfoEdit = () => {
       parent_email: pEmail.current.value,
       password: "1234",
     };
-    editStudent(dispatch, data,id);
-    history.push("/students")
+    editStudent(dispatch, data, id);
+    history.push("/students");
   };
 
   useEffect(() => {
     // console.log(data)
-    console.log(data._id)
+    console.log(data._id);
   }, []);
 
   return (
     <div>
-      <Grid container spacing={3} style={{ margin: "2%" }}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <Divider className={classes.dividerInset1} />
           <h3 className={classes.subheading1}>STUDENT'S INFORMATION</h3>

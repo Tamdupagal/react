@@ -19,6 +19,10 @@ const useStyles = makeStyles({
 const CRMtable = () => {
   const classes = useStyles();
 
+  const handleAddCRM = () => {
+    history.push("/add-crm");
+  };
+
   const history = useHistory();
   const [data, setData] = useState();
   useEffect(() => {
@@ -59,7 +63,7 @@ const CRMtable = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                // onClick={handleAddNewClassroom}
+                onClick={handleAddCRM}
                 style={{ fontFamily: "'Exo', sans-serif" }}
               >
                 ADD NEW CRM USER
