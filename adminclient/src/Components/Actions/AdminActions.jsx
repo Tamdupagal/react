@@ -58,15 +58,15 @@ const AdminActions = (props) => {
         </button>
       </LightTooltip>
       {/* </Link> */}
-      <LightTooltip title="Add Lecture" placement="top" arrow>
+      <LightTooltip title="Reset Password" placement="top" arrow>
         <button
           size="small"
           style={{
             padding: "0%",
             marginRight: "3%",
-            backgroundColor: "#77c13a",
+            backgroundColor: "#5567ff",
             color: "white",
-            borderColor: "#77c13a",
+            borderColor: "#5567ff",
             borderRadius: "4px",
             fontSize: "small",
           }}

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     border: "1px solid #e6e6ff",
     borderBottom: "white",
     backgroundColor: "white",
-    padding: "1%",
+    padding: "2%",
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
   },
@@ -60,12 +60,13 @@ const MeetLink = () => {
           <Container>
             <Container className={classes.container}>
               <Box display="flex" justifyContent="space-between">
-                <Typography className={classes.title}> Meet Link </Typography>
+                <Typography className={classes.title}>CRM</Typography>
 
                 <Button
                   variant="contained"
                   color="secondary"
                   onClick={handleAddCRM}
+                  size="small"
                   style={{ fontFamily: "'Exo', sans-serif" }}
                 >
                   ADD NEW CRM USER
