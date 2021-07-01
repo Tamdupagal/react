@@ -16,6 +16,14 @@ const useStyles = makeStyles({
     fontWeight: "700",
     fontFamily: "KoHo, sans-serif",
   },
+  container: {
+    border: "1px solid #e6e6ff",
+    borderBottom: "white",
+    backgroundColor: "white",
+    padding: "1%",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
+  },
 });
 
 const MeetLink = () => {
@@ -64,16 +72,7 @@ const MeetLink = () => {
       >
         <Grid item xs={12} lg={10}>
           <Container>
-            <Container
-              style={{
-                border: "1px solid #e6e6ff",
-                borderBottom: "white",
-                backgroundColor: "white",
-                padding: "1%",
-                borderTopLeftRadius: "10px",
-                borderTopRightRadius: "10px",
-              }}
-            >
+            <Container className={classes.container}>
               <Box display="flex" justifyContent="space-between">
                 <Typography className={classes.title}>Meet Table</Typography>
 
