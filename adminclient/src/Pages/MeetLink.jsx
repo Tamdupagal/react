@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
+import React from "react";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
-import MeetActions from "./../Components/Actions/MeetActions";
 import { useHistory } from "react-router";
-import { MeetData } from "./../Helpers/MeetData";
-import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
+import Table from "../Components/Table/Table";
+import MeetActions from "./../Components/Actions/MeetActions";
 import AddMeet from "./AddMeet";
+import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles({
-  tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
   title: {
     fontSize: "2rem",
     fontWeight: "700",
@@ -29,25 +26,6 @@ const useStyles = makeStyles({
 const MeetLink = () => {
   const classes = useStyles();
   const history = useHistory();
-  const [open, setOpen] = React.useState(false);
-  const [editOpen, setEditOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleEditClose = () => {
-    setEditOpen(false);
-  };
-
-  const body = <AddMeet handleClose={handleClose} />;
-  const [data, setData] = useState();
-  useEffect(() => {
-    setData(MeetData);
-  }, []);
 
   const Columns = [
     { title: "Link Id", field: "Link" },
@@ -63,6 +41,22 @@ const MeetLink = () => {
       ),
     },
   ];
+  const [open, setOpen] = React.useState(false);
+  const [editOpen, setEditOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleEditClose = () => {
+    setEditOpen(false);
+  };
+
+  const body = <AddMeet handleClose={handleClose} />;
+
   return (
     <div>
       <Box
@@ -74,7 +68,7 @@ const MeetLink = () => {
           <Container>
             <Container className={classes.container}>
               <Box display="flex" justifyContent="space-between">
-                <Typography className={classes.title}>Meet Table</Typography>
+                <Typography className={classes.title}> Meet Link </Typography>
 
                 <Button
                   variant="contained"
@@ -87,46 +81,9 @@ const MeetLink = () => {
               </Box>
             </Container>
           </Container>
+
           <Container>
-            {" "}
-            <MaterialTable
-              title=""
-              data={data}
-              columns={Columns}
-              style={{
-                borderTopLeftRadius: "0px",
-                borderTopRightRadius: "0px",
-              }}
-              options={{
-                exportButton: true,
-                headerStyle: {
-                  border: "0.5px solid 	 #e6e6ff",
-                  backgroundColor: "#007399",
-                  color: "white",
-                  fontSize: "1.2rem",
-                  fontWeight: "800",
-                  fontFamily: "KoHo, sans-serif",
-                  letterSpacing: "0.07rem",
-                },
-                cellStyle: {
-                  border: "0.5px solid white",
-                },
-                rowStyle: (rowData) => ({
-                  backgroundColor:
-                    rowData.tableData.id % 2 === 0 ? "#FFF" : "#e6f9ff",
-                  fontWeight: "600",
-                  fontSize: "1rem",
-                  maxWidth: "2vw",
-                  color: "#000",
-                  rowStyle: "	 #e6e6ff",
-                }),
-              }}
-              components={{
-                Row: (props) => (
-                  <MTableBodyRow className={classes.tableRow} {...props} />
-                ),
-              }}
-            />
+            <Table column={Columns} />
           </Container>
         </Grid>
       </Box>
