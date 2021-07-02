@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+import Modal from "@material-ui/core/Modal";
+import AddMeet from "./../../Pages/AddMeet";
+import { deleteMeetLink } from "../../action/actions";
+import { AppContext } from "../../AppContext";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -14,7 +19,15 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const MeetActions = () => {
+const MeetActions = (props) => {
+  const history = useHistory()
+  const {dispatch} = useContext(AppContext)
+  const handleDeleteMeetLink = () => {
+    if(window.confirm("Delete the Link")){
+      deleteMeetLink(dispatch,props.data._id)
+    }
+  }
+  
   return (
     <div>
       <LightTooltip title="Edit link" placement="top" arrow>
@@ -29,6 +42,7 @@ const MeetActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={()=>props.handleEditOpen(props.data)}
         >
           <CreateIcon />
         </button>
@@ -77,10 +91,21 @@ const MeetActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDeleteMeetLink}
         >
           <DeleteIcon />
         </button>
       </LightTooltip>
+      {/* <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div> */}
     </div>
   );
 };

@@ -111,7 +111,8 @@ function App() {
               <Route exact path="/student-courses" component={StudentCourses} />
               <Route exact path="/attendances" component={Attendance} />
               <Route exact path="/teachers" component={Teachers} />
-              <Route exact path="/add-meet" component={AddMeet} />
+              <Route exact path="/add-meet" component={MeetLink} />
+              <Route exact path="/edit-meet/:id" component={MeetLink} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
               <Route exact path="/carousel" component={Carousel} />

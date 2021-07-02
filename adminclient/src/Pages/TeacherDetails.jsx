@@ -54,7 +54,9 @@ const TeacherDetails = () => {
                             <strong>Email</strong>
                           </TableCell>
                           <TableCell className={classes.data}>
+                            <a href= {`mailto: ${data.email}`} style={{textDecoration: "none",color: "black"}} >
                             {data.email}
+                            </a>
                           </TableCell>
                         </StyledTableRow>
                         <StyledTableRow>
@@ -62,7 +64,9 @@ const TeacherDetails = () => {
                             <strong>Phone</strong>
                           </TableCell>
                           <TableCell className={classes.data}>
+                            <a href={`tel: ${data.primary_phone_number}`} style={{textDecoration: "none",color: "black"}}>
                             {data.primary_phone_number}
+                            </a>
                           </TableCell>
                         </StyledTableRow>
                         <StyledTableRow>
