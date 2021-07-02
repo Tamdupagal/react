@@ -1,26 +1,20 @@
 import MeetActions from "../Components/Actions/MeetActions";
-export const MeetData = () => {
-  return [
-    {
-      Link: "1",
-      LinkId: "malik1234@gmail.com",
-      Bookings: "All",
-      userRoles: "All",
-    },
-  ];
+export const MeetData = (state) => {
+  return state.meetLinksData.meetLinks
 };
-export const MeetColumns = () => {
+export const MeetColumns = (handleEditClose, handleEditOpen) => {
+  // console.log(handleEditOpen)
   return [
-    { title: "Link", field: "Link" },
-    { title: "Link Id", field: "LinkId" },
+    { title: "Link", field: "link" },
+    { title: "Link Id", field: "_id" },
     { title: "Bookings", field: "Bookings" },
     {
       title: "Actions",
       field: "name",
       render: (row) => (
         <div>
-          <MeetActions />
-        </div>
+          <MeetActions handleEditClose={handleEditClose} handleEditOpen={handleEditOpen} data={row}/>
+        </div> 
       ),
     },
   ];

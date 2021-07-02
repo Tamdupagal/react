@@ -31,7 +31,7 @@ const EditAdmin = (props) => {
   const { state, dispatch } = useContext(AppContext);
   const history = useHistory();
   const [personName, setPersonName] = React.useState([]);
-  let adminEditableData = state.adminEditData.data;
+  let adminEditableData = location.state.data;
   const { id } = useParams();
   // id  = props.match.params
   const names = [
@@ -50,7 +50,7 @@ const EditAdmin = (props) => {
   //   return
   // }
   useEffect(() => {
-    console.log(location.state);
+    console.log(adminEditableData);
     console.log(id);
   }, [location]);
   const handleChangeMultiple = (event) => {
