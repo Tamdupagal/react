@@ -52,7 +52,7 @@ const Accordion = withStyles({
   root: {
     backgroundColor: "transparent",
     color: "white",
-    width: "90%",
+    width: "95%",
     borderRadius: "10px",
     boxShadow: "none",
     "&:not(:last-child)": {
@@ -138,13 +138,8 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    // marginTop: "10px",
     marginLeft: "10px",
-    // padding: theme.spacing(5,0,0,0),
-    // necessary for content to be below app bar
-    // ...theme.mixins.toolbar,
-    // justifyContent: 'flex-start',
-    marginTop: "22%",
+    marginTop: "10%",
   },
   content: {
     flexGrow: 1,
@@ -185,6 +180,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: "white",
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
   },
   link: {
     textDecoration: "none",
@@ -192,6 +189,14 @@ const useStyles = makeStyles((theme) => ({
   },
   menuBtn: {
     color: "white",
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
+    paddingBottom: "5%",
+    paddingTop: "5%",
+  },
+  dropdownHeading: {
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
   },
 }));
 
@@ -288,7 +293,9 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <ImportContactsIcon style={{ marginRight: "7px" }} />
-                <Typography>COURSES</Typography>
+                <Typography className={classes.dropdownHeading}>
+                  COURSES
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Link to="/courses" className={classes.link}>
@@ -335,7 +342,9 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <LocalLibraryIcon style={{ marginRight: "7px" }} />
-                <Typography>CLASSROOM</Typography>
+                <Typography className={classes.dropdownHeading}>
+                  CLASSROOM
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Link to="/classroom" className={classes.link}>
@@ -374,7 +383,9 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <GamepadIcon style={{ marginRight: "7px" }} />
-                <Typography>H5P CONTENT</Typography>
+                <Typography className={classes.dropdownHeading}>
+                  H5P CONTENT
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Link className={classes.link}>
