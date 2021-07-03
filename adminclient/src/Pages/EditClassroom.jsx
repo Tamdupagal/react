@@ -24,7 +24,7 @@ const EditClassroom = (props) => {
   const history = useHistory();
   const {id} = useParams()
   let editableData = useLocation()
-  let data = editableData.state.data
+  let data = editableData.state?.data
   let students = [];
   useEffect(() => {
     // console.log(props);
@@ -32,7 +32,7 @@ const EditClassroom = (props) => {
     // edit = state.classroomEditData.data.enrolledStudents;
     // console.log(edit);
     console.log(data);
-    Object.keys(data.enrolled_students).map((c) => students.push({ label: c }));
+    Object.keys(data.enrolled_courses).map((c) => students.push({ label: c }));
     setStudentOptions(students);
     console.log(students);
   }, []);

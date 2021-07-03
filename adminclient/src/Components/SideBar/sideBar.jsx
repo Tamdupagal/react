@@ -198,6 +198,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Nunito', sans-serif",
     fontFamily: "'Source Sans Pro', sans-serif",
   },
+  // panel1: {
+  //   backgroundColor: backgroundPanel1
+  // }
 }));
 
 const SideBar = () => {
@@ -209,9 +212,15 @@ const SideBar = () => {
   const [mobile, setMobile] = useState(false);
   const [background, setBackground] = useState("#303956");
   const [expanded, setExpanded] = useState(false);
+  const [backgroundPanel1, setBackgroundPanel1]=useState("#303956")
+  
 
   const handleChange = (panel) => (event, newExpanded) => {
+    console.log(panel,newExpanded)
+    console.log(newExpanded)
     setExpanded(newExpanded ? panel : false);
+    if(panel=="panel1")
+    handleBackgroundPanel1()
   };
 
   // setBackground( ? "#262e45" : "#303956");
@@ -228,6 +237,9 @@ const SideBar = () => {
     if (window.innerWidth <= 700) setOpen(false);
     else setOpen(false);
   };
+  const handleBackgroundPanel1 = () => {
+    expanded?  setBackgroundPanel1("#303956") : setBackgroundPanel1("#262e45")
+  }
   return (
     <>
       <div className={classes.root}>
@@ -286,6 +298,8 @@ const SideBar = () => {
               square
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
+              // onClick={handleBackgroundPanel1}
+              style={{backgroundColor:backgroundPanel1}}
             >
               <AccordionSummary
                 aria-controls="panel1d-content"

@@ -3,7 +3,7 @@ import MaterialTable from "material-table";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import ClassroomActions from "./../Components/Actions/ClassroomActions";
 import { useHistory } from "react-router";
-import { getAllClassrooms } from "../action/actions";
+import { getAllClassrooms, getAllCourses } from "../action/actions";
 import { MTableBodyRow } from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 // import Classroom from "../CRUD/Classroom";
@@ -30,6 +30,8 @@ const OneToOne = () => {
   // const student = state.studentData
   useEffect(() => {
     getAllClassrooms(dispatch);
+    getAllCourses(dispatch)
+
     console.log("hy");
   }, []);
   // const getClassroomAll = () => {
@@ -46,7 +48,10 @@ const OneToOne = () => {
   //     });
   // };
   const handleAddNewClassroom = () => {
-    history.push("/classroom/create");
+    history.push({
+      pathname: "/classroom/create",
+      state: {courses: state.coursesData.courses}
+    });
   };
   // const Columns = [
   //   { title: "Name", field: "name" },
