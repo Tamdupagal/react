@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "./../Table/Table";
-import CRMActions from "./../Actions/CRMActions";
-import { CRMData, CrmColumn } from "./../../Helpers/CRMData";
+import Table from "./../Components/Table/Table";
+import TrainersActions from "./../Components/Actions/TrainersActions";
+import { TrainersData } from "./../Helpers/TrainersData";
 
 const useStyles = makeStyles({
   title: {
@@ -22,31 +22,31 @@ const useStyles = makeStyles({
   },
 });
 
-const CRMTable = () => {
+const Trainers = () => {
   const classes = useStyles();
   const history = useHistory();
 
   const Columns = [
-    { title: "Name", field: "name" },
-    { title: "Email", field: "email" },
-    { title: "User Roles", field: "userRoles", width: "10%" },
+    { title: "Trainer's Name", field: "name" },
+    { title: "Trainer's Role", field: "Role" },
+    { title: "Trainers's own Role", field: "ownRoles" },
     {
       title: "Actions",
       field: "name",
       render: (row) => (
         <div>
-          <CRMActions />
+          <TrainersActions />
         </div>
       ),
     },
   ];
   const [data, setData] = useState();
   useEffect(() => {
-    setData(CRMData);
+    setData(TrainersData);
   }, []);
 
-  const handleAddCRM = () => {
-    history.push("/add-crm");
+  const handleAddTrainer = () => {
+    history.push("/add-trainer");
   };
 
   return (
@@ -56,20 +56,20 @@ const CRMTable = () => {
         justifyContent="center"
         style={{ marginBottom: "20vh" }}
       >
-        <Grid item xs={12} lg={12}>
+        <Grid item xs={12} lg={10}>
           <Container>
             <Container className={classes.container}>
               <Box display="flex" justifyContent="space-between">
-                <Typography className={classes.title}>CRM</Typography>
+                <Typography className={classes.title}>Trainers</Typography>
 
                 <Button
                   variant="contained"
                   color="secondary"
-                  onClick={handleAddCRM}
+                  onClick={handleAddTrainer}
                   size="small"
                   style={{ fontFamily: "'Exo', sans-serif" }}
                 >
-                  ADD NEW CRM USER
+                  ADD NEW Trainer
                 </Button>
               </Box>
             </Container>
@@ -84,4 +84,4 @@ const CRMTable = () => {
   );
 };
 
-export default CRMTable;
+export default Trainers;

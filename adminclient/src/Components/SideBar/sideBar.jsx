@@ -182,31 +182,29 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontFamily: "'Nunito', sans-serif",
     fontFamily: "'Source Sans Pro', sans-serif",
+    textTransform: "capitalize",
   },
   link: {
     textDecoration: "none",
+    textTransform: "capitalize",
     // marginLeft: "15px",
   },
   menuBtn: {
-    display:"flex",
-    flexDirection:"column",
+    display: "flex",
+    flexDirection: "column",
     color: "white",
     fontFamily: "'Nunito', sans-serif",
     fontFamily: "'Source Sans Pro', sans-serif",
     // paddingBottom: "4%",
-    // paddingTop: "4%",
-    textTransform:"capitalize",
-    marginLeft:"12px"
+    // paddingTop: "6%",
+    textTransform: "capitalize",
+    marginLeft: "12px",
   },
   dropdownHeading: {
     fontFamily: "'Nunito', sans-serif",
     fontFamily: "'Source Sans Pro', sans-serif",
-    textTransform:"capitalize",
-
+    textTransform: "capitalize",
   },
-  // panel1: {
-  //   backgroundColor: backgroundPanel1
-  // }
 }));
 
 const SideBar = () => {
@@ -216,26 +214,19 @@ const SideBar = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const [background, setBackground] = useState("#303956");
   const [expanded, setExpanded] = useState(false);
-  const [backgroundPanel1, setBackgroundPanel1]=useState("#303956")
-  const [backgroundPanel2, setBackgroundPanel2]=useState("#303956")
-  const [backgroundPanel3, setBackgroundPanel3]=useState("#303956")
-
+  const [backgroundPanel1, setBackgroundPanel1] = useState("#303956");
+  const [backgroundPanel2, setBackgroundPanel2] = useState("#303956");
+  const [backgroundPanel3, setBackgroundPanel3] = useState("#303956");
 
   const handleChange = (panel) => (event, newExpanded) => {
-    console.log(panel,newExpanded)
-    console.log(newExpanded)
+    console.log(panel, newExpanded);
+    console.log(newExpanded);
     setExpanded(newExpanded ? panel : false);
-    if(panel=="panel1") 
-      handleBackgroundPanel1()
-    else if(panel=="panel2")
-      handleBackgroundPanel2()
-    else
-      handleBackgroundPanel3()
+    if (panel == "panel1") handleBackgroundPanel1();
+    else if (panel == "panel2") handleBackgroundPanel2();
+    else handleBackgroundPanel3();
   };
-
-  // setBackground( ? "#262e45" : "#303956");
 
   useEffect(() => {
     setOpen(true);
@@ -250,16 +241,16 @@ const SideBar = () => {
     else setOpen(false);
   };
   const handleBackgroundPanel1 = () => {
-    expanded?  setBackgroundPanel1("#303956") : setBackgroundPanel1("#262e45")
-  }
+    expanded ? setBackgroundPanel1("#303956") : setBackgroundPanel1("#262e45");
+  };
 
   const handleBackgroundPanel2 = () => {
-    expanded?  setBackgroundPanel2("#303956") : setBackgroundPanel2("#262e45")
-  }
+    expanded ? setBackgroundPanel2("#303956") : setBackgroundPanel2("#262e45");
+  };
 
   const handleBackgroundPanel3 = () => {
-    expanded?  setBackgroundPanel3("#303956") : setBackgroundPanel3("#262e45")
-  }
+    expanded ? setBackgroundPanel3("#303956") : setBackgroundPanel3("#262e45");
+  };
   return (
     <>
       <div className={classes.root}>
@@ -319,14 +310,16 @@ const SideBar = () => {
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
               // onClick={handleBackgroundPanel1}
-              style={{backgroundColor:backgroundPanel1,minHeight:"10px"}}
+              style={{ backgroundColor: backgroundPanel1, minHeight: "10px" }}
             >
               <AccordionSummary
                 aria-controls="panel1d-content"
                 id="panel1d-header"
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <ImportContactsIcon style={{ marginRight: "7px",fontSize: "1.5rem" }} />
+                <ImportContactsIcon
+                  style={{ marginRight: "7px", fontSize: "1.5rem" }}
+                />
                 <Typography className={classes.dropdownHeading}>
                   Courses
                 </Typography>
@@ -369,8 +362,7 @@ const SideBar = () => {
               square
               expanded={expanded === "panel2"}
               onChange={handleChange("panel2")}
-              style={{backgroundColor:backgroundPanel2}}
-
+              style={{ backgroundColor: backgroundPanel2 }}
             >
               <AccordionSummary
                 aria-controls="panel2d-content"
@@ -412,8 +404,7 @@ const SideBar = () => {
               square
               expanded={expanded === "panel3"}
               onChange={handleChange("panel3")}
-              style={{backgroundColor:backgroundPanel3}}
-
+              style={{ backgroundColor: backgroundPanel3 }}
             >
               <AccordionSummary
                 aria-controls="panel3d-content"
@@ -441,6 +432,14 @@ const SideBar = () => {
                 className={classes.menuBtn}
               >
                 Teachers
+              </Button>
+            </Link>
+            <Link to="/trainers" className={classes.link}>
+              <Button
+                startIcon={<FaUserGraduate />}
+                className={classes.menuBtn}
+              >
+                Trainers
               </Button>
             </Link>
             <Link to="/operations" className={classes.link}>

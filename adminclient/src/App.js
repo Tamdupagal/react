@@ -40,6 +40,8 @@ import ViewCourseSection from "./Pages/ViewCourseSection";
 import CourseMaterial from "./Pages/CourseMaterial";
 import AddNewMaterial from "./Pages/AddNewMaterial";
 import EditAdmin from "./Pages/EditAdmin";
+import Trainers from "./Pages/Trainers";
+import AddTrainer from "./Pages/AddTrainer";
 import Carousel from "./Components/Carousel";
 
 const theme = createMuiTheme({
@@ -116,6 +118,8 @@ function App() {
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
               <Route exact path="/carousel" component={Carousel} />
+              <Route exact path="/trainers" component={Trainers} />
+              <Route exact path="/add-trainer" component={AddTrainer} />
               <Route
                 exact
                 path="/add-course-section"
