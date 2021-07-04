@@ -42,6 +42,7 @@ import AddNewMaterial from "./Pages/AddNewMaterial";
 import EditAdmin from "./Pages/EditAdmin";
 import Trainers from "./Pages/Trainers";
 import AddTrainer from "./Pages/AddTrainer";
+import LoginPage from "./Pages/LoginPage";
 import Carousel from "./Components/Carousel";
 
 const theme = createMuiTheme({
@@ -97,126 +98,143 @@ function App() {
 
   const classes = useStyles();
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Router>
-          <SideBar />
-          <div className={classes.root}>
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/enroll" component={Enroll} />
-              <Route exact path="/meetLink" component={MeetLink} />
-              <Route exact path="/courses" component={Courses} />
-              <Route exact path="/classroom" component={OneToOne} />
-              <Route exact path="/students" component={Students} />
-              <Route exact path="/student-courses" component={StudentCourses} />
-              <Route exact path="/attendances" component={Attendance} />
-              <Route exact path="/teachers" component={Teachers} />
-              <Route exact path="/add-meet" component={MeetLink} />
-              <Route exact path="/edit-meet/:id" component={MeetLink} />
-              <Route exact path="/add-student" component={AddStudent} />
-              <Route exact path="/add-teacher" component={AddTeacher} />
-              <Route exact path="/carousel" component={Carousel} />
-              <Route exact path="/trainers" component={Trainers} />
-              <Route exact path="/add-trainer" component={AddTrainer} />
-              <Route
-                exact
-                path="/add-course-section"
-                component={AddCourseSections}
-              />
-              <Route exact path="/operations" component={Operations} />
-              {/* <Route exact path="/student/:id/Edit" component={Student} /> */}
+    // <ThemeProvider theme={theme}>
+    //   <div>
+    //     <Router>
+    //       <div>
+    //         <SideBar />
+    //         <div className={classes.root}>
+    //           <Switch>
+    //             <Route exact path="/" component={Dashboard} />
+    //             <Route exact path="/dashboard" component={Dashboard} />
+    //             <Route exact path="/enroll" component={Enroll} />
+    //             <Route exact path="/meetLink" component={MeetLink} />
+    //             <Route exact path="/courses" component={Courses} />
+    //             <Route exact path="/classroom" component={OneToOne} />
+    //             <Route exact path="/students" component={Students} />
+    //             <Route
+    //               exact
+    //               path="/student-courses"
+    //               component={StudentCourses}
+    //             />
+    //             <Route exact path="/attendances" component={Attendance} />
+    //             <Route exact path="/teachers" component={Teachers} />
+    //             <Route exact path="/add-meet" component={MeetLink} />
+    //             <Route exact path="/edit-meet/:id" component={MeetLink} />
+    //             <Route exact path="/add-student" component={AddStudent} />
+    //             <Route exact path="/add-teacher" component={AddTeacher} />
+    //             <Route exact path="/carousel" component={Carousel} />
+    //             <Route exact path="/trainers" component={Trainers} />
+    //             <Route exact path="/add-trainer" component={AddTrainer} />
+    //             <Route
+    //               exact
+    //               path="/add-course-section"
+    //               component={AddCourseSections}
+    //             />
+    //             <Route exact path="/operations" component={Operations} />
+    //             {/* <Route exact path="/student/:id/Edit" component={Student} /> */}
 
-              <Route
-                exact
-                path="/classroom/create"
-                component={AddNewClassroom}
-              />
-              <Route
-                exact
-                path="/classroom/edit/:id"
-                component={EditClassroom}
-              />
-              <Route exact path="/new-room" component={AddNewRoom} />
-              <Route
-                exact
-                path="/teacher/details/:id"
-                component={TeacherDetails}
-              />
-              <Route exact path="/add-crm" component={AddCRM} />
-              <Route exact path="/add-admin" component={AddAdmin} />
-              <Route
-                exact
-                path="/teacher-timeline"
-                component={TeacherHistory}
-              />
-              <Route exact path="/students-table" component={Students} />
-              <Route path="/:cid/lectures" component={AddLecture} />
-              <Route path="/:cid/add-lecture" component={AddNewLecture} />
-              <Route exact path="/teacher/edit/:id" component={EditTeacher} />
-              <Route
-                exact
-                path="/attendance/report"
-                component={AddNewLecture}
-              />
-              <Route
-                exact
-                path="/classrooms/timeline"
-                component={ViewClassroomHistory}
-              />
-              <Route
-                exact
-                path="/student-courses/manage"
-                component={ManageStudentCourse}
-              />
-              <Route
-                exact
-                path="/learning-skills"
-                component={AddNewLearningSkills}
-              />
-              <Route
-                exact
-                path="/course-activities"
-                component={AddCourseActivity}
-              />
-              <Route
-                exact
-                path="/spiritual-learning"
-                component={AddSpiritualLearning}
-              />
-              <Route
-                exact
-                path="/trainer-classrooms"
-                component={TeacherTraining}
-              />
-              <Route
-                exact
-                path="/edit-course-section"
-                component={EditCourseSection}
-              />
-              <Route
-                exact
-                path="/view-course-section"
-                component={ViewCourseSection}
-              />
-              <Route exact path="/course-material" component={CourseMaterial} />
-              <Route exact path="/add-materail" component={AddNewMaterial} />
-              <Route exact path="/edit-admin/:id" component={EditAdmin} />
-              <Route
-                exact
-                path="/:cid/edit-lecture/:id"
-                component={AddNewLecture}
-              />
-              <Route exact path="/student/edit/:id" component={AddStudent} />
-            </Switch>
-            <div>
-              <Copyright />
-            </div>
-          </div>
-        </Router>
-      </div>
-    </ThemeProvider>
+    //             <Route
+    //               exact
+    //               path="/classroom/create"
+    //               component={AddNewClassroom}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/classroom/edit/:id"
+    //               component={EditClassroom}
+    //             />
+    //             <Route exact path="/new-room" component={AddNewRoom} />
+    //             <Route
+    //               exact
+    //               path="/teacher/details/:id"
+    //               component={TeacherDetails}
+    //             />
+    //             <Route exact path="/add-crm" component={AddCRM} />
+    //             <Route exact path="/add-admin" component={AddAdmin} />
+    //             <Route
+    //               exact
+    //               path="/teacher-timeline"
+    //               component={TeacherHistory}
+    //             />
+    //             <Route exact path="/students-table" component={Students} />
+    //             <Route path="/:cid/lectures" component={AddLecture} />
+    //             <Route path="/:cid/add-lecture" component={AddNewLecture} />
+    //             <Route exact path="/teacher/edit/:id" component={EditTeacher} />
+    //             <Route
+    //               exact
+    //               path="/attendance/report"
+    //               component={AddNewLecture}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/classrooms/timeline"
+    //               component={ViewClassroomHistory}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/student-courses/manage"
+    //               component={ManageStudentCourse}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/learning-skills"
+    //               component={AddNewLearningSkills}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/course-activities"
+    //               component={AddCourseActivity}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/spiritual-learning"
+    //               component={AddSpiritualLearning}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/trainer-classrooms"
+    //               component={TeacherTraining}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/edit-course-section"
+    //               component={EditCourseSection}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/view-course-section"
+    //               component={ViewCourseSection}
+    //             />
+    //             <Route
+    //               exact
+    //               path="/course-material"
+    //               component={CourseMaterial}
+    //             />
+    //             <Route exact path="/add-materail" component={AddNewMaterial} />
+    //             <Route exact path="/edit-admin/:id" component={EditAdmin} />
+    //             <Route
+    //               exact
+    //               path="/:cid/edit-lecture/:id"
+    //               component={AddNewLecture}
+    //             />
+    //             <Route exact path="/student/edit/:id" component={AddStudent} />
+    //           </Switch>
+    //           <div>
+    //             <Copyright />
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div>
+    //         {" "}
+    //         <Route exact path="/login" component={LoginPage} />
+    //       </div>
+    //     </Router>
+    //   </div>
+    // </ThemeProvider>
+    <div>
+      <LoginPage />
+    </div>
   );
 }
 

@@ -1,0 +1,251 @@
+.login__wrapper {
+  width: 100vw;
+  height: 100vh;
+  /* background-image: url(../../assets/login_bg.png); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.login__wrapper .login__box {
+  position: relative;
+  width: 50%;
+  min-width: 45rem;
+  height: 45rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: 0 0 1.5rem 0.1rem #999;
+}
+.login__wrapper .login__box .form__sign__in__box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  padding: 2rem 3rem;
+  background-color: white;
+}
+.login__wrapper .login__box .form__sign__in__box .login__form__title {
+  font-size: 3rem;
+  color: black;
+  margin-bottom: 2.5rem;
+  font-weight: bolder;
+  font-stretch: wider;
+}
+.login__wrapper .login__box .form__sign__in__box .login__input__box {
+  position: relative;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+.login__wrapper .login__box .form__sign__in__box .login__input__box > label {
+  align-self: flex-start;
+  font-size: 1.4rem;
+  color: black;
+  padding: 0.4rem 0;
+}
+.login__wrapper .login__box .form__sign__in__box .login__input__box > input {
+  width: 100%;
+  height: 5rem;
+  background-color: transparent;
+  padding-left: 1.5rem;
+  border: 0.2rem solid #ccc;
+  border-radius: 0.4rem;
+}
+.login__wrapper
+  .login__box
+  .form__sign__in__box
+  .login__input__box
+  > input:focus {
+  outline: none;
+}
+.login__wrapper .login__box .form__sign__in__box .checkbox_container {
+  display: flex;
+  align-items: space-between;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 4rem;
+  padding: 0 0.5rem;
+}
+.login__wrapper .login__box .form__sign__in__box .checkbox_container .checkbox {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.login__wrapper
+  .login__box
+  .form__sign__in__box
+  .checkbox_container
+  .checkbox
+  input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 0.8rem;
+}
+.login__wrapper
+  .login__box
+  .form__sign__in__box
+  .checkbox_container
+  .checkbox
+  > p {
+  font-size: 1.5rem;
+  color: black;
+}
+.login__wrapper
+  .login__box
+  .form__sign__in__box
+  .checkbox_container
+  .pass__forgot__btn {
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login__wrapper .login__box .form__sign__in__box .sign__in__btn {
+  background-image: linear-gradient(#24a134, #248534);
+  padding: 1.3rem 5rem;
+  color: white;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+}
+.login__wrapper .login__box .form__sign__in__box .sign__in__btn:active {
+  transform: scale(0.9);
+}
+.login__wrapper .login__box .form__forgot__pass__box {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3a70b6;
+}
+.login__wrapper .login__box .form__forgot__pass__box .key__icon__container {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+}
+.login__wrapper
+  .login__box
+  .form__forgot__pass__box
+  .key__icon__container
+  .key__icon {
+  font-size: 5rem;
+  color: black;
+}
+.login__wrapper .login__box .form__forgot__pass__box > h1 {
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+.login__wrapper .login__box .form__forgot__pass__box > p {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+.login__wrapper .login__box .form__forgot__pass__box > input {
+  width: 100%;
+  height: 5rem;
+  background-color: #eee;
+  padding-left: 1.5rem;
+  border-radius: 0.2rem;
+  margin: 2rem 0;
+  border: none;
+}
+.login__wrapper .login__box .form__forgot__pass__box > input:focus {
+  outline: none;
+}
+.login__wrapper .login__box .form__forgot__pass__box .submit__btn {
+  border: 0.2rem solid white;
+  background-color: transparent;
+  color: white;
+  padding: 1.5rem 3.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  width: max-content;
+}
+.login__wrapper .login__box .form__forgot__pass__box .submit__btn:active {
+  transform: scale(0.9);
+}
+.login__wrapper .login__box .form__forgot__pass__box .back__btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  border: 0.2rem solid white;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.login__wrapper .login__box .form__forgot__pass__box .back__btn:active {
+  transform: scale(0.9);
+}
+.login__wrapper .login__box .form__forgot__pass__box .back__btn .icon {
+  font-size: 1.4rem;
+  color: white;
+}
+.login__wrapper .login__box .overlay__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* background-image: url(../../assets/login_img1.png); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  height: 100%;
+  padding: 2rem 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.login__wrapper .login__box .overlay__panel.show {
+  transform: translateX(-100%);
+}
+.login__wrapper .login__box .overlay__panel > img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+}
+.login__wrapper .login__box .overlay__panel .panel__title {
+  font-size: 4rem;
+  color: black;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-variant: small-caps;
+}
+.login__wrapper .login__box .overlay__panel > p {
+  font-size: 1.4rem;
+  color: #020202;
+  text-align: center;
+}
+.login__error {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  color: red;
+  text-align: start;
+}
