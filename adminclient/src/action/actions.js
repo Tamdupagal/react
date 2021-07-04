@@ -151,7 +151,7 @@ export const addTeacher = async (dispatch,data,value) => {
         const res = await axios.post('teacher/new',data)
         console.log(res)
         dispatch({type : ADD_TEACHER_SUCCESS, payload : data})
-        addTeacherToCourse(value,res._id)
+        // addTeacherToCourse(value,res._id)
         getAllTeachers(dispatch)
     } catch (err) {
         dispatch({type : ADD_TEACHER_FAIL, payload : err})
@@ -190,6 +190,9 @@ export const deleteTeacher= async (dispatch, id) => {
     }
 }
 
+export const addTeacherToCourse= () => {
+    const res = axios.post()
+}
 // *****************LECTURES*****************
 
 export const getAllLectures = async (dispatch,cid) => {
