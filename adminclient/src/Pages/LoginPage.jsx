@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Box, Grid, Card, Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import "./../css/Login.css";
 import Loginpage1 from "./../Images/Loginpage1.png";
 import MainLogo2 from "./../Images/MainLogo2.png";
+import { fakeAuth } from "../action/actions";
+import { AppContext } from "../AppContext";
 
 export const useStyles = makeStyles((theme) => ({
   img: {
@@ -37,7 +39,10 @@ export const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
   const classes = useStyles();
-
+  const { dispatch } = useContext(AppContext)
+  const handleSignIn = () => {
+    fakeAuth(dispatch)
+  }
   return (
     <div className={classes.img}>
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -68,6 +73,7 @@ const LoginPage = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                
                   />
                 </form>
                 <form className={classes.root} noValidate autoComplete="off">
@@ -95,7 +101,9 @@ const LoginPage = () => {
                   Forgot Password?
                 </a>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Button variant="contained" className={classes.btn}>
+                  <Button variant="contained" className={classes.btn}
+                  onClick={handleSignIn}
+                  >
                     Sign in
                   </Button>
                 </div>

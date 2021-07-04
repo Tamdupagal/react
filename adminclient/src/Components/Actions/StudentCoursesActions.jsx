@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import CreateIcon from "@material-ui/icons/Create";
 import { studentCoursesData } from '../../Helpers/studentCoursesData';
 
-const StudentCoursesActions = () => {
+const StudentCoursesActions = (props) => {
     const history = useHistory()
     const handleManageCourse = () => {
-        history.push("/student-courses/manage");
+        history.push({
+          pathname: `/student-courses/${props.data._id}/manage`,
+          state: {data: props.data}
+        });
       };
+    // console.log(props.data)
+    useEffect(() => {
+      console.log(props.data)
+    }, [])
     return (
         <div style={{ fontWeight: "700" }}>
               <Button

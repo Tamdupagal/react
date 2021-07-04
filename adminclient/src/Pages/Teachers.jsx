@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TeacherActions from "../Components/Actions/TeacherActions";
 import { teacherData, teacherColumn } from "../Helpers/teacherData";
 import { AppContext } from "../AppContext";
-import { getAllTeachers } from "../action/actions";
+import { getAllCourses, getAllTeachers } from "../action/actions";
 import Table from "../Components/Table/Table";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -31,12 +31,16 @@ const Teachers = () => {
   const TEACHER_DATA = state?.teacherData;
 
   const handleAddTeacher = () => {
-    history.push("/add-teacher");
+    history.push({
+      pathname: "/add-teacher",
+      state: {courses: state.coursesData.courses}
+    });
   };
 
   useEffect(() => {
     // getTeacherAll()
     getAllTeachers(dispatch);
+    getAllCourses(dispatch)
   }, []);
 
   return (

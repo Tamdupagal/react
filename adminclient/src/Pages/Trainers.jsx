@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "./../Components/Table/Table";
 import TrainersActions from "./../Components/Actions/TrainersActions";
-import { TrainersData } from "./../Helpers/TrainersData";
+import { TrainersColumn, TrainersData } from "./../Helpers/TrainersData";
+import { getAllTrainers } from "../action/actions";
+import { AppContext } from "../AppContext";
 
 const useStyles = makeStyles({
   title: {
@@ -25,24 +27,11 @@ const useStyles = makeStyles({
 const Trainers = () => {
   const classes = useStyles();
   const history = useHistory();
+  const {state, dispatch} = useContext(AppContext)
 
-  const Columns = [
-    { title: "Trainer's Name", field: "name" },
-    { title: "Trainer's Role", field: "Role" },
-    { title: "Trainers's own Role", field: "ownRoles" },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          <TrainersActions />
-        </div>
-      ),
-    },
-  ];
-  const [data, setData] = useState();
+  
   useEffect(() => {
-    setData(TrainersData);
+    getAllTrainers(dispatch)
   }, []);
 
   const handleAddTrainer = () => {
@@ -76,7 +65,7 @@ const Trainers = () => {
           </Container>
 
           <Container>
-            <Table column={Columns} data={data} />
+            <Table data={TrainersData(state)} column={TrainersColumn()}  />
           </Container>
         </Grid>
       </Box>

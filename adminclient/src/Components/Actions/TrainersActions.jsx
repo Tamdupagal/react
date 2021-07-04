@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+import { AppContext } from "../../AppContext";
+import { deleteTrainer } from "../../action/actions";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -14,7 +17,22 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const TrainersActions = () => {
+const TrainersActions = (props) => {
+  const history = useHistory()
+  const {state, dispatch} = useContext(AppContext)
+  const handleEditTrainer = () => {
+    history.push({
+      pathname: `/trainer/edit/${props.data._id}`,
+      state: {data: props.data}
+    })
+  }
+  const handleDelete = () => {
+    if(window.confirm("Delete the trainer"))
+    {
+      deleteTrainer(dispatch,props.data._id)
+      history.push("/trainers")
+    }
+  }
   return (
     <div>
       <LightTooltip title="Edit Trainer" placement="top" arrow>
@@ -29,6 +47,7 @@ const TrainersActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEditTrainer}
         >
           <CreateIcon />
         </button>
@@ -45,6 +64,7 @@ const TrainersActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDelete}
         >
           <DeleteIcon />
         </button>

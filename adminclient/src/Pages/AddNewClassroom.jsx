@@ -25,27 +25,19 @@ const AddNewClassroom = () => {
   const courses = []
   const options = []
   const [coursesOptions, setCoursesOptions] = useState([])
-
+ 
   useEffect(() => {
     console.log(selectedValue);
-    // console.log(courseData)
-    // getAllCourses()
-    // .then(res=>{
-    //   courseData=res.data
-    // })
     console.log(courseData)
     console.log(courseData[1])
     courseData.map(c=>courses.push(c.course_section))
     console.log(courses[0])
     courses.map(c=>c.map(data=>options.push({label: data.name, value: data._id})))
-    // console.log(courseData)
-    // setStudentOptions(students);
-    // console.log(options);
     setCoursesOptions(options)
   }, []);
 
   const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedValue(Array.isArray(e) ? e.map((x) => ({value:x.value,label:x.label})) : []);
   };
 
   const saveClassroom = () => {
