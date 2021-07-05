@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Box, Grid, Card, Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -41,12 +41,18 @@ export const useStyles = makeStyles((theme) => ({
 const LoginPage = () => {
   const classes = useStyles();
   const {state, dispatch } = useContext(AppContext)
+  const email = useRef()
+  const password = useRef()
   const history = useHistory()
   const handleSignIn = async () => {
+    var data = {
+      email: email.current.value,
+      password: password.current.value
+    }
     try{
-      await Auth(dispatch)
+      await Auth(dispatch,data)
       history.push({
-        pathname: "/admin/dashboard",
+        pathname: "/dashboard",
         // state: {auth: state.loginToken.token}
       })
       // console.log(state.loginToken.token)
@@ -85,6 +91,7 @@ const LoginPage = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={email}
                 
                   />
                 </form>
@@ -96,6 +103,7 @@ const LoginPage = () => {
                     variant="outlined"
                     size="small"
                     className={classes.textField}
+                    inputRef={password}
                   />
                 </form>
                 <a

@@ -8,13 +8,13 @@ export const StudentCourseData = (state) => {
 const courseLength = (row) => {
   let course=[]
   let allCourse=[]
-  course=row.classrooms.map(c=>Object.keys(c.enrolled_courses))
-  course.forEach(c => {
-      c.forEach(data=>{
-          allCourse.push({name:data})
-      })
-  })
-  return allCourse.length
+  // course=row.classrooms?.map(c=>Object.keys(c.enrolled_courses))
+  // course.forEach(c => {
+  //     c.forEach(data=>{
+  //         allCourse.push({name:data})
+  //     })
+  // })
+  // return allCourse.length
 }
 
 export const StudentCourseColumn = () => {

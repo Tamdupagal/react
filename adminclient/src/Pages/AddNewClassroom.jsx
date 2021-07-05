@@ -37,14 +37,14 @@ const AddNewClassroom = () => {
   }, []);
 
   const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => ({value:x.value,label:x.label})) : []);
+    setSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
   };
 
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
-      courses: selectedValue,
-      students: ["1", "2", "3"],
+      enrolled_courses: {selectedValue},
+      enrolled_students: ["1", "2", "3"],
     };
     console.log(nameRef.current.value);
     console.log(selectedValue);

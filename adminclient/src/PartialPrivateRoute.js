@@ -9,7 +9,7 @@ export default function PartialPrivateRoute({component: Component,restricted, ..
     return (
         <>
           
-            {isLogin() || restricted === false ?
+            { restricted === false ?
             <Route {...props}>
                 {props.children}
             </Route > 

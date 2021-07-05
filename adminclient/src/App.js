@@ -43,23 +43,34 @@ import EditAdmin from "./Pages/EditAdmin";
 import Trainers from "./Pages/Trainers";
 import AddTrainer from "./Pages/AddTrainer";
 import LoginPage from "./Pages/LoginPage";
-import Carousel from "./Components/Carousel";
+import Carousel1 from "./Components/Carousel/Carousel1";
 import PrivateRoute from "./PrivateRoute";
 import { AppContext } from "./AppContext";
 import PartialPrivateRoute from "./PartialPrivateRoute";
 
 
-export const isLogin = () => {
-  // history.push({
-  //   pathname: "/admin",
-  //   state: {data: loginToken.token?.data.role }
-  // })
-  // console.log("used")
-  // if(loginToken.token.data.role=="ADMIN")
+// export const isLogin = () => {
+//   // history.push({
+//   //   pathname: "/admin",
+//   //   state: {data: loginToken.token?.data.role }
+//   // })
+//   // console.log("used")
+//   // if(loginToken.token.data.role=="ADMIN")
+//   return true;
+//   // else
+//   // return false;
+// }
+
+
+export const isLoggedIn = () => {
+  const token = localStorage.getItem("token")
+  const role = localStorage.getItem("token")
+  if(token && role)
   return true;
-  // else
-  // return false;
+  else
+  return false;
 }
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -90,10 +101,6 @@ function App() {
   const { state : {loginToken}} = useContext(AppContext)
   const history = useHistory()
 
-  // const handleEditClassroom = (data) => {
-  //   setEditClassroomData(data);
-  //   console.log("done");
-  // };
 
   // useEffect(async()=>{
   //   console.log(screenWidth);
@@ -125,16 +132,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <div>
         <Router>
+        <Route exact path="/carousel" component={Carousel1} />
+
           <Switch>
           <Route exact path="/login" component={LoginPage}/>
 
           <div className={classes.root}>
             <PrivateRoute path="/" component={SideBar}/>
             <Switch>
-              <PrivateRoute exact path="/admin/dashboard">
-                <Dashboard/>
-              </PrivateRoute>
-              <Route exact path="/admin/dashboard" component={Dashboard} />
+              <Route exact path="/dashboard" component={Dashboard} />
               <PrivateRoute path={`/enroll`} exact>
                 <Enroll/>
               </PrivateRoute>
@@ -143,7 +149,7 @@ function App() {
                 <MeetLink/>
               </PrivateRoute>
               <PrivateRoute exact path="/courses" component={Courses} />
-              <PartialPrivateRoute exact path="/classroom" component={OneToOne} restricted={false}/>
+              <PrivateRoute exact path="/classroom" component={OneToOne}/>
               <PrivateRoute exact path="/students" component={Students} />
               <Route exact path="/student-courses" component={StudentCourses} />
               <Route exact path="/attendances" component={Attendance} />
@@ -152,7 +158,7 @@ function App() {
               <Route exact path="/edit-meet/:id" component={MeetLink} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
-              <Route exact path="/carousel" component={Carousel} />
+              {/* <Route exact path="/carousel" component={Carousel} /> */}
               <Route exact path="/trainers" component={Trainers} />
               <Route exact path="/add-trainer" component={AddTrainer} />
               <Route exact path="/trainer/edit/:id" component={AddTrainer} />

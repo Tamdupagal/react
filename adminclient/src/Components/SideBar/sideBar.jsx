@@ -244,6 +244,10 @@ const SideBar = () => {
     setOpen(true);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.clear()
+    history.push("/login")
+  }
   const handleDrawerOpen = () => {
     if (window.innerWidth <= 700) setOpen(true);
     else setOpen(false);
@@ -289,6 +293,7 @@ const SideBar = () => {
               color="secondary"
               startIcon={<PowerSettingsNewRoundedIcon />}
               style={{ fontFamily: "'Exo', sans-serif" }}
+              onClick={handleLogout}
             >
               Log Out
             </Button>

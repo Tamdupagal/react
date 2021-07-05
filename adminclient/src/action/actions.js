@@ -423,15 +423,18 @@ export const deleteTrainer= async (dispatch, id) => {
 }
 
 export const Auth = async(dispatch,data) => {
-    var data ={
-        email: "khushhh@mail",
-        password: "khush1008"
-    }
+    // var data ={
+    //     email: "khushhh@mail",
+    //     password: "khush1008"
+    // }
     dispatch({ type: LOGIN_REQUEST })
     try {
-        const authToken = await axios.post('admin/login',data)
-        console.log(authToken)
-        dispatch({ type: LOGIN_SUCCESS , payload : authToken})
+        const res = await axios.post('admin/login',data)
+        localStorage.setItem("token",res.data.token)
+        localStorage.setItem("role",res.data.role)
+
+        console.log(res.data)
+        dispatch({ type: LOGIN_SUCCESS , payload : res.data})
     } catch (err) {
         dispatch({ type: LOGIN_FAIL , payload : err})
     }

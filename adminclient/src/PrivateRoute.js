@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import { isLoggedIn } from './App'
 import { AppContext } from './AppContext'
 
 export default function PrivateRoute(props) {
@@ -7,7 +8,7 @@ export default function PrivateRoute(props) {
     console.log(loginToken)
     return (
         <>
-            {loginToken.token.data?
+            {isLoggedIn()?
             <Route {...props}>
                 {props.children}
             </Route > 
