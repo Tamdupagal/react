@@ -422,7 +422,7 @@ export const deleteTrainer= async (dispatch, id) => {
     }
 }
 
-export const fakeAuth = async(dispatch) => {
+export const Auth = async(dispatch,data) => {
     var data ={
         email: "khushhh@mail",
         password: "khush1008"

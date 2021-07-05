@@ -5,8 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import "./../css/Login.css";
 import Loginpage1 from "./../Images/Loginpage1.png";
 import MainLogo2 from "./../Images/MainLogo2.png";
-import { fakeAuth } from "../action/actions";
+import { Auth } from "../action/actions";
 import { AppContext } from "../AppContext";
+import { useHistory } from "react-router-dom";
 
 export const useStyles = makeStyles((theme) => ({
   img: {
@@ -39,9 +40,20 @@ export const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
   const classes = useStyles();
-  const { dispatch } = useContext(AppContext)
-  const handleSignIn = () => {
-    fakeAuth(dispatch)
+  const {state, dispatch } = useContext(AppContext)
+  const history = useHistory()
+  const handleSignIn = async () => {
+    try{
+      await Auth(dispatch)
+      history.push({
+        pathname: "/admin/dashboard",
+        // state: {auth: state.loginToken.token}
+      })
+      // console.log(state.loginToken.token)
+
+    } catch(err) {
+      console.log(err)
+    }
   }
   return (
     <div className={classes.img}>
