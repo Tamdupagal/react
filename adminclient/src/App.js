@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
 import SideBar from "./Components/SideBar/sideBar";
 import Dashboard from "./Pages/Dashboard";
 // import { Container } from "react-bootstrap";
@@ -101,7 +101,6 @@ function App() {
   const { state : {loginToken}} = useContext(AppContext)
   const history = useHistory()
 
-
   // useEffect(async()=>{
   //   console.log(screenWidth);
   //   if(window.innerWidth>560)
@@ -117,11 +116,7 @@ function App() {
   
 }, [loginToken.token])
 
-// useEffect(() => {
-//     if (history.pathname === '/') {
-//         history.push('/login')
-//     }
-// }, [])
+
 
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
 
@@ -132,14 +127,16 @@ function App() {
     <ThemeProvider theme={theme}>
       <div>
         <Router>
-        <Route exact path="/carousel" component={Carousel1} />
-
           <Switch>
           <Route exact path="/login" component={LoginPage}/>
 
           <div className={classes.root}>
-            <PrivateRoute path="/" component={SideBar}/>
+            {/* <PrivateRoute path="/" component={SideBar}/> */}
+            {/* <SideBar path="/"/> */}
+            <SideBar/>
+            {/* <Redirect to="/dashboard"/> */}
             <Switch>
+            <Route exact path="/" component={Dashboard} />
               <Route exact path="/dashboard" component={Dashboard} />
               <PrivateRoute path={`/enroll`} exact>
                 <Enroll/>
