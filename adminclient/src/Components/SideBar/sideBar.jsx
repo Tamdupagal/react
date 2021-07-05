@@ -204,6 +204,18 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Nunito', sans-serif",
     fontFamily: "'Source Sans Pro', sans-serif",
     textTransform: "capitalize",
+    fontSize: "0.9rem",
+  },
+  menuBtn2: {
+    display: "flex",
+    flexDirection: "column",
+    color: "white",
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
+    paddingBottom: "6%",
+    // paddingTop: "6%",
+    textTransform: "capitalize",
+    marginLeft: "12px",
   },
 }));
 
@@ -318,7 +330,7 @@ const SideBar = () => {
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
                 <ImportContactsIcon
-                  style={{ marginRight: "7px", fontSize: "1.5rem" }}
+                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
                 />
                 <Typography className={classes.dropdownHeading}>
                   Courses
@@ -348,7 +360,7 @@ const SideBar = () => {
             <Link to="/enroll" className={classes.link}>
               <Button
                 startIcon={<RemoveFromQueueIcon />}
-                className={classes.menuBtn}
+                className={classes.menuBtn2}
               >
                 Enrollment
               </Button>
@@ -369,7 +381,9 @@ const SideBar = () => {
                 id="panel2d-header"
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <LocalLibraryIcon style={{ marginRight: "7px" }} />
+                <LocalLibraryIcon
+                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
+                />
                 <Typography className={classes.dropdownHeading}>
                   Classroom
                 </Typography>
@@ -386,12 +400,12 @@ const SideBar = () => {
               </AccordionDetails>
             </Accordion>
             <Link to="/attendances" className={classes.link}>
-              <Button startIcon={<CreateIcon />} className={classes.menuBtn}>
+              <Button startIcon={<CreateIcon />} className={classes.menuBtn2}>
                 Attendances
               </Button>
             </Link>
             <Link to="/students" className={classes.link}>
-              <Button startIcon={<FaceIcon />} className={classes.menuBtn}>
+              <Button startIcon={<FaceIcon />} className={classes.menuBtn2}>
                 Students
               </Button>
             </Link>
@@ -411,7 +425,9 @@ const SideBar = () => {
                 id="panel3d-header"
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <GamepadIcon style={{ marginRight: "7px" }} />
+                <GamepadIcon
+                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
+                />
                 <Typography className={classes.dropdownHeading}>
                   H5P Content
                 </Typography>
@@ -429,7 +445,7 @@ const SideBar = () => {
             <Link to="/teachers" className={classes.link}>
               <Button
                 startIcon={<FaUserGraduate />}
-                className={classes.menuBtn}
+                className={classes.menuBtn2}
               >
                 Teachers
               </Button>
@@ -437,7 +453,7 @@ const SideBar = () => {
             <Link to="/trainers" className={classes.link}>
               <Button
                 startIcon={<FaUserGraduate />}
-                className={classes.menuBtn}
+                className={classes.menuBtn2}
               >
                 Trainers
               </Button>
