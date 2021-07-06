@@ -136,7 +136,8 @@ function App() {
             <SideBar/>
             {/* <Redirect to="/dashboard"/> */}
             <Switch>
-            <Route exact path="/" component={Dashboard} />
+
+            <PrivateRoute exact path="/" component={Dashboard} />
               <Route exact path="/dashboard" component={Dashboard} />
               <PrivateRoute path={`/enroll`} exact>
                 <Enroll/>
