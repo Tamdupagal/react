@@ -21,20 +21,27 @@ const Dashboard = () => {
 
   // const setLeftborder = () => {
   //   style = {{ borderLeft: "4px solid red" }  }
+  const toggleMe = (value) => {
+    console.log(value)
+  }
+
   const handleStudents = () => {
     setTableFor("students");
-    // setLeftborder();
     getAllStudents(dispatch);
+    toggleMe("students")
   };
   const handleTeachers = () => {
     setTableFor("teachers");
     getAllTeachers(dispatch);
+    toggleMe("teachers")
   };
   const handleClasses = () => {
     setTableFor("classes");
+    toggleMe("classes")
   };
   const handleLectures = () => {
     setTableFor("lectures");
+    toggleMe("lectures")
   };
 
   function getTabulerData(table_for) {
@@ -69,7 +76,7 @@ const Dashboard = () => {
           <Grid item xs={12} md={6} lg={3}>
             <Card
               className={classes.paper}
-              style={{ borderLeft: "4px solid red", cursor: "pointer" }}
+              // style={{ borderLeft: `4px solid ${borderColor}`, cursor: "pointer" }}
             >
               <div className={classes.content}>
                 83

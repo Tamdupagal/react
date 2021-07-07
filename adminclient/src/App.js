@@ -138,7 +138,7 @@ function App() {
             <Switch>
 
             <PrivateRoute exact path="/" component={Dashboard} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute path={`/enroll`} exact>
                 <Enroll/>
               </PrivateRoute>

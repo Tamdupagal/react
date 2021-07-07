@@ -43,8 +43,8 @@ const AddNewClassroom = () => {
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
-      enrolled_courses: {selectedValue},
-      enrolled_students: ["1", "2", "3"],
+      // enrolled_courses: {selectedValue},
+      // enrolled_students: ["1", "2", "3"],
     };
     console.log(nameRef.current.value);
     console.log(selectedValue);
