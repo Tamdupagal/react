@@ -38,6 +38,7 @@ let display;
 let contentMargin;
 let background;
 let setStyle;
+let backgroundColor;
 
 if (window.innerWidth <= 600) {
   shift = drawerWidth;
@@ -93,6 +94,7 @@ const AccordionDetails = withStyles((theme) => ({
     marginLeft: "10px",
   },
 }))(MuiAccordionDetails);
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -217,6 +219,14 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     marginLeft: "12px",
   },
+  activeLink : {
+    backgroundColor: "#262e45", 
+    minHeight: "10px"
+  },
+  inactivelink: {
+    backgroundColor: "#303956", 
+    minHeight: "10px"
+  }
 }));
 
 const SideBar = () => {
@@ -230,20 +240,32 @@ const SideBar = () => {
   const [backgroundPanel1, setBackgroundPanel1] = useState("#303956");
   const [backgroundPanel2, setBackgroundPanel2] = useState("#303956");
   const [backgroundPanel3, setBackgroundPanel3] = useState("#303956");
+  const [activeLink, setActiveLink] = useState(null)
+  // const [backgroundColor, setBackgroundColor]= useState()
 
-  const handleChange = (panel) => (event, newExpanded) => {
+  const handleChange = (panel,panelName) => (event, newExpanded) => {
     console.log(panel, newExpanded);
     console.log(newExpanded);
     setExpanded(newExpanded ? panel : false);
-    if (panel == "panel1") handleBackgroundPanel1();
-    else if (panel == "panel2") handleBackgroundPanel2();
-    else handleBackgroundPanel3();
+    // if(expanded)
+    // backgroundColor="#303956"
+    // else
+    // backgroundColor="#262e45"
+
+
+    // if (panel == "panel1") handleBackgroundPanel1();
+    // else if (panel == "panel2") handleBackgroundPanel2();
+    // else handleBackgroundPanel3();
+    toggleMe(panelName)
   };
 
   useEffect(() => {
     setOpen(true);
   }, []);
 
+  const toggleMe = (value) => {
+    setActiveLink(value)
+  }
   const handleLogout = () => {
     localStorage.clear()
     history.push("/login")
@@ -317,7 +339,9 @@ const SideBar = () => {
             />
           </div>
           <List>
-            <Link to="/dashboard" className={classes.link}>
+            <Link to="/dashboard" 
+            className={classes.link}
+>
               <Button startIcon={<ViewQuiltIcon />} className={classes.menuBtn}>
                 Dashboard
               </Button>
@@ -325,9 +349,9 @@ const SideBar = () => {
             <Accordion
               square
               expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
-              // onClick={handleBackgroundPanel1}
-              style={{ backgroundColor: backgroundPanel1, minHeight: "10px" }}
+              onChange={handleChange("panel1","courses")}
+              // onClick={toggleMe("courses")}
+              className={activeLink==="courses"? classes.activeLink : classes.inactivelink}
             >
               <AccordionSummary
                 aria-controls="panel1d-content"
@@ -341,7 +365,9 @@ const SideBar = () => {
                   Courses
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails              
+              //  className={activeLink==="courses"? classes.activeLink : classes.inactivelink}
+>
                 <Link to="/courses" className={classes.link}>
                   <Button className={classes.button}>Courses</Button>
                 </Link>
@@ -378,8 +404,8 @@ const SideBar = () => {
             <Accordion
               square
               expanded={expanded === "panel2"}
-              onChange={handleChange("panel2")}
-              style={{ backgroundColor: backgroundPanel2 }}
+              onChange={handleChange("panel2","classroom")}
+              className={activeLink==="classroom"? classes.activeLink : classes.inactivelink}
             >
               <AccordionSummary
                 aria-controls="panel2d-content"
@@ -422,8 +448,8 @@ const SideBar = () => {
             <Accordion
               square
               expanded={expanded === "panel3"}
-              onChange={handleChange("panel3")}
-              style={{ backgroundColor: backgroundPanel3 }}
+              onChange={handleChange("panel3","H5P Content")}
+              className={activeLink==="H5P Content"? classes.activeLink : classes.inactivelink}
             >
               <AccordionSummary
                 aria-controls="panel3d-content"

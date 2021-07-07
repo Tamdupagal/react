@@ -10,6 +10,17 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "large",
     border: "1px solid #e0ebeb",
     borderRadius: "8px",
+    cursor: "pointer"
+  },
+  paperActive: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.dark,
+    fontSize: "large",
+    border: "1px solid #e0ebeb",
+    borderRadius: "8px",
+    borderLeft: `4px solid red`,
+    cursor: "pointer"
   },
   divider: {
     marginTop: "2%",
