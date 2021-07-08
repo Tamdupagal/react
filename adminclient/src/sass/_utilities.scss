@@ -1,0 +1,25 @@
+@import "./variable";
+
+@mixin flex_layout($align: center, $justify: center, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+%table_container_styles {
+  position: relative;
+  width: 100%;
+  height: max-content;
+  border: 0.1rem solid rgba(black, 0.2);
+  border-radius: "10px";
+  overflow: hidden;
+  .header__main {
+    @include flex_layout(center, space-between);
+    width: 100%;
+    padding: 1rem 2rem;
+    color: black;
+    background-color: rgba(black, 0.031);
+    font-weight: 500;
+  }
+}

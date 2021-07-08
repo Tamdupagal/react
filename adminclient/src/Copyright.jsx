@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Footer } from "@material-ui/core";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import Grid from "@material-ui/core/Grid";
 
@@ -7,26 +7,30 @@ const Copyright = () => {
   return (
     <Container
       style={{
-        position: "fixed",
-        marginTop: "38vh",
-        // marginBottom: "0px",
+        // marginTop: "40vh",
+        backgroundColor: "white",
         borderTop: "0.4vh solid #ccc",
       }}
     >
       <Container>
-        <Grid>
-          <Grid item xs={12}>
+        <Grid container>
+          <Grid item xs={12} lg={12}>
             <div
-              style={{ fontSize: "2rem", fontWeight: "700", color: "#47476b" }}
+              style={{
+                fontSize: "2rem",
+                fontWeight: "700",
+                color: "#47476b",
+                marginTop: "5vh",
+              }}
             >
               Digital Aided School
             </div>
-            <br />
+            {/* <br /> */}
             <div>
-              <h7 style={{ color: "#b3b3cc" }}>
+              <h5 style={{ color: "#b3b3cc", fontSize: "large" }}>
                 Copyright (year) <AiOutlineCopyrightCircle />
                 .All rights reserved
-              </h7>
+              </h5>
             </div>
           </Grid>
         </Grid>

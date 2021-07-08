@@ -1,0 +1,24 @@
+.appbar {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+.WithStyles\(ForwardRef\(AccordionSummary\)\)-root-22{
+  min-height: 0px !important;
+}
+.MuiAccordionSummary-content{
+  margin: "0px" !important;
+}
+/* .activeLink  {
+  background-color: backgroundColor;
+  min-height: 10px
+}
+.inactivelink {
+  background-color: `backgroundColor`;
+  min-height: 10px
+} */

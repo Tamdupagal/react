@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Button } from "@material-ui/core";
-import "../../Styles/TextEditor.css";
+import "./../../css/TextEditor.css";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Grid from "@material-ui/core/Grid";
@@ -20,8 +20,6 @@ const TextEditor = () => {
 
   return (
     <div>
-      {/* <Container className={classes.Header}>Add Course Activity</Container> */}
-
       <Container className={classes.borderbox1}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12}>
@@ -40,16 +38,6 @@ const TextEditor = () => {
             </Paper>
           </Grid>
         </Grid>
-        <Grid item>
-          <Paper className={classes.paper}>
-            <div className={classes.submitBtn}>
-              <Button variant="contained" color="secondary">
-                SUBMIT STUDENT
-              </Button>
-            </div>
-          </Paper>
-        </Grid>
-        <Divider className={classes.endDivider} />
       </Container>
     </div>
   );

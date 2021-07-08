@@ -1,23 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import { useHistory } from "react-router-dom";
+import { deleteStudent, editStudentData } from "../action/actions";
+import { AppContext } from "./../AppContext";
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+    fontWeight: "500",
   },
-});
+}))(Tooltip);
 
-const StudentActions = () => {
+const useStyles = makeStyles({});
+
+const StudentActions = (props) => {
+  const history = useHistory();
+  const { state, dispatch } = useContext(AppContext);
   const classes = useStyles();
+  const handleEdit = () => {
+    history.push({
+      pathname: `/student/edit/${props.data._id}`,
+      state: { data: props.data },
+    });
+    // console.log(props.data);
+    // editStudentData(dispatch, props.data);
+  };
+  const handleDeleteStudent = () => {
+    if (window.confirm("Delete the item?")) {
+      deleteStudent(dispatch, props.data._id);
+      history.push("/students");
+    }
+  };
   return (
-    <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Manage Student" placement="top">
+    <div>
+      <LightTooltip title="Edit Student" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -29,27 +53,13 @@ const StudentActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEdit}
         >
+          {/* {props.data} */}
           <VisibilityIcon />
         </button>
-      </Tooltip>
-      {/* <Tooltip title="Add Lecture" placement="top">
-        <button
-          size="small"
-          style={{
-            padding: "0%",
-            marginRight: "3%",
-            backgroundColor: "#77c13a",
-            color: "white",
-            borderColor: "#77c13a",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <AddIcon />
-        </button>
-      </Tooltip> */}
-      <Tooltip title="Student's History" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Student's History" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -64,8 +74,8 @@ const StudentActions = () => {
         >
           <HistoryIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="Delete" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -77,10 +87,11 @@ const StudentActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDeleteStudent}
         >
           <DeleteIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
     </div>
   );
 };

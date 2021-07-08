@@ -7,15 +7,15 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "3%",
   },
   textField: {
-    width: "90%",
-    marginLeft: "5%",
+    width: "93.5%",
+    marginLeft: "3%",
   },
   subheading1: {
     letterSpacing: "0.1rem",
     fontFamily: "KoHo, sans-serif",
   },
   infoHeading: {
-    marginLeft: "5%",
+    marginLeft: "3.5%",
     marginBottom: "1px",
     fontSize: "0.9rem",
     color: "#29293d",
@@ -29,10 +29,10 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     margin: "3%",
   },
-  container: {
-    alignItems: "center",
-    marginLeft: "18%",
-  },
+  // container: {
+  //   alignItems: "center",
+  //   marginLeft: "18%",
+  // },
   formControl: {
     margin: theme.spacing(1),
     width: "400",

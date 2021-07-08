@@ -1,23 +1,48 @@
-import React from "react";
-import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
+import React, { useContext } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import { useHistory } from "react-router";
+import { deleteTeacher } from "../../action/actions";
+import { AppContext } from "./../../AppContext";
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+    fontWeight: "500",
   },
-});
+}))(Tooltip);
 
-const ClassroomActions = () => {
-  const classes = useStyles();
+const TeacherActions = (props) => {
+  const history = useHistory();
+  const { dispatch } = useContext(AppContext);
+  const id = props.data._id;
+
+  const handleTeacherDetail = () => {
+    history.push({
+      pathname: `/teacher/details/${id}`,
+      state: { data: props.data },
+    });
+  };
+  const handleEdit = () => {
+    history.push({
+      pathname: `/teacher/edit/${id}`,
+      state: { data: props.data },
+    });
+  };
+  const handleDeleteTeacher = () => {
+    if (window.confirm("Delete the item?")) {
+      deleteTeacher(dispatch, props.data._id);
+    }
+  };
   return (
-    <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Edit Classroom" placement="top">
+    <div>
+      <LightTooltip title="Teacher Details" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -30,11 +55,12 @@ const ClassroomActions = () => {
             fontSize: "large",
             fontWeight: "700",
           }}
+          onClick={handleTeacherDetail}
         >
-          <div Style={{ fontWeight: "700" }}>DETAIL</div>
+          <div style={{ fontWeight: "700" }}>DETAIL</div>
         </button>
-      </Tooltip>
-      <Tooltip title="Add Lecture" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Edit Teacher" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -46,11 +72,12 @@ const ClassroomActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleEdit}
         >
           <VisibilityIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="View Classroom History" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Teacher's History" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -65,8 +92,8 @@ const ClassroomActions = () => {
         >
           <HistoryIcon />
         </button>
-      </Tooltip>
-      <Tooltip title="Delete" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -78,11 +105,12 @@ const ClassroomActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleDeleteTeacher}
         >
           <DeleteIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
     </div>
   );
 };
-export default ClassroomActions;
+export default TeacherActions;

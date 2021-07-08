@@ -1,107 +1,55 @@
-import React, { useState, useRef } from "react";
-import { Container, Select } from "@material-ui/core";
-import { Button, Card } from "@material-ui/core";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { Container } from "@material-ui/core";
+import { Button, Card, Box } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
-import ListItemText from "@material-ui/core/ListItemText";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
 import { Multiselect } from "multiselect-react-dropdown";
-
-import Classroom from "./../CRUD/Classroom";
+import { AppContext } from "../AppContext";
+import { addClassroom, getAllClassrooms, getAllCourses } from "../action/actions";
+import { useHistory, useLocation } from "react-router-dom";
 
 const AddNewClassroom = () => {
+  const { state, dispatch } = useContext(AppContext);
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
-  const newClassroomState = {
-    id: "null",
-    Name: "",
-    Course: "",
-    Teacher: "",
-    Students: "",
-  };
-  const multiselectdata = [
-    { Country: "india", id: "1" },
-    { Country: "england", id: "2" },
-    { Country: "america", id: "3" },
-    { Country: "china", id: "4" },
-    { Country: "pakistan", id: "5" },
-  ];
-  const [options] = useState(multiselectdata);
-  // const names = [
-  //   "Oliver Hansen",
-  //   "Van Henry",
-  //   "April Tucker",
-  //   "Ralph Hubbard",
-  //   "Omar Alexander",
-  //   "Carlos Abbott",
-  //   "Miriam Wagner",
-  //   "Bradley Wilkerson",
-  //   "Virginia Andrews",
-  //   "Kelly Snyder",
-  // ];
-  // const ITEM_HEIGHT = 48;
-  // const ITEM_PADDING_TOP = 8;
-  // const MenuProps = {
-  //   PaperProps: {
-  //     style: {
-  //       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-  //       width: 500,
-  //     },
-  //   },
-  // };
-  const [classroom, setClassroom] = useState(newClassroomState);
+  const history = useHistory();
 
-  // const [value, setValue] = useState("interview");
-
-  // function getStyles(name, personName, theme) {
-  //   return {
-  //     fontWeight:
-  //       personName.indexOf(name) === -1
-  //         ? theme.typography.fontWeightRegular
-  //         : theme.typography.fontWeightMedium,
-  //   };
-  // }
-
-  // const handleChange = (event) => {
-  //   setValue(event.target.value);
-  // };
+  const [selectedValue, setSelectedValue] = useState([]);
   const classes = useStyles();
-  // const theme = useTheme();
-  // const [personName, setPersonName] = React.useState([]);
+  const location = useLocation()
+  let courseData = location.state.courses
+  const courses = []
+  const options = []
+  const [coursesOptions, setCoursesOptions] = useState([])
+ 
+  useEffect(() => {
+    console.log(selectedValue);
+    console.log(courseData)
+    console.log(courseData[1])
+    courseData.map(c=>courses.push(c.course_section))
+    console.log(courses[0])
+    courses.map(c=>c.map(data=>options.push({label: data.name, value: data._id})))
+    setCoursesOptions(options)
+  }, []);
 
-  // const handleChange = (event) => {
-  //   setPersonName(event.target.value);
-  // };
+  const onSelect = (e) => {
+    setSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
+  };
 
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
-      courses: ["1", "2", "3"],
-      students: ["1", "2", "3"],
+      // enrolled_courses: {selectedValue},
+      // enrolled_students: ["1", "2", "3"],
     };
-
     console.log(nameRef.current.value);
-    // console.log(courseRef.current.value)
-    Classroom.create(data)
-      .then((res) => {
-        setClassroom({
-          id: res.data.id,
-          name: res.data.Name,
-          courses: [1, 2, 3],
-          students: [1, 2, 3],
-        });
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    console.log(selectedValue);
+    addClassroom(dispatch, data);
+    // history.push("/classroom");
   };
 
   
@@ -112,7 +60,7 @@ const AddNewClassroom = () => {
       </div>
       <Container>
         <div>
-          <Grid className={classes.container}>
+          <Box display="flex" justifyContent="center">
             <Grid item xs={12} lg={9}>
               <Card>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
@@ -122,11 +70,12 @@ const AddNewClassroom = () => {
                     size="small"
                     className={classes.textField}
                     inputRef={nameRef}
+                    // style={{ height: "5px" }}
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
                 {/* <form> */}{" "}
-                <Select
+                {/* <Select
                   variant="outlined"
                   size="small"
                   select
@@ -137,7 +86,19 @@ const AddNewClassroom = () => {
                   <MenuItem value={1}>interview</MenuItem>
                   <MenuItem value={2}>hello</MenuItem>
                   <MenuItem value={3}>hola</MenuItem>
-                </Select>
+                </Select> */}
+                <Container>
+                  <Multiselect
+                    options={coursesOptions}
+                    value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
+                    closeIcon="cancel"
+                    placeholder=""
+                    showArrow={true}
+                    avoidHighlightFirstOption={true}
+                  />
+                </Container>
                 {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
                 {/* <form>
@@ -152,13 +113,14 @@ const AddNewClassroom = () => {
                 </form> */}
                 <Container>
                   <Multiselect
-                    options={options}
-                    displayValue="Country"
+                    options={coursesOptions}
+                    // value={selectedValue}
+                    onSelect={onSelect}
+                    displayValue="label"
                     closeIcon="cancel"
                     placeholder=""
                     showArrow={true}
                     avoidHighlightFirstOption={true}
-                    // loading={true}
                   />
                 </Container>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
@@ -183,13 +145,14 @@ const AddNewClassroom = () => {
                     variant="contained"
                     color="secondary"
                     onClick={saveClassroom}
+                    style={{ fontFamily: "'Exo', sans-serif" }}
                   >
                     SUBMIT CLASSROOM
                   </Button>
                 </div>
               </Card>
             </Grid>
-          </Grid>
+          </Box>
         </div>
       </Container>
     </div>

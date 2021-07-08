@@ -1,22 +1,20 @@
 import { Container, Grid } from "@material-ui/core";
 import React from "react";
-import CRMtable from "./CRMtable";
-import AdminUsers from "./AdminUsers";
+import CRMTable from "./../Components/Operations/CRMtable";
+import AdminUsers from "./../Components/Operations/AdminUsers";
 
 const Operations = () => {
   return (
     <div>
-      <Container>
-        <Container>
-          <Grid container>
-            <Grid item xs={12} lg={6}>
-              <CRMtable />
-            </Grid>
-            <Grid item xs={12} lg={6}>
-              <AdminUsers />
-            </Grid>
+      <Container style={{ marginBottom: "20vh" }}>
+        <Grid container>
+          <Grid item xs={12} lg={6}>
+            <CRMTable />
           </Grid>
-        </Container>
+          <Grid item xs={12} lg={6}>
+            <AdminUsers />
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );

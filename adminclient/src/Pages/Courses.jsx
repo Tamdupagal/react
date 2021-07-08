@@ -12,42 +12,23 @@ import {
   IconButton,
   makeStyles,
   Typography,
+  Tooltip,
 } from "@material-ui/core";
+import BackspaceIcon from "@material-ui/icons/Backspace";
 import React, { useState } from "react";
 import { Image } from "react-bootstrap";
-import ClearIcon from "@material-ui/icons/Clear";
 import CreateIcon from "@material-ui/icons/Create";
 import Modal from "@material-ui/core/Modal";
-import AddCourseSection from "./AddCourseSection";
-import AddCourse from "../Components/Courses/AddCourse";
+import AddCourses from "../Components/Courses/AddCourses";
 import { useHistory } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 800,
-  },
-  Heading: {
-    fontFamily: "KoHo, sans-serif",
-    fontSize: "140%",
-  },
-  box: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  buttons: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-  footer: {
-    fontFamily:
-      "Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol",
-  },
-}));
+import courses from "./../Helpers/Courses";
+import useStyles from "../Styles/Courses";
+import "./../css/Courses.css";
 
 const Courses = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+
   const history = useHistory();
   const handleOpen = () => {
     setOpen(true);
@@ -57,133 +38,201 @@ const Courses = () => {
     setOpen(false);
   };
 
-  const handleAddCourse = () => {
-    history.push("/add-course");
+  const handleAddCourseSection = () => {
+    history.push("/add-course-section");
   };
 
-  const body = <AddCourseSection handleClose={handleClose} />;
-  const courses = [
-    {
-      title: "HR AND HIRING",
-      catogories: [
-        {
-          id: "16",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "13",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "15",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-      ],
-    },
-    {
-      title: "TECH COURSES",
-      catogories: [
-        {
-          id: "10",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-        {
-          id: "11",
-          image: `https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg`,
-          subject: "biology",
-        },
-      ],
-    },
-  ];
+  const handleEditCourseSection = () => {
+    history.push("/edit-course-section");
+  };
+
+  const handleViewCourseSection = () => {
+    history.push("/view-course-section");
+  };
+
+  const body = <AddCourses handleClose={handleClose} />;
+
   return (
-      <Container display="flex" justifyContent="center">
-        <Grid >
-          <Grid container alignItems='center'>
-            <Box display="flex" justifyContent="flex-start">
-              <h1 style={{ fontSize: "300%" }}>Courses</h1>
-            </Box>
-            <Grid item xs={12} lg={6}>
-              <Box m={1} display="flex" justifyContent="flex-end" >
+    <div>
+      <Container style={{ marginBottom: "20vh" }}>
+        <Container maxWidth="md">
+          <Box display="flex" justifyContent="flex-start">
+            <Grid xs={12} lg={6}>
+              <h1 className={classes.pageHeading}>Courses</h1>
+            </Grid>
+          </Box>
+          <Box>
+            <Box display="flex" justifyContent="flex-end">
+              <Grid
+                xs={12}
+                lg={5}
+                style={{
+                  marginTop: "-7%",
+                }}
+              >
                 <Button
                   variant="outlined"
-                  size="medium"
-                  style={{
-                    marginRight: "20px",
-                    color: "green",
-                    border: "1px solid green",
-                  }}
-                  onClick={handleAddCourse}
-                  >
-                  <strong>Add Course</strong>
-                </Button>
-                <Button
-                  variant="outlined"
+                  size="small"
                   color="primary"
-                  size="medium"
-                  onClick={handleOpen}
-                  style={{ color: "#5567ff", border: "1px solid #5567ff" }}
-                  >
+                  className={classes.greenBtn}
+                  onClick={handleAddCourseSection}
+                >
                   <strong>Add Course Section</strong>
                 </Button>
-              </Box>
-            </Grid>
-          </Grid>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size="small"
+                  onClick={handleOpen}
+                  className={classes.blueBtn}
+                >
+                  <strong>Add Courses</strong>
+                </Button>
+              </Grid>
+            </Box>
+          </Box>
+        </Container>
+        <Box>
           {courses.map((course) => (
             <Container>
-              <Grid  container alignItems='center' justify='center'>
+              <Grid container alignItems="center" justify="center">
                 <Grid item lg={10}>
                   <Grid container>
-                    <Grid item xs={12}>
-                      <h1 className={classes.Heading}>{course.title}</h1>
+                    <Grid xs={12}>
+                      <Grid item xs={12} md={10}>
+                        <Box
+                          display="flex"
+                          flexDirection="row"
+                          alignItems="center"
+                          p={1}
+                          m={1}
+                        >
+                          {" "}
+                          <Box>
+                            {" "}
+                            <h1 className={classes.Heading}>{course.title}</h1>
+                          </Box>{" "}
+                          <Box m={1}>
+                            <Button
+                              startIcon={<BackspaceIcon />}
+                              variant="contained"
+                              color="secondary"
+                              size="small"
+                              className={classes.btn}
+                            >
+                              {" "}
+                              Delete
+                            </Button>
+                          </Box>
+                        </Box>
+                      </Grid>
+                      <Grid xs={12}>
+                        {" "}
+                        <Divider className={classes.dividerInset} />
+                      </Grid>
                     </Grid>
                   </Grid>
-                  <Grid container spacing={2}>
-                    {course.catogories.map((c) => (
-                      <Grid item xs={12} md={6} lg={3}>
-                        {" "}
-                        <Card
-                          key={c.id}
-                          style={{ width: "80%", marginLeft: "2vw" }}
+                  <Box>
+                    <Grid container spacing={2} direction="row">
+                      {course.catogories.map((c) => (
+                        <Grid
+                          item
+                          xs={12}
+                          md={6}
+                          lg={3}
+                          style={{ marginTop: "2%" }}
+                        >
+                          {" "}
+                          <Card
+                            key={c.id}
+                            style={{
+                              marginTop: "7%",
+                            }}
+                            className="flip-card"
                           >
-                          <Image width="100%" src={c.image} />
-                          <CardActions disableSpacing>
-                            {c.subject}
-                            <IconButton
-                              aria-label="show more"
-                              style={{ marginLeft: "auto" }}
-                              >
-                              <CreateIcon />
-                            </IconButton>
-                          </CardActions>
-                        </Card>
-                      </Grid>
-                    ))}
-                  </Grid>
+                            <div className="flip-card-inner">
+                              <div className="flip-card-front">
+                                <Image
+                                  className={classes.image}
+                                  src={c.image}
+                                />
+                                <Box>
+                                  <CardActions className={classes.courseName}>
+                                    {c.subject}
+                                  </CardActions>
+                                </Box>
+                              </div>
+                              <div className="flip-card-back">
+                                <h2>Course Name</h2>
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  color="primary"
+                                  className={classes.greenBtn1}
+                                  onClick={handleEditCourseSection}
+                                >
+                                  <strong>Edit Course Section</strong>
+                                </Button>
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  color="secondary"
+                                  className={classes.blueBtn1}
+                                  onClick={handleViewCourseSection}
+                                >
+                                  <strong>View Course Section</strong>
+                                </Button>
+                              </div>
+                            </div>
+                          </Card>
+                        </Grid>
+                      ))}
+                    </Grid>
+                    {/* <Container>
+                    <Grid container spacing={2}
+                    direction="row">
+                    <Grid item xs={12} md={6} lg={3}>
+                      <Card
+                        className={classes.paper}
+                        style={{ borderLeft: "4px solid red", cursor: "pointer" }}
+                      >
+                        <div className={classes.content}>
+                          83
+                          <Typography>Classes</Typography>
+                        </div>
+                      </Card>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={3}>
+                      <Card
+                        className={classes.paper}
+                        style={{ borderLeft: "4px solid red", cursor: "pointer" }}
+                        >
+                        <div className={classes.content}>
+                          83
+                          <Typography>Classes</Typography>
+                        </div>
+                      </Card>
+                    </Grid>
+                        </Grid>
+                    </Container> */}
+                  </Box>
                 </Grid>
               </Grid>
             </Container>
           ))}
-        </Grid>
-    </Container>
+        </Box>
+      </Container>
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
+    </div>
   );
 };
 export default Courses;

@@ -1,64 +1,106 @@
-import React from 'react'
+import React, { useContext, useEffect } from "react";
+import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
+import { useHistory } from "react-router";
+import { makeStyles } from "@material-ui/core/styles";
+import { StudentData, StudentColumn } from "./../Helpers/StudentData";
+import { AppContext } from "../AppContext";
+import { getAllClassrooms, getAllStudentCourses, getAllStudents } from "../action/actions";
+import Table from "../Components/Table/Table";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import ManageStudentCourseActions from "./../Components/Actions/ManageStudentCourseActions";
+import { useLocation } from "react-router-dom";
+import { ManageStudentCourseColumn, ManageStudentCourseData } from "../Helpers/ManageStudentCourses";
 
-import { useStyles } from "./../Styles/ManageStudentCourses";
-import { Container } from "@material-ui/core";
-import { Button, Card } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import MenuItem from "@material-ui/core/MenuItem";
-
+const useStyles = makeStyles({
+  title: {
+    fontSize: "2rem",
+    fontWeight: "700",
+    fontFamily: "KoHo, sans-serif",
+  },
+  container: {
+    border: "1px solid #e6e6ff",
+    borderBottom: "white",
+    backgroundColor: "white",
+    padding: "1%",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
+  },
+});
 
 const ManageStudentCourse = () => {
-    const [value, setValue] = React.useState("interview");
-    const handleChange = (event) => {
-            setValue(event.target.value);
-        };
-    const classes = useStyles();
+  const classes = useStyles();
+  const history = useHistory();
+  const {dispatch} = useContext(AppContext)
+  const location = useLocation()
+  const courses = location.state.data
+  useEffect(() => {
+    // getAllStudentCourses(dispatch)
+    console.log(courses)
+  }, [])
+  // const { state, dispatch } = useContext(AppContext);
 
-    return (
+  // useEffect(() => {
+  //   getAllStudents(dispatch);
+  //   console.log(state.studentData);
+  // }, []);
+
+  // const Columns = [
+  //   { title: "Course", field: "name" },
+  //   {
+  //     title: "Actions",
+  //     field: "name",
+  //     render: (row) => (
+  //       <div>
+  //         <ManageStudentCourseActions />
+  //       </div>
+  //     ),
+  //   },
+  // ];
+
+  return (
     <div>
-      <div>
-        <h1 className={classes.mainHeading}>Manage Course for Name</h1>
-      </div>
-      <Container>
-        <Grid xs={12} md={9} className={classes.container}>
-          <Card className={classes.card0}>
-            <h5 className={classes.infoHeading}>Classroom Name:</h5>
-            <form>
-              {" "}
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                size="small"
-                className={classes.textField}
-              />
-            </form>
-            <h5 className={classes.infoHeading}>Assign Course:</h5>
-            <form>
-              {" "}
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                size="small"
-                select
-                value={value}
-                onchange={handleChange}
-                className={classes.textField}
-              >
-                <MenuItem value={"interview"}>interview</MenuItem>
-                <MenuItem value={"hello"}>hello</MenuItem>
-                <MenuItem value={"hola"}>hola</MenuItem>
-              </TextField>
-            </form>
-            <div className={classes.submitBtn}>
-              <Button variant="contained" color="secondary">
-                SUBMIT
-              </Button>
-            </div>
-          </Card>
+      <Box
+        display="flex"
+        justifyContent="center"
+        style={{ marginBottom: "20vh" }}
+      >
+        <Grid item xs={12} lg={10}>
+          <Container>
+            <Container
+              style={{
+                border: "1px solid #e6e6ff",
+                borderBottom: "white",
+                backgroundColor: "white",
+                padding: "1%",
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+              }}
+            >
+              <Box display="flex" justifyContent="space-between">
+                <Typography className={classes.title}>
+                  {" "}
+                  Manage Course for {courses.name}
+                </Typography>
+
+                {/* <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleAddStudent}
+                  style={{ fontFamily: "'Exo', sans-serif" }}
+                >
+                  Add new Student
+                </Button> */}
+              </Box>
+            </Container>
+          </Container>
+
+          <Container>
+            <Table data={ManageStudentCourseData(courses)} column={ManageStudentCourseColumn()} />
+          </Container>
         </Grid>
-      </Container>
+      </Box>
     </div>
-    )
-}
+  );
+};
+
 export default ManageStudentCourse;

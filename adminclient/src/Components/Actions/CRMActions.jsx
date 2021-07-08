@@ -1,39 +1,24 @@
 import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
-import AddIcon from "@material-ui/icons/Add";
 import Tooltip from "@material-ui/core/Tooltip";
-import HistoryIcon from "@material-ui/icons/History";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import { withStyles } from "@material-ui/core/styles";
+import LockRoundedIcon from "@material-ui/icons/LockRounded";
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 15,
+    fontWeight: "500",
   },
-});
+}))(Tooltip);
 
-const TeacherTrainingActions = () => {
-  const classes = useStyles();
+const CRMActions = () => {
   return (
-    <div display="flex" justifycontent="space-around" className={classes.root}>
-      <Tooltip title="Manage Student" placement="top">
-        <button
-          size="small"
-          style={{
-            padding: "1%",
-            marginRight: "3%",
-            backgroundColor: "#77c13a",
-            color: "white",
-            borderColor: "#77c13a",
-            borderRadius: "4px",
-            fontSize: "small",
-          }}
-        >
-          <CreateIcon />
-        </button>
-      </Tooltip>
-      {/* <Tooltip title="Add Lecture" placement="top">
+    <div>
+      <LightTooltip title="Edit" placement="top" arrow>
         <button
           size="small"
           style={{
@@ -46,14 +31,14 @@ const TeacherTrainingActions = () => {
             fontSize: "small",
           }}
         >
-          <AddIcon />
+          <CreateIcon />
         </button>
-      </Tooltip> */}
-      {/* <Tooltip title="Student's History" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Reset Password" placement="top" arrow>
         <button
           size="small"
           style={{
-            padding: "1%",
+            padding: "0%",
             marginRight: "3%",
             backgroundColor: "#5567ff",
             color: "white",
@@ -62,14 +47,14 @@ const TeacherTrainingActions = () => {
             fontSize: "small",
           }}
         >
-          <HistoryIcon />
+          <LockRoundedIcon />
         </button>
-      </Tooltip> */}
-      <Tooltip title="Delete" placement="top">
+      </LightTooltip>
+      <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
           style={{
-            padding: "1%",
+            padding: "0%",
             marginRight: "3%",
             backgroundColor: "#d9534f",
             color: "white",
@@ -80,8 +65,8 @@ const TeacherTrainingActions = () => {
         >
           <DeleteIcon />
         </button>
-      </Tooltip>
+      </LightTooltip>
     </div>
   );
 };
-export default TeacherTrainingActions;
+export default CRMActions;

@@ -5,23 +5,17 @@ export const useStyles = makeStyles((theme) => ({
     marginLeft: "0%",
   },
   Header: {
-    fontSize: "2rem",
+    fontSize: "1.8rem",
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
-    backgroundColor: "#318ebd",
-    width: "90%",
+    backgroundColor: "#0086b3",
+    width: "100%",
     color: "white",
-    border: "2px solid #318ebd",
-    padding: "2%",
-  },
-  borderbox1: {
-    border: "1px solid rgb(128, 128, 128, 0.4)",
-    width: "90%",
-    borderBottomLeftRadius: "10px",
-    borderBottomRightRadius: "10px",
-    marginLeft: "5%",
-    padding: "3%",
-    marginBottom: "2%",
+    border: "2px solid #0086b3",
+    display: "flex",
+    flexDirection: "row",
+    letterSpacing: "0.1rem",
+    fontWeight: "700",
   },
   paper1: {
     padding: theme.spacing(2),
@@ -29,16 +23,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   paper: {
     marginTop: "2%",
-    padding: theme.spacing(0.2),
     color: theme.palette.text.secondary,
-  },
-  uploadimg: {
     border: "1px solid #ccc",
-    borderRadius: "10px",
-    paddingBottom: "8%",
-  },
-  chooseFile: {
-    padding: "2%",
+    borderRadius: "5px",
+    justifyContent: "center",
+    width: "96%",
+    marginLeft: "2%",
   },
   saveBtn: {
     border: "1px solid #ccc",
@@ -60,7 +50,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   endDivider: {
     padding: "0.05%",
-    marginTop: "6%",
+    marginTop: "5%",
   },
   submitBtn: {
     textAlign: "center",

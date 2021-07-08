@@ -29,6 +29,8 @@ export const useStyles = makeStyles((theme) => ({
     color: "#29293d",
     fontFamily: "'Roboto', sans-serif",
     letterSpacing: "0.01rem",
+    marginBottom: "0%",
+    fontSize: "1rem",
   },
   submitBtn: {
     display: "flex",
