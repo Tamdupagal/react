@@ -60,4 +60,17 @@ export const useStyles = makeStyles((theme) => ({
     border: "1px solid #ccc",
     padding: "1rem",
   },
+   box1: {
+        border: "1px solid #ccc",
+    },
+box2: {
+        border: "1px solid #ccc",
+    },
+box3: {
+        border: "1px solid #ccc",
+    },
+    slot: {
+        width:"100%"
+        // border:"1px solid red"
+    }
 }));
