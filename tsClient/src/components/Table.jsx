@@ -16,7 +16,7 @@ function Table({ columns, data }) {
         getTableProps,
         prepareRow } = useTable({
             columns: col,
-            data: dataMock
+            data: data || dataMock
   })
     return (
         <div className="table__wrapper">

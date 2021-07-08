@@ -1,8 +1,8 @@
 @import "../sass/variable";
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .table__wrapper {
-  padding: 1rem;
+  padding: 1rem 0;
+  width: 100%;
 }
 table {
   display: table;
@@ -11,35 +11,39 @@ table {
   width: 100%;
   border-radius: 0.3rem;
   overflow: hidden;
-  border-spacing: 0;
   th,
   td {
-    border: 0.05rem solid rgba($black, 0.2);
+    // border: 0.02rem solid rgba($black, 0.2);
     text-align: center;
     color: black;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     cursor: pointer;
+    border-radius: 0.2rem;
+    max-width: 8rem;
+    text-align: center;
+    word-break: break-all;
     @media screen and (max-width: 400px) {
       font-size: 1.2rem;
     }
-    border-radius: 0.2rem;
-    font-family: "Poppins", sans-serif;
   }
   th {
     color: black;
     padding: 1.5rem 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     letter-spacing: 0.03rem;
     background-color: $light_black;
   }
   td {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(black, 0.6);
+    text-transform: capitalize;
   }
   tr:nth-child(even) {
     background-color: $light_black;
   }
   &.dark {
-    background-color: rgba(#42285a, 0.4);
+    background-color: $dark;
 
     & th {
       color: white;
@@ -47,7 +51,6 @@ table {
     }
     & td {
       color: white;
-      font-family: "Nunito";
       letter-spacing: 0.05rem;
     }
     & th,
@@ -55,7 +58,7 @@ table {
       border: 0.1rem solid #ffffff3a;
     }
     tr:nth-child(even) {
-      background-color: #18105c5d;
+      background-color: $dark;
     }
   }
 }

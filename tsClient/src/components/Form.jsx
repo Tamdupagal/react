@@ -1,9 +1,9 @@
 import React, { useContext} from 'react'
 import Select from 'react-select'
-import { ImEyeBlocked } from 'react-icons/im'
-
-import './Form.scss'
+import { ImCross } from 'react-icons/im'
+import {customStyles} from '../helpers/ReactSelect'
 import { AppContext } from '../AppContext'
+import './Form.scss'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -11,23 +11,7 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ]
 
-const customStyles = {
-    option: (provided, state) => ({
-        ...provided,
-        borderBottom: '1px dotted pink',
-        color: state.isSelected ? 'white' : '#0069d9',
-        padding: 10,
-        fontSize: '1.5rem',
-    }),
-    singleValue: (provided, state) => ({
-        ...provided,
-        fontSize: '1.5rem',
-    }),    
-    placeholder: (provided, state) => ({
-        ...provided,
-        fontSize: '1.5rem'
-    })
-}
+
 
 function Form() {
     const { setToggleForm, toggleForm, theme} = useContext(AppContext)
@@ -43,7 +27,7 @@ function Form() {
         <div className={`feedback__form${toggleForm ? " active" : ""}${theme ? " dark" : ""}`}>
                     <h1 className="form__title">Class Feedback</h1>
                     <div className="form__area">
-                        <div className="close__btn" onClick={()=>setToggleForm(prev=>!prev)}><ImEyeBlocked className="icon__close"/></div>
+                        <div className="close__btn" onClick={()=>setToggleForm(prev=>!prev)}><ImCross className="icon__close"/></div>
                         <div className="form__input">
                             <span >Lecture's Information</span>
                             <Select styles={customStyles} options={options} />

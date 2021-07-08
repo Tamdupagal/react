@@ -24,11 +24,16 @@ $form__bg__color: #3d779e;
   top: 0;
   right: 0;
   transform: translateX(100%);
+  opacity: 0;
   width: max-content;
   min-width: 38rem;
   height: 100%;
   color: black;
-  transition: transform 0.35s ease-out;
+  transition: {
+    property: transform, opacity;
+    duration: 0.3s;
+    timing-function: ease-out;
+  }
   background-color: rgba(white, 0.8);
   background-color: white;
   .form__title {
@@ -69,10 +74,10 @@ $form__bg__color: #3d779e;
       z-index: -1;
       cursor: pointer;
       background-color: white;
-      border-radius: 0 0 0 2rem;
+      border-radius: 0 0 0 1rem;
     }
     .icon__close {
-      font-size: 2.5rem;
+      font-size: 1.2rem;
       transform: rotateZ(-45deg) translateX(-1.7rem);
       color: $primary_color;
     }
@@ -125,6 +130,7 @@ $form__bg__color: #3d779e;
   }
   &.active {
     transform: translateX(0%);
+    opacity: 1;
     .form__area {
       .close__btn {
         left: math.div(-$close__btn__width, 2);
@@ -132,14 +138,12 @@ $form__bg__color: #3d779e;
     }
   }
   &.dark {
-    .form__title {
-      background-color: $dark__green;
-    }
+    .form__title,
     .form__submit__btn {
-      background-color: $dark__green;
+      background-color: $dark;
     }
     .icon__close {
-      color: $dark__green;
+      color: $indigo;
     }
   }
 }

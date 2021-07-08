@@ -20,3 +20,8 @@ export const COLUMNS = [
         Header : 'Action'
     },
 ]
+
+// export const ATTENDANCE_DATA = (data) => {
+//     if (!data) return
+//     return data.map(item:)
+// }

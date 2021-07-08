@@ -1,7 +1,7 @@
 @import "../sass/variable";
 
 .editor__wrapper {
-  padding: 1.5rem;
+  padding: 1.5rem 0;
   color: black;
   &.dark {
     color: white;
@@ -16,7 +16,8 @@
   }
   .toolBar {
     padding: 1rem;
-    border: 1px solid #ccc;
+    border: 0.3rem solid #ccc;
+    border-radius: 0.6rem;
     .ql-editor {
       min-height: 20rem;
     }
@@ -32,6 +33,7 @@
     text-align: center;
     padding: 1rem;
     margin-top: 0.5rem;
+    border: 1px solid red;
     & > button {
       border: none;
       color: $white;

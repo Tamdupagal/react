@@ -10,7 +10,6 @@ import { Route, Switch,Redirect, useHistory} from 'react-router-dom'
 import Bag from './pages/Bag/Bag'
 import SideNav from './pages/SideNav/SideNav'
 import Header from './components/Header'
-import Quiz from './pages/Quiz/Quiz'
 import CreateAs from './components/CreateAs'
 import Login from './pages/Login/Login'
 import { AppContext } from './AppContext'
@@ -18,13 +17,16 @@ import ProtectedRoute from './helpers/ProtectedRoute'
 import Courses from './pages/Courses/Courses'
 import LiveClass from './pages/LiveClass/LiveClass'
 import Library from './pages/Library/Library'
+import Course from './components/Course'
+import Lecture from './pages/Lectures/Lecture'
 import './App.scss';
 
 
 function App() {
 
-    const { toggle, theme, state: { auth } } = useContext(AppContext)
+    const { toggle, theme, state : {auth}} = useContext(AppContext)
     const history = useHistory()
+
 
     useEffect(() => {
         if (!auth.token) {
@@ -33,10 +35,9 @@ function App() {
     }, [auth.token])
 
     useEffect(() => {
-        if (history.pathname === '/') {
             history.push('/login')
-        }
     }, [])
+
     
   return (
       <>
@@ -61,8 +62,14 @@ function App() {
                             <ProtectedRoute path={`/teacher/assignment`} exact > 
                                 <Assigment/>
                             </ProtectedRoute>
+                            <ProtectedRoute path={`/teacher/lecture`} exact > 
+                                <Lecture/>
+                            </ProtectedRoute>
                             <ProtectedRoute path={`/teacher/activities`} exact >
                                 <Activities />
+                            </ProtectedRoute>
+                            <ProtectedRoute path={`/teacher/course`} exact >
+                                <Course/>
                             </ProtectedRoute>
                             <ProtectedRoute path={`/teacher/note`} exact >
                                 <Note />
@@ -71,13 +78,13 @@ function App() {
                                 <Scheduler />
                             </ProtectedRoute>
                             <ProtectedRoute path='/teacher/assignment/create' exact>
-                                <CreateAs/>
+                                      <CreateAs/>
+                            </ProtectedRoute>
+                            <ProtectedRoute path='/teacher/assignment/update' exact>
+                                    <CreateAs/>
                             </ProtectedRoute>
                         </Switch>
                         </div>
-                        <ProtectedRoute path="/teacher/quiz" exact >
-                            <Quiz/>
-                        </ProtectedRoute>
                         <Form/>
                 </div>)
                 }}>
@@ -91,7 +98,8 @@ function App() {
                         <Header/>
                         <Switch>
                             <ProtectedRoute path={`/student/bag`} exact >
-                                <Bag/>                                      
+                                      <Bag />
+                                      
                             </ProtectedRoute>
                             <ProtectedRoute path={`/student/courses`} exact >
                                 <Courses/>
@@ -107,14 +115,11 @@ function App() {
                             </ProtectedRoute>
                         </Switch>
                         </div>
-                        {/* <ProtectedRoute path="student/quiz" exact >
-                            <Quiz/>
-                        </ProtectedRoute> */}
                         <Form/>
                 </div>)
                 }}>
-                </ProtectedRoute>                                       
-                </Switch>
+              </ProtectedRoute>
+          </Switch>
                 </>
                 );
             }

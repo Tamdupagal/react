@@ -5,33 +5,24 @@
   width: 100%;
   height: max-content;
   padding: 1.5rem;
-  border-radius: 1rem;
+  border-radius: 0.45rem;
+  box-shadow: 0 0 0.5rem 0.05rem rgba(black, 0.1);
   @include flex_layout(center, space-between);
   .header__box {
     @include flex_layout();
-    & > img {
-      width: 5rem;
-      height: 5rem;
-      object-fit: cover;
-      margin-right: 1.5rem;
-      &.invert {
-        filter: invert(100%);
-      }
-    }
     & > span {
       color: $white;
       font-size: 2rem;
       font-weight: bold;
     }
+    .tableHeader__icon {
+      color: white;
+      font-size: 3.5rem;
+      margin-right: 1.3rem;
+    }
   }
   &.dark {
-    color: black;
-    background-color: #fafafa;
-
-    .header__box {
-      & > span {
-        color: black;
-      }
-    }
+    background-color: rgb(47, 74, 95);
+    box-shadow: $dark_box_shadow;
   }
 }

@@ -44,6 +44,8 @@ function SideNav({path}) {
                                     </li>
                             )
                 )
+            default:
+                return
 
         }
     }

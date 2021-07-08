@@ -6,6 +6,7 @@ import bookshelf from '../assets/bookshelf.svg'
 import live from '../assets/live.svg'
 import course from '../assets/course.svg'
 import certificate from '../assets/certification.png'
+import lecture from '../assets/lecture.png'
 
 export const TEACHER_SIDENAV = (path) => {
     if (path) {
@@ -20,6 +21,11 @@ export const TEACHER_SIDENAV = (path) => {
                 ListItem: 'Attendance',
                 ListImage: document,
                 route: `${path}/attendance`
+            },
+            {
+                ListItem: 'Lectures',
+                ListImage: lecture,
+                route: `${path}/lecture`
             },
             {
                 ListItem: 'Asignments',

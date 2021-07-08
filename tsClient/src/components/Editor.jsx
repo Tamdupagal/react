@@ -47,7 +47,7 @@ const modules = {
     ]
 }
 
-function Editor({withoutButton, withoutTitle, styles}) {
+function Editor({withoutButton, withoutTitle, styles, value, onChange}) {
     const {theme} = useContext(AppContext)
     return (
         <div className={`editor__wrapper${theme ? ' dark' : ''}`} style={styles}>
@@ -58,6 +58,8 @@ function Editor({withoutButton, withoutTitle, styles}) {
                 placeholder="Add Content here..."
                 formats={formats}
                 modules={modules}
+                value={value || ""}
+                onChange={onChange}
             />
             {!withoutButton && <div className="btn__box">
                 <button type="button">Add Activity</button>

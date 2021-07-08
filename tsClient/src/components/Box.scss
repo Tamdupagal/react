@@ -2,19 +2,21 @@
 @import "../sass/utilities";
 
 .section {
+  @include flex_layout(center, null, column);
   height: max-content;
-  background-color: white;
+  background-color: #f5f5f5;
   height: max-content;
   width: 100%;
-  border: 0.1rem solid $border_col;
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0 0 0.75rem rgba(black, 0.25);
+  padding: 1rem;
   &.dark {
     position: relative;
-    border: 0.1rem solid white;
-    color: white;
-    background: rgba(black, 0.35);
+    color: rgba(#ccc, 0.5);
+    background: $dark;
+    box-shadow: $dark_box_shadow;
     &.course__section {
       border: none;
       background-color: #ffffff26;

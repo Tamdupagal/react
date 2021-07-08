@@ -5,39 +5,52 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LOGIN_FORM_SCHEMA } from '../../helpers/Schema'
 import {useHistory} from 'react-router-dom'
-
-import './Login.scss'
 import { AppContext } from '../../AppContext';
-import { fakeAuth } from '../../action/actions';
-import ReactLoading from 'react-loading';
+import { auth as authLogin } from '../../action/actions';
+import {toast} from 'react-toastify'
+import Loader from '../../components/Loader'
 import das from '../../assets/das.png'
+import './Login.scss'
+import { STUDENT_FAKE_AUTH } from '../../action/actionType';
+
+toast.configure()
 
 function Login() {
 
-    const { state: { auth }, dispatch } = useContext(AppContext)
-    const [checkBox, setCheckBox] = useState(false)
+    const { state: { auth: { token, role, isLoading }}, dispatch } = useContext(AppContext)
+    
+    const [checkbox, setCheckbox] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const overlayRef = useRef()
     const history = useHistory()
 
-    console.log(auth.token)
 
-    const handleSignIn = (data) => {
-        fakeAuth(dispatch)
+    const handleSignIn = () => {
+        const data = {
+            email,
+            password
+        }
+        if (checkbox) {
+            authLogin(dispatch, 'teacher', data, toast)
+        } else {
+            dispatch({ type: STUDENT_FAKE_AUTH, payload: { token: 'fake', role: 'STUDENT' } })
+            sessionStorage.setItem('key',  'fake')
+            sessionStorage.setItem('role', 'STUDENT')
+            // authLogin(dispatch, 'student', data, toast)
+        }
     }
     const handleCheckbox = (e) => {
         if (e.target) {
-            setCheckBox(e.target.checked)
+            setCheckbox(e.target.checked)
         }
     }
+
     useEffect(() => {
-        if (auth.token) {
-            if (checkBox) {
-                history.push('/teacher')
-            } else {
-                history.push('/student') 
-            }
+        if (token && role) {
+          history.push(`/${role.toLowerCase()}`)
         }
-    }, [auth.token])
+    }, [token]);
 
     const { register, handleSubmit, formState : {errors} } = useForm({
         resolver : yupResolver(LOGIN_FORM_SCHEMA)
@@ -49,12 +62,13 @@ function Login() {
                     <strong className="login__form__title">Sign In</strong>
                     <div className="login__input__box">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" placeholder="Email" {...register("email")}/>
+                        <input
+                            type="email" name="email" placeholder="Email" {...register("email")} value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         <p className="login__error">{errors.email?.message}</p>
                     </div>
                     <div className="login__input__box">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" placeholder="Password" {...register("password")} />
+                        <input type="password" name="password" placeholder="Password" {...register("password")} value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         <p className="login__error">{errors.password?.message}</p>
                     </div>
                     <div className="checkbox_container">
@@ -64,8 +78,8 @@ function Login() {
                         </div>
                         <p className="pass__forgot__btn" onClick={()=> overlayRef.current.classList.add('show')}>Forgot your password ?</p>
                     </div>
-                    {auth.isLoading ?
-                        <ReactLoading type='spin' color='blue' height={30} width={30} />
+                    {isLoading ?
+                        <Loader/>
                         :
                         <button className="sign__in__btn">Sign In</button>
                     }

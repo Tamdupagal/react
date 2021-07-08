@@ -2,11 +2,18 @@
 @import "../../sass/utilities";
 
 .assignment_button {
+  font-family: sans-serif;
   color: $white;
   text-decoration: none;
-  background-color: #28a745;
+  background-color: $red;
   font-size: $font_size;
-  font-weight: 500;
+  font-weight: bold;
   padding: 1rem 1.5rem;
-  border-radius: $border_rad;
+  border-radius: 0.5rem;
+  &:active {
+    transform: scale(0.95);
+  }
+}
+.assignment__configure {
+  @include flex_layout();
 }

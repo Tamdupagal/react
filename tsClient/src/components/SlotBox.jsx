@@ -16,7 +16,7 @@ function SlotBox() {
         <div className={`slot__container${theme ? ' dark' : ''}`}>
             <div className="date__box">
                 <label htmlFor="date">Date :</label>
-                <input type="date" name="date"/>
+                <input type="date"/>
             </div>
             {slots.map((item, index) =>
                     <Slot

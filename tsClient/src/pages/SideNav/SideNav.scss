@@ -12,6 +12,8 @@
     property: margin-left;
     duration: $nav_toggle_duration;
   }
+  top: 0;
+  background-color: #3d779e;
   &.active {
     margin-left: 0;
   }
@@ -21,16 +23,12 @@
   .sidenav {
     @include flex_layout(center, null, column);
     width: 100%;
-    background-color: $primary_bg_color;
-    background-color: #3d779e;
+    height: 100%;
     padding: 2rem 0;
-    height: max-content;
-    min-height: 100%;
     &__logo__box {
       position: relative;
       width: 100%;
       @include flex_layout();
-      margin-bottom: 2rem;
       & > img {
         width: 70%;
         height: auto;
@@ -76,11 +74,10 @@
       }
     }
     &.dark {
-      background-color: rgba(29, 27, 65, 0.97);
+      background-color: $dark;
       & > nav li {
         &:not(:first-child):hover {
-          background-color: hsla(0, 0%, 100%, 0.33);
-
+          background-color: $primary;
           .list_text {
             color: white;
           }
