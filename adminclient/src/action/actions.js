@@ -399,19 +399,19 @@ export const deleteMeetLink= async (dispatch, id) => {
         // console.log(err)
     }
 }
-export const getAllCourses = async (dispatch) => {
-    try{
-        dispatch ({ type: GET_ALL_COURSES_REQUEST})
-        const res = await axios.get(`/courses/all`)
-        console.log(res)
-        dispatch({type : GET_ALL_COURSES_SUCCESS, payload: res.data})
-        // getAllMeetLinks(dispatch)
-        return res.data
-    } catch (err) {
-        dispatch({type : GET_ALL_COURSES_FAIL, payload : err})
-        console.log(err)
-    }  
-}
+// export const getAllCourses = async (dispatch) => {
+//     try{
+//         dispatch ({ type: GET_ALL_COURSES_REQUEST})
+//         const res = await axios.get(`/courses/all`)
+//         console.log(res)
+//         dispatch({type : GET_ALL_COURSES_SUCCESS, payload: res.data})
+//         // getAllMeetLinks(dispatch)
+//         return res.data
+//     } catch (err) {
+//         dispatch({type : GET_ALL_COURSES_FAIL, payload : err})
+//         console.log(err)
+//     }  
+// }
 //*****************TRAINERS*****************
 export const getAllTrainers = async (dispatch) => {
     try{
