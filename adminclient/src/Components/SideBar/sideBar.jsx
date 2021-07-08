@@ -7,26 +7,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { Button } from "@material-ui/core";
 import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import { Link, useHistory } from "react-router-dom";
-import Dropdown from "react-dropdown";
 import MainLogo from "./../../Images/mainLogo.png";
 import { Image } from "react-bootstrap";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import RemoveFromQueueIcon from "@material-ui/icons/RemoveFromQueue";
@@ -34,12 +23,14 @@ import LinkIcon from "@material-ui/icons/Link";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import CreateIcon from "@material-ui/icons/Create";
 import FaceIcon from "@material-ui/icons/Face";
-import GamesIcon from "@material-ui/icons/Games";
 import TuneIcon from "@material-ui/icons/Tune";
 import "./../../css/sidebar.css";
 import GamepadIcon from "@material-ui/icons/Gamepad";
 import { FaUserGraduate } from "react-icons/fa";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import { withStyles } from "@material-ui/core/styles";
+import MuiAccordion from "@material-ui/core/Accordion";
+import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
+import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 
 const drawerWidth = 250;
 let shift;
@@ -47,6 +38,7 @@ let display;
 let contentMargin;
 let background;
 let setStyle;
+let backgroundColor;
 
 if (window.innerWidth <= 600) {
   shift = drawerWidth;
@@ -57,10 +49,56 @@ if (window.innerWidth <= 600) {
   display = "none";
 }
 
+const Accordion = withStyles({
+  root: {
+    backgroundColor: "transparent",
+    color: "white",
+    width: "95%",
+    borderRadius: "10px",
+    boxShadow: "none",
+    "&:not(:last-child)": {
+      borderBottom: 0,
+    },
+    "&:before": {
+      display: "none",
+    },
+    "&$expanded": {
+      // margin: "auto",
+    },
+  },
+  expanded: {},
+})(MuiAccordion);
+
+const AccordionSummary = withStyles({
+  root: {
+    backgroundColor: "transparent",
+    color: "white",
+    marginBottom: -1,
+    minHeight: 56,
+    "&$expanded": {
+      minHeight: 56,
+    },
+  },
+
+  expanded: {},
+})(MuiAccordionSummary);
+
+const AccordionDetails = withStyles((theme) => ({
+  root: {
+    // padding: theme.spacing(0),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    textAlign: "start",
+    color: "white",
+    marginLeft: "10px",
+  },
+}))(MuiAccordionDetails);
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    // alignItems: 'center',
   },
   appBar: {
     // justifyContent: "space-between",
@@ -88,17 +126,6 @@ const useStyles = makeStyles((theme) => ({
   leftIcon: {
     display: `${display}`,
   },
-  // menuButton: {
-  //   marginRight: theme.spacing(2),
-  //   color: 'black'
-  // },
-  listText: {
-    textDecoration: "none",
-    color: "white",
-    "&:hover": {
-      color: "white",
-    },
-  },
   hide: {
     display: "none",
   },
@@ -113,13 +140,8 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    // marginTop: "10px",
     marginLeft: "10px",
-    // padding: theme.spacing(5,0,0,0),
-    // necessary for content to be below app bar
-    // ...theme.mixins.toolbar,
-    // justifyContent: 'flex-start',
-    marginTop: "22%",
+    marginTop: "10%",
   },
   content: {
     flexGrow: 1,
@@ -137,50 +159,14 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: `${contentMargin}`,
   },
-  hover: {
-    color: "black",
-    "&:hover": {
-      color: "white",
-    },
-  },
+  // hover: {
+  //   color: "black",
+  //   "&:hover": {
+  //     color: "white",
+  //   },
+  // },
   view: {
     marginLeft: 250,
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: "33.33%",
-    flexShrink: 0,
-  },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
-  AccordionContent: {
-    marginLeft: "5%",
-    border: "none",
-    textDecoration: "none",
-  },
-  Accordion: {
-    boxShadow: "unset",
-    borderTopRightRadius: "15px ",
-    borderBottomRightRadius: "15px",
-    textDecoration: "none",
-    marginTop: "-10px",
-  },
-  menu: {
-    marginLeft: "15px",
-    color: "white",
-  },
-  subMenu: {
-    marginLeft: "25px",
-    color: "white",
-    textDecoration: "none",
-  },
-  AccordionDetails: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: "-30px",
-    marginTop: "-5px",
   },
   Img: {
     borderRadius: "100%",
@@ -194,15 +180,53 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Exo', sans-serif",
     letterSpacing: "0.1rem",
   },
-  subMenu1: {
-    marginLeft: "25px",
+  button: {
     color: "white",
-    marginTop: "-15px",
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
+    textTransform: "capitalize",
   },
-  AccordionName: {
-    marginLeft: "15px",
+  link: {
+    textDecoration: "none",
+    textTransform: "capitalize",
+    // marginLeft: "15px",
+  },
+  menuBtn: {
+    display: "flex",
+    flexDirection: "column",
     color: "white",
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
+    // paddingBottom: "4%",
+    // paddingTop: "6%",
+    textTransform: "capitalize",
+    marginLeft: "12px",
   },
+  dropdownHeading: {
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
+    textTransform: "capitalize",
+    fontSize: "0.9rem",
+  },
+  menuBtn2: {
+    display: "flex",
+    flexDirection: "column",
+    color: "white",
+    fontFamily: "'Nunito', sans-serif",
+    fontFamily: "'Source Sans Pro', sans-serif",
+    paddingBottom: "6%",
+    // paddingTop: "6%",
+    textTransform: "capitalize",
+    marginLeft: "12px",
+  },
+  activeLink : {
+    backgroundColor: "#262e45", 
+    minHeight: "10px"
+  },
+  inactivelink: {
+    backgroundColor: "#303956", 
+    minHeight: "10px"
+  }
 }));
 
 const SideBar = () => {
@@ -213,20 +237,39 @@ const SideBar = () => {
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [background, setBackground] = useState("#303956");
+  const [backgroundPanel1, setBackgroundPanel1] = useState("#303956");
+  const [backgroundPanel2, setBackgroundPanel2] = useState("#303956");
+  const [backgroundPanel3, setBackgroundPanel3] = useState("#303956");
+  const [activeLink, setActiveLink] = useState(null)
+  // const [backgroundColor, setBackgroundColor]= useState()
 
-  const handleClick = () => {
-    setBackground("#262e45");
-  };
-  const handleChange = (panel, background) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-    // setBackground( ? "#262e45" : "#303956");
+  const handleChange = (panel,panelName) => (event, newExpanded) => {
+    console.log(panel, newExpanded);
+    console.log(newExpanded);
+    setExpanded(newExpanded ? panel : false);
+    // if(expanded)
+    // backgroundColor="#303956"
+    // else
+    // backgroundColor="#262e45"
+
+
+    // if (panel == "panel1") handleBackgroundPanel1();
+    // else if (panel == "panel2") handleBackgroundPanel2();
+    // else handleBackgroundPanel3();
+    toggleMe(panelName)
   };
 
   useEffect(() => {
     setOpen(true);
   }, []);
 
+  const toggleMe = (value) => {
+    setActiveLink(value)
+  }
+  const handleLogout = () => {
+    localStorage.clear()
+    history.push("/login")
+  }
   const handleDrawerOpen = () => {
     if (window.innerWidth <= 700) setOpen(true);
     else setOpen(false);
@@ -234,6 +277,17 @@ const SideBar = () => {
   const handleDrawerClose = () => {
     if (window.innerWidth <= 700) setOpen(false);
     else setOpen(false);
+  };
+  const handleBackgroundPanel1 = () => {
+    expanded ? setBackgroundPanel1("#303956") : setBackgroundPanel1("#262e45");
+  };
+
+  const handleBackgroundPanel2 = () => {
+    expanded ? setBackgroundPanel2("#303956") : setBackgroundPanel2("#262e45");
+  };
+
+  const handleBackgroundPanel3 = () => {
+    expanded ? setBackgroundPanel3("#303956") : setBackgroundPanel3("#262e45");
   };
   return (
     <>
@@ -261,6 +315,7 @@ const SideBar = () => {
               color="secondary"
               startIcon={<PowerSettingsNewRoundedIcon />}
               style={{ fontFamily: "'Exo', sans-serif" }}
+              onClick={handleLogout}
             >
               Log Out
             </Button>
@@ -284,179 +339,160 @@ const SideBar = () => {
             />
           </div>
           <List>
-            <Link to="/dashboard" className={clsx(classes.listText)}>
-              <ListItem button>
-                <ViewQuiltIcon />
-                <ListItemText primary="Dashboard" className={classes.menu} />
-              </ListItem>
+            <Link to="/dashboard" 
+            className={classes.link}
+>
+              <Button startIcon={<ViewQuiltIcon />} className={classes.menuBtn}>
+                Dashboard
+              </Button>
             </Link>
             <Accordion
-              style={{
-                backgroundColor: background,
-              }}
+              square
               expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
-              // onClick={() => setBackground("#262e45")}
-              className={classes.Accordion}
+              onChange={handleChange("panel1","courses")}
+              // onClick={toggleMe("courses")}
+              className={activeLink==="courses"? classes.activeLink : classes.inactivelink}
             >
               <AccordionSummary
+                aria-controls="panel1d-content"
+                id="panel1d-header"
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <ImportContactsIcon className={clsx(classes.listText)} />
-                <Typography className={classes.AccordionName}>
+                <ImportContactsIcon
+                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
+                />
+                <Typography className={classes.dropdownHeading}>
                   Courses
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails className={classes.AccordionDetails}>
-                <Link to="/courses" className={classes.AccordionContent}>
-                  <ListItemText
-                    primary="Courses"
-                    className={classes.subMenu1}
-                  />
+              <AccordionDetails              
+              //  className={activeLink==="courses"? classes.activeLink : classes.inactivelink}
+>
+                <Link to="/courses" className={classes.link}>
+                  <Button className={classes.button}>Courses</Button>
                 </Link>
-                <Link
-                  to="/course-activities"
-                  className={classes.AccordionContent}
-                >
-                  <ListItemText
-                    primary="Add Course Activity"
-                    className={classes.subMenu}
-                  />
+                <Link to="/course-activities" className={classes.link}>
+                  <Button className={classes.button}>
+                    Add Course Activity
+                  </Button>
                 </Link>
-                <Link
-                  to="/learning-skills"
-                  className={classes.AccordionContent}
-                >
-                  <ListItemText
-                    primary="Add Learning Skills"
-                    className={classes.subMenu}
-                  />
+                <Link to="/learning-skills" className={classes.link}>
+                  <Button className={classes.button}>
+                    Add Learning Skills
+                  </Button>
                 </Link>
-                <Link
-                  to="/spiritual-learning"
-                  className={classes.AccordionContent}
-                >
-                  <ListItemText
-                    primary="Add Spirutal Learning"
-                    className={classes.subMenu}
-                  />
+                <Link to="/spiritual-learning" className={classes.link}>
+                  <Button className={classes.button}>
+                    Add Spiritual Learning
+                  </Button>
                 </Link>
               </AccordionDetails>
             </Accordion>
-            <Link to="/enroll" className={clsx(classes.listText)}>
-              <ListItem button>
-                <RemoveFromQueueIcon />
-                <ListItemText primary="Enrollment" className={classes.menu} />
-              </ListItem>
+            <Link to="/enroll" className={classes.link}>
+              <Button
+                startIcon={<RemoveFromQueueIcon />}
+                className={classes.menuBtn2}
+              >
+                Enrollment
+              </Button>
             </Link>
-            <Link to="/meetLink" className={clsx(classes.listText)}>
-              <ListItem button>
-                <LinkIcon />
-                <ListItemText primary="Meet Links" className={classes.menu} />
-              </ListItem>
+            <Link to="/meetLink" className={classes.link}>
+              <Button startIcon={<LinkIcon />} className={classes.menuBtn}>
+                Meet Links
+              </Button>
             </Link>
             <Accordion
-              style={{
-                backgroundColor: background,
-              }}
+              square
               expanded={expanded === "panel2"}
-              onChange={handleChange("panel2")}
-              className={classes.Accordion}
+              onChange={handleChange("panel2","classroom")}
+              className={activeLink==="classroom"? classes.activeLink : classes.inactivelink}
             >
               <AccordionSummary
+                aria-controls="panel2d-content"
+                id="panel2d-header"
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <LocalLibraryIcon className={clsx(classes.listText)} />
-                <Typography className={classes.AccordionName}>
+                <LocalLibraryIcon
+                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
+                />
+                <Typography className={classes.dropdownHeading}>
                   Classroom
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails className={classes.AccordionDetails}>
-                <Link to="/classroom" className={classes.AccordionContent}>
-                  <ListItemText
-                    primary="Students & Teachers"
-                    className={classes.subMenu1}
-                  />
+              <AccordionDetails>
+                <Link to="/classroom" className={classes.link}>
+                  <Button className={classes.button}>
+                    Students and Teachers
+                  </Button>
                 </Link>
-                <Link
-                  to="/trainer-classrooms"
-                  className={classes.AccordionContent}
-                >
-                  <ListItemText
-                    primary="Teacher Training"
-                    className={classes.subMenu}
-                  />
+                <Link to="/trainer-classrooms" className={classes.link}>
+                  <Button className={classes.button}>Teacher Training</Button>
                 </Link>
               </AccordionDetails>
             </Accordion>
-            <Link to="/attendances" className={clsx(classes.listText)}>
-              <ListItem button>
-                <CreateIcon />
-                <ListItemText primary="Attendances" className={classes.menu} />
-              </ListItem>
+            <Link to="/attendances" className={classes.link}>
+              <Button startIcon={<CreateIcon />} className={classes.menuBtn2}>
+                Attendances
+              </Button>
             </Link>
-            <Link to="/students" className={clsx(classes.listText)}>
-              <ListItem button>
-                <FaceIcon />
-                <ListItemText primary="Students" className={classes.menu} />
-              </ListItem>
+            <Link to="/students" className={classes.link}>
+              <Button startIcon={<FaceIcon />} className={classes.menuBtn2}>
+                Students
+              </Button>
             </Link>
-            <Link to="/student-courses" className={clsx(classes.listText)}>
-              <ListItem button>
-                <FaceIcon />
-                <ListItemText
-                  primary="Student Courses"
-                  className={classes.menu}
-                />
-              </ListItem>
+            <Link to="/student-courses" className={classes.link}>
+              <Button startIcon={<FaceIcon />} className={classes.menuBtn}>
+                Student Courses
+              </Button>
             </Link>
-            {/* <ListItem button className={clsx(classes.listText)}>
-              <GamesIcon />
-              <ListItemText primary="H5P Content" className={classes.menu} />
-              <ChevronRightIcon />
-            </ListItem> */}
             <Accordion
-              style={{
-                backgroundColor: background,
-              }}
+              square
               expanded={expanded === "panel3"}
-              onChange={handleChange("panel3")}
-              className={classes.Accordion}
+              onChange={handleChange("panel3","H5P Content")}
+              className={activeLink==="H5P Content"? classes.activeLink : classes.inactivelink}
             >
               <AccordionSummary
+                aria-controls="panel3d-content"
+                id="panel3d-header"
                 expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
               >
-                <GamepadIcon className={clsx(classes.listText)} />
-                <Typography className={classes.AccordionName}>
+                <GamepadIcon
+                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
+                />
+                <Typography className={classes.dropdownHeading}>
                   H5P Content
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails className={classes.AccordionDetails}>
-                <Link to="" className={classes.AccordionContent}>
-                  <ListItemText
-                    primary="Add Content"
-                    className={classes.subMenu1}
-                  />
+              <AccordionDetails>
+                <Link className={classes.link}>
+                  <Button className={classes.button}>Add Content</Button>
                 </Link>
-                <Link to="" className={classes.AccordionContent}>
-                  <ListItemText
-                    primary="Edit Content"
-                    className={classes.subMenu}
-                  />
-                </Link>
+                <Link className={classes.link}>
+                  {" "}
+                  <Button className={classes.button}>Edit Content</Button>
+                </Link>{" "}
               </AccordionDetails>
             </Accordion>
-            <Link to="/teachers" className={clsx(classes.listText)}>
-              <ListItem button>
-                <FaUserGraduate style={{ fontSize: "1.4rem" }} />
-                <ListItemText primary="Teachers" className={classes.menu} />
-              </ListItem>
+            <Link to="/teachers" className={classes.link}>
+              <Button
+                startIcon={<FaUserGraduate />}
+                className={classes.menuBtn2}
+              >
+                Teachers
+              </Button>
             </Link>
-            <Link to="/operations" className={clsx(classes.listText)}>
-              <ListItem button>
-                <TuneIcon />
-                <ListItemText primary="Operations" className={classes.menu} />
-              </ListItem>
+            <Link to="/trainers" className={classes.link}>
+              <Button
+                startIcon={<FaUserGraduate />}
+                className={classes.menuBtn2}
+              >
+                Trainers
+              </Button>
+            </Link>
+            <Link to="/operations" className={classes.link}>
+              <Button startIcon={<TuneIcon />} className={classes.menuBtn}>
+                Operations
+              </Button>
             </Link>
           </List>
         </Drawer>

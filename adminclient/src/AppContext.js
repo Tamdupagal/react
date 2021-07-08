@@ -1,6 +1,6 @@
 import React, {createContext,useReducer} from "react";
 import _ from 'lodash';
-import { ADD_ADMIN_SUCCESS, GET_COURSE_SECTION_WITH_ID,ADD_CLASSROOM_FAIL, ADD_CLASSROOM_SUCCESS, ADD_LECTURE_SUCCESS, ADD_STUDENT_SUCCESS, DELETE_CLASSROOM_FAIL, DELETE_CLASSROOM_REQUEST, DELETE_CLASSROOM_SUCCESS, EDIT_CLASSROOM_FAIL, EDIT_CLASSROOM_REQUEST, EDIT_CLASSROOM_SUCCESS, EDIT_LECTURE_FAIL, EDIT_LECTURE_REQUEST, EDIT_STUDENT_FAIL, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, GET_ALL_ADMINS_FAIL, GET_ALL_ADMINS_REQUEST, GET_ALL_ADMINS_SUCCESS, GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_COURSES, GET_ALL_LECTURES_FAIL, GET_ALL_LECTURES_REQUEST, GET_ALL_LECTURES_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_STUDENT_COURSES_FAIL, GET_ALL_STUDENT_COURSES_REQUEST, GET_ALL_STUDENT_COURSES_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS, GET_EDIT_ADMIN_FAIL, GET_EDIT_ADMIN_SUCCESS, GET_EDIT_CLASSROOM_FAIL, GET_EDIT_CLASSROOM_SUCCESS, GET_EDIT_STUDENT_FAIL, GET_EDIT_STUDENT_SUCCESS, GET_EDIT_TEACHER_FAIL, GET_EDIT_TEACHER_SUCCESS } from "./action/actionsType";
+import { GET_COURSE_SECTION_WITH_ID , GET_ALL_COURSES ,ADD_ADMIN_SUCCESS, ADD_CLASSROOM_FAIL, ADD_CLASSROOM_SUCCESS, ADD_LECTURE_SUCCESS, ADD_STUDENT_SUCCESS, DELETE_CLASSROOM_FAIL, DELETE_CLASSROOM_REQUEST, DELETE_CLASSROOM_SUCCESS, EDIT_CLASSROOM_FAIL, EDIT_CLASSROOM_REQUEST, EDIT_CLASSROOM_SUCCESS, EDIT_LECTURE_FAIL, EDIT_LECTURE_REQUEST, EDIT_STUDENT_FAIL, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, GET_ALL_ADMINS_FAIL, GET_ALL_ADMINS_REQUEST, GET_ALL_ADMINS_SUCCESS, GET_ALL_CLASSROOMS_FAIL, GET_ALL_CLASSROOMS_REQUEST, GET_ALL_CLASSROOMS_SUCCESS, GET_ALL_COURSES_FAIL, GET_ALL_COURSES_REQUEST, GET_ALL_COURSES_SUCCESS, GET_ALL_LECTURES_FAIL, GET_ALL_LECTURES_REQUEST, GET_ALL_LECTURES_SUCCESS, GET_ALL_MEET_LINKS_FAIL, GET_ALL_MEET_LINKS_REQUEST, GET_ALL_MEET_LINKS_SUCCESS, GET_ALL_STUDENTS_FAIL, GET_ALL_STUDENTS_REQUEST, GET_ALL_STUDENTS_SUCCESS, GET_ALL_STUDENT_COURSES_FAIL, GET_ALL_STUDENT_COURSES_REQUEST, GET_ALL_STUDENT_COURSES_SUCCESS, GET_ALL_TEACHERS_FAIL, GET_ALL_TEACHERS_REQUEST, GET_ALL_TEACHERS_SUCCESS, GET_ALL_TRAINERS_FAIL, GET_ALL_TRAINERS_REQUEST, GET_ALL_TRAINERS_SUCCESS, GET_EDIT_ADMIN_FAIL, GET_EDIT_ADMIN_SUCCESS, GET_EDIT_CLASSROOM_FAIL, GET_EDIT_CLASSROOM_SUCCESS, GET_EDIT_STUDENT_FAIL, GET_EDIT_STUDENT_SUCCESS, GET_EDIT_TEACHER_FAIL, GET_EDIT_TEACHER_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "./action/actionsType";
 
 const AppContext = createContext({});
 
@@ -61,6 +61,26 @@ const initialState= {
     courseData: {
         courses: [],
         course_section_with_id: null
+    },
+    meetLinksData:{
+        meetLinks: [],
+        isLoading: false,
+        anyError: null
+    },
+    coursesData:{
+        courses: [],
+        isLoading: false,
+        anyError: null
+    },
+    trainersData: {
+        trainers: [],
+        isLoading: false,
+        anyError: null
+    },
+    loginToken: {
+        isLoading: false,
+        token : [],
+        anyError: null
     }
 }
 
@@ -213,6 +233,35 @@ const reducer = (state=initialState, {type, payload})=>{
             return ({ ...state, studentCoursesData: { ...state.studentCoursesData, studentCourses: payload, isLoading: false}})
         case GET_ALL_STUDENT_COURSES_FAIL:
             return ({ ...state, studentCoursesData: { ...state.studentCoursesData, anyError: payload, isLoading: false } })
+
+        case GET_ALL_MEET_LINKS_REQUEST:
+            return ({ ...state, meetLinksData: { ...state.meetLinksData, isLoading: true } })
+        case GET_ALL_MEET_LINKS_SUCCESS:
+            return ({ ...state, meetLinksData: { ...state.meetLinksData, meetLinks: payload, isLoading: false}})
+        case GET_ALL_MEET_LINKS_FAIL:
+            return ({ ...state, meetLinksData: { ...state.meetLinksData, anyError: payload, isLoading: false } })
+
+        case GET_ALL_COURSES_REQUEST:
+            return ({ ...state, coursesData: { ...state.coursesData, isLoading: true } })
+        case GET_ALL_COURSES_SUCCESS:
+            return ({ ...state, coursesData: { ...state.coursesData, courses: payload, isLoading: false}})
+        case GET_ALL_COURSES_FAIL:
+            return ({ ...state, coursesData: { ...state.coursesData, anyError: payload, isLoading: false } })
+
+        case GET_ALL_TRAINERS_REQUEST:
+            return ({ ...state, trainersData: { ...state.trainersData, isLoading: true } })
+        case GET_ALL_TRAINERS_SUCCESS:
+            return ({ ...state, trainersData: { ...state.trainersData, trainers: payload, isLoading: false}})
+        case GET_ALL_TRAINERS_FAIL:
+            return ({ ...state, trainersData: { ...state.trainersData, anyError: payload, isLoading: false } })
+
+        case LOGIN_REQUEST:
+            return ({ ...state, loginToken: { ...state.loginToken, isLoading: true}})
+        case LOGIN_SUCCESS:
+            return ({ ...state, loginToken: { ...state.loginToken, token: payload, isLoading: false}})
+        case LOGIN_FAIL:
+            return ({ ...state, loginToken: { ...state.loginToken, anyError: payload, isLoading: false}})
+            
     }
 }
  

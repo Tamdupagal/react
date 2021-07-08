@@ -26,6 +26,10 @@ const TeacherTraining = () => {
     setData(TeacherTrainingData);
   }, []);
 
+  const handleClick = () =>{
+    history.push("/new-room")
+  }
+
   const Columns = [
     { title: "Classroom Name", field: "classroomName" },
     { title: "Trainer Name", field: "TrainerName" },
@@ -66,7 +70,7 @@ const TeacherTraining = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    // onClick={handleAddNewClassroom}
+                    onClick={handleClick}
                   >
                     Add New Room
                   </Button>

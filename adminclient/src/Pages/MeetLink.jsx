@@ -1,11 +1,32 @@
-import React from "react";
-import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
+import React, { useContext, useEffect, useState } from "react";
+// import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "../Components/Table/Table";
 import MeetActions from "./../Components/Actions/MeetActions";
 import AddMeet from "./AddMeet";
 import Modal from "@material-ui/core/Modal";
+import { MeetColumns, MeetData } from "../Helpers/MeetData";
+import { AppContext } from "../AppContext";
+import { getAllMeetLinks } from "../action/actions";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  // makeStyles,
+  TextField,
+  Typography,
+  Container,
+  Grid
+} from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
+import ClearIcon from "@material-ui/icons/Clear";
+import ModalAddMeet from "../Components/Modal/ModalAddMeet";
+import ModalEditMeet from "../Components/Modal/ModalEditMeet";
+import { useLocation, useParams } from "react-router-dom";
+
 
 const useStyles = makeStyles({
   title: {
@@ -23,39 +44,58 @@ const useStyles = makeStyles({
   },
 });
 
-const MeetLink = () => {
+export default function MeetLink() {
   const classes = useStyles();
   const history = useHistory();
-
-  const Columns = [
-    { title: "Link Id", field: "Link" },
-    { title: "Link", field: "LinkId" },
-    { title: "Bookings", field: "Bookings" },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          <MeetActions />
-        </div>
-      ),
-    },
-  ];
-  const [open, setOpen] = React.useState(false);
-  const [editOpen, setEditOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+  const { id } = useParams()
+  const {state, dispatch} = useContext(AppContext)
+  const [open, setOpen] =useState(false);
+  const [editOpen, setEditOpen] = useState(id?true:false);
+  const location = useLocation()
+  const data = id?location.state.data:""
+  useEffect(() => {
+    getAllMeetLinks(dispatch)
+  }, [])
   const handleClose = () => {
+    
     setOpen(false);
+    history.push("/meetLink")
   };
-
+  
+  const handleOpen = () => {
+    console.log("called")
+    setOpen(true);
+    history.push("/add-meet")
+  };
   const handleEditClose = () => {
     setEditOpen(false);
+    history.push("/meetLink")
+  };
+  const handleEditOpen= (data) => {
+    console.log("called")
+    console.log(data._id)
+    setEditOpen(true);
+    history.push({
+      pathname: `/edit-meet/${data._id}`,
+      state: {data: data}
+    })
   };
 
-  const body = <AddMeet handleClose={handleClose} />;
+  // const body = <AddMeet />;
+  // const columns =  [
+  //   { title: "Link", field: "link" },
+  //   { title: "Link Id", field: "_id" },
+  //   { title: "Bookings", field: "Bookings" },
+  //   {
+  //     title: "Actions",
+  //     field: "name",
+  //     render: (row) => (
+  //       <div>
+  //         <MeetActions handleEditClose={handleEditClose}  handleEditOpen={handleEditOpen} editOpen={editOpen} setEditOpen={setEditOpen}/>
+  //       </div> 
+  //     ),
+  //   },
+  // ];
 
   return (
     <div>
@@ -78,37 +118,20 @@ const MeetLink = () => {
                 >
                   ADD NEW MEET LINK
                 </Button>
+              <ModalAddMeet handleClose={handleClose} open={open} />
+              <ModalEditMeet handleEditClose={handleEditClose} editOpen={editOpen} data={data}/>
+
               </Box>
             </Container>
           </Container>
 
           <Container>
-            <Table column={Columns} />
+            <Table data={MeetData(state)} column={MeetColumns(handleEditClose, handleEditOpen)} />
           </Container>
         </Grid>
       </Box>
-      <div>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          {body}
-        </Modal>
-      </div>
-      <div>
-        <Modal
-          open={editOpen}
-          onClose={handleEditClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          {body}
-        </Modal>
-      </div>
     </div>
   );
 };
 
-export default MeetLink;
+// export default MeetLink;

@@ -31,42 +31,10 @@ const StudentCourses = () => {
     getAllStudentCourses(dispatch)
   }, []);
 
-  const handleManageCourse = () => {
-    history.push("/student-courses/manage");
-  };
-  const Columns = [
-    { title: "Name", field: "name" },
-    { title: "Email", field: "email" },
-    {
-      title: "Course Assigned",
-      field: "courseAssigned",
-    },
-    {
-      title: "Classroom/s",
-      field: "classroom",
-    },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div style={{ fontWeight: "700" }}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#17a2b8",
-              padding: "2%",
-              color: "white",
-              fontSize: "small",
-            }}
-            onClick={handleManageCourse}
-          >
-            <CreateIcon /> Manage Student Course
-          </Button>
-        </div>
-      ),
-    },
-  ];
-
+  // const handleManageCourse = () => {
+  //   history.push("/student-courses/manage");
+  // };
+  
   return (
     <div>
       <Container style={{ marginBottom: "20vh" }}>

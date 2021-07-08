@@ -15,6 +15,14 @@ const useStyles = makeStyles({
     fontWeight: "700",
     fontFamily: "KoHo, sans-serif",
   },
+  container: {
+    border: "1px solid #e6e6ff",
+    borderBottom: "white",
+    backgroundColor: "white",
+    padding: "2%",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
+  },
 });
 
 const AdminUsers = () => {
@@ -36,16 +44,7 @@ const AdminUsers = () => {
     <div>
       <div>
         <Container>
-          <Container
-            style={{
-              border: "1px solid #e6e6ff",
-              borderBottom: "white",
-              backgroundColor: "white",
-              padding: "1%",
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-            }}
-          >
+          <Container className={classes.container}>
             <Box display="flex" justifyContent="space-between">
               <Typography className={classes.title}>Admin Users</Typography>
 
@@ -53,6 +52,7 @@ const AdminUsers = () => {
                 variant="contained"
                 color="secondary"
                 onClick={handleAddAdmin}
+                size="small"
                 style={{ fontFamily: "'Exo', sans-serif" }}
               >
                 ADD NEW ADMIN

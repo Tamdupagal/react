@@ -14,14 +14,14 @@ import { useLocation } from "react-router-dom";
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: "#e6f9ff",
     },
   },
 }))(TableRow);
 
 const TeacherDetails = () => {
-  const teacherData = useLocation()
-  const data = teacherData.state.data
+  const teacherData = useLocation();
+  const data = teacherData.state.data;
   const classes = useStyles();
   return (
     <div>
@@ -45,25 +45,35 @@ const TeacherDetails = () => {
                           <TableCell>
                             <strong>Name</strong>
                           </TableCell>
-                          <TableCell>{data.name}</TableCell>
+                          <TableCell className={classes.data}>
+                            {data.name}
+                          </TableCell>
                         </StyledTableRow>
                         <StyledTableRow>
                           <TableCell>
                             <strong>Email</strong>
                           </TableCell>
-                          <TableCell>{data.email}</TableCell>
+                          <TableCell className={classes.data}>
+                            <a href= {`mailto: ${data.email}`} style={{textDecoration: "none",color: "black"}} >
+                            {data.email}
+                            </a>
+                          </TableCell>
                         </StyledTableRow>
                         <StyledTableRow>
                           <TableCell>
                             <strong>Phone</strong>
                           </TableCell>
-                          <TableCell>{data.primary_phone_number}</TableCell>
+                          <TableCell className={classes.data}>
+                            <a href={`tel: ${data.primary_phone_number}`} style={{textDecoration: "none",color: "black"}}>
+                            {data.primary_phone_number}
+                            </a>
+                          </TableCell>
                         </StyledTableRow>
                         <StyledTableRow>
                           <TableCell>
                             <strong>Alt Phone No</strong>
                           </TableCell>
-                          <TableCell>
+                          <TableCell className={classes.data}>
                             {data.alternate_phone_number == "[]"
                               ? data.alternate_phone_number
                               : "N/A"}
@@ -92,13 +102,17 @@ const TeacherDetails = () => {
                           <TableCell>
                             <strong>Address</strong>
                           </TableCell>
-                          <TableCell>{data.address}</TableCell>
+                          <TableCell className={classes.data}>
+                            {data.address}
+                          </TableCell>
                         </StyledTableRow>
                         <StyledTableRow>
                           <TableCell>
                             <strong>Country</strong>
                           </TableCell>
-                          <TableCell>{data.country}</TableCell>
+                          <TableCell className={classes.data}>
+                            {data.country}
+                          </TableCell>
                         </StyledTableRow>
                       </TableBody>
                     </Table>

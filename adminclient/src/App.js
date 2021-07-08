@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
 import SideBar from "./Components/SideBar/sideBar";
 import Dashboard from "./Pages/Dashboard";
 // import { Container } from "react-bootstrap";
@@ -8,7 +8,7 @@ import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
 import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Courses from "./Pages/Courses";
 import AddMeet from "./Pages/AddMeet";
 import AddStudent from "./Pages/AddStudent";
@@ -40,7 +40,36 @@ import ViewCourseSection from "./Pages/ViewCourseSection";
 import CourseMaterial from "./Pages/CourseMaterial";
 import AddNewMaterial from "./Pages/AddNewMaterial";
 import EditAdmin from "./Pages/EditAdmin";
-// import Carousel from "./Components/Carousel";
+import Trainers from "./Pages/Trainers";
+import AddTrainer from "./Pages/AddTrainer";
+import LoginPage from "./Pages/LoginPage";
+import Carousel1 from "./Components/Carousel/Carousel1";
+import PrivateRoute from "./PrivateRoute";
+import { AppContext } from "./AppContext";
+import PartialPrivateRoute from "./PartialPrivateRoute";
+
+
+// export const isLogin = () => {
+//   // history.push({
+//   //   pathname: "/admin",
+//   //   state: {data: loginToken.token?.data.role }
+//   // })
+//   // console.log("used")
+//   // if(loginToken.token.data.role=="ADMIN")
+//   return true;
+//   // else
+//   // return false;
+// }
+
+
+export const isLoggedIn = () => {
+  const token = localStorage.getItem("token")
+  const role = localStorage.getItem("token")
+  if(token && role)
+  return true;
+  else
+  return false;
+}
 
 const theme = createMuiTheme({
   palette: {
@@ -69,11 +98,8 @@ function App() {
   // const { state, dispatch } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [editClassroomData, setEditClassroomData] = useState();
-
-  // const handleEditClassroom = (data) => {
-  //   setEditClassroomData(data);
-  //   console.log("done");
-  // };
+  const { state : {loginToken}} = useContext(AppContext)
+  const history = useHistory()
 
   // useEffect(async()=>{
   //   console.log(screenWidth);
@@ -83,46 +109,63 @@ function App() {
   //     dispatch(mobileView(true));
   //   console.log(screenWidth);
   // },[screenWidth]);
-  useEffect(async () => {
-    // try {
-    //   const res = await axios.get("/classroom/60c478414d3ad53a9e514693");
-    //   console.log("response:", res);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  }, []);
+  useEffect(() => {
+    if (!loginToken.token) {
+        history.push('/login')
+    }
+  
+}, [loginToken.token])
+
+
+
   window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
 
   const classes = useStyles();
+  
+  
   return (
     <ThemeProvider theme={theme}>
       <div>
         <Router>
-          <SideBar />
+          <Switch>
+          <Route exact path="/login" component={LoginPage}/>
+
           <div className={classes.root}>
+            {/* <PrivateRoute path="/" component={SideBar}/> */}
+            {/* <SideBar path="/"/> */}
+            <SideBar/>
+            {/* <Redirect to="/dashboard"/> */}
             <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/enroll" component={Enroll} />
+
+            <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute path={`/enroll`} exact>
+                <Enroll/>
+              </PrivateRoute>
               <Route exact path="/meetLink" component={MeetLink} />
-              <Route exact path="/courses" component={Courses} />
-              <Route exact path="/classroom" component={OneToOne} />
-              <Route exact path="/students" component={Students} />
+              <PrivateRoute exact path="/meetLink">
+                <MeetLink/>
+              </PrivateRoute>
+              <PrivateRoute exact path="/courses" component={Courses} />
+              <PrivateRoute exact path="/classroom" component={OneToOne}/>
+              <PrivateRoute exact path="/students" component={Students} />
               <Route exact path="/student-courses" component={StudentCourses} />
               <Route exact path="/attendances" component={Attendance} />
               <Route exact path="/teachers" component={Teachers} />
-              <Route exact path="/add-meet" component={AddMeet} />
+              <Route exact path="/add-meet" component={MeetLink} />
+              <Route exact path="/edit-meet/:id" component={MeetLink} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
               {/* <Route exact path="/carousel" component={Carousel} /> */}
+              <Route exact path="/trainers" component={Trainers} />
+              <Route exact path="/add-trainer" component={AddTrainer} />
+              <Route exact path="/trainer/edit/:id" component={AddTrainer} />
               <Route
                 exact
                 path="/add-course-section"
                 component={AddCourseSections}
               />
               <Route exact path="/operations" component={Operations} />
-              {/* <Route exact path="/student/:id/Edit" component={Student} /> */}
-
               <Route
                 exact
                 path="/classroom/create"
@@ -162,7 +205,7 @@ function App() {
               />
               <Route
                 exact
-                path="/student-courses/manage"
+                path="/student-courses/:id/manage"
                 component={ManageStudentCourse}
               />
               <Route
@@ -207,9 +250,14 @@ function App() {
             <div>
               <Copyright />
             </div>
-          </div>
+          </div>            
+          {/* </PrivateRoute> */}
+          </Switch>
         </Router>
       </div>
+      {/* <div>
+      <LoginPage />
+    </div> */}
     </ThemeProvider>
   );
 }

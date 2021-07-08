@@ -12,29 +12,45 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { teacherColumn, teacherData } from "../Helpers/teacherData";
 
 const Dashboard = () => {
+  // constructor(){
+  //   super();
+  //   this.toggleMe = this.toggleMe.bind(this)
+  //   this.state = {
+  //     paperActive = null
+  //   }
+  // }
   const classes = useStyles();
   const [tableFor, setTableFor] = useState("");
   // const [leftborder,setLeftborder] = useState("")
   const { dispatch, state } = useContext(AppContext);
   const STUDENT_DATA = state?.studentData;
   const TEACHER_DATA = state?.teacherData;
+  const [paperActive, setPaperActive]=useState(null)
+  // const data = "Hi"
 
   // const setLeftborder = () => {
   //   style = {{ borderLeft: "4px solid red" }  }
+  const toggleMe = (value) => {
+    setPaperActive(value)
+  }
+
   const handleStudents = () => {
     setTableFor("students");
-    // setLeftborder();
     getAllStudents(dispatch);
+    toggleMe("students")
   };
   const handleTeachers = () => {
     setTableFor("teachers");
     getAllTeachers(dispatch);
+    toggleMe("teachers")
   };
   const handleClasses = () => {
     setTableFor("classes");
+    toggleMe("classes")
   };
   const handleLectures = () => {
     setTableFor("lectures");
+    toggleMe("lectures")
   };
 
   function getTabulerData(table_for) {
@@ -68,8 +84,8 @@ const Dashboard = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={6} lg={3}>
             <Card
-              className={classes.paper}
-              style={{ borderLeft: "4px solid red", cursor: "pointer" }}
+              className={paperActive==="classes"? classes.paperActive:classes.paper}
+              onClick={handleClasses}
             >
               <div className={classes.content}>
                 83
@@ -79,7 +95,7 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <Card
-              className={classes.paper}
+              className={paperActive==="students"? classes.paperActive:classes.paper}
               onClick={handleStudents}
               style={{ cursor: "pointer" }}
             >
@@ -91,7 +107,7 @@ const Dashboard = () => {
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <Card
-              className={classes.paper}
+              className={paperActive==="teachers"? classes.paperActive:classes.paper}
               onClick={handleTeachers}
               style={{ cursor: "pointer" }}
             >
@@ -101,7 +117,10 @@ const Dashboard = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
-            <Card className={classes.paper} style={{ cursor: "pointer" }}>
+            <Card 
+              className={paperActive==="lectures"? classes.paperActive:classes.paper}
+              onClick={handleLectures}
+              style={{ cursor: "pointer" }}>
               <div className={classes.content}>
                 42
                 <Typography>Total Lectures</Typography>

@@ -1,18 +1,21 @@
 import React from "react";
 import StudentCoursesActions from "./../Components/Actions/StudentCoursesActions"
 
-// let courseLength = 0
-// const renderCourseLength = (item) => {
-    //     let courseLength = 0
-    //     item.classrooms.map(c=>courseLength+=parseInt(Object.keys(c.enrolledCourses).length))
-    //     console.log(courseLength)
-    //     return courseLength;
-    
-    // }
-    export const StudentCourseData = (state) => {
-        return state.studentCoursesData.studentCourses
-    }
+export const StudentCourseData = (state) => {
+    return state.studentCoursesData.studentCourses
+}
   
+const courseLength = (row) => {
+  let course=[]
+  let allCourse=[]
+  // course=row.classrooms?.map(c=>Object.keys(c.enrolled_courses))
+  // course.forEach(c => {
+  //     c.forEach(data=>{
+  //         allCourse.push({name:data})
+  //     })
+  // })
+  // return allCourse.length
+}
 
 export const StudentCourseColumn = () => {
     const col = [
@@ -22,11 +25,9 @@ export const StudentCourseColumn = () => {
           title: "Course Assigned",
           field: "courseAssigned",render: (row) => (
             <div>
-
-                {/* {()=>renderCourseLength(row)} */}
+                {courseLength(row)}
             </div>
-        
-          )
+        )
         },
         {
           title: "Classroom/s",
@@ -40,7 +41,7 @@ export const StudentCourseColumn = () => {
           title: "Actions",
           field: "name",
           render: (row) => (
-            <StudentCoursesActions/>
+            <StudentCoursesActions data={row}/>
           ),
         },
       ];

@@ -7,54 +7,49 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
-// import Classroom from "./../CRUD/Classroom";
 import { AppContext } from "../AppContext";
-import { addClassroom, getAllClassrooms } from "../action/actions";
-import { useHistory } from "react-router-dom";
+import { addClassroom, getAllClassrooms, getAllCourses } from "../action/actions";
+import { useHistory, useLocation } from "react-router-dom";
 
 const AddNewClassroom = () => {
+  const { state, dispatch } = useContext(AppContext);
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
   const history = useHistory();
-  const newClassroomState = {
-    id: "null",
-    Name: "",
-    Course: "",
-    Teacher: "",
-    Students: "",
-  };
-  const options = [
-    { label: "Biology", value: 1, category: "cat 1" },
-    { label: "History", value: 2, category: "cat 2" },
-    { label: "Geomtery", value: 3, category: "cat 1" },
-    { label: "Algebra", value: 4, category: "cat 1" },
-    { label: "Chemistry", value: 5, category: "cat 2" },
-    { label: "Physics", value: 6, category: "cat 1" },
-  ];
-  useEffect(() => {
-    console.log(selectedValue);
-  }, []);
-
-  const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
-  };
-  const [classroom, setClassroom] = useState(newClassroomState);
 
   const [selectedValue, setSelectedValue] = useState([]);
   const classes = useStyles();
-  const { state, dispatch } = useContext(AppContext);
+  const location = useLocation()
+  let courseData = location.state.courses
+  const courses = []
+  const options = []
+  const [coursesOptions, setCoursesOptions] = useState([])
+ 
+  useEffect(() => {
+    console.log(selectedValue);
+    console.log(courseData)
+    console.log(courseData[1])
+    courseData.map(c=>courses.push(c.course_section))
+    console.log(courses[0])
+    courses.map(c=>c.map(data=>options.push({label: data.name, value: data._id})))
+    setCoursesOptions(options)
+  }, []);
+
+  const onSelect = (e) => {
+    setSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
+  };
 
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
-      courses: ["1", "2", "3"],
-      students: selectedValue,
+      // enrolled_courses: {selectedValue},
+      // enrolled_students: ["1", "2", "3"],
     };
     console.log(nameRef.current.value);
     console.log(selectedValue);
     addClassroom(dispatch, data);
-    history.push("/classroom");
+    // history.push("/classroom");
   };
 
   return (
@@ -93,7 +88,7 @@ const AddNewClassroom = () => {
                 </Select> */}
                 <Container>
                   <Multiselect
-                    options={options}
+                    options={coursesOptions}
                     value={selectedValue}
                     onSelect={onSelect}
                     displayValue="label"
@@ -117,8 +112,8 @@ const AddNewClassroom = () => {
                 </form> */}
                 <Container>
                   <Multiselect
-                    options={options}
-                    value={selectedValue}
+                    options={coursesOptions}
+                    // value={selectedValue}
                     onSelect={onSelect}
                     displayValue="label"
                     closeIcon="cancel"

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import { StudentData, StudentColumn } from "./../Helpers/StudentData";
 import { AppContext } from "../AppContext";
-import { getAllStudents } from "../action/actions";
+import { getAllClassrooms, getAllStudentCourses, getAllStudents } from "../action/actions";
 import Table from "../Components/Table/Table";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ManageStudentCourseActions from "./../Components/Actions/ManageStudentCourseActions";
-import { ManageStudentData } from "./../Helpers/ManageStudentData";
+import { useLocation } from "react-router-dom";
+import { ManageStudentCourseColumn, ManageStudentCourseData } from "../Helpers/ManageStudentCourses";
 
 const useStyles = makeStyles({
   title: {
@@ -29,7 +30,13 @@ const useStyles = makeStyles({
 const ManageStudentCourse = () => {
   const classes = useStyles();
   const history = useHistory();
-
+  const {dispatch} = useContext(AppContext)
+  const location = useLocation()
+  const courses = location.state.data
+  useEffect(() => {
+    // getAllStudentCourses(dispatch)
+    console.log(courses)
+  }, [])
   // const { state, dispatch } = useContext(AppContext);
 
   // useEffect(() => {
@@ -37,18 +44,18 @@ const ManageStudentCourse = () => {
   //   console.log(state.studentData);
   // }, []);
 
-  const Columns = [
-    { title: "Course", field: "name" },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          <ManageStudentCourseActions />
-        </div>
-      ),
-    },
-  ];
+  // const Columns = [
+  //   { title: "Course", field: "name" },
+  //   {
+  //     title: "Actions",
+  //     field: "name",
+  //     render: (row) => (
+  //       <div>
+  //         <ManageStudentCourseActions />
+  //       </div>
+  //     ),
+  //   },
+  // ];
 
   return (
     <div>
@@ -72,7 +79,7 @@ const ManageStudentCourse = () => {
               <Box display="flex" justifyContent="space-between">
                 <Typography className={classes.title}>
                   {" "}
-                  Manage Course for (name)
+                  Manage Course for {courses.name}
                 </Typography>
 
                 {/* <Button
@@ -88,7 +95,7 @@ const ManageStudentCourse = () => {
           </Container>
 
           <Container>
-            <Table column={Columns} />
+            <Table data={ManageStudentCourseData(courses)} column={ManageStudentCourseColumn()} />
           </Container>
         </Grid>
       </Box>
