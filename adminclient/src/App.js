@@ -186,9 +186,8 @@ function App() {
                 component={TeacherTraining}
               />
               <Route
-                exact
-                path="/edit-course-section"
-                component={EditCourseSection}
+                path="/edit-course-section/:course_id/:section_id"
+                exact render={(props) => props.location.state?<EditCourseSection courses={props.location.state.courses} course_section={props.location.state.course_section}  />:<EditCourseSection />}
               />
               <Route
                 exact
