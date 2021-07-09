@@ -1,9 +1,7 @@
 import React from "react";
-import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
-import LockRoundedIcon from "@material-ui/icons/LockRounded";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {

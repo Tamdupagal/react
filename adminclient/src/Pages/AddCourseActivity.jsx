@@ -17,7 +17,7 @@ function AddCourseActivity() {
         justifyContent="center"
         style={{ marginBottom: "20vh" }}
       >
-        <Grid xs={12} lg={10}>
+        <Grid item xs={12} lg={10}>
           <Grid container>
             <Container>
               <Container className={classes.Header}>

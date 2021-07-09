@@ -9,7 +9,6 @@ import { useHistory } from "react-router";
 import clsx from "clsx";
 import {
   deleteClassroom,
-  editClassroomData,
 } from "../../action/actions";
 import { AppContext } from "./../../AppContext";
 

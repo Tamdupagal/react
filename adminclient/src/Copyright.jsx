@@ -27,7 +27,7 @@ const Copyright = () => {
             </div>
             {/* <br /> */}
             <div>
-              <h5 style={{ color: "#b3b3cc", fontSize: "large" }}>
+              <h5 style={{ color: "#a9b0ab", fontSize: "small" }}>
                 Copyright (year) <AiOutlineCopyrightCircle />
                 .All rights reserved
               </h5>

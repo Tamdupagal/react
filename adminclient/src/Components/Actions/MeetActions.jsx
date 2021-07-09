@@ -4,8 +4,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
-import Modal from "@material-ui/core/Modal";
-import AddMeet from "./../../Pages/AddMeet";
 import { deleteMeetLink } from "../../action/actions";
 import { AppContext } from "../../AppContext";
 
@@ -20,7 +18,6 @@ const LightTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 const MeetActions = (props) => {
-  const history = useHistory()
   const {dispatch} = useContext(AppContext)
   const handleDeleteMeetLink = () => {
     if(window.confirm("Delete the Link")){

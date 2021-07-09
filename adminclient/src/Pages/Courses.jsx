@@ -72,7 +72,7 @@ const Courses = () => {
       <Container style={{ marginBottom: "20vh" }}>
         <Container maxWidth="md">
           <Box display="flex" justifyContent="flex-start">
-            <Grid xs={12} lg={6}>
+            <Grid item xs={12} lg={6}>
               <h1 className={classes.pageHeading}>Courses</h1>
             </Grid>
           </Box>

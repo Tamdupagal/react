@@ -1,0 +1,81 @@
+@import "../../sass/utilities";
+
+.quiz__input__box {
+  width: 100%;
+  padding: 0.4rem 0;
+  .quiz__textarea {
+    resize: vertical;
+    padding: 1rem;
+    min-height: 7.5rem;
+    width: 100%;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.3rem;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+    &.disabled {
+      border: none;
+      pointer-events: none;
+      touch-action: none;
+      resize: none;
+      height: max-content;
+      min-height: max-content;
+    }
+  }
+  .quiz__title {
+    font-size: 1.4rem;
+    padding: 0.7rem 0;
+    &.flex {
+      display: block;
+      @include flex_layout(center, space-between);
+      .add__question,
+      .del__question,
+      .edit__question {
+        font-size: 3rem;
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+      .add__question {
+        color: blue;
+        margin-right: 0.3rem;
+      }
+      .del__question {
+        color: red;
+        margin-right: 0.3rem;
+      }
+      .edit__question {
+        color: green;
+        &.disabled {
+          pointer-events: none;
+          touch-action: none;
+          color: gray;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+.answerkey__box {
+  width: 100%;
+  @include flex_layout(null, null, column);
+  padding: 1rem 0;
+  overflow-y: auto;
+  .option_box {
+    width: 100%;
+    @include flex_layout(center, null);
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+  .option {
+    font-size: 1.6rem;
+  }
+  [name="option"] {
+    transform: scale(1.5);
+    margin-right: 1rem;
+  }
+  [name="option"]:checked + .option {
+    color: blue;
+  }
+}

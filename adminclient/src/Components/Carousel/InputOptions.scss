@@ -1,0 +1,30 @@
+@import "../../sass/utilities";
+
+.option__box {
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  @include flex_layout(center, flex-start);
+  .btn {
+    border: none;
+    background-color: transparent;
+  }
+  .opt__icon {
+    font-size: 3rem;
+    color: blue;
+  }
+  .input__option {
+    margin: 0 0.5rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.3rem;
+    padding: 0.7rem;
+    height: max-content;
+    width: 100%;
+    &.saved {
+      touch-action: none;
+      pointer-events: none;
+      background-color: transparent;
+      font-size: 1.6rem;
+      border: none;
+    }
+  }
+}

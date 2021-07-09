@@ -23,7 +23,7 @@ const Enroll = () => {
       justifyContent="center"
       style={{ marginBottom: "36vh" }}
     >
-      <Grid xs={12} lg={10}>
+      <Grid item xs={12} lg={10}>
         <Card>
           <Box className={classes.cardHeader}>
             {" "}

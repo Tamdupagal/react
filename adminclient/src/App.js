@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory, } from "react-router-dom";
 import SideBar from "./Components/SideBar/sideBar";
 import Dashboard from "./Pages/Dashboard";
 // import { Container } from "react-bootstrap";
@@ -10,7 +10,7 @@ import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
 import React, { useState, useEffect, useContext } from "react";
 import Courses from "./Pages/Courses";
-import AddMeet from "./Pages/AddMeet";
+// import AddMeet from "./Pages/AddMeet";
 import AddStudent from "./Pages/AddStudent";
 import Students from "./Pages/Students";
 import AddTeacher from "./Pages/AddTeacher";
@@ -43,10 +43,10 @@ import EditAdmin from "./Pages/EditAdmin";
 import Trainers from "./Pages/Trainers";
 import AddTrainer from "./Pages/AddTrainer";
 import LoginPage from "./Pages/LoginPage";
-import Carousel1 from "./Components/Carousel/Carousel1";
+// import Carousel1 from "./Components/Carousel/Carousel1";
 import PrivateRoute from "./PrivateRoute";
 import { AppContext } from "./AppContext";
-import PartialPrivateRoute from "./PartialPrivateRoute";
+// import PartialPrivateRoute from "./PartialPrivateRoute";
 
 
 // export const isLogin = () => {
@@ -138,14 +138,9 @@ function App() {
             <Switch>
 
             <PrivateRoute exact path="/" component={Dashboard} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute path={`/enroll`} exact>
-                <Enroll/>
-              </PrivateRoute>
+              <PrivateRoute exact path="/dashboard" compo nent={Dashboard} />
+              <PrivateRoute exact path={`/enroll`} component={Enroll} />
               <Route exact path="/meetLink" component={MeetLink} />
-              <PrivateRoute exact path="/meetLink">
-                <MeetLink/>
-              </PrivateRoute>
               <PrivateRoute exact path="/courses" component={Courses} />
               <PrivateRoute exact path="/classroom" component={OneToOne}/>
               <PrivateRoute exact path="/students" component={Students} />

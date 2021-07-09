@@ -445,7 +445,7 @@ const SideBar = () => {
                 Student Courses
               </Button>
             </Link>
-            <Accordion
+            {/* <Accordion
               square
               expanded={expanded === "panel3"}
               onChange={handleChange("panel3","H5P Content")}
@@ -472,7 +472,7 @@ const SideBar = () => {
                   <Button className={classes.button}>Edit Content</Button>
                 </Link>{" "}
               </AccordionDetails>
-            </Accordion>
+            </Accordion> */}
             <Link to="/teachers" className={classes.link}>
               <Button
                 startIcon={<FaUserGraduate />}

@@ -18,6 +18,7 @@ import formats from "../Helpers/formats";
 import modules from "../Helpers/modules";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import Question from "../Components/Carousel/Question"
 
 const ViewCourseSection = ({ withoutButton, withoutTitle, styles }) => {
   const classes = useStyles();
@@ -127,6 +128,9 @@ const ViewCourseSection = ({ withoutButton, withoutTitle, styles }) => {
           </Grid>
         </Container>
       </Container>
+      <div>
+        {/* <Question/> */}
+      </div>
     </div>
   );
 };

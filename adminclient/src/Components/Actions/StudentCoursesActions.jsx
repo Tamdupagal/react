@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import CreateIcon from "@material-ui/icons/Create";
-import { studentCoursesData } from '../../Helpers/studentCoursesData';
+// import { studentCoursesData } from '../../Helpers/studentCoursesData';
 
 const StudentCoursesActions = (props) => {
     const history = useHistory()
