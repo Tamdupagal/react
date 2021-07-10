@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useStyles } from "./../Styles/AddNewRoom";
-import Scheduler from "../Components/Scheduler/Scheduler";
+// import Scheduler from "../Components/Scheduler/Scheduler";
 
 const AddNewRoom = () => {
   const [value, setValue] = React.useState("interview");
@@ -89,7 +89,7 @@ const AddNewRoom = () => {
                   </TextField>
                 </form>
 
-                      <h5 className={classes.infoHeading}>Trainee Type:</h5>
+                      {/* <h5 className={classes.infoHeading}>Trainee Type:</h5> */}
                 {/* <Grid container className={classes.container1}>
                   <Grid item xs={12} lg={3}>
                     <Card className={classes.card1}>
@@ -140,7 +140,33 @@ const AddNewRoom = () => {
                     </Card>
                   </Grid>
                 </Grid> */}
-                <Scheduler/>
+                {/* <Scheduler/> */}
+                <Grid container>
+                  <Grid xs={6} lg={6}>
+                    <h5 className={classes.infoHeading}>Trainee Type:</h5>
+                <form>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    variant="outlined"
+                    size="small"
+                    className={classes.textField}
+                      />
+                      </form>
+                  </Grid>
+                  <Grid xs={6} lg={6}>
+                    <h5 className={classes.infoHeading}>Assign Trainee:</h5>
+                <form>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    variant="outlined"
+                    size="small"
+                    className={classes.textField}
+                      />
+                      </form>
+                  </Grid>
+                </Grid>
                 <div className={classes.submitBtn}>
                   <Button variant="contained" color="secondary">
                     SUBMIT CLASSROOM
