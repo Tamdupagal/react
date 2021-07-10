@@ -1,10 +1,26 @@
 import { Button, Card, Divider } from '@material-ui/core'
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { addStudentUsingExcelFile } from '../../action/actions'
+import { AppContext } from '../../AppContext'
 import {useStyles} from "../../Styles/AddStudent"
 
 
 const ImageCard = () => {
     const classes = useStyles()
+    const {dispatch} = useContext(AppContext)
+     const [state,setState] = useState({
+      selectedFile: null
+    })
+
+    const onFileChange = event => { 
+      // Update the state 
+      setState({ selectedFile: event.target.files[0] }); 
+      console.log("hi")
+    } 
+     
+    const onFileUpload = () => { 
+      addStudentUsingExcelFile(dispatch,state.selectedFile)
+    }; 
     return (
         <div>
           <div className={classes.excelFile}>
@@ -22,7 +38,7 @@ const ImageCard = () => {
               >
                 <input
                   type="file"
-                  onChange={(e) => this.upload(e)}
+                  onChange={(e) => onFileChange(e)}
                   name="img"
                   style={{ padding: "1%" }}
                 />
@@ -32,6 +48,7 @@ const ImageCard = () => {
               variant="contained"
               color="secondary"
               style={{ marginTop: "2%", marginLeft: "2%", marginBottom: "3%" }}
+              onClick={onFileUpload}
             >
               {" "}
               Submit file

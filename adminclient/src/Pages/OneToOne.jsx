@@ -50,7 +50,7 @@ const OneToOne = () => {
   const handleAddNewClassroom = () => {
     history.push({
       pathname: "/classroom/create",
-      state: {courses: state.coursesData.courses}
+      // state: {courses: state.courseData.courses}
     });
   };
   // const Columns = [

@@ -58,10 +58,10 @@ const initialState= {
         isLoading: false,
         anyError: null
     },
-    courseData: {
-        courses: [],
-        course_section_with_id: null
-    },
+    // courseData: {
+    //     courses: [],
+    //     course_section_with_id: null
+    // },
     meetLinksData:{
         meetLinks: [],
         isLoading: false,

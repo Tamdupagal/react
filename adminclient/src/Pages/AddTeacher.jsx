@@ -57,6 +57,34 @@ const AddTeacher = () => {
     setCoursesOptions(options)
   }, [])
 
+  const onFileChange = event => { 
+    // Update the state 
+    // this.setState({ selectedFile: event.target.files[0] }); 
+    console.log("hi")
+  }; 
+   
+  // On file upload (click the upload button) 
+  const onFileUpload = () => { 
+    // Create an object of formData 
+    const formData = new FormData(); 
+   
+    // Update the formData object 
+    formData.append( 
+      "myFile", 
+      this.state.selectedFile, 
+      this.state.selectedFile.name 
+    ); 
+   console.log("clicked")
+    // Details of the uploaded file 
+    // console.log(this.state.selectedFile); 
+   
+    // Request made to the backend api 
+    // Send formData object 
+    // axios.post("api/uploadfile", formData); 
+  }; 
+   
+
+
   return (
     <div>
       <Container>
@@ -82,11 +110,12 @@ const AddTeacher = () => {
                   }}
                   className={classes.infoHeading}
                 >
-                  <input
-                    type="file"
-                    onChange={(e) => this.upload(e)}
-                    name="img"
-                  />
+                <div> 
+                <input type="file" onChange={onFileChange} /> 
+                <button onClick={onFileUpload}> 
+                  Upload! 
+                </button> 
+            </div> 
                 </Card>
                 <h5 className={classes.infoHeading}>Teacher Name:</h5>{" "}
                 <form>

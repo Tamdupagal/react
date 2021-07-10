@@ -8,8 +8,12 @@ import { useStyles } from "./../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
 import { AppContext } from "../AppContext";
-import { addClassroom, getAllClassrooms, getAllCourses } from "../action/actions";
+import { addClassroom, getAllClassrooms, getAllCourses, getAllStudents, getAllTeachers } from "../action/actions";
 import { useHistory, useLocation } from "react-router-dom";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from '@material-ui/core/Select';
+
 
 const AddNewClassroom = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -17,41 +21,62 @@ const AddNewClassroom = () => {
   const courseRef = useRef();
   const studentRef = useRef();
   const history = useHistory();
+  const [teacherId,setTeacherId] = useState([])
+  const data=[1,2,3,4]
+  let teacherData
 
   const [selectedValue, setSelectedValue] = useState([]);
   const classes = useStyles();
   const location = useLocation()
-  let courseData = location.state.courses
-  const courses = []
-  const options = []
-  const [coursesOptions, setCoursesOptions] = useState([])
+  let courses = location.state?.courses
+  const [allTeachers, setAllTeachers] = useState([])
+  const courseOptions = []
+  let teachers=location.state?.teachers;
+  const [coursesOptions, setCoursesOptions] = useState()
  
-  useEffect(() => {
-    console.log(selectedValue);
-    console.log(courseData)
-    console.log(courseData[1])
-    courseData.map(c=>courses.push(c.course_section))
-    console.log(courses[0])
-    courses.map(c=>c.map(data=>options.push({label: data.name, value: data._id})))
-    setCoursesOptions(options)
+  useEffect(async() => {
+    console.log(courses)
+    if(!courses){
+      try {
+        courses = await getAllCourses(dispatch)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    if(!teachers){
+      try {
+        teachers= await getAllTeachers(dispatch)
+        setAllTeachers(teachers)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    courses.map(c=>courseOptions.push({label: c.title, value: c._id}))
   }, []);
 
   const onSelect = (e) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
   };
 
+  const handleChange = (e) => {
+    e.preventDefault()
+    setTeacherId(e.target.value._id)
+  }
+
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
-      // enrolled_courses: {selectedValue},
-      // enrolled_students: ["1", "2", "3"],
+      enrolled_courses: {selectedValue},
+      enrolled_students: ["1", "2", "3"],
+      teachers: teacherId
     };
     console.log(nameRef.current.value);
     console.log(selectedValue);
     addClassroom(dispatch, data);
-    // history.push("/classroom");
+    history.push("/classroom");
   };
-
   return (
     <div>
       <div>
@@ -73,22 +98,10 @@ const AddNewClassroom = () => {
                   />
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
-                {/* <form> */}{" "}
-                {/* <Select
-                  variant="outlined"
-                  size="small"
-                  select
-                  // ref={courseRef}
-                  // onchange={handleChange}
-                  className={classes.textField}
-                >
-                  <MenuItem value={1}>interview</MenuItem>
-                  <MenuItem value={2}>hello</MenuItem>
-                  <MenuItem value={3}>hola</MenuItem>
-                </Select> */}
+                
                 <Container>
                   <Multiselect
-                    options={coursesOptions}
+                    options={courseOptions}
                     value={selectedValue}
                     onSelect={onSelect}
                     displayValue="label"
@@ -98,21 +111,10 @@ const AddNewClassroom = () => {
                     avoidHighlightFirstOption={true}
                   />
                 </Container>
-                {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
-                {/* <form>
-                  {" "}
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    size="small"
-                    inputRef={studentRef}
-                    className={classes.textField} 
-                  />
-                </form> */}
                 <Container>
                   <Multiselect
-                    options={coursesOptions}
+                    options={courseOptions}
                     // value={selectedValue}
                     onSelect={onSelect}
                     displayValue="label"
@@ -125,19 +127,26 @@ const AddNewClassroom = () => {
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <form>
                   {/* {" "} */}
-                  <TextField
+                  {
+                     (
+                  <Select
                     variant="outlined"
                     size="small"
-                    select
+                    options={courseOptions}
                     inputRef={courseRef}
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     className={classes.textField}
                   >
-                    <MenuItem value={"interview"}>interview</MenuItem>
-                    <MenuItem value={"hii"}>hii</MenuItem>
-                    <MenuItem value={"hello"}>hello</MenuItem>
-                    <MenuItem value={"hola"}>hola</MenuItem>
-                  </TextField>
+                    {
+                      allTeachers.map((teacher, index) => (
+                          <MenuItem key={index} value={teacher}>
+                            {teacher.name}
+                          </MenuItem>
+                        ))
+                    }
+                  </Select>
+                    )
+                  }
                 </form>
                 <div className={classes.submitBtn}>
                   <Button
