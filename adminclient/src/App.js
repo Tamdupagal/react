@@ -46,6 +46,7 @@ import LoginPage from "./Pages/LoginPage";
 // import Carousel1 from "./Components/Carousel/Carousel1";
 import PrivateRoute from "./PrivateRoute";
 import { AppContext } from "./AppContext";
+import ResetPassword1 from "./Pages/ResetPassword1"
 // import PartialPrivateRoute from "./PartialPrivateRoute";
 
 
@@ -138,7 +139,7 @@ function App() {
             <Switch>
 
             <PrivateRoute exact path="/" component={Dashboard} />
-              <PrivateRoute exact path="/dashboard" compo nent={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path={`/enroll`} component={Enroll} />
               <Route exact path="/meetLink" component={MeetLink} />
               <PrivateRoute exact path="/courses" component={Courses} />
@@ -150,7 +151,9 @@ function App() {
               <Route exact path="/add-meet" component={MeetLink} />
               <Route exact path="/edit-meet/:id" component={MeetLink} />
               <Route exact path="/add-student" component={AddStudent} />
-              <Route exact path="/add-teacher" component={AddTeacher} />
+                <Route exact path="/add-teacher" component={AddTeacher} />
+                              <Route exact path="/reset-password" component={ResetPassword1} />
+
               {/* <Route exact path="/carousel" component={Carousel} /> */}
               <Route exact path="/trainers" component={Trainers} />
               <Route exact path="/add-trainer" component={AddTrainer} />

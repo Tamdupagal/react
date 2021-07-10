@@ -441,7 +441,7 @@ const SideBar = () => {
               </Button>
             </Link>
             <Link to="/student-courses" className={classes.link}>
-              <Button startIcon={<FaceIcon />} className={classes.menuBtn}>
+              <Button startIcon={<FaceIcon />} className={classes.menuBtn2}>
                 Student Courses
               </Button>
             </Link>

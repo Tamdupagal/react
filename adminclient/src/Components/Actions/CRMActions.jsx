@@ -4,6 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
+import { useHistory } from "react-router-dom";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -16,6 +17,11 @@ const LightTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 const CRMActions = () => {
+  const history = useHistory();
+
+  const handleResetPassword = () => {
+    history.push("/reset-password")
+  }
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>
@@ -46,6 +52,7 @@ const CRMActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleResetPassword}
         >
           <LockRoundedIcon />
         </button>

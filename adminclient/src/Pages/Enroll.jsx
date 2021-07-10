@@ -4,10 +4,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Box, Grid } from "@material-ui/core";
-import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./../Styles/Enroll";
+
 const Enroll = () => {
   const classes = useStyles();
   const history = useHistory();
