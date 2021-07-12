@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import { useHistory } from "react-router-dom";
+import Modal from "@material-ui/core/Modal"
+import ResetPassword1 from "../../Pages/ResetPassword1"
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -18,10 +20,19 @@ const LightTooltip = withStyles((theme) => ({
 
 const CRMActions = () => {
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+  
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-  const handleResetPassword = () => {
-    history.push("/reset-password")
-  }
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+  const body = <ResetPassword1 handleClose={handleClose} open={handleOpen}/>;
+
   return (
     <div>
       <LightTooltip title="Edit" placement="top" arrow>
@@ -52,7 +63,7 @@ const CRMActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleResetPassword}
+          onClick={handleOpen}
         >
           <LockRoundedIcon />
         </button>
@@ -73,6 +84,16 @@ const CRMActions = () => {
           <DeleteIcon />
         </button>
       </LightTooltip>
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
     </div>
   );
 };
