@@ -143,6 +143,7 @@ export const addStudent = async (dispatch,data) => {
 // student/new/file
 
 export const addStudentUsingExcelFile = async (dispatch,file) => {
+    console.log(file)
     axios.post(`/student/new/file`,file)
             .then(response => {
                 console.log(response);
@@ -207,6 +208,31 @@ export const getAllTeachers = async (dispatch) => {
                 reject(error);
             });
     })
+}
+export const getTeacherById = async (dispatch,id) => {
+    return new Promise((resolve, reject) => {
+        axios.get(`/teacher/details/${id}`)
+            .then(response => {
+                console.log(response);
+                dispatch({
+                    type: GET_ALL_TEACHERS_SUCCESS,
+                    payload: response.data,
+                });
+                console.log(response);
+                resolve(response.data.name);
+                })
+            .catch((error) => {
+                reject(error);
+            });
+    })
+    // axios.get(`/teacher/details/${id}`)
+    // .then(res => {
+    //     console.log(res);
+    //     return res.data.name
+    // })
+    // .catch((err)=>{
+    //     console.log(err)
+    // })
 }
 
 export const addTeacher = async (dispatch,data,value) => {
@@ -312,7 +338,7 @@ export const deleteLecture= async (dispatch, cid, id) => {
 export const getAllAdmins = async (dispatch) => {
     try {
         dispatch({ type: GET_ALL_ADMINS_REQUEST })
-        const res = await axios.get('admin/all')
+        const res = await axios.get('admins/all')
         console.log(res.data)
         dispatch({type : GET_ALL_ADMINS_SUCCESS, payload : res.data})
     } catch (err) {

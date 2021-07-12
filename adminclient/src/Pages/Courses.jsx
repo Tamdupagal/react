@@ -41,10 +41,10 @@ const Courses = () => {
     getAllCourses(dispatch)
       .then((res)=>{
         setLoad(false);
-        console.log('In res' , res);
+        console.log('In res', res);
       })
       .catch((err)=>{
-        console.log('err' , err);
+        console.log('err', err);
       })
   },[])
 

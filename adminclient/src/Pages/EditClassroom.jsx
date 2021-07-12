@@ -12,7 +12,7 @@ import { editClassroom } from "../action/actions";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import axios from "../axios";
 
-const EditClassroom = (props) => {
+const EditClassroom = () => {
   const [selectedValue, setSelectedValue] = useState([]);
   const [classroom, setClassroom] = useState();
   const classes = useStyles();
@@ -31,10 +31,10 @@ const EditClassroom = (props) => {
     // console.log(props.editClassroomData._id);
     // edit = state.classroomEditData.data.enrolledStudents;
     // console.log(edit);
-    console.log(data);
-    Object.keys(data.enrolled_courses).map((c) => students.push({ label: c }));
-    setStudentOptions(students);
-    console.log(students);
+    // console.log(data);
+    // Object.keys(data.enrolled_courses).map((c) => students.push({ label: c }));
+    // setStudentOptions(students);
+    // console.log(students);
   }, []);
 
   const onSelect = (e) => {
