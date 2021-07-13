@@ -32,19 +32,23 @@ export const AttendanceData = (state) => {
   return state.classroomData.classrooms
 };
 
-export const AttendanceColumn = (dispatch) => {
+export const AttendanceColumn = () => {
   const col = [
     { title: "Classroom", field: "name" },
     { title: "Lecture On", field: "teachers", render: (row) => (
       <div>
-        {Object.keys(row.teachers).forEach(c=>console.log(getTeacherById(dispatch,c)))}
+        {/* {row.teachers?Object.values(row.teachers).map(c=>c.personelDetails!=null?c.personelDetails.map(data=>console.log(data)):""): ""} */}
+        {/* {row.teachers?Object.values(row.teachers).map(c=>console.log(c.personelDetails.name)): ""} */}
+        name
       </div>
       ) },
     {
       title: "Total",
-      field: "name", render: (row) => {
-        <div>{getStudents(row)}</div>
-      }
+      field: "total", render: (row) => (
+        <div>
+          {row.enrolled_students?Object.keys(row.enrolled_students).length: ""}
+        </div>
+      )
       // Style: { border: "1px solid black" },
     },
     // {
@@ -55,7 +59,7 @@ export const AttendanceColumn = (dispatch) => {
       title: "Actions",
       field: "name",
       render: (row) => (
-        <AttendanceActions/>
+        <AttendanceActions data={row}/>
       ),
     },
   ];

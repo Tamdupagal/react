@@ -25,7 +25,7 @@ export const StudentCourseColumn = () => {
           title: "Course Assigned",
           field: "courseAssigned",render: (row) => (
             <div>
-                {row.classroom.map(c=>Object.keys(c.enrolled_courses)).length}
+                {row.classroom? row.classroom.map(c=>Object.keys(c.enrolled_courses)).length: ""}
             </div>
         )
         },

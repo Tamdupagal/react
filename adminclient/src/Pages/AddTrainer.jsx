@@ -1,5 +1,5 @@
-import React, { useContext, useRef } from "react";
-import { Container } from "@material-ui/core";
+import React, { useContext, useRef, useEffect } from "react";
+import { Container, MenuItem, Select } from "@material-ui/core";
 import {
   Button,
   Card,
@@ -10,8 +10,9 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./../Styles/AddTeacher";
 import { useHistory, useLocation, useParams } from "react-router-dom";
-import { addTrainer, editTrainer } from "../action/actions";
+import { addTrainer, editTrainer, getAllTeachers } from "../action/actions";
 import { AppContext } from "../AppContext";
+import { useState } from "react";
 
 const AddTrainer = () => {
   const classes = useStyles();
@@ -22,12 +23,46 @@ const AddTrainer = () => {
   const {id} = useParams()
   const location = useLocation()
   const editableData = id?location.state.data:""
+  const [allTeachers, setAllTeachers] = useState([])
+  const [teacherId, setTeacherId] = useState([])
+  const [ownRole, setOwnRole] = useState("")
+  const [role, setRole] = useState("")
+  let teachers;
+  const teacherOptions = []
   
+  useEffect(async() => {
+    if(!teachers){
+      try {
+        teachers= await getAllTeachers(dispatch)
+        teachers.map(c=>teacherOptions.push(c.personelDetails))
+        setAllTeachers(teacherOptions)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+  }, [])
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setTeacherId(e.target.value._id)
+    console.log(e.target.value._id)
+  }
+  const handleOwnRoleChange = (e) => {
+    e.preventDefault()
+    setOwnRole(e.target.value)
+    console.log(e.target.value)
+  }
+  const handleRoleChange = (e) => {
+    e.preventDefault()
+    setRole(e.target.value)
+    console.log(e.target.value)
+  }
   const handleAddTrainer = () => {
     var data = {
-      trainer_id: "507f1f77bcf86cd799439019",
-      trainer_will_train_for_role: trainerToTrainRole.current.value,
-      trainer_own_role: trainerRole.current.value
+      trainer_id: teacherId,
+      trainer_will_train_for_role: role,
+      trainer_own_role: ownRole
     }
     addTrainer(dispatch,data)
     history.push("/trainers")
@@ -35,13 +70,14 @@ const AddTrainer = () => {
 
   const handleEditTrainer = () => {
     var data = {
-      trainer_id: "507f1f77bcf86cd799439013",
-      trainer_will_train_for_role: trainerToTrainRole.current.value,
-      trainer_own_role: trainerRole.current.value
+      trainer_id: teacherId,
+      trainer_will_train_for_role: role,
+      trainer_own_role: ownRole
     }
     editTrainer(dispatch,data,id)
     history.push("/trainers")
   }
+  
 
   return (
     <div>
@@ -56,39 +92,71 @@ const AddTrainer = () => {
         <Box display="flex" justifyContent="center">
           <Grid item xs={12} lg={8}>
             <Card>
-              <h5 className={classes.infoHeading}>Trainer's Name:</h5>{" "}
-              <form>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  size="small"
-                  className={classes.textField}
-                  // defaultValue={}
-                />
-              </form>
+            <h5 className={classes.infoHeading}>Trainer:</h5>
+            <form>
+                  {
+                     (
+                  <Select
+                    variant="outlined"
+                    size="small"
+                    // options={courseOptions}
+                    // inputRef={courseRef}
+                    onChange={handleChange}
+                    className={classes.textField}
+                    defaultValue=""
+                  >
+                    {
+                      allTeachers.map((teacher, index) => (
+                          <MenuItem key={index} value={teacher}>
+                            {teacher.name}
+                          </MenuItem>
+                        ))
+                    }
+                  </Select>
+                    )
+                  }
+                </form>
               <h5 className={classes.infoHeading}>Trainer's Role:</h5>
               <form>
                 {" "}
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  size="small"
-                  className={classes.textField}
-                  defaultValue={editableData.trainer_will_train_for_role}
-                  inputRef={trainerToTrainRole}
-                />
+                <Select
+                    variant="outlined"
+                    size="small"
+                    value={ownRole}
+                    // options={courseOptions}
+                    // inputRef={courseRef}
+                    onChange={handleOwnRoleChange}
+                    className={classes.textField}
+                    defaultValue=""
+                  >
+                          <MenuItem value={"ADMIN"}>
+                            ADMIN
+                          </MenuItem>
+                          <MenuItem value={"Teacher"} >
+                            TEACHER
+                          </MenuItem>
+                  </Select>
               </form>
               <h5 className={classes.infoHeading}>Trainer's own Role:</h5>
               <form>
                 {" "}
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  size="small"
-                  className={classes.textField}
-                  defaultValue={editableData.trainer_own_role}
-                  inputRef={trainerRole}
-                />
+                <Select
+                    variant="outlined"
+                    size="small"
+                    value={role}
+                    // options={courseOptions}
+                    // inputRef={courseRef}
+                    onChange={handleRoleChange}
+                    className={classes.textField}
+                    defaultValue=""
+                  >
+                          <MenuItem value={"ADMIN"}>
+                            ADMIN
+                          </MenuItem>
+                          <MenuItem value={"Teacher"} >
+                            TEACHER
+                          </MenuItem>
+                  </Select>
               </form>
               <Grid item xs={12}>
                 <div className={classes.submitBtn}>

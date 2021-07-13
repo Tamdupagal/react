@@ -12,13 +12,14 @@ import ManageStudentCourseActions from "./../Components/Actions/ManageStudentCou
     export const ManageStudentCourseData = (courses) => {
         let course=[]
         let allCourse=[]
-        course=courses.classrooms.map(c=>Object.keys(c.enrolled_courses))
-        course.forEach(c => {
-            c.forEach(data=>{
-                allCourse.push({name:data})
-            })
-        })
-        return allCourse
+        console.log(courses)
+        // course=courses.classrooms.map(c=>Object.keys(c.enrolled_courses))
+        // course.forEach(c => {
+        //     c.forEach(data=>{
+        //         allCourse.push({name:data})
+        //     })  
+        // })
+        // return allCourse
 
 
     }

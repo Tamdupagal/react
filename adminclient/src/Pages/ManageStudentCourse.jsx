@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 const ManageStudentCourse = () => {
-  const classes = useStyles();
+  const classes = useStyles(); 
   const history = useHistory();
   const {dispatch} = useContext(AppContext)
   const location = useLocation()
