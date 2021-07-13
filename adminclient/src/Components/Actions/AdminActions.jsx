@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -7,6 +7,9 @@ import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import { useHistory } from "react-router-dom";
 import { AppContext } from "./../../AppContext";
 import { deleteAdmin } from "../../action/actions";
+import Modal from "@material-ui/core/Modal"
+import ResetPassword1 from "../../Pages/ResetPassword1"
+
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -21,6 +24,17 @@ const LightTooltip = withStyles((theme) => ({
 const AdminActions = (props) => {
   const history = useHistory();
   const { dispatch } = useContext(AppContext);
+   const [open, setOpen] = useState(false);
+  
+  const handleOpen = () => {
+    setOpen(true);
+    // history.push("/resetPassword")
+
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleEdit = () => {
     history.push({
@@ -34,6 +48,9 @@ const AdminActions = (props) => {
       history.push("/operations");
     }
   };
+
+    const body = <ResetPassword1 handleClose={handleClose} open={handleOpen}/>;
+
   return (
     <div>
       {/* <Link to={{
@@ -70,6 +87,7 @@ const AdminActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+           onClick={handleOpen}
         >
           <LockRoundedIcon />
         </button>
@@ -91,6 +109,16 @@ const AdminActions = (props) => {
           <DeleteIcon />
         </button>
       </LightTooltip>
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
     </div>
   );
 };

@@ -5,8 +5,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import { useHistory } from "react-router-dom";
-import Modal from "@material-ui/core/Modal"
-import ResetPassword1 from "../../Pages/ResetPassword1"
+import Modal from "@material-ui/core/Modal";
+import ResetPassword1 from "../../Pages/ResetPassword1";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -23,15 +23,19 @@ const CRMActions = () => {
   const [open, setOpen] = useState(false);
   
   const handleOpen = () => {
+    console.log("called")
     setOpen(true);
+    history.push("/resetPassword")
   };
 
   const handleClose = () => {
     setOpen(false);
+    history.push("/Operations")
+
   };
 
 
-  const body = <ResetPassword1 handleClose={handleClose} open={handleOpen}/>;
+  const body = <ResetPassword1 handleClose={handleClose} open={open}/>;
 
   return (
     <div>

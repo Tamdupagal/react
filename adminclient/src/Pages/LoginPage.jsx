@@ -62,124 +62,140 @@ const LoginPage = () => {
     }
   }
   return (
-    <div className={classes.img}>
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <Grid item xs={12} lg={6}>
-          <Card
-            style={{
-              marginTop: "10%",
-              boxShadow: "0px 4px #4d4d4d",
-            }}
-          >
-            <Grid container>
-              <Grid
-                item
-                xs={12}
-                lg={6}
-                style={{
-                  padding: "5%",
-                }}
-              >
-                <h1 style={{ display: "flex", justifyContent: "center" }}>
-                  Sign In
-                </h1>
-                <form className={classes.root} noValidate autoComplete="off">
-                  <TextField
-                    id="outlined-basic"
-                    type="email"
-                    label="Email"
-                    variant="outlined"
-                    size="small"
-                    className={classes.textField}
-                    inputRef={email}
+    // <div className={classes.img}>
+    //   <Box display="flex" alignItems="center" justifyContent="center">
+    //     <Grid item xs={12} lg={6}>
+    //       <Card
+    //         style={{
+    //           marginTop: "10%",
+    //           boxShadow: "0px 4px #4d4d4d",
+    //         }}
+    //       >
+    //         <Grid container>
+    //           <Grid
+    //             item
+    //             xs={12}
+    //             lg={6}
+    //             style={{
+    //               padding: "5%",
+    //             }}
+    //           >
+    //             <h1 style={{ display: "flex", justifyContent: "center" }}>
+    //               Sign In
+    //             </h1>
+    //             <form className={classes.root} noValidate autoComplete="off">
+    //               <TextField
+    //                 id="outlined-basic"
+    //                 type="email"
+    //                 label="Email"
+    //                 variant="outlined"
+    //                 size="small"
+    //                 className={classes.textField}
+    //                 inputRef={email}
                 
-                  />
-                </form>
-                <form className={classes.root} noValidate autoComplete="off">
-                  <TextField
-                    id="outlined-basic"
-                    type="password"
-                    label="Password"
-                    variant="outlined"
-                    size="small"
-                    className={classes.textField}
-                    inputRef={password}
-                  />
-                </form>
-                <a
-                  href=""
-                  style={{
-                    cursor: "pointer",
-                    display: "flex",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    margin: "5%",
-                    textDecoration: "none",
-                    color: "#ccc",
-                  }}
-                >
-                  Forgot Password?
-                </a>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Button variant="contained" className={classes.btn}
-                  onClick={handleSignIn}
-                  >
-                    Sign in
-                  </Button>
-                </div>
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <img
-                  src={Loginpage1}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                    position: "relative",
-                    left: "0px",
-                    top: "0px",
-                  }}
-                ></img>
-                <img
-                  src={MainLogo2}
-                  style={{
-                    height: "25%",
-                    width: "15%",
-                    position: "absolute",
-                    left: "750px",
-                    top: "150px",
-                  }}
-                ></img>
-                <h1
-                  style={{
-                    position: "absolute",
-                    left: "760px",
-                    top: "250px",
-                  }}
-                >
-                  Digital Aided
-                </h1>
-                <h1
-                  style={{
-                    position: "absolute",
-                    left: "800px",
-                    top: "300px",
-                  }}
-                >
-                  School
-                </h1>
-                <p
-                  style={{
-                    position: "absolute",
-                    left: "745px",
-                    top: "350px",
-                    textAlign: "center",
-                  }}
-                >
-                  Enter your personal details and start <br /> journey with us
-                </p>
-              </Grid>
-            </Grid>
-          </Card>
+    //               />
+    //             </form>
+    //             <form className={classes.root} noValidate autoComplete="off">
+    //               <TextField
+    //                 id="outlined-basic"
+    //                 type="password"
+    //                 label="Password"
+    //                 variant="outlined"
+    //                 size="small"
+    //                 className={classes.textField}
+    //                 inputRef={password}
+    //               />
+    //             </form>
+    //             <a
+    //               href=""
+    //               style={{
+    //                 cursor: "pointer",
+    //                 display: "flex",
+    //                 justifyContent: "center",
+    //                 textAlign: "center",
+    //                 margin: "5%",
+    //                 textDecoration: "none",
+    //                 color: "#ccc",
+    //               }}
+    //             >
+    //               Forgot Password?
+    //             </a>
+    //             <div style={{ display: "flex", justifyContent: "center" }}>
+    //               <Button variant="contained" className={classes.btn}
+    //               onClick={handleSignIn}
+    //               >
+    //                 Sign in
+    //               </Button>
+    //             </div>
+    //           </Grid>
+    //           <Grid item xs={12} lg={6}>
+    //             <img
+    //               src={Loginpage1}
+    //               style={{
+    //                 height: "100%",
+    //                 width: "100%",
+    //                 position: "relative",
+    //                 left: "0px",
+    //                 top: "0px",
+    //               }}
+    //             ></img>
+    //             <img
+    //               src={MainLogo2}
+    //               style={{
+    //                 height: "25%",
+    //                 width: "15%",
+    //                 position: "absolute",
+    //                 left: "750px",
+    //                 top: "150px",
+    //               }}
+    //             ></img>
+    //             <h1
+    //               style={{
+    //                 position: "absolute",
+    //                 left: "760px",
+    //                 top: "250px",
+    //               }}
+    //             >
+    //               Digital Aided
+    //             </h1>
+    //             <h1
+    //               style={{
+    //                 position: "absolute",
+    //                 left: "800px",
+    //                 top: "300px",
+    //               }}
+    //             >
+    //               School
+    //             </h1>
+    //             <p
+    //               style={{
+    //                 position: "absolute",
+    //                 left: "745px",
+    //                 top: "350px",
+    //                 textAlign: "center",
+    //               }}
+    //             >
+    //               Enter your personal details and start <br /> journey with us
+    //             </p>
+    //           </Grid>
+    //         </Grid>
+    //       </Card>
+    //     </Grid>
+    //   </Box>
+    // </div>
+    <div>
+      <Box display="flex"
+        alignItems="center"
+        p={1}
+        m={1}
+      justifyContent="center">
+        <Grid container xs={12} lg={7} style={{border:"1px solid black"}}>
+          <Grid xs={12} lg={6} >Hello</Grid>
+          <Grid xs={12} lg={6} >
+            <Card style={{borderRadius:"50%"}}>
+
+            </Card>
+          </Grid>
         </Grid>
       </Box>
     </div>
