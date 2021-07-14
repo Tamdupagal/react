@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const ViewAttendanceReport = () => {
     const classes = useStyles();
     
-    const value = 50;
+    const percentage = 50;
     return(
         <div>
             <Container>
@@ -40,12 +40,12 @@ const ViewAttendanceReport = () => {
                                         <h3 className={classes.mainHeading}>ATTENDANCE REPORT</h3>
                                     </Box>
                                     <Box display="flex" flexDirection="column" style={{marginRight:"3%"}}>
-                                        <Box className={classes.info} display="flex" justifyContent="space-between" > <FiberManualRecordIcon style={{color:"red"}}/>Present</Box>
-                                        <Box className={classes.info} display="flex" justifyContent="space-between"> <FiberManualRecordIcon style={{color:"blue"}}/>Absent</Box>
+                                        <Box className={classes.info} display="flex" justifyContent="space-between" > <FiberManualRecordIcon style={{color:"#e60000"}}/>Present</Box>
+                                        <Box className={classes.info} display="flex" justifyContent="space-between"> <FiberManualRecordIcon style={{color:"#007399"}}/>Absent</Box>
                                     </Box>
                                 </Box>
                                 <Box className={classes.info} display="flex" justifyContent="center" style={{paddingBottom:"3%"}}>
-                                     <CircularProgressBar/>
+                                    <CircularProgressBar value={percentage} text={`${percentage}%`}/>
                                 </Box>
                             </Card>
                         </Grid>

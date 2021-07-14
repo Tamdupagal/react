@@ -1,13 +1,16 @@
-import React from 'react';
-import CircularBar from 'react-multicolor-circular-progress-bar';
+import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-const CircularProgressBar = (props) => (
-    <CircularBar
-      scale={2}
-      angleTransition={[180]}
-      colors={['#ff0000','#00ff00']}
-      stroke={ {color:'#eee', width:5}}
+const CircularProgressBar = () => {
+  const percentage = 50;
+  return (
+  
+    <CircularProgressbar value={percentage} text={`${percentage}%`}
+      styles={buildStyles({
+        pathColor: " #e60000",trailColor:"#007399"
+      })}
     />
-);
+ )
+}
 
-export default CircularProgressBar;
+export default CircularProgressBar
