@@ -33,7 +33,7 @@ const Teachers = () => {
   const handleAddTeacher = () => {
     history.push({
       pathname: "/add-teacher",
-      state: {courses: state.coursesData.courses}
+      // state: {courses: state.coursesData.courses}
     });
   };
 

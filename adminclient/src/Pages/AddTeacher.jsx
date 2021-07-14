@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./../Styles/AddTeacher";
 import { Multiselect } from "multiselect-react-dropdown";
-import { addTeacher } from "../action/actions";
+import { addTeacher, getAllCourses } from "../action/actions";
 import { AppContext } from "./../AppContext";
 import { useHistory, useLocation } from "react-router-dom";
 const AddTeacher = () => {
@@ -22,10 +22,11 @@ const AddTeacher = () => {
   const { dispatch } = useContext(AppContext);
   const [selectedValue, setSelectedValue] = useState([]);
   const location = useLocation()
-  let courseData = location.state.courses
-  const courses = []
-  const options = []
-  const [coursesOptions, setCoursesOptions] = useState([])
+  let courses = location.state?.courses
+  // const courses = []
+  // const options = []
+  // const [coursesOptions, setCoursesOptions] = useState([])
+  let courseOptions= []
   const history = useHistory();
 
   const onSelect = (e) => {
@@ -48,13 +49,23 @@ const AddTeacher = () => {
     addTeacher(dispatch, data, selectedValue);
     history.push("/teachers");
   };
-  useEffect(() => {
-    console.log(courseData)
-    console.log(courseData[1])
-    courseData.map(c=>courses.push(c.course_section))
-    console.log(courses[0])
-    courses.map(c=>c.map(data=>options.push({label: data.name, value: data._id})))
-    setCoursesOptions(options)
+  useEffect(async() => {
+    // console.log(courseData)
+    // console.log(courseData[1])
+    // courseData.map(c=>courses.push(c.course_section))
+    // console.log(courses[0])
+    // courses.map(c=>c.map(data=>options.push({label: data.name, value: data._id})))
+    // setCoursesOptions(options)
+    if(!courses){
+      try {
+        courses = await getAllCourses(dispatch)
+        // setCoursesOptions(courses)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    courses.map(c=>courseOptions.push({label: c.title, value: c._id}))
   }, [])
 
   const onFileChange = event => { 
@@ -191,7 +202,7 @@ const AddTeacher = () => {
                 <h5 className={classes.infoHeading}>Courses :</h5>
                 <Container>
                   <Multiselect
-                    options={coursesOptions}
+                    options={courseOptions}
                     value={selectedValue}
                     onSelect={onSelect}
                     displayValue="label"

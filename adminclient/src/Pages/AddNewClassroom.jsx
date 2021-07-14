@@ -33,6 +33,7 @@ const AddNewClassroom = () => {
   const courseOptions = []
   let teachers=location.state?.teachers;
   const [coursesOptions, setCoursesOptions] = useState()
+  let teacherOptions = []
  
   useEffect(async() => {
     console.log(courses)
@@ -47,7 +48,9 @@ const AddNewClassroom = () => {
     if(!teachers){
       try {
         teachers= await getAllTeachers(dispatch)
-        setAllTeachers(teachers)
+        teachers.map(c=>teacherOptions.push(c.personelDetails))
+        setAllTeachers(teacherOptions)
+        // console.log
       }
       catch(err){
         console.log(err)
@@ -126,16 +129,14 @@ const AddNewClassroom = () => {
                 </Container>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <form>
-                  {/* {" "} */}
                   {
                      (
                   <Select
                     variant="outlined"
                     size="small"
-                    options={courseOptions}
-                    inputRef={courseRef}
                     onChange={handleChange}
                     className={classes.textField}
+                    defaultValue=""
                   >
                     {
                       allTeachers.map((teacher, index) => (

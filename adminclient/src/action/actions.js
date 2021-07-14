@@ -193,6 +193,7 @@ export const deleteStudent= async (dispatch, id) => {
 // *****************TEACHERS*****************
 
 export const getAllTeachers = async (dispatch) => {
+    console.log("I am called")
     return new Promise((resolve, reject) => {
         axios.get(`/teachers/all`)
             .then(response => {
@@ -240,12 +241,14 @@ export const addTeacher = async (dispatch,data,value) => {
         dispatch ({ type: ADD_TEACHER_REQUEST})
         console.log(data)
         const res = await axios.post('teacher/new',data)
-        console.log(res)
+        console.log(res.data._id)
         dispatch({type : ADD_TEACHER_SUCCESS, payload : data})
+        value.map(c=>addTeacherToCourse(c.value,res._id))
         // addTeacherToCourse(value,res._id)
         getAllTeachers(dispatch)
     } catch (err) {
         dispatch({type : ADD_TEACHER_FAIL, payload : err})
+        console.log(err.message)
     }
 }
 
@@ -282,15 +285,33 @@ export const deleteTeacher= async (dispatch, id) => {
     }
 }
 
-export const addTeacherToCourse= () => {
-    const res = axios.post()
+export const addTeacherToCourse= async(value,id) => {
+    const res = axios.put(`/teacher/${id}/course/add/${value}`)
+    try {
+        const res = await axios.put(`/teacher/${id}/course/add/${value}`)
+        console.log(res)
+        console.log("added")
+    } catch (err) {
+        console.log(err)
+    }
 }
+
+// export const deleteTeacherFromCourse= async(value,id) => {
+//     const res = axios.put(`/teacher/${id}/course/add/${value}`)
+//     try {
+//         const res = await axios.put(`/teacher/${id}/course/add/${value}`)
+//         console.log(res)
+//         console.log("added")
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 // *****************LECTURES*****************
 
 export const getAllLectures = async (dispatch,cid) => {
     try {
         dispatch({ type: GET_ALL_LECTURES_REQUEST})
-        const res = await axios.get(`classroom/${cid}/lecture/all`)
+        const res = await axios.get(`classroom/${cid}/lectures/all`)
         console.log(res.data)
         dispatch({type : GET_ALL_LECTURES_SUCCESS, payload : res.data})
     } catch (err) {
@@ -407,7 +428,7 @@ export const getAllStudentCourses = async (dispatch) => {
 export const getAllMeetLinks = async (dispatch) => {
     try{
         dispatch({ type: GET_ALL_MEET_LINKS_REQUEST })
-        const res = await axios.get('/meet_link/all')
+        const res = await axios.get('/meet_links/all')
         console.log(res.data)
         dispatch({type : GET_ALL_MEET_LINKS_SUCCESS, payload : res.data}) 
     } catch (err) {
