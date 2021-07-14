@@ -3,11 +3,14 @@ import React from 'react'
 import CreateIcon from "@material-ui/icons/Create";
 import { useHistory } from 'react-router';
 
-export const AttendanceActions = () => {
+export const AttendanceActions = (props) => {
   const history = useHistory();
   
   const handleAttendanceReport = () => {
-    history.push("/view-attendance-report")
+    history.push({
+      pathname: `/view-attendance-report/${props.data._id}`
+      
+    })
   }
     return (
         <div style={{ fontWeight: "700" }}>

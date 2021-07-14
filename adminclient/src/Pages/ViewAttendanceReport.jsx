@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Container, Box, Grid, Card } from "@material-ui/core"
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Table1 from "../Components/Table/Table1"
 import { makeStyles } from "@material-ui/core/styles";
 import {AttendanceColumn,AttendanceData} from "../Helpers/AttendanceReportData";
 import CircularProgressBar from "../Components/Charts/CircularProgressBar";
+import { useParams } from "react-router-dom";
+import { getClassroomById } from "../action/actions";
+import { AppContext } from "../AppContext";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
     mainHeading: {
@@ -20,15 +24,34 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+
 const ViewAttendanceReport = () => {
     const classes = useStyles();
-    
+    const { state, dispatch } = useContext(AppContext)
+    const [classroomName, setClassroomName] = useState()
+    const [studentLength, setStudentLength] = useState()
+    const {id} = useParams()
+    const {lid} = useParams()
+    let classroom = [];
     const percentage = 50;
+
+    useEffect(async() => {
+        classroom = await getClassroomById(dispatch,id)
+        setClassroomName(classroom.name)
+        setStudentLength(classroom.enrolled_students?Object.keys(classroom.enrolled_students).length:"")
+        
+    }, [])
     return(
         <div>
             <Container>
                 <div>
-              <h1 className={classes.mainHeading}>Attendance Report for (name)</h1>
+                    {/* {
+                        classroom.name?
+                        (<h1 className={classes.mainHeading}>Attendance Report for {state.classroomDataByID?.classroom.name}</h1>):
+                        ""
+                    } */}
+              <h1 className={classes.mainHeading}>Attendance Report of Class {classroomName}</h1>
           </div>
                 <Box display="flex" alignItems="center"  p={1}
         m={1} justifyContent="center">
@@ -45,14 +68,26 @@ const ViewAttendanceReport = () => {
                                     </Box>
                                 </Box>
                                 <Box className={classes.info} display="flex" justifyContent="center" style={{paddingBottom:"3%"}}>
-                                    <CircularProgressBar value={percentage} text={`${percentage}%`}/>
+                                    {
+                                        lid?
+                                    <CircularProgressBar value={percentage} text={`${percentage}%`}/>:
+                                    <div>Click the visibilty button to view the graphical report</div>
+                                    }
                                 </Box>
                             </Card>
                         </Grid>
                         <Grid item xs={12} lg={8}>
                             <Card>
                                     <Container>
-                                        <Table1 data={AttendanceData()} column={AttendanceColumn()}/>
+                                        {/* {
+                                        classroom.enrolled_students?   */}
+                                        {
+                                            <Table1 data={AttendanceData(state,studentLength)} column={AttendanceColumn(studentLength)}/>
+
+                                        }
+                                        {/* :
+                                        ""
+                                        } */}
                                     </Container>
                                 </Card>
                         </Grid>

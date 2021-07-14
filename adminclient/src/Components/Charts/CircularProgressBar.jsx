@@ -1,8 +1,13 @@
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useLocation, useParams } from 'react-router-dom';
 
 const CircularProgressBar = () => {
-  const percentage = 50;
+  const {lid} = useParams();
+  const location = useLocation();
+  const length = location.state.length
+  const present = location.state.data.present
+  const percentage = present/length*100;
   return (
   
     <CircularProgressbar value={percentage} text={`${percentage}%`}

@@ -158,7 +158,8 @@ function App() {
               <Route exact path="/resetPassword" component={Operations} />
               <Route exact path="/reset-password" component={ResetPassword2} />
               <Route exact path="/resetPassword" component={Operations} />
-              <Route exact path="/view-attendance-report" component={ViewAttendanceReport} />
+              <Route exact path="/view-attendance-report/:id" component={ViewAttendanceReport} />
+              <Route exact path="/view-attendance-report/:id/lectures/:lid" component={ViewAttendanceReport} />
 
 
               {/* <Route exact path="/carousel" component={Carousel} /> */}

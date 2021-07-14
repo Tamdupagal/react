@@ -2,6 +2,7 @@ import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import { withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import { useHistory, useParams } from "react-router-dom";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -13,8 +14,16 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const AttendanceReportActions = () => {
-  
+const AttendanceReportActions = (props) => {
+  const history = useHistory()
+  const {id} = useParams()
+  const handleVisibility = () => {
+    history.push({
+      pathname: `/view-attendance-report/${id}/lectures/${props.data.id}`,
+      state: {data:props.data,length:props.length}
+    })
+  }
+  console.log(props.data.id)
   return (
     <div>
      
@@ -30,6 +39,7 @@ const AttendanceReportActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
+          onClick={handleVisibility}
         >
           <VisibilityIcon />
         </button>
