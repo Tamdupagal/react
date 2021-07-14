@@ -1,4 +1,4 @@
-import TeacherTrainingActions from "./../Components/Actions/TeacherTrainingActions";
+import CRMActions from "./../Components/Actions/CRMActions";
 
 export const CRMData = () => {
   return [
@@ -45,7 +45,7 @@ export const CrmColumn = () => {
       field: "name",
       render: (row) => (
         <div>
-          <TeacherTrainingActions />
+          <CRMActions />
         </div>
       ),
     },

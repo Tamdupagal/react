@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext,useState } from "react";
 import { Box, Button, Container, Typography } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { AdminColumn, AdminData } from "./../../Helpers/AdminData";
@@ -7,6 +7,7 @@ import { AppContext } from "./../../AppContext";
 import { getAllAdmins } from "../../action/actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Table from "./../Table/Table";
+import ResetPassword1 from "../../Pages/ResetPassword1";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -30,6 +31,16 @@ const AdminUsers = () => {
 
   const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
+   const [open, setOpen] = useState(false);
+  
+  const handleOpen = () => {
+    setOpen(true);
+    history.push("/resetPassword")
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   let ADMIN_DATA = state?.adminData;
 
   const handleAddAdmin = () => {
@@ -57,6 +68,7 @@ const AdminUsers = () => {
               >
                 ADD NEW ADMIN
               </Button>
+              <ResetPassword1 handleClose={handleClose} open={open}/>
             </Box>
           </Container>
         </Container>
@@ -66,7 +78,7 @@ const AdminUsers = () => {
           ) : ADMIN_DATA.anyError ? (
             <div>Ops! Data could not be loaded, try again .</div>
           ) : (
-            <Table data={AdminData(state)} column={AdminColumn(true)} />
+            <Table data={AdminData(state)} column={AdminColumn(true,handleOpen,handleClose)} />
           )}
         </Container>
       </div>

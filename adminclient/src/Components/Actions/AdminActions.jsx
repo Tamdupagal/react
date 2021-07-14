@@ -24,17 +24,17 @@ const LightTooltip = withStyles((theme) => ({
 const AdminActions = (props) => {
   const history = useHistory();
   const { dispatch } = useContext(AppContext);
-   const [open, setOpen] = useState(false);
+  //  const [open, setOpen] = useState(false);
   
-  const handleOpen = () => {
-    setOpen(true);
-    // history.push("/resetPassword")
+  // const handleOpen = () => {
+  //   setOpen(true);
+  //   // history.push("/resetPassword")
 
-  };
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   const handleEdit = () => {
     history.push({
@@ -49,7 +49,7 @@ const AdminActions = (props) => {
     }
   };
 
-    const body = <ResetPassword1 handleClose={handleClose} open={handleOpen}/>;
+    // const body = <ResetPassword1 handleClose={handleClose} open={handleOpen}/>;
 
   return (
     <div>
@@ -87,7 +87,7 @@ const AdminActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-           onClick={handleOpen}
+           onClick={()=>props.handleOpen()}
         >
           <LockRoundedIcon />
         </button>
@@ -109,7 +109,7 @@ const AdminActions = (props) => {
           <DeleteIcon />
         </button>
       </LightTooltip>
-      <div>
+      {/* <div>
         <Modal
           open={open}
           onClose={handleClose}
@@ -118,7 +118,7 @@ const AdminActions = (props) => {
         >
           {body}
         </Modal>
-      </div>
+      </div> */}
     </div>
   );
 };
