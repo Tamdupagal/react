@@ -35,7 +35,6 @@ const AdminActions = (props) => {
   // const handleClose = () => {
   //   setOpen(false);
   // };
-
   const handleEdit = () => {
     history.push({
       pathname: `/edit-admin/${props.data._id}`,
@@ -59,7 +58,7 @@ const AdminActions = (props) => {
         }}> */}
       <LightTooltip title="Edit" placement="top" arrow>
         <button
-          size="small"
+          size="small" 
           style={{
             padding: "1%",
             marginRight: "3%",
@@ -87,7 +86,7 @@ const AdminActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-           onClick={()=>props.handleOpen()}
+           onClick={()=>props.handleAdminOpen(props.data)}
         >
           <LockRoundedIcon />
         </button>

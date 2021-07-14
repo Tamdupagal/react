@@ -3,26 +3,24 @@ export const AdminData = (state) => {
   return state.adminData.admins
 };
 
-export const AdminColumn = (withActions=false) => {
+export const AdminColumn = (handleAdminOpen, handleAdminClose) => {
   const col = [
     { title: "Name", field: "name" },
     { title: "Email", field: "email" },
-    { title: "Role", field: "All",render: (row) =>(
+    { title: "Role", field: "All",render: (row) =>( 
       <div>All</div>
     ) },
-  ];
-  if (withActions) {
-    col.push({
+    {
       title: "Actions",
       field: "name",
       render: (row) => (
         <div>
-          <AdminActions data={row} />
+          <AdminActions handleAdminClose={handleAdminClose} handleAdminOpen={handleAdminOpen} data={row} />
         </div>
       ),
-    })
-    return col
-  }
+    }
+  ];
+  
   return col
 }
 

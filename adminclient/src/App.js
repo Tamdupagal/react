@@ -155,9 +155,9 @@ function App() {
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
               <Route exact path="/operations" component={Operations} />
-              <Route exact path="/resetPassword" component={Operations} />
+              {/* <Route exact path="/resetPassword" component={Operations} /> */}
               <Route exact path="/reset-password" component={ResetPassword2} />
-              <Route exact path="/resetPassword" component={Operations} />
+              <Route exact path="/resetPassword/:id" component={Operations} />
               <Route exact path="/view-attendance-report/:id" component={ViewAttendanceReport} />
               <Route exact path="/view-attendance-report/:id/lectures/:lid" component={ViewAttendanceReport} />
 

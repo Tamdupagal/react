@@ -48,7 +48,7 @@ const ResetPassword1 = (props) => {
   const [values, setValues] = React.useState({
     password: '',
   });
-
+ 
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -76,7 +76,7 @@ const ResetPassword1 = (props) => {
               >
                 <h3 className={classes.Header}>Reset password</h3>
                 <Button 
-                onClick={props.handleClose}
+                onClick={props.handleAdminClose}
                 >
                   <ClearIcon />
                 </Button>

@@ -8,6 +8,7 @@ import { getAllAdmins } from "../../action/actions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Table from "./../Table/Table";
 import ResetPassword1 from "../../Pages/ResetPassword1";
+import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles({
   tableRow: { "&:hover": { backgroundColor: "#fafaf2 !important" } },
@@ -28,28 +29,31 @@ const useStyles = makeStyles({
 
 const AdminUsers = () => {
   const classes = useStyles();
-
+  const {id} = useParams()
   const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
-   const [open, setOpen] = useState(false);
+   const [open, setOpen] = useState(id?true:false);
+   useEffect(() => {
+     getAllAdmins(dispatch);
+   }, []);
   
-  const handleOpen = () => {
+  const handleAdminOpen = (data) => {
+    console.log(data._id)
     setOpen(true);
-    history.push("/resetPassword")
+    history.push({
+      pathname: `/resetPassword/${data._id}`
+    })
   };
 
-  const handleClose = () => {
+  const handleAdminClose = () => {
     setOpen(false);
   };
   let ADMIN_DATA = state?.adminData;
-
+ 
   const handleAddAdmin = () => {
     history.push("/add-admin");
   };
 
-  useEffect(() => {
-    getAllAdmins(dispatch);
-  }, []);
 
   return (
     <div>
@@ -68,7 +72,7 @@ const AdminUsers = () => {
               >
                 ADD NEW ADMIN
               </Button>
-              <ResetPassword1 handleClose={handleClose} open={open}/>
+              <ResetPassword1 handleAdminClose={handleAdminClose} open={open}/>
             </Box>
           </Container>
         </Container>
@@ -78,7 +82,7 @@ const AdminUsers = () => {
           ) : ADMIN_DATA.anyError ? (
             <div>Ops! Data could not be loaded, try again .</div>
           ) : (
-            <Table data={AdminData(state)} column={AdminColumn(true,handleOpen,handleClose)} />
+            <Table data={AdminData(state)} column={AdminColumn(handleAdminOpen,handleAdminClose)} />
           )}
         </Container>
       </div>
