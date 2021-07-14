@@ -3,8 +3,7 @@ import { Container, Box, Grid, Card } from "@material-ui/core"
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Table1 from "../Components/Table/Table1"
 import { makeStyles } from "@material-ui/core/styles";
-import AttendanceReportActions from "../Components/Actions/AttendanceReportActions"
-// import {AttendanceColumn,AttendanceData} from "../Helpers/AttendanceReportData";
+import {AttendanceColumn,AttendanceData} from "../Helpers/AttendanceReportData";
 import CircularProgressBar from "../Components/Charts/CircularProgressBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,32 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ViewAttendanceReport = () => {
     const classes = useStyles();
-    const AttendanceData = [
-        {
-            name: "yash",
-            present: "0",
-            absent:'1',
-        },
-                {
-            name: "yash",
-            present: "0",
-            absent:'1',
-        }
-    ]
-    const AttendanceColumn = [
-        {
-            title:"Student",field:"name"
-        },
-        { title: "Present", field: "present" },
-        { title: "Absent", field: "absent" },
-        {title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          <AttendanceReportActions data={row} />
-        </div>
-      ),}
-    ]
+    
     const value = 50;
     return(
         <div>
@@ -78,7 +52,7 @@ const ViewAttendanceReport = () => {
                         <Grid item xs={12} lg={8}>
                             <Card>
                                     <Container>
-                                        <Table1 data={AttendanceData} column={AttendanceColumn}/>
+                                        <Table1 data={AttendanceData()} column={AttendanceColumn()}/>
                                     </Container>
                                 </Card>
                         </Grid>

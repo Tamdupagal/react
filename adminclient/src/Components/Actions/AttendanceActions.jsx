@@ -1,9 +1,14 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
 import CreateIcon from "@material-ui/icons/Create";
-
+import { useHistory } from 'react-router';
 
 export const AttendanceActions = () => {
+  const history = useHistory();
+  
+  const handleAttendanceReport = () => {
+    history.push("/view-attendance-report")
+  }
     return (
         <div style={{ fontWeight: "700" }}>
           <Button
@@ -14,7 +19,7 @@ export const AttendanceActions = () => {
               color: "white",
               fontSize: "small",
             }}
-            // onClick={handleAttendanceReport}
+            onClick={handleAttendanceReport}
           >
             <CreateIcon /> View Attendance Report
           </Button>

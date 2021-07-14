@@ -18,7 +18,7 @@ const AttendanceReportActions = () => {
   return (
     <div>
      
-      <LightTooltip title="Edit Teacher" placement="top" arrow>
+      <LightTooltip title="View Report" placement="top" arrow>
         <button
           size="small"
           style={{
