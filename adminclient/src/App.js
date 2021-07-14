@@ -48,7 +48,7 @@ import PrivateRoute from "./PrivateRoute";
 import { AppContext } from "./AppContext";
 import ResetPassword2 from "./Pages/ResetPassword2";
 import ResetPassword1 from "./Pages/ResetPassword1"
-
+import ViewAttendanceReport from "./Pages/ViewAttendanceReport"
 // import PartialPrivateRoute from "./PartialPrivateRoute";
 
 
@@ -156,6 +156,8 @@ function App() {
               <Route exact path="/add-teacher" component={AddTeacher} />
               <Route exact path="/reset-password" component={ResetPassword2} />
               <Route exact path="/resetPassword" component={Operations} />
+              <Route exact path="/resetPassword" component={Operations} />
+              <Route exact path="/view-attendance-report" component={ViewAttendanceReport} />
 
 
               {/* <Route exact path="/carousel" component={Carousel} /> */}
