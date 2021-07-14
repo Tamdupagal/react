@@ -154,8 +154,9 @@ function App() {
               <Route exact path="/edit-meet/:id" component={MeetLink} />
               <Route exact path="/add-student" component={AddStudent} />
               <Route exact path="/add-teacher" component={AddTeacher} />
-              <Route exact path="/reset-password" component={ResetPassword2} />
+              <Route exact path="/operations" component={Operations} />
               <Route exact path="/resetPassword" component={Operations} />
+              <Route exact path="/reset-password" component={ResetPassword2} />
               <Route exact path="/resetPassword" component={Operations} />
               <Route exact path="/view-attendance-report" component={ViewAttendanceReport} />
 
@@ -169,7 +170,6 @@ function App() {
                 path="/add-course-section"
                 component={AddCourseSections}
               />
-              <Route exact path="/operations" component={Operations} />
               <Route
                 exact
                 path="/classroom/create"

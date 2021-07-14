@@ -23,7 +23,7 @@ const CRMActions = () => {
   const [open, setOpen] = useState(false);
   
   const handleOpen = () => {
-    console.log("called")
+   console.log("called")
     setOpen(true);
     history.push("/resetPassword")
   };
@@ -35,7 +35,7 @@ const CRMActions = () => {
   };
 
 
-  const body = <ResetPassword1 handleClose={handleClose} open={open}/>;
+  // const body = <ResetPassword1 handleClose={handleClose} open={open}/>;
 
   return (
     <div>
@@ -72,6 +72,7 @@ const CRMActions = () => {
           <LockRoundedIcon />
         </button>
       </LightTooltip>
+      <ResetPassword1 handleClose={handleClose} open={open}/>
       <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"
@@ -88,7 +89,7 @@ const CRMActions = () => {
           <DeleteIcon />
         </button>
       </LightTooltip>
-      <div>
+      {/* <div>
         <Modal
           open={open}
           onClose={handleClose}
@@ -97,7 +98,7 @@ const CRMActions = () => {
         >
           {body}
         </Modal>
-      </div>
+      </div> */}
     </div>
   );
 };

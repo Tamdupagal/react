@@ -57,11 +57,9 @@ export default function MeetLink() {
     getAllMeetLinks(dispatch)
   }, [])
   const handleClose = () => {
-    
     setOpen(false);
     history.push("/meetLink")
   };
-  
   const handleOpen = () => {
     console.log("called")
     setOpen(true);
@@ -115,7 +113,7 @@ export default function MeetLink() {
                   color="secondary"
                   onClick={handleOpen}
                   style={{ fontFamily: "'Exo', sans-serif" }}
-                >
+                 >
                   ADD NEW MEET LINK
                 </Button>
               <ModalAddMeet handleClose={handleClose} open={open} />

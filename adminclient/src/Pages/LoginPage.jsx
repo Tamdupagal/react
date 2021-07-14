@@ -8,6 +8,8 @@ import MainLogo2 from "./../Images/MainLogo2.png";
 import { Auth } from "../action/actions";
 import { AppContext } from "../AppContext";
 import { useHistory } from "react-router-dom";
+import profilePic from "../Images/profilePic.png"
+import loginImg from "../Images/loginImg.png"
 
 export const useStyles = makeStyles((theme) => ({
   img: {
@@ -25,6 +27,10 @@ export const useStyles = makeStyles((theme) => ({
   textField: {
     width: "80%",
     marginLeft: "10%",
+    backgroundColor: "white",
+    marginTop: "2%",
+    marginBottom: "2%",
+    color:"white"
   },
   btn: {
     display: "flex",
@@ -183,7 +189,11 @@ const LoginPage = () => {
     //     </Grid>
     //   </Box>
     // </div>
-    <div>
+    <Box>
+    <div style={{position:"relative"}}>
+        <img src={loginImg} style={{ width: "100%", height: "100%" }}></img>
+          </div>
+    <div >
       <Box display="flex"
         alignItems="center"
         p={1}
@@ -191,14 +201,40 @@ const LoginPage = () => {
       justifyContent="center">
         <Grid container xs={12} lg={7} style={{border:"1px solid black"}}>
           <Grid xs={12} lg={6} >Hello</Grid>
-          <Grid xs={12} lg={6} >
-            <Card style={{borderRadius:"50%"}}>
+          <Grid xs={12} lg={6}>
+            <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column">
+              <Card style={{
+              height: "25%", width:"25%",borderRadius:"50%"}}>
+                <img src={profilePic} style={{ height: "100%", width: "100%" }}></img>
+              </Card>
+              <h1>SIGN IN</h1>
+<TextField
+          id="outlined-password-input"
+          label="Email"
+          type="Email"
+          autoComplete="current-password"
+                variant="outlined"
+                className={classes.textField}
+                color="light"
+              />
+              <TextField
+          id="outlined-password-input"
+          label="password"
+          type="password"
+          autoComplete="current-password"
+                variant="outlined"
+                className={classes.textField}
+              />
+              <br />
+              <Button variant="contained" >SIGN IN</Button>
 
-            </Card>
+            </Box>
           </Grid>
         </Grid>
       </Box>
     </div>
+    
+      </Box>
   );
 };
 
