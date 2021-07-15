@@ -3,9 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "../Components/Table/Table";
-import MeetActions from "./../Components/Actions/MeetActions";
-import AddMeet from "./AddMeet";
-import Modal from "@material-ui/core/Modal";
 import { MeetColumns, MeetData } from "../Helpers/MeetData";
 import { AppContext } from "../AppContext";
 import { getAllMeetLinks } from "../action/actions";
@@ -56,20 +53,24 @@ export default function MeetLink() {
   useEffect(() => {
     getAllMeetLinks(dispatch)
   }, [])
+
   const handleClose = () => {
     setOpen(false);
     history.push("/meetLink")
   };
+
   const handleOpen = () => {
     console.log("called")
     setOpen(true);
     history.push("/add-meet")
   };
+
   const handleEditClose = () => {
     setEditOpen(false);
     history.push("/meetLink")
   };
-  const handleEditOpen= (data) => {
+
+  const handleEditOpen = (data) => {
     console.log("called")
     console.log(data._id)
     setEditOpen(true);

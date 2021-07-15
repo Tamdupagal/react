@@ -18,21 +18,9 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const CRMActions = () => {
+const CRMActions = (props) => {
   const history = useHistory();
-  const [open, setOpen] = useState(false);
-  
-  const handleOpen = () => {
-   console.log("called")
-    setOpen(true);
-    history.push("/resetPassword")
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    history.push("/Operations")
-
-  };
+ 
 
 
   // const body = <ResetPassword1 handleClose={handleClose} open={open}/>;
@@ -67,12 +55,13 @@ const CRMActions = () => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={handleOpen}
+          onClick={() => {
+            props.handleOpen()
+          }}
         >
           <LockRoundedIcon />
         </button>
       </LightTooltip>
-      <ResetPassword1 handleClose={handleClose} open={open}/>
       <LightTooltip title="Delete" placement="top" arrow>
         <button
           size="small"

@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Table from "./../Table/Table";
 import CRMActions from "./../Actions/CRMActions";
 import { CRMData, CrmColumn } from "./../../Helpers/CRMData";
-
+import ResetPassword1 from "../../Pages/ResetPassword1"
 const useStyles = makeStyles({
   title: {
     fontSize: "2rem",
@@ -22,24 +22,23 @@ const useStyles = makeStyles({
   },
 });
 
-const CRMTable = () => {
+export default function CRMTable  ()  {
+
   const classes = useStyles();
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+  
+  const handleOpen = () => {
+   console.log("called")
+    setOpen(true);
+    history.push("/resetPassword")
+  };
 
-  const Columns = [
-    { title: "Name", field: "name" },
-    { title: "Email", field: "email" },
-    { title: "User Roles", field: "userRoles", width: "10%" },
-    {
-      title: "Actions",
-      field: "name",
-      render: (row) => (
-        <div>
-          <CRMActions />
-        </div>
-      ),
-    },
-  ];
+  const handleClose = () => {
+    setOpen(false);
+    history.push("/Operations")
+  };
+
   const [data, setData] = useState();
   useEffect(() => {
     setData(CRMData);
@@ -71,12 +70,14 @@ const CRMTable = () => {
                 >
                   ADD NEW CRM USER
                 </Button>
+                <ResetPassword1 handleClose={handleClose} open={open}/>
+
               </Box>
             </Container>
           </Container>
 
           <Container>
-            <Table column={Columns} data={data} />
+            <Table data={data} column={CrmColumn(handleOpen,handleClose)} />
           </Container>
         </Grid>
       </Box>
@@ -84,4 +85,4 @@ const CRMTable = () => {
   );
 };
 
-export default CRMTable;
+
