@@ -12,7 +12,9 @@ const CircularProgressBar = () => {
   
     <CircularProgressbar value={percentage} text={`${percentage}%`}
       styles={buildStyles({
-        pathColor: " #e60000",trailColor:"#007399"
+        pathColor: "#8ad8ed",
+        trailColor: " #ff3333",
+        textColor:"#007399",
       })}
     />
  )

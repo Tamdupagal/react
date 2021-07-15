@@ -35,7 +35,7 @@ export const CRMData = () => {
   ];
 };
 
-export const CrmColumn = () => {
+export const CrmColumn = (handleCrmOpen,handleCrmClose) => {
   return [
     { title: "Name", field: "name" },
     { title: "Email", field: "email" },
@@ -45,7 +45,7 @@ export const CrmColumn = () => {
       field: "name",
       render: (row) => (
         <div>
-          <CRMActions />
+          <CRMActions handleCrmOpen={handleCrmOpen} handleCrmClose={handleCrmClose}/>
         </div>
       ),
     },

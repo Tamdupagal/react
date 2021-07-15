@@ -2,6 +2,7 @@ import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import { withStyles } from "@material-ui/core/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { useHistory, useParams } from "react-router-dom";
 
 const LightTooltip = withStyles((theme) => ({
@@ -44,7 +45,22 @@ const AttendanceReportActions = (props) => {
           <VisibilityIcon />
         </button>
       </LightTooltip>
-      
+      <LightTooltip title="View Report" placement="top" arrow>
+        <button
+          size="small"
+          style={{
+            padding: "1%",
+            marginRight: "3%",
+            backgroundColor: "#5567ff",
+            color: "white",
+            borderColor: "#5567ff",
+            borderRadius: "4px",
+            fontSize: "small",
+          }}
+        >
+          <VisibilityOffIcon />
+        </button>
+      </LightTooltip>
     </div>
   );
 };

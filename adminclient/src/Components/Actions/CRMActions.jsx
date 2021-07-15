@@ -21,8 +21,6 @@ const LightTooltip = withStyles((theme) => ({
 const CRMActions = (props) => {
   const history = useHistory();
  
-
-
   // const body = <ResetPassword1 handleClose={handleClose} open={open}/>;
 
   return (
@@ -55,9 +53,7 @@ const CRMActions = (props) => {
             borderRadius: "4px",
             fontSize: "small",
           }}
-          onClick={() => {
-            props.handleOpen()
-          }}
+          onClick={()=>props.handleCrmOpen()}
         >
           <LockRoundedIcon />
         </button>

@@ -28,13 +28,13 @@ export default function CRMTable  ()  {
   const history = useHistory();
   const [open, setOpen] = useState(false);
   
-  const handleOpen = () => {
+  const handleCrmOpen = () => {
    console.log("called")
     setOpen(true);
     history.push("/resetPassword")
   };
 
-  const handleClose = () => {
+  const handleCrmClose = () => {
     setOpen(false);
     history.push("/Operations")
   };
@@ -70,14 +70,14 @@ export default function CRMTable  ()  {
                 >
                   ADD NEW CRM USER
                 </Button>
-                <ResetPassword1 handleClose={handleClose} open={open}/>
+                <ResetPassword1 handleClose={handleCrmClose} open={open}/>
 
               </Box>
             </Container>
           </Container>
 
           <Container>
-            <Table data={data} column={CrmColumn(handleOpen,handleClose)} />
+            <Table data={data} column={CrmColumn(handleCrmOpen,handleCrmClose)} />
           </Container>
         </Grid>
       </Box>
