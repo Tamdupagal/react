@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React,{useRef,useContext} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Box, Grid, Card, Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -9,6 +9,7 @@ import { AppContext } from "../AppContext";
 import { useHistory } from "react-router-dom";
 import profilePic from "../Images/profilePic.png"
 import loginImg from "../Images/loginImg.png"
+
 
 export const useStyles = makeStyles((theme) => ({
   img: {
@@ -79,11 +80,13 @@ const LoginPage = () => {
     }
   }
   return (
-    <Box>
-    <div style={{position:"absolute"}}>
-        <img src={loginImg} style={{ width: "100%", height: "auto",backgroundRepeat:"no-repeat",backgroundAttachment:"fixed" }}></img>
-          </div>
     <div >
+     <Box>
+    <div style={{position:"absolute"}}>
+          <div>
+            <img src={loginImg} className="image"></img>
+          </div>
+        </div>
       <Box display="flex"
         alignItems="center"
         p={1}
@@ -135,10 +138,9 @@ const LoginPage = () => {
             </Box>
           </Grid>
         </Grid>
+        </Box>
       </Box>
-    </div>
-    
-      </Box>
+    </div> 
   );
 };
 

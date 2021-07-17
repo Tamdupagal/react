@@ -1,0 +1,77 @@
+.heading {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  text-indent: 10px;
+  text-transform: uppercase;
+  font-family: "Encode Sans SC", sans-serif; /* font-family: "Roboto", sans-serif; */
+}
+.digital {
+  color: orange;
+}
+.aided {
+  color: #008080;
+}
+.school {
+  color: black;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-family: "Roboto", sans-serif;
+}
+.inner_content {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: black;
+  color: #008080;
+  font-weight: 700;
+}
+.contact_content {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: start;
+}
+p {
+  margin-top: 20px;
+  text-indent: 15px;
+  font-size: 1.2rem;
+  color: #008080;
+  font-weight: 700;
+}
+.social_media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-indent: 10px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+.icon {
+  color: orange;
+}
+.contact_icon {
+  font-size: 0.8rem;
+  color: orange;
+}
+hr {
+  color: orange;
+  width: 80%;
+}
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: #008080;
+}

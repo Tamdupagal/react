@@ -49,6 +49,7 @@ import { AppContext } from "./AppContext";
 import ResetPassword2 from "./Pages/ResetPassword2";
 import ResetPassword1 from "./Pages/ResetPassword1"
 import ViewAttendanceReport from "./Pages/ViewAttendanceReport"
+// import Footer from "./Pages/Footer"
 // import PartialPrivateRoute from "./PartialPrivateRoute";
 
 
