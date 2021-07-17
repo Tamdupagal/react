@@ -12,18 +12,6 @@ import loginImg from "../Images/loginImg.png"
 
 
 export const useStyles = makeStyles((theme) => ({
-  img: {
-    backgroundImage:
-      "linear-gradient(to right, #303956, #365576, #387495, #3993af, #44b4c5, #60c5cf, #7ad7d9, #94e8e4, #b0eeec, #cbf4f3, #e4f9f9, #fdffff)",
-    height: "98vh",
-    width: "99vw",
-  },
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "50ch",
-    },
-  },
   textField: {
     width: "80%",
     // marginLeft: "10%",
@@ -53,7 +41,25 @@ export const useStyles = makeStyles((theme) => ({
         color:"white"
         // marginTop: "3%",
         // marginBottom: "3%",
-    },
+  },
+  mainLogo: {
+    height: "30%",
+    width: "30%"
+  },
+  para: {
+    color: "white",
+    textAlign: "center",
+    fontFamily: "'Roboto', sans-serif"
+  },
+  card: {
+    height: "25%",
+    width: "25%",
+    borderRadius: "50%"
+  },
+  profilePic: {
+    height:"100%",
+    width:"100%"
+  }
 }));
 
 const LoginPage = () => {
@@ -93,22 +99,21 @@ const LoginPage = () => {
         m={1}
           justifyContent="center"
         style={{position:"relative"}}>
-        <Grid container xs={12} lg={7} style={{marginTop:"20%"}}>
+        <Grid container xs={12} lg={7} style={{marginTop:"10%"}}>
             <Grid xs={12} lg={6} >
               <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" style={{marginTop:"25%"}}>
                 <Box display="flex" justifyContent="center">
-                <img src={mainLogo} style={{height:"30%",width:"30%"}}></img>
+                <img src={mainLogo} className={classes.mainLogo}></img>
               </Box>
               <Box>
-                <p style={{color:"white",textAlign:"center",fontFamily: "'Roboto', sans-serif"}}>Enter your details and start Journey with us</p>
+                <p className={classes.para}>Enter your details and start Journey with us</p>
               </Box>
               </Box>
           </Grid>
           <Grid xs={12} lg={6}>
             <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" style={{borderLeft:"4px solid white"}}>
-              <Card style={{
-              height: "25%", width:"25%",borderRadius:"50%"}}>
-                <img src={profilePic} style={{ height: "100%", width: "100%" }}></img>
+              <Card className={classes.card}>
+                <img src={profilePic} className={classes.profilePic}></img>
               </Card>
               <h1 className={classes.mainHeading}>Sign In</h1>
                 <TextField
