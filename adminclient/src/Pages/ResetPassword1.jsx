@@ -21,6 +21,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import ResetPassword2 from "./ResetPassword2";
+import OtpSuccessfullySent from "./OtpSuccessfullySent";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -54,7 +55,7 @@ const ResetPassword1 = (props) => {
     setValues({ ...values, [prop]: event.target.value });
   };
   const handlePinVerification = () => {
-    history.push("/reset-password")
+    history.push("/otp-sent")
   }
   return (
     <Modal
