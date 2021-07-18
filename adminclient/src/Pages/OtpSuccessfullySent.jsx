@@ -1,8 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import otp from "../Images/otp.gif";
-import { Container, Box, Grid, Button } from "@material-ui/core";
-import ResetPassword2 from "./ResetPassword2";
+import { Box, Grid, Button } from "@material-ui/core";
 
 const OtpSuccessfullySent = () => {
 const history = useHistory()
