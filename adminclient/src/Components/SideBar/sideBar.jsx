@@ -25,7 +25,6 @@ import CreateIcon from "@material-ui/icons/Create";
 import FaceIcon from "@material-ui/icons/Face";
 import TuneIcon from "@material-ui/icons/Tune";
 import "./../../css/sidebar.css";
-import GamepadIcon from "@material-ui/icons/Gamepad";
 import { FaUserGraduate } from "react-icons/fa";
 import { withStyles } from "@material-ui/core/styles";
 import MuiAccordion from "@material-ui/core/Accordion";
@@ -36,9 +35,9 @@ const drawerWidth = 250;
 let shift;
 let display;
 let contentMargin;
-let background;
-let setStyle;
-let backgroundColor;
+// let background;
+// let setStyle;
+// let backgroundColor;
 
 if (window.innerWidth <= 600) {
   shift = drawerWidth;
@@ -183,7 +182,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     color: "white",
     fontFamily: "'Nunito', sans-serif",
-    fontFamily: "'Source Sans Pro', sans-serif",
+    // fontFamily: "'Source Sans Pro', sans-serif",
     textTransform: "capitalize",
   },
   link: {
@@ -196,7 +195,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     color: "white",
     fontFamily: "'Nunito', sans-serif",
-    fontFamily: "'Source Sans Pro', sans-serif",
+    // fontFamily: "'Source Sans Pro', sans-serif",
     // paddingBottom: "4%",
     // paddingTop: "6%",
     textTransform: "capitalize",
@@ -204,7 +203,7 @@ const useStyles = makeStyles((theme) => ({
   },
   dropdownHeading: {
     fontFamily: "'Nunito', sans-serif",
-    fontFamily: "'Source Sans Pro', sans-serif",
+    // fontFamily: "'Source Sans Pro', sans-serif",
     textTransform: "capitalize",
     fontSize: "0.9rem",
   },
@@ -213,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     color: "white",
     fontFamily: "'Nunito', sans-serif",
-    fontFamily: "'Source Sans Pro', sans-serif",
+    // fontFamily: "'Source Sans Pro', sans-serif",
     paddingBottom: "6%",
     // paddingTop: "6%",
     textTransform: "capitalize",

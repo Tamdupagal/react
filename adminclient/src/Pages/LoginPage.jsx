@@ -93,7 +93,9 @@ const LoginPage = () => {
         // m={1}
           justifyContent="center"
         style={{position:"relative",height:"98vh",backgroundImage:`url(${loginImg})`,
-  backgroundRepeat: 'no-repeat',backgroundSize:"100% 100%"}}>
+          backgroundRepeat: 'no-repeat', backgroundSize: "100% 100%"
+        }}>
+        
         <Grid container xs={12} lg={7} style={{marginTop:"10%"}}>
             <Grid xs={12} lg={6} >
               <Box display="flex" justifyContent="center" flexDirection="column" style={{marginTop:"25%"}}>

@@ -78,7 +78,7 @@ const Courses = () => {
           </Box>
           <Box>
             <Box display="flex" justifyContent="flex-end">
-              <Grid
+              <Grid item
                 xs={12}
                 lg={5}
                 style={{
@@ -119,7 +119,7 @@ const Courses = () => {
                 <Grid container alignItems="center" justify="center">
                   <Grid item lg={10}>
                     <Grid container>
-                      <Grid xs={12}>
+                      <Grid item xs={12}>
                         <Grid item xs={12} md={10}>
                           <Box
                             display="flex"
@@ -147,7 +147,7 @@ const Courses = () => {
                             </Box>
                           </Box>
                         </Grid>
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                           {" "}
                           <Divider className={classes.dividerInset} />
                         </Grid>

@@ -3,7 +3,6 @@ import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
 import { deleteMeetLink } from "../../action/actions";
 import { AppContext } from "../../AppContext";
 

@@ -1,26 +1,20 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-// import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
-import { useHistory } from "react-router";
+import React, { useContext, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { MeetColumns, MeetData } from "./../../Helpers/MeetData";
 import { AppContext } from "./../../AppContext";
-import { editMeetLink, getAllMeetLinks } from "./../../action/actions";
+import { editMeetLink } from "./../../action/actions";
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
-  // makeStyles,
   TextField,
   Typography,
-  Container,
-  Grid
 } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import ClearIcon from "@material-ui/icons/Clear";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -47,7 +41,7 @@ const ModalEditMeet = (props) => {
     const { dispatch } = useContext(AppContext)
     const meetLink = useRef()
     const {id} = useParams()
-    const location = useLocation()
+    
 
     const handleEditMeetLink = () => {
         var data = {

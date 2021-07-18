@@ -3,7 +3,6 @@ import { Box, Button, Container, Typography, Grid } from "@material-ui/core";
 import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "./../Table/Table";
-import CRMActions from "./../Actions/CRMActions";
 import { CRMData, CrmColumn } from "./../../Helpers/CRMData";
 import ResetPassword1 from "../../Pages/ResetPassword1"
 const useStyles = makeStyles({

@@ -32,7 +32,7 @@ const StudentsInfo = () => {
     
     return (
           <div>
-              <Grid container spacing={3} style={{ margin: "2%" }}>
+        <Grid container spacing={2} style={{marginTop:"2%"}}>
               <Grid item xs={12}>
                 <Divider className={classes.dividerInset0} />
                 <h3 className={classes.subheading1}>MANUALLY ADD A STUDENT</h3>

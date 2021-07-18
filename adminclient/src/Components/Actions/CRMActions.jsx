@@ -1,12 +1,10 @@
-import React,{useState} from "react";
+import React from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import { useHistory } from "react-router-dom";
-import Modal from "@material-ui/core/Modal";
-import ResetPassword1 from "../../Pages/ResetPassword1";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {

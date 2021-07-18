@@ -141,7 +141,7 @@ const AddNewRoom = () => {
                   </Grid>
                 </Grid> */}
                 {/* <Scheduler/> */}
-                <Grid container>
+                {/* <Grid container>
                   <Grid xs={6} lg={6}>
                     <h5 className={classes.infoHeading}>Trainee Type:</h5>
                 <form>
@@ -166,7 +166,27 @@ const AddNewRoom = () => {
                       />
                       </form>
                   </Grid>
-                </Grid>
+                </Grid> */}
+                <h5 className={classes.infoHeading}>Trainee Type:</h5>
+                <form>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    variant="outlined"
+                    size="small"
+                    className={classes.textField}
+                      />
+                </form>
+                <h5 className={classes.infoHeading}>Assign Trainee:</h5>
+                <form>
+                  {" "}
+                  <TextField
+                    id="outlined-basic"
+                    variant="outlined"
+                    size="small"
+                    className={classes.textField}
+                      />
+                      </form>
                 <div className={classes.submitBtn}>
                   <Button variant="contained" color="secondary">
                     SUBMIT CLASSROOM

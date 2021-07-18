@@ -47,7 +47,6 @@ import LoginPage from "./Pages/LoginPage";
 import PrivateRoute from "./PrivateRoute";
 import { AppContext } from "./AppContext";
 import ResetPassword2 from "./Pages/ResetPassword2";
-import ResetPassword1 from "./Pages/ResetPassword1"
 import ViewAttendanceReport from "./Pages/ViewAttendanceReport"
 import OtpSuccessfullySent from "./Pages/OtpSuccessfullySent";
 // import Footer from "./Pages/Footer"

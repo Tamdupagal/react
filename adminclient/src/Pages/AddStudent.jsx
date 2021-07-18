@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, } from "@material-ui/core";
+import { Container,Box,Grid } from "@material-ui/core";
 import { useStyles } from "./../Styles/AddStudent";
 import ImportExcel from "../Components/Students/ImportExcel";
 import StudentsInfo from "../Components/Students/StudentsInfo";
@@ -11,7 +11,8 @@ const AddStudent = () => {
   const {id} = useParams()
   return (
     <div>
-      <Container>
+      <Box display="flex" justifyContent="center">
+        <Grid item xs={12} lg={11}>
         <Container>
           <div>
             {
@@ -31,8 +32,9 @@ const AddStudent = () => {
             </div> 
           }
           
-        </Container>
-      </Container>
+          </Container>
+          </Grid>
+      </Box>
     </div>
   );
 };

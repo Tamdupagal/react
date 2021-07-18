@@ -17,8 +17,8 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "-29px",
   },
   textField: {
-    width: "90%",
-    marginLeft: "5%",
+    width: "100%",
+    // marginLeft: "5%",
   },
   subheading1: {
     letterSpacing: "0.1rem",

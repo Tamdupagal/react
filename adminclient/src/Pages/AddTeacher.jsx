@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useState, useRef } from "react";
 import { Container } from "@material-ui/core";
-import { Button, Card, CardHeader } from "@material-ui/core";
+import { Button, Card, Box } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -129,6 +129,8 @@ const AddTeacher = () => {
             </div> 
                 </Card>
                 <h5 className={classes.infoHeading}>Teacher Name:</h5>{" "}
+                 <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   <TextField
                     id="outlined-basic"
@@ -137,8 +139,12 @@ const AddTeacher = () => {
                     className={classes.textField}
                     inputRef={tName}
                   />
-                </form>
+                    </form>
+                  </Grid>
+                  </Box>
                 <h5 className={classes.infoHeading}>Teacher Email:</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   {" "}
                   <TextField
@@ -147,9 +153,13 @@ const AddTeacher = () => {
                     size="small"
                     className={classes.textField}
                     inputRef={tEmail}
-                  />
+                      />
                 </form>
+                      </Grid>
+                    </Box>
                 <h5 className={classes.infoHeading}>Phone No.:</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   {" "}
                   <TextField
@@ -159,7 +169,9 @@ const AddTeacher = () => {
                     className={classes.textField}
                     inputRef={tMobileNo}
                   />
-                </form>
+                    </form>
+                  </Grid>
+                  </Box>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -167,6 +179,8 @@ const AddTeacher = () => {
               <h3 className={classes.subheading1}>OTHER INFORMATION</h3>
               <Paper className={classes.paper}>
                 <h5 className={classes.infoHeading}>Qualification :</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   {" "}
                   <TextField
@@ -176,8 +190,12 @@ const AddTeacher = () => {
                     className={classes.textField}
                     inputRef={tQual}
                   />
-                </form>
+                    </form>
+                  </Grid>
+                  </Box>
                 <h5 className={classes.infoHeading}>Alt Phone No. :</h5>
+                 <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   {" "}
                   <TextField
@@ -187,20 +205,27 @@ const AddTeacher = () => {
                     className={classes.textField}
                     inputRef={tAltMobileNo}
                   />
-                </form>
+                    </form>
+                  </Grid>
+                  </Box>
                 <h5 className={classes.infoHeading}>Teacher Adress:</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   {" "}
                   <TextField
                     id="outlined-basic"
                     variant="outlined"
-                    // size="small"
+                    size="small"
                     className={classes.textField}
                     inputRef={tAddress}
                   />
-                </form>
+                    </form>
+                    </Grid>
+                </Box>
                 <h5 className={classes.infoHeading}>Courses :</h5>
-                <Container>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={courseOptions}
                     value={selectedValue}
@@ -210,8 +235,9 @@ const AddTeacher = () => {
                     placeholder=""
                     showArrow={true}
                     avoidHighlightFirstOption={true}
-                  />
-                </Container>
+                    />
+                    </Grid>
+                </Box>
               </Paper>
             </Grid>
             <Grid item xs={12}>

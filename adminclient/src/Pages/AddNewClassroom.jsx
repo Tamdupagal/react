@@ -91,6 +91,8 @@ const AddNewClassroom = () => {
             <Grid item xs={12} lg={9}>
               <Card>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   <TextField
                     variant="outlined"
@@ -99,10 +101,13 @@ const AddNewClassroom = () => {
                     inputRef={nameRef}
                     // style={{ height: "5px" }}
                   />
-                </form>
+                    </form>
+                    </Grid>
+                  </Box>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
                 
-                <Container>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={courseOptions}
                     value={selectedValue}
@@ -112,10 +117,12 @@ const AddNewClassroom = () => {
                     placeholder=""
                     showArrow={true}
                     avoidHighlightFirstOption={true}
-                  />
-                </Container>
+                    />
+                    </Grid>
+                </Box>
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
-                <Container>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11 }>
                   <Multiselect
                     options={courseOptions}
                     // value={selectedValue}
@@ -125,9 +132,12 @@ const AddNewClassroom = () => {
                     placeholder=""
                     showArrow={true}
                     avoidHighlightFirstOption={true}
-                  />
-                </Container>
+                    />
+                    </Grid>
+                </Box>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   {
                      (
@@ -148,7 +158,9 @@ const AddNewClassroom = () => {
                   </Select>
                     )
                   }
-                </form>
+                    </form>
+                    </Grid>
+                </Box>
                 <div className={classes.submitBtn}>
                   <Button
                     variant="contained"

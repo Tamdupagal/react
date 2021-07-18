@@ -31,7 +31,7 @@ const ImageCard = () => {
             <h3 className={classes.subheading1}>IMPORT AN EXCEL FILE</h3>
           </div>
             <Card className={classes.excelFile}>
-            <h5 style={{ marginLeft: "2%" }}>Choose Excel file</h5>
+            <h5 className={classes.infoHeading1}>Choose Excel file</h5>
             <div style={{ justifyContent: "center", marginLeft: "2%" }}>
               <Card
                 style={{

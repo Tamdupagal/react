@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext } from "react";
 import CreateIcon from "@material-ui/icons/Create";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -7,8 +7,6 @@ import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import { useHistory } from "react-router-dom";
 import { AppContext } from "./../../AppContext";
 import { deleteAdmin } from "../../action/actions";
-import Modal from "@material-ui/core/Modal"
-import ResetPassword1 from "../../Pages/ResetPassword1"
 
 
 const LightTooltip = withStyles((theme) => ({

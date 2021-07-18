@@ -7,15 +7,14 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "3%",
   },
   textField: {
-    width: "93.5%",
-    marginLeft: "3%",
+    width: "100%",
   },
   subheading1: {
     letterSpacing: "0.1rem",
     fontFamily: "KoHo, sans-serif",
   },
   infoHeading: {
-    marginLeft: "3.5%",
+    marginLeft: "4%",
     marginBottom: "1px",
     fontSize: "0.9rem",
     color: "#29293d",

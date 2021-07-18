@@ -37,10 +37,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   submitFile: {
     marginTop: "2%",
-    marginLeft: 12,
-  },
-  root: {
-    flexGrow: 1,
+    // marginLeft: 12,
   },
   paper: {
     padding: theme.spacing(2),
@@ -69,8 +66,16 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "1rem",
     marginBottom: "0%",
   },
-  excelFile: {
+  infoHeading1: {
     marginLeft: "2%",
+    color: "#29293d",
+    fontFamily: "'Roboto', sans-serif",
+    letterSpacing: "0.01rem",
+    fontSize: "1rem",
+    marginBottom: "0%",
+  },
+  excelFile: {
+    // marginLeft: "2%",
     width: "100%",
   },
 }));
