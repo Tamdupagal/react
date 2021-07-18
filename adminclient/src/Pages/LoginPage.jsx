@@ -87,21 +87,16 @@ const LoginPage = () => {
   }
   return (
     <div >
-     <Box>
-    <div style={{position:"absolute"}}>
-          <div>
-            <img src={loginImg} className="image"></img>
-          </div>
-        </div>
       <Box display="flex"
-        alignItems="center"
-        p={1}
-        m={1}
+        className="w-100"
+        // p={1}
+        // m={1}
           justifyContent="center"
-        style={{position:"relative"}}>
+        style={{position:"relative",height:"98vh",backgroundImage:`url(${loginImg})`,
+  backgroundRepeat: 'no-repeat',backgroundSize:"100% 100%"}}>
         <Grid container xs={12} lg={7} style={{marginTop:"10%"}}>
             <Grid xs={12} lg={6} >
-              <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" style={{marginTop:"25%"}}>
+              <Box display="flex" justifyContent="center" flexDirection="column" style={{marginTop:"25%"}}>
                 <Box display="flex" justifyContent="center">
                 <img src={mainLogo} className={classes.mainLogo}></img>
               </Box>
@@ -144,7 +139,6 @@ const LoginPage = () => {
           </Grid>
         </Grid>
         </Box>
-      </Box>
     </div> 
   );
 };

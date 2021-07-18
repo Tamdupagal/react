@@ -31,12 +31,12 @@ export default function CRMTable  ()  {
   const handleCrmOpen = () => {
    console.log("called")
     setOpen(true);
-    history.push("/resetPassword")
-  };
+history.push({
+      pathname: `/resetPassword/${data._id}`
+    })  };
 
   const handleCrmClose = () => {
     setOpen(false);
-    history.push("/Operations")
   };
 
   const [data, setData] = useState();
