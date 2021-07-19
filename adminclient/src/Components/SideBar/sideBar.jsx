@@ -375,16 +375,16 @@ const SideBar = () => {
                     Add Course Activity
                   </Button>
                 </Link>
-                <Link to="/learning-skills" className={classes.link}>
+                {/* <Link to="/learning-skills" className={classes.link}>
                   <Button className={classes.button}>
                     Add Learning Skills
                   </Button>
-                </Link>
-                <Link to="/spiritual-learning" className={classes.link}>
+                </Link> */}
+                {/* <Link to="/spiritual-learning" className={classes.link}>
                   <Button className={classes.button}>
                     Add Spiritual Learning
                   </Button>
-                </Link>
+                </Link> */}
               </AccordionDetails>
             </Accordion>
             <Link to="/enroll" className={classes.link}>

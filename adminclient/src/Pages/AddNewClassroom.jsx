@@ -122,7 +122,7 @@ const AddNewClassroom = () => {
                 </Box>
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
                 <Box display="flex" justifyContent="center">
-                  <Grid item xs={12} lg={11 }>
+                  <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={courseOptions}
                     // value={selectedValue}

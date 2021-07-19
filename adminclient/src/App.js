@@ -4,9 +4,9 @@ import Dashboard from "./Pages/Dashboard";
 // import { Container } from "react-bootstrap";
 import Enroll from "./Pages/Enroll";
 import MeetLink from "./Pages/MeetLink";
-import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
+// import AddNewLearningSkills from "./Pages/AddNewLearningSkills";
 import AddCourseActivity from "./Pages/AddCourseActivity";
-import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
+// import AddSpiritualLearning from "./Pages/AddSpiritualLearning";
 import OneToOne from "./Pages/OneToOne";
 import React, { useState, useEffect, useContext } from "react";
 import Courses from "./Pages/Courses";
@@ -214,21 +214,21 @@ function App() {
                 path="/student-courses/:id/manage"
                 component={ManageStudentCourse}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/learning-skills"
                 component={AddNewLearningSkills}
-              />
+              /> */}
               <Route
                 exact
                 path="/course-activities"
                 component={AddCourseActivity}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/spiritual-learning"
                 component={AddSpiritualLearning}
-              />
+              /> */}
               <Route
                 exact
                 path="/trainer-classrooms"

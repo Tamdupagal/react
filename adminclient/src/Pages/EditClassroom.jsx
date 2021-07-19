@@ -63,13 +63,15 @@ const EditClassroom = () => {
       <div>
         <h1 className={classes.mainHeading}>Edit Classroom</h1>
       </div>
-      <Container>
+      <Container style={{marginBottom:"20vh"}}>
         <div>
           <Box display="flex" justifyContent="center">
             <Grid item xs={12} lg={9}>
               <Card>
                 <h5 className={classes.infoHeading}>Classroom Name:</h5>
                 <form>
+                  <Box display="flex" justifyContent="center">
+                    <Grid item xs={12} lg={11}>
                   <TextField
                     variant="outlined"
                     size="small"
@@ -77,6 +79,8 @@ const EditClassroom = () => {
                     inputRef={nameRef}
                     defaultValue={data.name}
                   ></TextField>
+                    </Grid>
+                  </Box>
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
                 {/* <form> */}{" "}
@@ -92,7 +96,8 @@ const EditClassroom = () => {
                   <MenuItem value={2}>hello</MenuItem>
                   <MenuItem value={3}>hola</MenuItem>
                 </Select> */}
-                <Container>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={studentOptions}
                     value={selectedValue}
@@ -102,8 +107,9 @@ const EditClassroom = () => {
                     placeholder=""
                     showArrow={true}
                     avoidHighlightFirstOption={true}
-                  />
-                </Container>
+                    />
+                    </Grid>
+                </Box>
                 {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
                 {/* <form>
@@ -116,7 +122,8 @@ const EditClassroom = () => {
                     className={classes.textField} 
                   />
                 </form> */}
-                <Container>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={studentOptions}
                     value={selectedValue}
@@ -126,9 +133,12 @@ const EditClassroom = () => {
                     placeholder=""
                     showArrow={true}
                     avoidHighlightFirstOption={true}
-                  />
-                </Container>
+                    />
+                    </Grid>
+                </Box>
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
+                <Box display="flex" justifyContent="center">
+                  <Grid item xs={12} lg={11}>
                 <form>
                   <TextField
                     variant="outlined"
@@ -143,6 +153,7 @@ const EditClassroom = () => {
                     <MenuItem value={"hola"}>hola</MenuItem>
                   </TextField>
                 </form>
+                </Grid></Box>
                 <div className={classes.submitBtn}>
                   <Button
                     variant="contained"
