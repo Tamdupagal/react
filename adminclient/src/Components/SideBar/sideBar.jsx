@@ -202,6 +202,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "12px",
     borderLeft:"3px solid white",
     // backgroundColor:"303956",
+    paddingRight:"30%"
   },
   dropdownHeading: {
     fontFamily: "'Nunito', sans-serif",
@@ -212,13 +213,15 @@ const useStyles = makeStyles((theme) => ({
   menuBtn2: {
     display: "flex",
     flexDirection: "column",
-    color: "white",
+    color: "#bfc3c9",
     fontFamily: "'Nunito', sans-serif",
     // fontFamily: "'Source Sans Pro', sans-serif",
     paddingBottom: "6%",
     // paddingTop: "6%",
     textTransform: "capitalize",
     marginLeft: "12px",
+    paddingRight:"30%"
+
   },
   activeLink : {
     backgroundColor: "#262e45", 
