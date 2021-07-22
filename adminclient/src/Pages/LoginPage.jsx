@@ -89,15 +89,12 @@ const LoginPage = () => {
     <div >
       <Box display="flex"
         className="w-100"
-        // p={1}
-        // m={1}
           justifyContent="center"
         style={{position:"relative",height:"98vh",backgroundImage:`url(${loginImg})`,
           backgroundRepeat: 'no-repeat', backgroundSize: "100% 100%"
         }}>
-        
         <Grid container xs={12} lg={7} style={{marginTop:"10%"}}>
-            <Grid xs={12} lg={6} >
+            <Grid xs={12} lg={6} className="logo">
               <Box display="flex" justifyContent="center" flexDirection="column" style={{marginTop:"25%"}}>
                 <Box display="flex" justifyContent="center">
                 <img src={mainLogo} className={classes.mainLogo}></img>
@@ -108,7 +105,7 @@ const LoginPage = () => {
               </Box>
           </Grid>
           <Grid xs={12} lg={6}>
-            <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" style={{borderLeft:"4px solid white"}}>
+            <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" className="box">
               <Card className={classes.card}>
                 <img src={profilePic} className={classes.profilePic}></img>
               </Card>
@@ -135,7 +132,7 @@ const LoginPage = () => {
                 />
               <br />
               <Button variant="contained" className={classes.btn} onClick={handleSignIn}
->SIGN IN</Button>
+              >SIGN IN</Button>
 
             </Box>
           </Grid>

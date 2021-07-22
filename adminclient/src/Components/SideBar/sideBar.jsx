@@ -196,10 +196,12 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontFamily: "'Nunito', sans-serif",
     // fontFamily: "'Source Sans Pro', sans-serif",
-    // paddingBottom: "4%",
+    paddingBottom: "6%",
     // paddingTop: "6%",
     textTransform: "capitalize",
     marginLeft: "12px",
+    borderLeft:"3px solid white",
+    // backgroundColor:"303956",
   },
   dropdownHeading: {
     fontFamily: "'Nunito', sans-serif",
@@ -240,27 +242,57 @@ const SideBar = () => {
   const [backgroundPanel2, setBackgroundPanel2] = useState("#303956");
   const [backgroundPanel3, setBackgroundPanel3] = useState("#303956");
   const [activeLink, setActiveLink] = useState(null)
-  // const [backgroundColor, setBackgroundColor]= useState()
-
-  const handleChange = (panel,panelName) => (event, newExpanded) => {
-    console.log(panel, newExpanded);
-    console.log(newExpanded);
-    setExpanded(newExpanded ? panel : false);
-    // if(expanded)
-    // backgroundColor="#303956"
-    // else
-    // backgroundColor="#262e45"
-
-
-    // if (panel == "panel1") handleBackgroundPanel1();
-    // else if (panel == "panel2") handleBackgroundPanel2();
-    // else handleBackgroundPanel3();
-    toggleMe(panelName)
-  };
 
   useEffect(() => {
     setOpen(true);
   }, []);
+  const handleDashboard =() =>{
+    toggleMe("dashboard")
+  }
+
+  const handleCourses =() =>{
+    toggleMe("courses")
+  }
+
+  const handleEnroll =() =>{
+    toggleMe("enroll")
+  }
+
+  const handleMeet =() =>{
+    toggleMe("meet")
+  }
+
+  const handleClassrooms =() =>{
+    toggleMe("classroom")
+  }
+
+  const handleTrainers =() =>{
+    toggleMe("trainers")
+  }
+
+  const handleAttendance =() =>{
+    toggleMe("attendances")
+  }
+
+  const handleStudents =() =>{
+    toggleMe("students")
+  }
+
+  const handleStuCourse =() =>{
+    toggleMe("StuCourses")
+  }
+
+  const handleTeachers =() =>{
+    toggleMe("teachers")
+  }
+
+  const handleTrainer =() =>{
+    toggleMe("trainer")
+  }
+
+  const handleOperation =() =>{
+    toggleMe("operation")
+  }
 
   const toggleMe = (value) => {
     setActiveLink(value)
@@ -277,17 +309,7 @@ const SideBar = () => {
     if (window.innerWidth <= 700) setOpen(false);
     else setOpen(false);
   };
-  const handleBackgroundPanel1 = () => {
-    expanded ? setBackgroundPanel1("#303956") : setBackgroundPanel1("#262e45");
-  };
-
-  const handleBackgroundPanel2 = () => {
-    expanded ? setBackgroundPanel2("#303956") : setBackgroundPanel2("#262e45");
-  };
-
-  const handleBackgroundPanel3 = () => {
-    expanded ? setBackgroundPanel3("#303956") : setBackgroundPanel3("#262e45");
-  };
+  
   return (
     <>
       <div className={classes.root}>
@@ -340,156 +362,75 @@ const SideBar = () => {
           <List>
             <Link to="/dashboard" 
             className={classes.link}
->
-              <Button startIcon={<ViewQuiltIcon />} className={classes.menuBtn}>
+            >
+              <Button startIcon={<ViewQuiltIcon />} onClick={handleDashboard} className={activeLink==="dashboard"? classes.menuBtn:classes.menuBtn2} >
                 Dashboard
               </Button>
             </Link>
-            <Accordion
-              square
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1","courses")}
-              // onClick={toggleMe("courses")}
-              className={activeLink==="courses"? classes.activeLink : classes.inactivelink}
+            <Link to="/courses" 
+            className={classes.link}
             >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
-                expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
-              >
-                <ImportContactsIcon
-                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
-                />
-                <Typography className={classes.dropdownHeading}>
-                  Courses
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails              
-              //  className={activeLink==="courses"? classes.activeLink : classes.inactivelink}
->
-                <Link to="/courses" className={classes.link}>
-                  <Button className={classes.button}>Courses</Button>
-                </Link>
-                <Link to="/course-activities" className={classes.link}>
-                  <Button className={classes.button}>
-                    Add Course Activity
-                  </Button>
-                </Link>
-                {/* <Link to="/learning-skills" className={classes.link}>
-                  <Button className={classes.button}>
-                    Add Learning Skills
-                  </Button>
-                </Link> */}
-                {/* <Link to="/spiritual-learning" className={classes.link}>
-                  <Button className={classes.button}>
-                    Add Spiritual Learning
-                  </Button>
-                </Link> */}
-              </AccordionDetails>
-            </Accordion>
+              <Button startIcon={<ImportContactsIcon />} onClick={handleCourses} className={activeLink==="courses"? classes.menuBtn:classes.menuBtn2}>
+                Courses
+              </Button>
+            </Link>
             <Link to="/enroll" className={classes.link}>
               <Button
                 startIcon={<RemoveFromQueueIcon />}
-                className={classes.menuBtn2}
-              >
+                onClick={handleEnroll} className={activeLink==="enroll"? classes.menuBtn:classes.menuBtn2}              >
                 Enrollment
               </Button>
             </Link>
             <Link to="/meetLink" className={classes.link}>
-              <Button startIcon={<LinkIcon />} className={classes.menuBtn}>
+              <Button startIcon={<LinkIcon />} onClick={handleMeet} className={activeLink==="meet"? classes.menuBtn:classes.menuBtn2}>
                 Meet Links
               </Button>
             </Link>
-            <Accordion
-              square
-              expanded={expanded === "panel2"}
-              onChange={handleChange("panel2","classroom")}
-              className={activeLink==="classroom"? classes.activeLink : classes.inactivelink}
+            <Link to="/classroom" 
+            className={classes.link}
             >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-                expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
-              >
-                <LocalLibraryIcon
-                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
-                />
-                <Typography className={classes.dropdownHeading}>
-                  Classroom
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Link to="/classroom" className={classes.link}>
-                  <Button className={classes.button}>
-                    Students and Teachers
-                  </Button>
-                </Link>
-                <Link to="/trainer-classrooms" className={classes.link}>
-                  <Button className={classes.button}>Teacher Training</Button>
-                </Link>
-              </AccordionDetails>
-            </Accordion>
+              <Button startIcon={<LocalLibraryIcon />} onClick={handleClassrooms} className={activeLink==="classroom"? classes.menuBtn:classes.menuBtn2}>
+                Classrooms
+              </Button>
+            </Link>
+            <Link to="/trainer-classrooms" 
+            className={classes.link}
+            >
+              <Button startIcon={<ViewQuiltIcon />} onClick={handleTrainers} className={activeLink==="trainers"? classes.menuBtn:classes.menuBtn2}>
+                Teacher Training
+              </Button>
+            </Link>
             <Link to="/attendances" className={classes.link}>
-              <Button startIcon={<CreateIcon />} className={classes.menuBtn2}>
+              <Button startIcon={<CreateIcon />} onClick={handleAttendance} className={activeLink==="attendances"? classes.menuBtn:classes.menuBtn2}>
                 Attendances
               </Button>
             </Link>
             <Link to="/students" className={classes.link}>
-              <Button startIcon={<FaceIcon />} className={classes.menuBtn2}>
+              <Button startIcon={<FaceIcon />} onClick={handleStudents} className={activeLink==="students"? classes.menuBtn:classes.menuBtn2}>
                 Students
               </Button>
             </Link>
             <Link to="/student-courses" className={classes.link}>
-              <Button startIcon={<FaceIcon />} className={classes.menuBtn2}>
+              <Button startIcon={<FaceIcon />} onClick={handleStuCourse} className={activeLink==="StuCourses"? classes.menuBtn:classes.menuBtn2}>
                 Student Courses
               </Button>
             </Link>
-            {/* <Accordion
-              square
-              expanded={expanded === "panel3"}
-              onChange={handleChange("panel3","H5P Content")}
-              className={activeLink==="H5P Content"? classes.activeLink : classes.inactivelink}
-            >
-              <AccordionSummary
-                aria-controls="panel3d-content"
-                id="panel3d-header"
-                expandIcon={<ExpandMoreIcon style={{ color: "white" }} />}
-              >
-                <GamepadIcon
-                  style={{ marginRight: "7px", fontSize: "1.3rem" }}
-                />
-                <Typography className={classes.dropdownHeading}>
-                  H5P Content
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Link className={classes.link}>
-                  <Button className={classes.button}>Add Content</Button>
-                </Link>
-                <Link className={classes.link}>
-                  {" "}
-                  <Button className={classes.button}>Edit Content</Button>
-                </Link>{" "}
-              </AccordionDetails>
-            </Accordion> */}
             <Link to="/teachers" className={classes.link}>
               <Button
                 startIcon={<FaUserGraduate />}
-                className={classes.menuBtn2}
-              >
+                onClick={handleTeachers} className={activeLink==="teachers"? classes.menuBtn:classes.menuBtn2}              >
                 Teachers
               </Button>
             </Link>
             <Link to="/trainers" className={classes.link}>
               <Button
                 startIcon={<FaUserGraduate />}
-                className={classes.menuBtn2}
-              >
+                onClick={handleTrainer} className={activeLink==="trainer"? classes.menuBtn:classes.menuBtn2}              >
                 Trainers
               </Button>
             </Link>
             <Link to="/operations" className={classes.link}>
-              <Button startIcon={<TuneIcon />} className={classes.menuBtn}>
+              <Button startIcon={<TuneIcon />} onClick={handleOperation} className={activeLink==="operation"? classes.menuBtn:classes.menuBtn2}>
                 Operations
               </Button>
             </Link>
