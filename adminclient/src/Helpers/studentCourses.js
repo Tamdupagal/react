@@ -5,17 +5,17 @@ export const StudentCourseData = (state) => {
     return state.studentCoursesData.studentCourses
 }
   
-const courseLength = (row) => {
-  let course=[]
-  let allCourse=[]
-  // course=row.classrooms?.map(c=>Object.keys(c.enrolled_courses))
-  // course.forEach(c => {
-  //     c.forEach(data=>{
-  //         allCourse.push({name:data})
-  //     })
-  // })
-  // return allCourse.length
-}
+// const courseLength = (row) => {
+//   let course=[]
+//   let allCourse=[]
+//   // course=row.classrooms?.map(c=>Object.keys(c.enrolled_courses))
+//   // course.forEach(c => {
+//   //     c.forEach(data=>{
+//   //         allCourse.push({name:data})
+//   //     })
+//   // })
+//   // return allCourse.length
+// }
 
 export const StudentCourseColumn = () => {
     const col = [

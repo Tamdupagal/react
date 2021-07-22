@@ -1,33 +1,32 @@
-import { keys } from "@material-ui/core/styles/createBreakpoints";
-import { getTeacherById } from "../action/actions";
+
 import { AttendanceActions } from "../Components/Actions/AttendanceActions";
 // let studId = []
 
-const getStudents = (data) => {
-  // if(row.enrolled_students)
-  // console.log(Object.keys(row.enrolled_students).length, "Hi")
-  // else
-  // console.log("0")
-  // console.log(data)
-}
+// const getStudents = (data) => {
+//   // if(row.enrolled_students)
+//   // console.log(Object.keys(row.enrolled_students).length, "Hi")
+//   // else
+//   // console.log("0")
+//   // console.log(data)
+// }
 
-const getTeacher = (row) => {
-  // row.enrolled_students.forEach(c=>
-  //   {
-  //     console.log(c)
-  //   })
-  // let stuId = []
-  // stuId.push(Object.keys(row.enrolled_students))
-  // console.log(stuId)
-  // // return stuId
-  // stuId.forEach(c=>{
-  //   c.forEach(d=>{
-  //     return d
-  //   })
-  // })
-  // console.log(row)
-  // row.forEach(c=>{return c})
-}
+// const getTeacher = (row) => {
+//   // row.enrolled_students.forEach(c=>
+//   //   {
+//   //     console.log(c)
+//   //   })
+//   // let stuId = []
+//   // stuId.push(Object.keys(row.enrolled_students))
+//   // console.log(stuId)
+//   // // return stuId
+//   // stuId.forEach(c=>{
+//   //   c.forEach(d=>{
+//   //     return d
+//   //   })
+//   // })
+//   // console.log(row)
+//   // row.forEach(c=>{return c})
+// }
 export const AttendanceData = (state) => {
   return state.classroomData.classrooms
 };

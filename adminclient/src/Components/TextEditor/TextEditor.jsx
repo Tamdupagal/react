@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Container, Button } from "@material-ui/core";
+import React from "react";
+import { Container} from "@material-ui/core";
 import "./../../css/TextEditor.css";
-import ReactQuill, { Quill } from "react-quill";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
-import { EditorState } from "draft-js";
+// import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useStyles } from "./../../Styles/AddCourseActivity";
 import modules from "./../../Helpers/modules";
@@ -14,9 +14,9 @@ import formats from "./../../Helpers/formats";
 
 const TextEditor = () => {
   const classes = useStyles();
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
+  // const [editorState, setEditorState] = useState(() =>
+  //   EditorState.createEmpty()
+  // );
 
   return (
     <div>

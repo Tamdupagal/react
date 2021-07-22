@@ -1,5 +1,5 @@
 import ClassroomActions from "./../Components/Actions/ClassroomActions"
-import courses from "./Courses";
+// import courses from "./Courses";
 export const classroomData = (state) => {
   return state.classroomData.classrooms
 //   state.classroomData.classrooms.map(classroom => (

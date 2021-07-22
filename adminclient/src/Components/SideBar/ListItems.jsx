@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import { useStyles } from '../../Styles/SideBar';
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import RemoveFromQueueIcon from "@material-ui/icons/RemoveFromQueue";
 import LinkIcon from "@material-ui/icons/Link";
@@ -11,12 +10,8 @@ import TuneIcon from "@material-ui/icons/Tune";
 import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
 import { FaUserGraduate } from "react-icons/fa";
 import { Button,List } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const drawerWidth = 250;
-let shift;
-let display;
-let contentMargin;
 
 const ListItem = () =>{
     const [activeLink, setActiveLink] = useState(null)

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Footer } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import Grid from "@material-ui/core/Grid";
 

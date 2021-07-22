@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
-import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -17,29 +16,11 @@ import "./../../css/sidebar.css";
 import { useStyles } from "../../Styles/SideBar";
 import ListItem from "./ListItems";
 
-const drawerWidth = 250;
-let shift;
-let display;
-let contentMargin;
-
-if (window.innerWidth <= 600) {
-  shift = drawerWidth;
-  contentMargin = -drawerWidth;
-} else {
-  contentMargin = -drawerWidth;
-  shift = drawerWidth;
-  display = "none";
-}
-
-
 const SideBar = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = useState(true);
   const history = useHistory();
-  const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     setOpen(true);
