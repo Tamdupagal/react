@@ -136,6 +136,7 @@ export const getAllStudents = async (dispatch) => {
         dispatch({ type: GET_ALL_STUDENTS_REQUEST})
         const res = await axios.get('students/all')
         dispatch({type : GET_ALL_STUDENTS_SUCCESS, payload : res.data})
+        return res.data
     } catch (err) {
         dispatch({type : GET_ALL_STUDENTS_FAIL, payload : err})
     }

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Container, Box } from "@material-ui/core";
+import { Container, Box, Select } from "@material-ui/core";
 import { Button, Card } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -8,7 +8,7 @@ import { useStyles } from "../Styles/AddnewClassroom";
 import { useTheme } from "@material-ui/core/styles";
 import { Multiselect } from "multiselect-react-dropdown";
 import { AppContext } from "../AppContext";
-import { editClassroom } from "../action/actions";
+import { editClassroom, getAllCourses, getAllStudents, getAllTeachers } from "../action/actions";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import axios from "../axios";
 
@@ -19,33 +19,79 @@ const EditClassroom = () => {
   const nameRef = useRef();
   const courseRef = useRef();
   const studentRef = useRef();
-  const [studentOptions, setStudentOptions] = useState();
   const { state, dispatch } = useContext(AppContext);
   const history = useHistory();
   const {id} = useParams()
   let editableData = useLocation()
+  const [allTeachers, setAllTeachers] = useState([])
+  const [allStudents, setAllStudents] = useState([])
   let data = editableData.state?.data
-  let students = [];
-  useEffect(() => {
-    // console.log(props);
-    // console.log(props.editClassroomData._id);
-    // edit = state.classroomEditData.data.enrolledStudents;
-    // console.log(edit);
-    // console.log(data);
-    // Object.keys(data.enrolled_courses).map((c) => students.push({ label: c }));
-    // setStudentOptions(students);
-    // console.log(students);
+  let teachers;
+  let students;
+  let courses;
+  let courseOptions = []
+  let teacherOptions = []
+  let studentOptions = []
+  const [studentSelectedValue, setStudentSelectedValue] = useState([]);
+  const [courseSelectedValue, setCourseSelectedValue] = useState([]);
+  const [teacherId,setTeacherId] = useState([])
+
+
+
+  useEffect( async() => {
+    console.log(courses)
+    if(!courses){
+      try {
+        courses = await getAllCourses(dispatch)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    if(!teachers){
+      try {
+        teachers= await getAllTeachers(dispatch)
+        teachers.map(c=>teacherOptions.push(c.personelDetails))
+        setAllTeachers(teacherOptions)
+        // console.log
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    if(!students){
+      try {
+       students = await getAllStudents(dispatch)
+      //  students.map(c=>studentOptions.push(c.name))
+        setAllStudents(studentOptions)
+        console.log(students)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    students.map(c=>studentOptions.push({label:c.name,value:c._id}))
+    courses.map(c=>courseOptions.push({label: c.title, value: c._id}))
   }, []);
 
-  const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
+  const onCourseSelect = (e) => {
+    setCourseSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value})) : []);
   };
+  const onStudentSelect = (e) => {
+    setStudentSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setTeacherId(e.target.value._id)
+  }
 
   const handleEditClassroom = (id) => {
     var data = {
       name: nameRef.current.value,
-      enrolled_courses: ["1", "2", "3"],
-      enrolled_students: selectedValue,
+      enrolled_courses: courseSelectedValue,
+      enrolled_students: studentSelectedValue,
+      teacher: [teacherId]
     };
     console.log(id);
     console.log(nameRef.current.value);
@@ -83,25 +129,12 @@ const EditClassroom = () => {
                   </Box>
                 </form>
                 <h5 className={classes.infoHeading}>Assign Course:</h5>
-                {/* <form> */}{" "}
-                {/* <Select
-                  variant="outlined"
-                  size="small"
-                  select
-                  // ref={courseRef}
-                  // onchange={handleChange}
-                  className={classes.textField}
-                >
-                  <MenuItem value={1}>interview</MenuItem>
-                  <MenuItem value={2}>hello</MenuItem>
-                  <MenuItem value={3}>hola</MenuItem>
-                </Select> */}
                 <Box display="flex" justifyContent="center">
                   <Grid item xs={12} lg={11}>
                   <Multiselect
-                    options={studentOptions}
-                    value={selectedValue}
-                    onSelect={onSelect}
+                    options={courseOptions}
+                    value={courseSelectedValue}
+                    onSelect={onCourseSelect}
                     displayValue="label"
                     closeIcon="cancel"
                     placeholder=""
@@ -110,24 +143,13 @@ const EditClassroom = () => {
                     />
                     </Grid>
                 </Box>
-                {/* </form> */}
                 <h5 className={classes.infoHeading}>Assign Students:</h5>
-                {/* <form>
-                  {" "}
-                  <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    size="small"
-                    inputRef={studentRef}
-                    className={classes.textField} 
-                  />
-                </form> */}
                 <Box display="flex" justifyContent="center">
                   <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={studentOptions}
-                    value={selectedValue}
-                    onSelect={onSelect}
+                    value={studentSelectedValue}
+                    onSelect={onStudentSelect}
                     displayValue="label"
                     closeIcon="cancel"
                     placeholder=""
@@ -139,20 +161,27 @@ const EditClassroom = () => {
                 <h5 className={classes.infoHeading}>Assign Teacher:</h5>
                 <Box display="flex" justifyContent="center">
                   <Grid item xs={12} lg={11}>
-                <form>
-                  <TextField
+                  <form>
+                  {
+                     (
+                  <Select
                     variant="outlined"
                     size="small"
-                    select
-                    inputRef={courseRef}
+                    onChange={handleChange}
                     className={classes.textField}
+                    defaultValue=""
                   >
-                    <MenuItem value={"interview"}>interview</MenuItem>
-                    <MenuItem value={"hii"}>hii</MenuItem>
-                    <MenuItem value={"hello"}>hello</MenuItem>
-                    <MenuItem value={"hola"}>hola</MenuItem>
-                  </TextField>
-                </form>
+                    {
+                      allTeachers.map((teacher, index) => (
+                          <MenuItem key={index} value={teacher}>
+                            {teacher.name}
+                          </MenuItem>
+                        ))
+                    }
+                  </Select>
+                    )
+                  }
+                    </form>
                 </Grid></Box>
                 <div className={classes.submitBtn}>
                   <Button

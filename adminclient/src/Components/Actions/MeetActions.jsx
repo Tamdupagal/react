@@ -93,7 +93,7 @@ const MeetActions = (props) => {
         </button>
       </LightTooltip>
       {/* <div>
-        <Modal
+        <Modal 
           open={open}
           onClose={handleClose}
           aria-labelledby="simple-modal-title"

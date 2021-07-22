@@ -25,15 +25,19 @@ const AddNewClassroom = () => {
   const data=[1,2,3,4]
   let teacherData
 
-  const [selectedValue, setSelectedValue] = useState([]);
+  const [studentSelectedValue, setStudentSelectedValue] = useState([]);
+  const [courseSelectedValue, setCourseSelectedValue] = useState([]);
   const classes = useStyles();
   const location = useLocation()
   let courses = location.state?.courses
   const [allTeachers, setAllTeachers] = useState([])
+  const [allStudents, setAllStudents] = useState([])
   const courseOptions = []
   let teachers=location.state?.teachers;
   const [coursesOptions, setCoursesOptions] = useState()
   let teacherOptions = []
+  let studentOptions = []
+  let students;
  
   useEffect(async() => {
     console.log(courses)
@@ -56,11 +60,26 @@ const AddNewClassroom = () => {
         console.log(err)
       }
     }
+    if(!students){
+      try {
+       students = await getAllStudents(dispatch)
+      //  students.map(c=>studentOptions.push(c.name))
+        setAllStudents(studentOptions)
+        console.log(students)
+      }
+      catch(err){
+        console.log(err)
+      }
+    }
+    students.map(c=>studentOptions.push({label:c.name,value:c._id}))
     courses.map(c=>courseOptions.push({label: c.title, value: c._id}))
   }, []);
 
-  const onSelect = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
+  const onCourseSelect = (e) => {
+    setCourseSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value})) : []);
+  };
+  const onStudentSelect = (e) => {
+    setStudentSelectedValue(Array.isArray(e) ? e.map((x) => ({key:x.value,value:x.label})) : []);
   };
 
   const handleChange = (e) => {
@@ -71,12 +90,12 @@ const AddNewClassroom = () => {
   const saveClassroom = () => {
     var data = {
       name: nameRef.current.value,
-      enrolled_courses: {selectedValue},
-      enrolled_students: ["1", "2", "3"],
-      teachers: teacherId
+      enrolled_courses: {courseSelectedValue},
+      enrolled_students: {studentSelectedValue},
+      teachers: [teacherId]
     };
     console.log(nameRef.current.value);
-    console.log(selectedValue);
+    // console.log(selectedValue);
     addClassroom(dispatch, data);
     history.push("/classroom");
   };
@@ -110,11 +129,11 @@ const AddNewClassroom = () => {
                   <Grid item xs={12} lg={11}>
                   <Multiselect
                     options={courseOptions}
-                    value={selectedValue}
-                    onSelect={onSelect}
+                    value={courseSelectedValue}
+                    onSelect={onCourseSelect}
                     displayValue="label"
                     closeIcon="cancel"
-                    placeholder=""
+                    placeholder="select"
                     showArrow={true}
                     avoidHighlightFirstOption={true}
                     />
@@ -124,9 +143,9 @@ const AddNewClassroom = () => {
                 <Box display="flex" justifyContent="center">
                   <Grid item xs={12} lg={11}>
                   <Multiselect
-                    options={courseOptions}
-                    // value={selectedValue}
-                    onSelect={onSelect}
+                    options={studentOptions}
+                    value={studentSelectedValue}
+                    onSelect={onStudentSelect}
                     displayValue="label"
                     closeIcon="cancel"
                     placeholder=""
