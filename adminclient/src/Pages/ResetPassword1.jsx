@@ -105,7 +105,7 @@ const ResetPassword1 = (props) => {
               >
                 Submit
               </Button>
-              <Button size="large" variant="contained" onClick={props.handleClose} style={{margin:"1%"}}>Cancel</Button>
+              <Button size="large" variant="contained" onClick={props.handleCrmClose || props.handleAdminClose} style={{margin:"1%"}}>Cancel</Button>
               </Box>
             
           </Card>
