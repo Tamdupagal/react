@@ -35,7 +35,6 @@ const ManageStudentCourse = () => {
   const courses = location.state.data
   useEffect(() => {
     // getAllStudentCourses(dispatch)
-    console.log(courses)
   }, [])
   // const { state, dispatch } = useContext(AppContext);
 

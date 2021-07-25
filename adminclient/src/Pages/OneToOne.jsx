@@ -32,7 +32,6 @@ const OneToOne = () => {
     getAllClassrooms(dispatch);
     getAllCourses(dispatch)
 
-    console.log("hy");
   }, []);
   // const getClassroomAll = () => {
   //   Classroom.getAll()

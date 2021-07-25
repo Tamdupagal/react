@@ -27,7 +27,6 @@ const StudentsInfoEdit = () => {
   const history = useHistory();
 
   const handleEditStudent = () => {
-    console.log(id);
     var data = {
       role: "STUDENT",
       active: "true",
@@ -43,8 +42,6 @@ const StudentsInfoEdit = () => {
   };
 
   useEffect(() => {
-    // console.log(data)
-    console.log(data._id);
   }, []);
 
   return (

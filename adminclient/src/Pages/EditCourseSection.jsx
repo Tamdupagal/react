@@ -54,15 +54,12 @@ const EditCourseSection = ({ withoutButton, withoutTitle, styles , courses , cou
                   setValues({...values ,allCourses: response, name: res.name , price: res.price , one_section: res});
                 })
                 .catch((err)=>{
-                  console.log('err' , err);
                 })
         })
         .catch((err)=>{
-          console.log('err' , err);
         })
     }
     else {
-      console.log('In else');
       setEditor({...editor , value: course_section.description})
       setValues({...values , name: course_section.name , price: course_section.price});
     }
@@ -102,22 +99,16 @@ const change = (content, delta, source, editor) => {
     if(editor.value)
     body.description = editor.value ;
 
-    console.log('main',body);
     editCourseSectionOfCourse(dispatch , params.course_id , params.section_id , body)
       .then((res)=>{
         setLoad(false);
-        console.log('In response-------------->',res);
         history.push("/courses");
       })
       .catch((err)=>{
-        console.log('In err-------------->',err);
         setLoad(false);
         //Something went wrong
       })
   }
-  console.log(values);
-  console.log(editor.text);
-  console.log(editor.value);
 
   return (
     <div>
@@ -186,7 +177,9 @@ const change = (content, delta, source, editor) => {
                 <h3 className={classes.subheading3}>COURSE</h3>
                     {
                         values.allCourses &&
-                          <FormControl>
+                        <Box display="flex" justifyContent="center">
+                          <Grid item xs={12} lg={11}>
+                          <FormControl className={classes.formControl}>
                             <InputLabel id="countrySelectLabel">Course</InputLabel>
                               <Select 
                                 labelId="countrySelectLabel"
@@ -201,6 +194,7 @@ const change = (content, delta, source, editor) => {
                                 ))}
                               </Select>
                           </FormControl>
+                          </Grid></Box>
                     }
                 <Card className={classes.rightContainer1}>
                   <form>

@@ -82,7 +82,6 @@ const LoginPage = () => {
       // console.log(state.loginToken.token)
 
     } catch(err) {
-      console.log(err)
     }
   }
   return (

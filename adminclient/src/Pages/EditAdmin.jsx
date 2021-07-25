@@ -50,8 +50,6 @@ const EditAdmin = (props) => {
   //   return
   // }
   useEffect(() => {
-    console.log(adminEditableData);
-    console.log(id);
   }, [location]);
   const handleChangeMultiple = (event) => {
     const { options } = event.target;

@@ -66,4 +66,8 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "5%",
     fontFamily: "'Exo', sans-serif",
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 200,
+  },
 }));

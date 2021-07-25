@@ -6,7 +6,6 @@ const TextEditor = () => {
   const [body, setbody] = useState("");
 
   const handleBody = (e) => {
-    console.log(e);
     setbody(e);
   };
   return (

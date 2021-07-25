@@ -5,7 +5,6 @@ import {isLogin} from "./App"
 
 export default function PartialPrivateRoute({component: Component,restricted, ...props}) {
     // const location = useLocation()
-    // console.log(location.state.auth)
     return (
         <>
           

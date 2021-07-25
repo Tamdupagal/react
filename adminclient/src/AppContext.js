@@ -88,7 +88,6 @@ const initialState= {
 }
 
 const reducer = (state=initialState, {type, payload})=>{
-    console.log('in context',type , payload);
     switch (type){
         case GET_ALL_COURSES:
             return {

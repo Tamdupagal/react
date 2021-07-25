@@ -56,7 +56,6 @@ const ClassroomActions = (props) => {
     });
   };
   const handleDelete = (id) => {
-    console.log(id);
     if (window.confirm("Delete the item?")) {
       deleteClassroom(dispatch, id);
       history.push("/classroom");

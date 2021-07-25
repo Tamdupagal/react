@@ -35,8 +35,6 @@ const AddLecture = () => {
   const LECTURE_DATA = state?.lectureData;
   // let cid = state.classroomEditData.data._id
   useEffect(() => {
-    console.log(cid);
-    // console.log(classroomData.state.classroomData._id)
     getAllLectures(dispatch, cid);
   }, []);
   return (

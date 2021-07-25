@@ -38,7 +38,6 @@ const AddTrainer = () => {
         setAllTeachers(teacherOptions)
       }
       catch(err){
-        console.log(err)
       }
     }
   }, [])
@@ -46,17 +45,14 @@ const AddTrainer = () => {
   const handleChange = (e) => {
     e.preventDefault()
     setTeacherId(e.target.value._id)
-    console.log(e.target.value._id)
   }
   const handleOwnRoleChange = (e) => {
     e.preventDefault()
     setOwnRole(e.target.value)
-    console.log(e.target.value)
   }
   const handleRoleChange = (e) => {
     e.preventDefault()
     setRole(e.target.value)
-    console.log(e.target.value)
   }
   const handleAddTrainer = () => {
     var data = {
@@ -93,6 +89,8 @@ const AddTrainer = () => {
           <Grid item xs={12} lg={8}>
             <Card>
             <h5 className={classes.infoHeading}>Trainer:</h5>
+            <Box display="flex" justifyContent="center">
+              <Grid item xs={12} lg={11}>
             <form>
                   {
                      (
@@ -116,7 +114,11 @@ const AddTrainer = () => {
                     )
                   }
                 </form>
+              </Grid>
+            </Box>
               <h5 className={classes.infoHeading}>Trainer's Role:</h5>
+              <Box display="flex" justifyContent="center">
+              <Grid item xs={12} lg={11}>
               <form>
                 {" "}
                 <Select
@@ -137,7 +139,11 @@ const AddTrainer = () => {
                           </MenuItem>
                   </Select>
               </form>
+              </Grid>
+               </Box>
               <h5 className={classes.infoHeading}>Trainer's own Role:</h5>
+              <Box display="flex" justifyContent="center">
+              <Grid item xs={12} lg={11}>
               <form>
                 {" "}
                 <Select
@@ -158,6 +164,7 @@ const AddTrainer = () => {
                           </MenuItem>
                   </Select>
               </form>
+              </Grid></Box>
               <Grid item xs={12}>
                 <div className={classes.submitBtn}>
                   {

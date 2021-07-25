@@ -3,7 +3,6 @@ export const teacherData = (state) => {
   // return state.teacherData.teachers;
   let teachers;
   teachers=state.teacherData.teachers.map(c=>c.personelDetails)
-  console.log(teachers)
   return teachers
 };
 

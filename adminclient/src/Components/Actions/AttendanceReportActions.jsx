@@ -24,7 +24,6 @@ const AttendanceReportActions = (props) => {
       state: {data:props.data,length:props.length}
     })
   }
-  console.log(props.data.id)
   return (
     <div>
      

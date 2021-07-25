@@ -25,7 +25,6 @@ const EditTeacher = () => {
   const editableData = useLocation()
 
   useEffect(() => {
-    console.log(editableData.state.data);
   }, []);
 
   const onSelect = (e) => {
@@ -42,10 +41,8 @@ const EditTeacher = () => {
       zip_code: "898961",
       address: tAddress.current.value,
     };
-    console.log(data);
     editTeacher(dispatch, data, editableData.state.data._id);
     history.push("/teachers");
-    console.log("successfull");
   };
   const multiselectdata = [
     { Country: "india", id: "1" },

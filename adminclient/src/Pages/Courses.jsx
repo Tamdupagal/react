@@ -37,14 +37,11 @@ const Courses = () => {
   const history = useHistory();
 
   useEffect(async()=>{
-    console.log("in use effect");
     getAllCourses(dispatch)
       .then((res)=>{
         setLoad(false);
-        console.log('In res', res);
       })
       .catch((err)=>{
-        console.log('err', err);
       })
   },[])
 
@@ -66,7 +63,6 @@ const Courses = () => {
 
   const body = <AddCourses handleClose={handleClose} />;
   const {courses} = state.courseData ;
-  console.log(typeof courses);
   return (
     <div>
       <Container style={{ marginBottom: "20vh" }}>

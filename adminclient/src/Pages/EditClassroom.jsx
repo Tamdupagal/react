@@ -93,11 +93,8 @@ const EditClassroom = () => {
       enrolled_students: studentSelectedValue,
       teacher: [teacherId]
     };
-    console.log(id);
-    console.log(nameRef.current.value);
-    console.log(selectedValue);
+    
 
-    console.log(id);
     // axios.put(`/classroom/update/${id}`, data)
     editClassroom(dispatch, data, id);
     history.push("/classroom");

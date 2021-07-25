@@ -60,7 +60,6 @@ export default function MeetLink() {
   };
 
   const handleOpen = () => {
-    console.log("called")
     setOpen(true);
     history.push("/add-meet")
   };
@@ -71,8 +70,6 @@ export default function MeetLink() {
   };
 
   const handleEditOpen = (data) => {
-    console.log("called")
-    console.log(data._id)
     setEditOpen(true);
     history.push({
       pathname: `/edit-meet/${data._id}`,

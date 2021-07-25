@@ -18,9 +18,7 @@ export const LectureInputEdit = () => {
     const editableLectureData = useLocation()
 
     const handleAddLecture = () => {
-        console.log(time.current.value)
-        console.log(date.current.value)
-        console.log(cid)
+       
         var data ={
             classroom_id : cid,
             course_id: "507f1f77bcf86cd799439015",
@@ -28,7 +26,6 @@ export const LectureInputEdit = () => {
             status : "ongoing",
             crm_meeting_link: meetLink.current.value
         }
-        console.log(data)
         editLecture(dispatch,data,cid,id)
         history.push(`/${cid}/lectures`)
     }

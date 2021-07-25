@@ -40,13 +40,11 @@ const AddNewClassroom = () => {
   let students;
  
   useEffect(async() => {
-    console.log(courses)
     if(!courses){
       try {
         courses = await getAllCourses(dispatch)
       }
       catch(err){
-        console.log(err)
       }
     }
     if(!teachers){
@@ -54,10 +52,8 @@ const AddNewClassroom = () => {
         teachers= await getAllTeachers(dispatch)
         teachers.map(c=>teacherOptions.push(c.personelDetails))
         setAllTeachers(teacherOptions)
-        // console.log
       }
       catch(err){
-        console.log(err)
       }
     }
     if(!students){
@@ -94,8 +90,6 @@ const AddNewClassroom = () => {
       enrolled_students: {studentSelectedValue},
       teachers: [teacherId]
     };
-    console.log(nameRef.current.value);
-    // console.log(selectedValue);
     addClassroom(dispatch, data);
     history.push("/classroom");
   };

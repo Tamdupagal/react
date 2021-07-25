@@ -43,9 +43,7 @@ const AddTeacher = () => {
       zip_code: "898961",
       address: tAddress.current.value,
     };
-    console.log(data);
 
-    console.log(selectedValue);
     addTeacher(dispatch, data, selectedValue);
     history.push("/teachers");
   };
@@ -62,7 +60,6 @@ const AddTeacher = () => {
         // setCoursesOptions(courses)
       }
       catch(err){
-        console.log(err)
       }
     }
     courses.map(c=>courseOptions.push({label: c.title, value: c._id}))
@@ -71,7 +68,6 @@ const AddTeacher = () => {
   const onFileChange = event => { 
     // Update the state 
     // this.setState({ selectedFile: event.target.files[0] }); 
-    console.log("hi")
   }; 
    
   // On file upload (click the upload button) 
@@ -85,7 +81,6 @@ const AddTeacher = () => {
       this.state.selectedFile, 
       this.state.selectedFile.name 
     ); 
-   console.log("clicked")
     // Details of the uploaded file 
     // console.log(this.state.selectedFile); 
    

@@ -15,12 +15,10 @@ export const getAllCourses = (dispatch)=>{
     return new Promise((resolve, reject) => {
         axios.get(`/courses/all`)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: GET_ALL_COURSES,
                     payload: response.data,
                 });
-                console.log(response);
                 resolve(response.data);
                 })
             .catch((error) => {
@@ -30,11 +28,9 @@ export const getAllCourses = (dispatch)=>{
 };
 
 export const getCourseSectionWithId = (dispatch , course_id , section_id )=>{
-    console.log(course_id , section_id);
     return new Promise((resolve, reject) => {
         axios.get(`/course/${course_id}/section/details/${section_id}`) 
             .then((response) => {
-                console.log('getCourseSectionWithId',response);
                 resolve(response.data);
                 })
             .catch((error) => {
@@ -44,11 +40,9 @@ export const getCourseSectionWithId = (dispatch , course_id , section_id )=>{
 };
 
 export const editCourseSectionOfCourse = (dispatch , course_id , section_id , body)=>{
-    console.log('In action------------->body' , body);
     return new Promise((resolve, reject) => {
         axios.put(`/course/${course_id}/section/update/${section_id}`,body)      
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: GET_COURSE_SECTION_WITH_ID,
                     payload: response.data,
@@ -79,7 +73,6 @@ export const getClassroomById = async (dispatch,id) => {
         return res.data
     } catch (err) {
         // dispatch({type : GET_ALL_CLASSROOMS_FAIL, payload : err})
-        console.log(err)
     }
 }
 
@@ -87,10 +80,8 @@ export const addClassroom = async (dispatch,data) => {
     try {
         dispatch ({ type: ADD_CLASSROOM_REQUEST })
         await axios.post('classroom/new',data)
-        console.log(data)
         dispatch({type : ADD_CLASSROOM_SUCCESS, payload : data})
         getAllClassrooms(dispatch)
-        // console.log(state.classroomData)
     } catch (err) {
         dispatch({type : ADD_CLASSROOM_FAIL, payload : err})
     }
@@ -99,7 +90,6 @@ export const addClassroom = async (dispatch,data) => {
 export const editClassroomData = async (dispatch,data) => {
     try{
         dispatch({type : GET_EDIT_CLASSROOM_SUCCESS, payload: data})
-        console.log("data accessed",data)
     } catch (err) {
         dispatch({type : GET_EDIT_CLASSROOM_FAIL, payload : err})
     }
@@ -110,7 +100,6 @@ export const editClassroom = async (dispatch, data, id) => {
         dispatch ({ type: EDIT_CLASSROOM_REQUEST })
         await axios.put(`/classroom/update/${id}`, data)
         dispatch({type : EDIT_CLASSROOM_SUCCESS, payload : data})
-        console.log(data)
         getAllClassrooms(dispatch)
     } catch (err) {
         dispatch({type : EDIT_CLASSROOM_FAIL, payload : err})
@@ -125,7 +114,6 @@ export const deleteClassroom = async (dispatch, id) => {
         getAllClassrooms(dispatch)
     } catch (err) {
         dispatch({type : DELETE_CLASSROOM_FAIL, payload : err})
-        // console.log(err)
     }
 }
 
@@ -146,7 +134,6 @@ export const addStudent = async (dispatch,data) => {
     try {
         dispatch ({ type: ADD_STUDENT_REQUEST })
         await axios.post('students/new',data)
-        console.log(data)
         dispatch({type : ADD_STUDENT_SUCCESS, payload : data})
         getAllStudents(dispatch)
     } catch (err) {
@@ -156,19 +143,15 @@ export const addStudent = async (dispatch,data) => {
 // student/new/file
 
 export const addStudentUsingExcelFile = async (dispatch,file) => {
-    console.log(file)
     axios.post(`/student/new/file`,file)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: ADD_STUDENTS_FILE_SUCCESS,
                     // payload: response.data,
                 });
-                console.log(response);
                 // resolve(response.data);
                 })
             .catch((error) => {
-                console.log(error);
             });
 }
 export const editStudentData = async (dispatch,data) => {
@@ -182,7 +165,6 @@ export const editStudentData = async (dispatch,data) => {
 export const editStudent = async (dispatch, data, id) => {
     try{
         dispatch ({ type: EDIT_STUDENT_REQUEST })
-        console.log(data)
         await axios.put(`/students/update/${id}`, data)
         dispatch({type : EDIT_STUDENT_SUCCESS, payload : data})
         getAllStudents(dispatch)
@@ -199,23 +181,19 @@ export const deleteStudent= async (dispatch, id) => {
         getAllStudents(dispatch)
     } catch (err) {
         dispatch({type : DELETE_STUDENT_FAIL, payload : err})
-        // console.log(err)
     }
 }
 
 // *****************TEACHERS*****************
 
 export const getAllTeachers = async (dispatch) => {
-    console.log("I am called")
     return new Promise((resolve, reject) => {
         axios.get(`/teachers/all`)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: GET_ALL_TEACHERS_SUCCESS,
                     payload: response.data,
                 });
-                console.log(response);
                 resolve(response.data);
                 })
             .catch((error) => {
@@ -227,12 +205,10 @@ export const getTeacherById = async (dispatch,id) => {
     return new Promise((resolve, reject) => {
         axios.get(`/teacher/details/${id}`)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: GET_ALL_TEACHERS_SUCCESS,
                     payload: response.data,
                 });
-                console.log(response);
                 resolve(response.data.name);
                 })
             .catch((error) => {
@@ -252,23 +228,19 @@ export const getTeacherById = async (dispatch,id) => {
 export const addTeacher = async (dispatch,data,value) => {
     try {
         dispatch ({ type: ADD_TEACHER_REQUEST})
-        console.log(data)
         const res = await axios.post('teacher/new',data)
-        console.log(res.data._id)
         dispatch({type : ADD_TEACHER_SUCCESS, payload : data})
         value.map(c=>addTeacherToCourse(c.value,res._id))
         // addTeacherToCourse(value,res._id)
         getAllTeachers(dispatch)
     } catch (err) {
         dispatch({type : ADD_TEACHER_FAIL, payload : err})
-        console.log(err.message)
     }
 }
 
 
 export const editTeacherData = async (dispatch,data) => {
     try{
-        console.log(data)
         dispatch({type : GET_EDIT_TEACHER_SUCCESS, payload: data})
     } catch (err) {
         dispatch({type : GET_EDIT_TEACHER_FAIL, payload : err})
@@ -294,7 +266,6 @@ export const deleteTeacher= async (dispatch, id) => {
         getAllTeachers(dispatch)
     } catch (err) {
         dispatch({type : DELETE_TEACHER_FAIL, payload : err})
-        // console.log(err)
     }
 }
 
@@ -302,10 +273,7 @@ export const addTeacherToCourse= async(value,id) => {
     const res = axios.put(`/teacher/${id}/course/add/${value}`)
     try {
         const res = await axios.put(`/teacher/${id}/course/add/${value}`)
-        console.log(res)
-        console.log("added")
     } catch (err) {
-        console.log(err)
     }
 }
 
@@ -325,7 +293,6 @@ export const getAllLectures = async (dispatch,cid) => {
     try {
         dispatch({ type: GET_ALL_LECTURES_REQUEST})
         const res = await axios.get(`classroom/${cid}/lectures/all`)
-        console.log(res.data)
         dispatch({type : GET_ALL_LECTURES_SUCCESS, payload : res.data})
     } catch (err) {
         dispatch({type : GET_ALL_LECTURES_FAIL, payload : err})
@@ -337,7 +304,6 @@ export const addLecture = async (dispatch,data,cid) => {
     try {
         dispatch ({ type: ADD_LECTURE_REQUEST})
         await axios.post(`/classroom/${cid}/lecture/new`,data)
-        console.log(data)
         dispatch({type : ADD_LECTURE_SUCCESS, payload : data})
         getAllLectures(dispatch,cid)
     } catch (err) {
@@ -364,7 +330,6 @@ export const deleteLecture= async (dispatch, cid, id) => {
         getAllLectures(dispatch,cid)
     } catch (err) {
         dispatch({type : DELETE_LECTURE_FAIL, payload : err})
-        // console.log(err)
     }
 }
 
@@ -373,7 +338,6 @@ export const getAllAdmins = async (dispatch) => {
     try {
         dispatch({ type: GET_ALL_ADMINS_REQUEST })
         const res = await axios.get('admins/all')
-        console.log(res.data)
         dispatch({type : GET_ALL_ADMINS_SUCCESS, payload : res.data})
     } catch (err) {
         dispatch({type : GET_ALL_ADMINS_FAIL, payload : err})
@@ -383,9 +347,7 @@ export const getAllAdmins = async (dispatch) => {
 export const addAdmin = async (dispatch,data) => {
     try {
         dispatch ({ type: ADD_ADMIN_REQUEST})
-        console.log(data)
         await axios.post('admin/new',data)
-        console.log(data)
         dispatch({type : ADD_ADMIN_SUCCESS, payload : data})
         getAllAdmins(dispatch)
     } catch (err) {
@@ -395,7 +357,6 @@ export const addAdmin = async (dispatch,data) => {
 
 export const editAdminData = async (dispatch,data) => {
     try{
-        console.log(data)
         dispatch({type : GET_EDIT_ADMIN_SUCCESS, payload: data})
     } catch (err) {
         dispatch({type : GET_EDIT_ADMIN_FAIL, payload : err})
@@ -421,7 +382,6 @@ export const deleteAdmin= async (dispatch, id) => {
         getAllAdmins(dispatch)
     } catch (err) {
         dispatch({type : DELETE_ADMIN_FAIL, payload : err})
-        // console.log(err)
     }
 }
 
@@ -430,7 +390,6 @@ export const getAllStudentCourses = async (dispatch) => {
     try {
         dispatch({ type: GET_ALL_STUDENT_COURSES_REQUEST })
         const res = await axios.get('/student/courses/all')
-        console.log(res.data)
         dispatch({type : GET_ALL_STUDENT_COURSES_SUCCESS, payload : res.data})
     } catch (err) {
         dispatch({type : GET_ALL_STUDENT_COURSES_FAIL, payload : err})
@@ -442,7 +401,6 @@ export const getAllMeetLinks = async (dispatch) => {
     try{
         dispatch({ type: GET_ALL_MEET_LINKS_REQUEST })
         const res = await axios.get('/meet_links/all')
-        console.log(res.data)
         dispatch({type : GET_ALL_MEET_LINKS_SUCCESS, payload : res.data}) 
     } catch (err) {
         dispatch({type : GET_ALL_MEET_LINKS_FAIL, payload : err})
@@ -452,9 +410,7 @@ export const getAllMeetLinks = async (dispatch) => {
 export const addMeetLink = async (dispatch,data) => {
     try {
         dispatch ({ type: ADD_MEET_LINK_REQUEST})
-        console.log(data)
         const res = await axios.post('meet_link/new',data)
-        console.log(res)
         dispatch({type : ADD_MEET_LINK_SUCCESS, payload : data})
         getAllMeetLinks(dispatch)
     } catch (err) {
@@ -481,7 +437,6 @@ export const deleteMeetLink= async (dispatch, id) => {
         getAllMeetLinks(dispatch)
     } catch (err) {
         dispatch({type : DELETE_MEET_LINK_FAIL, payload : err})
-        // console.log(err)
     }
 }
 // export const getAllCourses = async (dispatch) => {
@@ -502,22 +457,18 @@ export const getAllTrainers = async (dispatch) => {
     try{
         dispatch ({ type: GET_ALL_TRAINERS_REQUEST})
         const res = await axios.get(`/trainers/all`)
-        console.log(res)
         dispatch({type : GET_ALL_TRAINERS_SUCCESS, payload: res.data})
         // getAllMeetLinks(dispatch)
         return res.data
     } catch (err) {
         dispatch({type : GET_ALL_TRAINERS_FAIL, payload : err})
-        console.log(err)
     }  
 }
 
 export const addTrainer = async (dispatch,data) => {
     try {
         dispatch ({ type: ADD_TRAINER_REQUEST})
-        console.log(data)
-        await axios.post('/trainer/new',data)
-        console.log(data)
+        await axios.post('trainer/new',data)
         dispatch({type : ADD_TRAINER_SUCCESS, payload : data})
         getAllTrainers(dispatch)
     } catch (err) {
@@ -556,7 +507,6 @@ export const deleteTrainer= async (dispatch, id) => {
         getAllTrainers(dispatch)
     } catch (err) {
         dispatch({type : DELETE_TRAINER_FAIL, payload : err})
-        // console.log(err)
     }
 }
 
@@ -571,7 +521,6 @@ export const Auth = async(dispatch,data) => {
         localStorage.setItem("token",res.data.token)
         localStorage.setItem("role",res.data.role)
 
-        console.log(res.data)
         dispatch({ type: LOGIN_SUCCESS , payload : res.data})
     } catch (err) {
         dispatch({ type: LOGIN_FAIL , payload : err})

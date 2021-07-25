@@ -15,13 +15,11 @@ const ImageCard = () => {
     const onFileChange = event => { 
       // Update the state 
       setState({ selectedFile: event.target.file }); 
-      console.log("hi")
     } 
      
     const onFileUpload = () => { 
       const formData = new FormData()
       formData.append("excel",state.selectedFile)
-      console.log(formData)
       addStudentUsingExcelFile(dispatch,formData)
     }; 
     return (

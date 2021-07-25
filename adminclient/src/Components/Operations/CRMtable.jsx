@@ -28,7 +28,6 @@ export default function CRMTable  ()  {
   const [open, setOpen] = useState(false);
   
   const handleCrmOpen = () => {
-   console.log("called")
     setOpen(true);
 history.push({
       pathname: `/resetPassword/${data._id}`

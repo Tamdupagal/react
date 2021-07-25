@@ -15,9 +15,6 @@ export const LectureInput = () => {
   const { cid } = useParams()
 
   const handleAddLecture = () => {
-    console.log(time.current.value);
-    console.log(date.current.value);
-    console.log(cid);
     var data = {
       classroom_id: cid,
       course_id: "507f1f77bcf86cd799439012",
@@ -25,7 +22,6 @@ export const LectureInput = () => {
       status: "ongoing",
       crm_meeting_link: meetLink.current.value,
     };
-    console.log(data);
     addLecture(dispatch, data, cid);
     history.push(`/${cid}/lectures`)
   };

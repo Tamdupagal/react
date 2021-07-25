@@ -30,7 +30,6 @@ const StudentActions = (props) => {
       pathname: `/student/edit/${props.data._id}`,
       state: { data: props.data },
     });
-    // console.log(props.data);
     // editStudentData(dispatch, props.data);
   };
   const handleDeleteStudent = () => {

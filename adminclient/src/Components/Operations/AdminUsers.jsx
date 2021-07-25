@@ -38,7 +38,6 @@ const AdminUsers = () => {
    }, []);
   
   const handleAdminOpen = (data) => {
-    console.log(data._id)
     setOpen(true);
     history.push({
       pathname: `/resetPassword/${data._id}`
