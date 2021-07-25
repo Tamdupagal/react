@@ -77,7 +77,7 @@ const ResetPassword1 = (props) => {
               >
                 <h3 className={classes.Header}>Reset password</h3>
                 <Button 
-                onClick={props.handleAdminClose}
+                onClick={props.handleAdminClose || props.handleCrmClose}
                 >
                   <ClearIcon />
                 </Button>

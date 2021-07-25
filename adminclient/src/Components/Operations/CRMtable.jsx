@@ -68,7 +68,7 @@ history.push({
                 >
                   ADD NEW CRM USER
                 </Button>
-                <ResetPassword1 handleClose={handleCrmClose} open={open}/>
+                <ResetPassword1 handleCrmClose={handleCrmClose} open={open}/>
 
               </Box>
             </Container>
