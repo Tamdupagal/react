@@ -1,0 +1,6 @@
+@import "../../../sass/utilities";
+@import "../../../sass/variable";
+
+.timeslot__box {
+  @include flex_layout(center, null, column);
+}

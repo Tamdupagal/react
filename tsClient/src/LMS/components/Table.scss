@@ -1,0 +1,90 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.table__wrapper {
+  padding: 1rem 0;
+  width: 100%;
+  @include flex_layout(null, null, column);
+}
+table {
+  display: table;
+  position: relative;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  th,
+  td {
+    // border: 0.02rem solid rgba($black, 0.2);
+    text-align: center;
+    color: black;
+    padding: 1rem 0;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    max-width: 8rem;
+    text-align: center;
+    word-break: break-all;
+    @media screen and (max-width: 400px) {
+      font-size: 1.2rem;
+    }
+  }
+  th {
+    color: black;
+    padding: 1.5rem 0;
+    font-size: 1.6rem;
+    letter-spacing: 0.03rem;
+    background-color: $light_black;
+  }
+  td {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(black, 0.6);
+    text-transform: capitalize;
+  }
+  tr:nth-child(even) {
+    background-color: $light_black;
+  }
+}
+.pagination {
+  border-top: 0.1rem solid #ccc;
+  margin-top: 1.5rem;
+  @include flex_layout(center, flex-end);
+  padding: 1rem 0;
+  padding-top: 2rem;
+  .pagination__btn {
+    @include flex_layout();
+    width: 3rem;
+    height: 3rem;
+    background-color: rgb(228, 228, 228);
+    color: $primary_color;
+    font-size: 1.4rem;
+    border: none;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  .page {
+    padding: 0 0.6rem;
+    font-size: 1.4rem;
+    & > strong {
+      padding: 0 0.3rem;
+    }
+  }
+}
+.page__change__config {
+  margin-bottom: 1.2rem;
+  @include flex_layout(center, flex-end);
+  .goto__page {
+    padding: 0 1rem;
+    font-size: 1.4rem;
+  }
+  select {
+    width: max-content;
+    border: 1px solid #d1cccc;
+    border-radius: 0.2rem;
+  }
+}

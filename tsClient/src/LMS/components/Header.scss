@@ -1,0 +1,106 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+
+.header {
+  position: relative;
+  width: 100%;
+  height: max-content;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  &__toggle {
+    padding: 0 3rem;
+    border-radius: 4.1rem;
+    background-color: white;
+    box-shadow: 0 0 0.6rem rgba(black, 0.25);
+    @include flex_layout(center, space-between);
+    .menu__box {
+      @include flex_layout();
+    }
+    & img {
+      width: 8rem;
+      height: 8rem;
+      padding: 1rem 1.5rem;
+      &.logout {
+        cursor: pointer;
+      }
+    }
+    .menu {
+      font-size: 5rem;
+      color: $primary_color;
+      border: 0.3rem solid $primary_color;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  &__navigation {
+    margin-top: 2rem;
+    @include flex_layout(center, center);
+    padding: 3.5rem;
+    @media screen and (max-width: 660px) {
+      padding: 0;
+    }
+    ul {
+      @include flex_layout(center, center);
+      width: 100%;
+      @media screen and (max-width: 660px) {
+        @include flex_layout(flex-start, null, column);
+      }
+      & > li {
+        position: relative;
+        padding: 2rem;
+        list-style: none;
+        width: max-content;
+        height: max-content;
+        @include flex_layout(center, null);
+        margin: 0 1rem;
+        border: 0.2rem solid transparent;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        border-radius: $border_rad;
+        transition: {
+          property: transform;
+          duration: 0.3s;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 1rem;
+          height: 1rem;
+          transform: rotateZ(-45deg) translateX(-50%);
+          border-style: solid;
+          border-width: 0.33rem 0.33rem 0 0;
+          border-color: $black;
+          opacity: 0;
+          transition: {
+            property: opacity;
+            duration: 0.3s;
+          }
+        }
+        &:hover {
+          transform: translateY(-2rem);
+          &::before {
+            opacity: 1;
+          }
+        }
+        @media screen and (max-width: 660px) {
+          padding: 3.5rem 2rem;
+        }
+        img {
+          width: 4.5rem;
+          height: 4.5rem;
+          object-fit: cover;
+          margin-right: 1rem;
+          user-select: none;
+        }
+        span {
+          color: inherit;
+          font-weight: bold;
+          letter-spacing: 0.03rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import "../../sass/variable";
+
+.editor__wrapper {
+  padding: 1.5rem 0;
+  color: black;
+  &.dark {
+    color: white;
+    .ql-toolbar {
+      background-color: #fafafa;
+    }
+    .ql-editor {
+      &::before {
+        color: white;
+      }
+    }
+  }
+  .toolBar {
+    padding: 1rem;
+    border: 0.3rem solid #ccc;
+    border-radius: 0.6rem;
+    .ql-editor {
+      min-height: 20rem;
+    }
+  }
+  .editor__title {
+    font-size: $font_size;
+    color: $black;
+    padding: 1rem 0;
+    color: inherit;
+  }
+  .btn__box {
+    border: 0.1rem solid rgb(128, 128, 128, 0.4);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid red;
+    & > button {
+      border: none;
+      color: $white;
+      background-color: $red;
+      font-size: $font_size;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      border-radius: $border_rad - 0.2rem;
+    }
+  }
+}
