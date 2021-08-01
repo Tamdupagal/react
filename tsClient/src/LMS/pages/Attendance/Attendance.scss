@@ -1,0 +1,64 @@
+@import "../../../sass/utilities";
+@import "../../../sass/variable";
+
+.accordion__container {
+  width: 100%;
+  max-height: 50rem;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+.accordion {
+  position: relative;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  background-color: rgba(#ccc, 0.1);
+  box-shadow: 0 0 0.6rem rgba(black, 0.1);
+  border: 0.1rem solid rgba(black, 0.2);
+  & > h1 {
+    @include flex_layout(center, space-between);
+    cursor: pointer;
+    padding: 1rem 0;
+    & > span {
+      font-size: 1.6rem;
+    }
+  }
+  .accordion__icon {
+    font-size: 2rem;
+    color: $dark;
+  }
+  .accordion__box {
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: {
+      property: height;
+      duration: 0.25s;
+      timing-function: ease-out;
+    }
+    border-radius: 0.5rem;
+    @include flex_layout(null, null, column);
+    .no__data__class {
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: $warning;
+      padding: 0.8rem 0;
+    }
+    .accordion__data {
+      padding: 0.8rem 0;
+      @include flex_layout(center, space-between);
+      width: 100%;
+      & > span {
+        font-weight: bold;
+        font-size: 1.45rem;
+      }
+    }
+  }
+  //   &.active {
+  //     .accordion__box {
+  //       max-height: 1000px;
+  //     }
+  //   }
+}

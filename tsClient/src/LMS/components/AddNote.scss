@@ -1,0 +1,56 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+@import "../../sass/toast";
+
+.note__add__box {
+  width: 50rem;
+}
+
+.textArea__wrapper {
+  padding: 2rem 0;
+  width: 100%;
+  @include flex_layout(center, null, column);
+  .notes__title {
+    width: 100%;
+    padding: 0 0.5rem;
+    font-size: $font_size;
+    font-weight: 500;
+    margin: 1rem 0;
+    @include flex_layout(center, space-between);
+    .wordcount {
+      font-size: 1.8rem;
+      font-weight: bold;
+      font-family: $font_fam_bold;
+    }
+  }
+  .note__config__btn {
+    width: 100%;
+    @include flex_layout(center, flex-end);
+  }
+  .title__input {
+    width: 100%;
+    padding: 1rem;
+    border: 0.1rem solid $border_col;
+    border-radius: 0.5rem;
+  }
+  .notes__textArea {
+    resize: vertical;
+    font-size: 1.3rem;
+    width: 100%;
+    height: 8rem;
+    border: 0.1rem solid $border_col;
+    padding: 1rem 0 0 1rem;
+    border-radius: 0.5rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  hr {
+    margin: 2rem 0;
+    border: none;
+    width: 100%;
+    height: 0.02rem;
+    background-color: $border_col;
+    width: 100%;
+  }
+}

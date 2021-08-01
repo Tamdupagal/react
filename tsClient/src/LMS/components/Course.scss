@@ -1,0 +1,39 @@
+@import "../../sass/variable";
+
+.grid__layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-gap: 1rem;
+  margin-top: 3rem;
+  grid-auto-columns: max-content;
+  .course__section {
+    position: relative;
+    padding: 1rem;
+    cursor: pointer;
+    height: max-content;
+    & > img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .course__title {
+      padding: 1rem 0;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: inherit;
+      margin-bottom: 0.5rem;
+    }
+    .course__btnLink {
+      display: block;
+      width: max-content;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      background-color: $primary_bg_color;
+      color: white;
+      font-size: $font_size;
+      font-weight: bold;
+      border-radius: $border_rad;
+    }
+  }
+}

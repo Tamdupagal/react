@@ -1,0 +1,9 @@
+@import "../../../sass/utilities";
+@import "../../../sass/variable";
+
+.empty_data_text {
+  padding: 3rem 0.2rem;
+  @include flex_layout();
+  font-size: 1.6rem;
+  font-weight: bold;
+}

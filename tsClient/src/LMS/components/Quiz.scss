@@ -1,0 +1,198 @@
+@import "../../sass/carousel";
+@import "../../sass/utilities";
+@import "../../sass/variable";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2000;
+  transition: {
+    property: background-color;
+    duration: 0.3;
+  }
+  @include flex_layout();
+}
+.overlay_after_open {
+  background-color: rgba(black, 0.05);
+}
+.overlay_before_close {
+  background-color: transparent;
+}
+.content {
+  transform-origin: top right;
+  transform: scale(0.9) translate(2%, -2%);
+  opacity: 0;
+  transition : {
+    property: transform, opacity;
+    duration: 0.3s;
+  }
+}
+.content_after_open {
+  opacity: 1;
+  transform: scale(1) translate(0%);
+}
+.content_before_close {
+  opacity: 0;
+  transform: scale(0.9) translate(2%, -2%);
+}
+
+// __________ MODAL STYLE ENDS _________________
+
+.quiz__container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  .quiz__loader {
+    @include flex_layout();
+    width: 90vw;
+    height: 90vh;
+  }
+  border-radius: 0;
+  .section__box {
+    position: relative;
+    width: 100%;
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    height: max-content;
+    box-shadow: 0 0 1rem rgba(black, 0.1);
+    .section__description {
+      font-size: 1.6rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: rgba(#ccc, 0.2);
+      margin: 1rem 0;
+    }
+    .section__config {
+      padding: 0.5rem 0;
+      @include flex_layout(center, space-between);
+      .topic {
+        margin-bottom: 1.5rem;
+      }
+      .quiz__edit {
+        @include flex_layout();
+      }
+    }
+    .quiz__slider {
+      width: 100%;
+    }
+  }
+  .quiz__box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.5rem;
+    margin-top: 1.5rem;
+    @include flex_layout(null, null, column);
+    .question_config_btn {
+      justify-self: flex-start;
+      display: flex;
+      margin-top: 1.5rem;
+    }
+    .quiz__question {
+      font-size: 2rem;
+      color: black;
+      margin-bottom: 2rem;
+      @include flex_layout(center, null);
+    }
+    .quiz__answer {
+      .quiz__ans__box {
+        input[type="radio"] {
+          width: 2.5rem;
+          height: 2.5rem;
+          margin-right: 2rem;
+        }
+        @include flex_layout(center, null);
+        &:not(:last-child) {
+          margin-bottom: 1.5rem;
+        }
+        .quiz__ans {
+          font-size: 1.7rem;
+          color: black;
+        }
+      }
+      .text__ans {
+        width: 100%;
+        padding: 1rem;
+        border: 0.2rem dashed black;
+        color: black;
+        font-size: $font_size;
+        min-height: 12rem;
+        background-color: transparent;
+        resize: none;
+        border-radius: 0.2rem;
+        &:focus {
+          outline: none;
+        }
+      }
+      & > span {
+        display: block;
+        font-size: $font_size;
+        color: black;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+}
+
+.quiz__btn {
+  @include flex_layout();
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: max-content;
+  height: max-content;
+  border-radius: 50%;
+  font-size: $font_size;
+  background-color: transparent;
+  .quiz__icon {
+    color: $green;
+    cursor: pointer;
+    font-size: 4rem;
+    user-select: none;
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+    &:active {
+      color: #8cd6f3;
+      transform: scale(1.1);
+    }
+  }
+}
+ul.quiz__carousel__dot {
+  display: flex !important;
+  justify-content: center;
+  transform: translateY(1rem);
+  padding: 0.5rem;
+  & > li {
+    list-style: none;
+    &.slick-active {
+      & > button {
+        box-shadow: 0 0 0 0.5rem rgba($blue, 0.6);
+      }
+    }
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+    & > button {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 0.2rem solid $blue;
+      font-size: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.warning {
+  color: $danger;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

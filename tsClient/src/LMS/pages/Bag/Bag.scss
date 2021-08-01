@@ -1,0 +1,16 @@
+@import "../../../sass/utilities";
+@import "../../../sass/variable";
+
+.flex__row__1 {
+  @include flex_layout(null, null);
+  margin-bottom: 3rem;
+}
+.flex__row__2 {
+  @include flex_layout(null, null);
+}
+@media screen and (max-width: 1024px) {
+  .flex__row__1,
+  .flex__row__2 {
+    flex-wrap: wrap;
+  }
+}

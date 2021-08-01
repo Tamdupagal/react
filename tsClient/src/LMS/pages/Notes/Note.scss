@@ -1,0 +1,8 @@
+@import "../../../sass/utilities";
+@import "../../../sass/toast";
+.notes__section {
+  @include flex_layout(null, null, column);
+  @media screen and (max-width: 800px) {
+    @include flex_layout(null, null, column);
+  }
+}

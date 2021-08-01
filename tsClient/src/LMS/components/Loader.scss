@@ -1,0 +1,14 @@
+@import "../../sass/utilities";
+
+.loader__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  @include flex_layout();
+  background-color: rgba(white, 0.9);
+  overflow: hidden;
+  padding: 1rem;
+  z-index: 9999;
+}

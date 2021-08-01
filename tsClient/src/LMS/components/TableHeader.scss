@@ -1,0 +1,27 @@
+@import "../../sass/variable";
+@import "../../sass/utilities";
+.container {
+  background-color: $primary_bg_color;
+  width: 100%;
+  height: max-content;
+  padding: 1.5rem;
+  border-radius: 0.45rem;
+  box-shadow: 0 0 0.5rem 0.05rem rgba(black, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  @include flex_layout(center, space-between);
+  .header__box {
+    @include flex_layout();
+    & > span {
+      color: $white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .tableHeader__icon {
+      color: white;
+      font-size: 3.5rem;
+      margin-right: 1.3rem;
+    }
+  }
+}
